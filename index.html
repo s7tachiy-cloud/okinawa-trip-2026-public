@@ -631,10 +631,10 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
 
   <div class="cat-head"><h3>体験</h3><span class="sub">ふたりで1つ入れるなら</span></div>
   <div class="grid">
-    <div class="card photo"><img src="assets/img/th/sanshin.jpg" alt=""><div class="body"><h4>三線体験</h4><div class="hook">ナビィ三線（国際通り）30分¥2,000。夜さんぽの途中に。</div></div></div>
-    <div class="card photo"><img src="assets/img/th/bingata.jpg" alt=""><div class="body"><h4>琉球ガラス</h4><div class="hook">琉球ガラス村（糸満）40分 ¥4,300〜。作品は後日配送。</div></div></div>
-    <div class="card photo"><img src="assets/img/th/shisa.jpg" alt=""><div class="body"><h4>やちむん・シーサー</h4><div class="hook">読谷やちむんの里の工房で器選び、または壺屋でシーサー色付け。</div></div></div>
-    <div class="card photo"><img src="assets/img/th/sunset_okinawa.jpg" alt=""><div class="body"><h4>サンセットクルーズ</h4><div class="hook">北谷港発 約1時間 ¥4,800〜。Day3の夕方を海の上にする案。</div></div></div>
+    <div class="card photo" data-spot="exp_sanshin"><img src="assets/img/th/sanshin.jpg" alt=""><div class="body"><h4>三線体験</h4><div class="hook">ナビィ三線（国際通り）30分¥2,000。夜さんぽの途中に。</div></div></div>
+    <div class="card photo" data-spot="exp_glass"><img src="assets/img/th/bingata.jpg" alt=""><div class="body"><h4>琉球ガラス</h4><div class="hook">琉球ガラス村（糸満）40分 ¥4,300〜。作品は後日配送。</div></div></div>
+    <div class="card photo" data-spot="exp_yachimun"><img src="assets/img/th/shisa.jpg" alt=""><div class="body"><h4>やちむん・シーサー</h4><div class="hook">読谷やちむんの里の工房で器選び、または壺屋でシーサー色付け。</div></div></div>
+    <div class="card photo" data-spot="exp_cruise"><img src="assets/img/th/sunset_okinawa.jpg" alt=""><div class="body"><h4>サンセットクルーズ</h4><div class="hook">北谷港発 約1時間 ¥4,800〜。Day3の夕方を海の上にする案。</div></div></div>
   </div>
 
   <div class="section">
@@ -840,6 +840,30 @@ function toggleDay(h){h.parentElement.classList.toggle('open');}
 <script>
 /* ===== スポット詳細データ ===== */
 const SPOTS = {
+exp_sanshin:{t:"三線体験",area:"那覇・国際通り（ナビィ三線）",img:"sanshin",lead:"沖縄の音の正体、三線を30分だけ習う。「安里屋ユンタ」か「涙そうそう」が1曲弾けるところまで。",
+ about:"三線（さんしん）は中国の三弦が15世紀に琉球へ伝わった楽器で、蛇皮を張った胴に3本の弦。国際通りの三線店「ナビィ三線」は店頭で30分の体験を受けている。もっと本格的にやるなら「美ら笑34CAFE」（あかみね駅近く）の120分コース（琉装の写真つき・¥3,500）。",
+ see:["工工四（くんくんしー）という縦書きの楽譜を読む","「ちんだみ」（調弦）を教わる","気に入ったら入門用の三線は¥20,000前後から"],
+ tips:["Day2の夜さんぽ（21:30）か、Day3の朝に国際通りで","予約は電話。当日の飛び込みも空いていれば可"],
+ info:{hours:"店の営業時間内（10:00〜20:00目安）",price:"¥2,000（30分）／¥3,500（120分・琉装込み）",time:"30分",drive:"ホテルから徒歩12分",park:"—"},
+ map:"ナビィ三線 国際通り",url:"https://www.nabbie.com/info-shop.html"},
+exp_glass:{t:"琉球ガラス作り",area:"南部・糸満市（琉球ガラス村）",img:"bingata",lead:"戦後、米軍のコーラ瓶を溶かして作ったのが始まりの琉球ガラス。吹きガラスで自分のグラスを作る。",
+ about:"琉球ガラスは戦後の物資不足の中、廃瓶を再利用して生まれた。気泡と厚みのある素朴な質感が特徴で、県の伝統工芸品。琉球ガラス村は県内最大の工房で、職人と一緒に吹きガラス（40分）ができる。作品は冷ますのに時間がかかるため翌日以降の受取か配送。",
+ see:["吹きガラス体験：色を選び、竿に息を吹き込んで形を作る","工房見学（無料）と直売店"],
+ tips:["Day2の南部の日に入れるなら、奥武島と斎場御嶽の間（糸満は少し西に外れるので＋40分）","前日までの予約推奨。当日は朝9時まで受付","作品は配送（送料別）にすると帰りが楽"],
+ info:{hours:"9:30〜17:30",price:"¥4,300〜4,800",time:"40分（＋待ち）",drive:"那覇から約30分",park:"無料"},
+ map:"琉球ガラス村",url:"https://www.ryukyu-glass.co.jp/workshop"},
+exp_yachimun:{t:"やちむん・シーサー作り",area:"那覇・壺屋／中部・読谷",img:"shisa",lead:"300年続く焼き物の街・壺屋でシーサーに色を塗る、または読谷の工房で器を選ぶ。",
+ about:"やちむんは沖縄の言葉で「焼き物」。1682年に琉球王府が窯を壺屋に集めたのが始まりで、1972年に人間国宝・金城次郎が読谷に窯を移し、今は壺屋と読谷が二大産地。壺屋の老舗「育陶園」の「やちむん道場」ではシーサーの絵付けや手びねりができる。",
+ see:["壺屋やちむん通りの石畳と登り窯「南ヌ窯（ふぇーぬかま）」","育陶園 やちむん道場：シーサー絵付け（約60分）・手びねり","読谷 やちむんの里：19工房の直売所"],
+ tips:["絵付けは当日持ち帰れる。手びねりは焼成後に配送","壺屋はホテルから徒歩15分。Day2の夜さんぽの前（〜18時頃）に","読谷はDay3の「時間があれば」枠"],
+ info:{hours:"育陶園 10:00〜18:00目安（要確認）",price:"絵付け ¥2,000〜3,500（要確認）",time:"60分",drive:"壺屋は徒歩15分／読谷は車50分",park:"壺屋はコインP"},
+ map:"育陶園 やちむん道場 壺屋",url:"https://www.ikutouen.com/"},
+exp_cruise:{t:"サンセットクルーズ",area:"中部・北谷（北谷フィッシャリーナ）",img:"sunset_okinawa",lead:"北谷の港から1時間、海の上で夕日を見る。Day3の夕方を「海から見る夕日」に変える案。",
+ about:"アメリカンビレッジの隣、北谷フィッシャリーナ（港）から出るクルーズ。日没に合わせて17時前後に出航し、東シナ海に沈む夕日と、灯りのつき始めたアメリカンビレッジを海から眺める。貸切プランや、ドリンク付きプランがある。",
+ see:["海の上からの夕日（10月下旬は17:50頃）","帰港時のアメリカンビレッジの夜景"],
+ tips:["Day3に入れると18:00のレンタカー返却に間に合わない。入れるなら返却を19:00にして空港へ直行（保安検査20:20）","波の高い日は中止。前日に確認","じゃらん・アクティビティジャパンで予約"],
+ info:{hours:"日没前後（10月は17:00頃出航）",price:"¥4,800〜6,800",time:"1時間",drive:"那覇から約30分",park:"無料"},
+ map:"北谷フィッシャリーナ",url:"https://www.jalan.net/kankou/spt_guide000000215272/activity/l000038A44/"},
 churaumi:{t:"沖縄美ら海水族館",area:"北部・本部町（海洋博公園）",img:"churaumi",lead:"3匹のジンベエザメとマンタが泳ぐ巨大水槽「黒潮の海」。世界最大級のアクリルパネル越しに、海の中に立っている気分になる。",
  about:"1975年の沖縄国際海洋博覧会の跡地に2002年開館。世界で初めてジンベエザメの複数飼育・長期飼育に成功した水族館で、黒潮の海は深さ10m・水量7,500トン。館外には無料のイルカショー（オキちゃん劇場）、ウミガメ館、マナティー館、エメラルドビーチが広がる。",
  see:["黒潮の海：ジンベエザメの給餌解説は15:00と17:00。垂直に立って食べる姿は必見","黒潮探検（水槽の上から見る通路）は時間限定・無料","カフェ「オーシャンブルー」は水槽横の席が争奪戦。開館直後か15時以降","オキちゃん劇場（イルカ・無料）は11:00/13:00/14:30/16:00頃"],
