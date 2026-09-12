@@ -207,6 +207,16 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
 .card .links{margin-top:10px;display:flex;gap:6px;flex-wrap:wrap}
 .card.flash{box-shadow:0 0 0 3px var(--sun),var(--shadow-hover)}
 [data-goto]{color:var(--sea);font-weight:700;border-bottom:1px dotted var(--sea)}
+
+/* 押せる／押せない を見た目で分ける */
+.card.clickable{border-color:rgba(14,107,168,.25)}
+.card.clickable:hover{border-color:var(--sea)}
+.card .more{margin-top:10px;display:inline-block;font-size:.78rem;font-weight:700;color:#fff;background:var(--sea);border-radius:999px;padding:4px 12px}
+.card.photo .more{margin:0 16px 14px}
+.clickable h4::after{content:none}
+.panel{background:transparent;border:none;box-shadow:none;border-left:3px solid var(--turq-light);border-radius:0;padding:4px 14px;transition:none}
+.panel:hover{transform:none;box-shadow:none}
+.panel h4{font-size:.98rem}
 @media (max-width:600px){
   .sheet{width:100%}
   .photo-strip{grid-template-columns:repeat(3,1fr)}.mosaic{aspect-ratio:16/9}.banner{aspect-ratio:16/8}.credits ul{columns:1}.chips{top:50px}
@@ -226,7 +236,7 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
     <p class="sub">修学旅行の「沖縄のご飯はおいしくない」を、名店だけで塗り替える4日間。<br>北部・那覇＆南部・中部を1日ずつ。夕日は毎日ちがう場所で。</p>
     <div class="dates">
       <span>📅 2026/10/24(土) → 10/27(火)</span>
-      <span>✈ ANA 羽田 20:15 → 那覇 22:45 ／ 那覇 20:40 → 羽田 23:10</span>
+      <span>✈ ANA 羽田 20:15 → 那覇 22:50 ／ 那覇 20:55 → 羽田 23:10</span>
       <span>🏨 スマイルホテル那覇シティリゾート（予約済）</span>
       <span>🚗 レンタカー3日</span>
       <span>👫 2名</span>
@@ -283,7 +293,7 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
       <div class="day-info">
         <div class="day-date">2026.10.24 (土)</div>
         <div class="day-title">羽田 → 那覇 → 沖縄流「シメステーキ」</div>
-        <div class="day-theme">22:45着。レンタカーを受け取ってホテルへ。徒歩5分のステーキで乾杯</div>
+        <div class="day-theme">22:50着。レンタカーを受け取ってホテルへ。徒歩5分のステーキで乾杯</div>
       </div>
       <div class="day-toggle">▼</div>
     </div>
@@ -296,7 +306,7 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
       <div class="day-meta"><span>🚗 走行 約6km</span><span>🅿 ホテル駐車 ¥1,000/泊</span><span>🍽 夜食：ステーキハウス88Jr.松山店（元気があれば）</span></div>
       <div class="tl">
         <div class="tl-item move"><div class="tl-time">18:30</div><div class="tl-title">羽田空港 第2ターミナル 到着</div><div class="tl-desc">保安検査は出発20分前まで。土曜夜は混むので1時間半前に。夕食は羽田で軽く。</div></div>
-        <div class="tl-item move" data-map="羽田空港 第2ターミナル"><div class="tl-time">20:15</div><div class="tl-title">ANA NH479 羽田 → 那覇 22:45</div><div class="tl-desc">2時間30分。<span class="badge b-alt">代替</span> ソラシド SNA25 19:10→21:55／スカイマーク SKY523 18:50→21:50（安い日はこちら）</div></div>
+        <div class="tl-item move" data-map="羽田空港 第2ターミナル"><div class="tl-time">20:15</div><div class="tl-title">ANA NH479 羽田 → 那覇 22:50</div><div class="tl-desc">2時間35分・¥15,353。<span class="badge b-alt">代替</span> ソラシド SNA25 19:10→21:55／スカイマーク SKY523 18:50→21:50（安い日はこちら）</div></div>
         <div class="tl-item move" data-map="ABCレンタカー 那覇空港営業所"><div class="tl-time">23:00</div><div class="tl-title">ABCレンタカー 送迎バスで営業所へ（約8分）</div><div class="tl-desc">到着ロビーで電話→送迎。<b>時間外受取（20:00〜23:30着便）＋¥3,300</b>。ETCカードも借りる。<div class="tl-alt">お金優先なら ゆいレール（23:30最終）で県庁前→徒歩9分。翌朝ゆいレールで空港へ戻り8:00受取（¥3,300節約・朝1時間ロス）</div></div></div>
         <div class="tl-item move" data-map="スマイルホテル那覇シティリゾート"><div class="tl-time">23:35</div><div class="tl-title">スマイルホテル那覇シティリゾート チェックイン <span class="badge b-ok">予約済</span></div><div class="tl-desc">那覇市久米2-32-1（☎098-869-2511）。到着予定15:00で予約しているので、<b>「23:30頃到着」を事前に電話</b>（2時間以上遅れる場合は要連絡の規定）。駐車場は先着86台 ¥1,000/泊。</div></div>
         <div class="tl-item food" data-shopref="s88jr" data-map="ステーキハウス88Jr. 松山店"><div class="tl-time">23:50</div><div class="tl-title">夜食：ステーキハウス88Jr. 松山店（徒歩5分・土曜は翌5:00まで）</div><div class="tl-desc">沖縄の夜の締めは「ステーキ」が流儀。1,000円ステーキをシェア。疲れていればローソン限定「ポーク玉子おにぎり」で沖縄気分だけ。</div></div>
@@ -385,7 +395,7 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
       <div class="day-number">03<small>TUE</small></div>
       <div class="day-info">
         <div class="day-date">2026.10.27 (火)</div>
-        <div class="day-title">中部：ポーたま → 中城城 → 海中道路 → 浜比嘉島 → キングタコス → アメリカンビレッジ → ジャッキーで締め → 20:40便</div>
+        <div class="day-title">中部：ポーたま → 中城城 → 海中道路 → 浜比嘉島 → キングタコス → アメリカンビレッジ → ジャッキーで締め → 20:55便</div>
         <div class="day-theme">海の上を走る道と米軍文化の街。最後は1953年創業のステーキ</div>
       </div>
       <div class="day-toggle">▼</div>
@@ -414,7 +424,7 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
         <div class="tl-item food must" data-shopref="jackie" data-map="ジャッキーステーキハウス 那覇"><div class="tl-time">17:05</div><div class="tl-title">ジャッキーステーキハウス（那覇・西町） <span class="badge b-must">名物</span></div><div class="tl-desc">1953年創業、沖縄ステーキの原点。テンダーロイン L を鉄板で。11:00〜22:30、第2・第4水曜休、予約不可（17時台は待ちが短い）。空港まで車10分。<div class="tl-alt">ステーキハウス88 辻本店（無休）</div></div></div>
         <div class="tl-item move" data-map="ABCレンタカー 那覇空港営業所"><div class="tl-time">18:00</div><div class="tl-title">ABCレンタカー 那覇空港営業所 返却（給油済み）</div><div class="tl-desc">返却は出発90分前まで。送迎8分で空港へ。</div></div>
         <div class="tl-item food" data-shopref="aw" data-map="那覇空港"><div class="tl-time">18:30</div><div class="tl-title">那覇空港：お土産 ＆ A&amp;W ルートビア</div><div class="tl-desc">機内用にポーたま（到着ロビー店〜21:00）、御菓子御殿・新垣ちんすこう・泡盛。最後にA&amp;W（3F・〜20:00）でルートビア。</div></div>
-        <div class="tl-item move"><div class="tl-time">20:40</div><div class="tl-title">ANA NH478 那覇 → 羽田 23:10</div><div class="tl-desc">保安検査は20:20まで。<span class="badge b-alt">代替</span> ソラシド SNA26 20:25→22:35／スカイマーク SKY522 20:45→22:55／JAL JL922 20:30→23:00</div></div>
+        <div class="tl-item move"><div class="tl-time">20:55</div><div class="tl-title">ANA NH478 那覇 → 羽田 23:10</div><div class="tl-desc">冬ダイヤで20:55発・¥14,680。保安検査は20:35まで。<span class="badge b-alt">代替</span> ソラシド SNA26 20:25→22:35／スカイマーク SKY522 20:45→22:55／JAL JL922 20:30→23:00</div></div>
       </div>
     </div>
   </div>
@@ -432,11 +442,11 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
   <div class="section">
     <h3 class="section-title">🔁 入れ替え案（検討中）・雨の日</h3>
     <div class="grid">
-      <div class="card"><h4>日曜⇔月曜の入れ替え（推奨）</h4><div class="desc">日曜に那覇＆南部（御殿山・浜辺の茶屋を朝から・産業まつり・うりずん）、月曜に北部（美ら海が空く・帰着21:30）。トレードオフは「美榮」が入らないこと。</div></div>
-      <div class="card"><h4>北部が雨</h4><div class="desc">美ら海を長めに＋ブセナ海中展望塔（¥1,050）。古宇利は橋だけ。</div></div>
-      <div class="card"><h4>南部が雨</h4><div class="desc">おきなわワールド・玉泉洞（¥2,000）→ 浜辺の茶屋 → 瀬長島は屋根のある店へ。</div></div>
-      <div class="card"><h4>中部が雨</h4><div class="desc">DMMかりゆし水族館 → 港川外人住宅のカフェ → ジャッキー。</div></div>
-      <div class="card"><h4>彼女がシュノーケル希望</h4><div class="desc">Day3午前を「真栄田岬 青の洞窟ツアー 9:00（¥3,000〜5,000）」に差替え → 12:30 キングタコス → 以降同じ。水温25〜27℃。</div></div>
+      <div class="card panel"><h4>日曜⇔月曜の入れ替え（推奨）</h4><div class="desc">日曜に那覇＆南部（御殿山・浜辺の茶屋を朝から・産業まつり・うりずん）、月曜に北部（美ら海が空く・帰着21:30）。トレードオフは「美榮」が入らないこと。</div></div>
+      <div class="card panel"><h4>北部が雨</h4><div class="desc">美ら海を長めに＋ブセナ海中展望塔（¥1,050）。古宇利は橋だけ。</div></div>
+      <div class="card panel"><h4>南部が雨</h4><div class="desc">おきなわワールド・玉泉洞（¥2,000）→ 浜辺の茶屋 → 瀬長島は屋根のある店へ。</div></div>
+      <div class="card panel"><h4>中部が雨</h4><div class="desc">DMMかりゆし水族館 → 港川外人住宅のカフェ → ジャッキー。</div></div>
+      <div class="card panel"><h4>彼女がシュノーケル希望</h4><div class="desc">Day3午前を「真栄田岬 青の洞窟ツアー 9:00（¥3,000〜5,000）」に差替え → 12:30 キングタコス → 以降同じ。水温25〜27℃。</div></div>
     </div>
   </div>
 </section>
@@ -640,11 +650,11 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
   <div class="section">
     <h3 class="section-title">🌅 夕日・海・季節</h3>
     <div class="grid">
-      <div class="card"><h4>日の出・日の入り</h4><div class="desc">10/25 6:35／17:53、10/27 17:51。夕日は<b>17:20に現地着</b>。</div></div>
-      <div class="card"><h4>夕日の場所</h4><div class="desc">Day1 古宇利大橋／Day2 瀬長島（着陸機と）／代替：万座毛・残波岬・サンセットビーチ。</div></div>
-      <div class="card"><h4>海に入れるか</h4><div class="desc">水温25〜27℃で可。エメラルドビーチ〜10/31、サンセットビーチ〜11/30。北風の日は波あり。</div></div>
-      <div class="card"><h4>気候・服装</h4><div class="desc">最高27〜28℃／最低22〜23℃。半袖＋薄手の羽織り、日差し対策、折りたたみ傘。</div></div>
-      <div class="card"><h4>イベント</h4><div class="desc">沖縄の産業まつり（奥武山公園・10/23〜25 or 24〜26、要確認）。首里城祭は11/1〜3で重ならず。</div></div>
+      <div class="card panel"><h4>日の出・日の入り</h4><div class="desc">10/25 6:35／17:53、10/27 17:51。夕日は<b>17:20に現地着</b>。</div></div>
+      <div class="card panel"><h4>夕日の場所</h4><div class="desc">Day1 古宇利大橋／Day2 瀬長島（着陸機と）／代替：万座毛・残波岬・サンセットビーチ。</div></div>
+      <div class="card panel"><h4>海に入れるか</h4><div class="desc">水温25〜27℃で可。エメラルドビーチ〜10/31、サンセットビーチ〜11/30。北風の日は波あり。</div></div>
+      <div class="card panel"><h4>気候・服装</h4><div class="desc">最高27〜28℃／最低22〜23℃。半袖＋薄手の羽織り、日差し対策、折りたたみ傘。</div></div>
+      <div class="card panel"><h4>イベント</h4><div class="desc">沖縄の産業まつり（奥武山公園・10/23〜25 or 24〜26、要確認）。首里城祭は11/1〜3で重ならず。</div></div>
     </div>
   </div>
 </section>
@@ -654,28 +664,67 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
   <h2 class="page-title"><span class="icon">🚗</span>移動・宿</h2>
   <p class="page-lead">航空券は未予約。「移動は安く」を優先しつつ、到着夜と最終日の動きが崩れない便を推奨します。価格は2026-09-11時点の比較サイト表示（片道・最安）。</p>
 
-  <div class="banner"><img src="assets/img/ana_plane.jpg" alt=""><div class="cap">✈ 航空便<small>推奨：ANA NH479（20:15→22:45）／NH478（20:40→23:10）</small></div></div>
-  <div class="tip">9/11時点で10/24の羽田→那覇はANAが最安（¥13,073）、10/27の那覇→羽田はANAで¥12,891。往復2名で<b>約¥52,000</b>が目安。ANAスーパーバリューは残席で値が動くので早めに。</div>
+  <div class="banner"><img src="assets/img/ana_plane.jpg" alt=""><div class="cap">✈ 航空便リスト<small>10/24(土) 東京→那覇 ／ 10/27(火) 那覇→東京。価格は2026-09-12 トラベルコ表示の総額（片道1名・税・手数料込）。預け荷物なし・手荷物1個の前提</small></div></div>
+  <div class="tip"><b>推奨：往路 ANA NH479（羽田 20:15 → 那覇 22:50）¥15,353 ／ 復路 ANA NH478（那覇 20:55 → 羽田 23:10）¥14,680。往復2名 ¥60,066。</b><br>同じ値段で1時間早い NH1097（16:50発）もあるが、仕事終わりに間に合うのは20:15発。復路は冬ダイヤで20:55発（保安検査20:35まで）。</div>
+  <div class="warn"><b>手荷物のルール</b>：ANA・JAL・スカイマーク・ソラシドは機内持込 10kg・1個＋身の回り品。Peach・Jetstarは<b>7kgまで</b>（超えると空港で¥3,000前後の追加）。3泊で7kgは詰め方次第なので、LCCにするなら重さを測ってから。</div>
+
+  <div class="cat-head"><h3>10/24(土) 東京 → 那覇</h3><span class="sub">15時以降の全便。★＝候補</span></div>
   <div class="tbl-wrap"><table>
-    <tr><th>方向</th><th>便</th><th>出発→到着</th><th>目安（片道）</th><th>コメント</th></tr>
-    <tr><td rowspan="4">往路 10/24(土)</td><td><b>ANA NH479</b></td><td>20:15 → 22:45</td><td class="num">¥13,073〜</td><td>推奨。レンタカー時間外受取とゆいレール終電（23:30）に両方間に合う</td></tr>
-    <tr><td>JAL JL925</td><td>20:05 → 22:30</td><td class="num">¥20,147〜</td><td>この日は高い</td></tr>
-    <tr><td>ソラシド SNA25</td><td>19:10 → 21:55</td><td class="num">要確認</td><td>他の日は¥7,000台も。早く着くぶん夜が楽</td></tr>
-    <tr><td>スカイマーク SKY523</td><td>18:50 → 21:50</td><td class="num">要確認</td><td>「いま得」で安い日あり</td></tr>
-    <tr><td rowspan="4">復路 10/27(火)</td><td><b>ANA NH478</b></td><td>20:40 → 23:10</td><td class="num">¥12,891〜</td><td>推奨。10/27は月間で最安の日</td></tr>
-    <tr><td>ANA NH1098（ソラシド運航）</td><td>20:35 → 23:00</td><td class="num">要確認</td><td>安ければこちら</td></tr>
-    <tr><td>JAL JL922</td><td>20:30 → 23:00</td><td class="num">¥13,246〜</td><td>ほぼ同額</td></tr>
-    <tr><td>スカイマーク SKY522</td><td>20:45 → 22:55</td><td class="num">要確認</td><td>10/27の最安¥9,831はおそらくこれかソラシド</td></tr>
+    <tr><th>便</th><th>会社</th><th>出発 → 到着</th><th class="num">価格</th><th>メモ</th></tr>
+    <tr><td>ANA1095</td><td>ANA（ソラシド運航）</td><td>羽田 16:05 → 18:45</td><td class="num">¥17,209</td><td></td></tr>
+    <tr><td>ANA1097 ★</td><td>ANA（ソラシド運航）</td><td>羽田 16:50 → 19:30</td><td class="num">¥15,353</td><td>推奨便と同額で早く着く。仕事を早く上がれるなら</td></tr>
+    <tr><td>JAL923</td><td>JAL</td><td>羽田 16:55 → 19:35</td><td class="num">¥21,209</td><td></td></tr>
+    <tr><td>SKY521</td><td>スカイマーク</td><td>羽田 17:05 → 19:50</td><td class="num">¥17,992</td><td></td></tr>
+    <tr><td>SKY523</td><td>スカイマーク</td><td>羽田 18:25 → 21:05</td><td class="num">¥17,970</td><td></td></tr>
+    <tr><td>SNA025 ★</td><td>ソラシドエア</td><td>羽田 19:10 → 21:55</td><td class="num">¥15,469</td><td>21:55着なら夜が楽。レンタカー時間外料金は同じ</td></tr>
+    <tr><td>ANA2425</td><td>ANA（ソラシド運航・同じ機体）</td><td>羽田 19:10 → 21:55</td><td class="num">¥23,088</td><td>SNA025と同じ飛行機。ANA便名だと高い</td></tr>
+    <tr><td>JAL925</td><td>JAL</td><td>羽田 20:05 → 22:35</td><td class="num">¥21,209</td><td></td></tr>
+    <tr><td><b>ANA479 ★ 推奨</b></td><td>ANA</td><td><b>羽田 20:15 → 22:50</b></td><td class="num"><b>¥15,353</b></td><td>夜便で最安。ABC時間外受取（〜23:30着）に間に合う</td></tr>
+    <tr><td>ANA1133</td><td>ANA（ソラシド運航）</td><td>羽田 20:35 → 23:20</td><td class="num">¥15,828</td><td>23:20着は遅すぎる（ゆいレール終電23:30・ABC受取ぎりぎり）</td></tr>
+    <tr><td>JJP331</td><td>Jetstar</td><td>成田 15:50 → 19:00</td><td class="num">¥13,270</td><td>成田までの交通 ¥1,300〜3,250・60〜90分が別途</td></tr>
+    <tr><td>MM511</td><td>Peach</td><td>成田 16:10 → 19:20</td><td class="num">¥13,054</td><td>同上</td></tr>
+    <tr><td>JJP339 ★</td><td>Jetstar</td><td>成田 19:05 → 22:10</td><td class="num">¥12,270</td><td>成田夜便。都心18時発の京成で間に合う。手荷物7kg</td></tr>
   </table></div>
-  <div class="note">10/25からANAは冬ダイヤに切り替わるため、復路の時刻が数分ずれる可能性があります。ANA国内線の保安検査締切は<b>出発20分前</b>。成田発LCCは成田までの交通費を足すと今回は得になりにくい。</div>
+
+  <div class="cat-head"><h3>10/27(火) 那覇 → 東京</h3><span class="sub">16時以降の全便。★＝候補</span></div>
+  <div class="tbl-wrap"><table>
+    <tr><th>便</th><th>会社</th><th>出発 → 到着</th><th class="num">価格</th><th>メモ</th></tr>
+    <tr><td>SKY518</td><td>スカイマーク</td><td>那覇 16:45 → 羽田 19:00</td><td class="num">¥18,920</td><td></td></tr>
+    <tr><td>ANA472</td><td>ANA</td><td>那覇 16:55 → 羽田 19:15</td><td class="num">¥28,732</td><td></td></tr>
+    <tr><td>JAL916</td><td>JAL</td><td>那覇 18:00 → 羽田 20:15</td><td class="num">¥29,660</td><td></td></tr>
+    <tr><td>ANA474</td><td>ANA</td><td>那覇 18:35 → 羽田 20:50</td><td class="num">¥28,218</td><td></td></tr>
+    <tr><td>JAL918</td><td>JAL</td><td>那覇 18:50 → 羽田 21:00</td><td class="num">¥29,660</td><td></td></tr>
+    <tr><td>ANA476</td><td>ANA</td><td>那覇 19:10 → 羽田 21:25</td><td class="num">¥16,797</td><td></td></tr>
+    <tr><td>JAL920</td><td>JAL</td><td>那覇 19:45 → 羽田 22:00</td><td class="num">¥25,003</td><td></td></tr>
+    <tr><td>ANA1096</td><td>ANA（ソラシド運航）</td><td>那覇 20:00 → 羽田 22:15</td><td class="num">¥14,803</td><td></td></tr>
+    <tr><td>SNA026 ★</td><td>ソラシドエア</td><td>那覇 20:25 → 羽田 22:35</td><td class="num">¥13,565</td><td>推奨便より¥1,115安く、30分早く着く</td></tr>
+    <tr><td>ANA2426</td><td>ANA（ソラシド運航・同じ機体）</td><td>那覇 20:25 → 羽田 22:35</td><td class="num">¥14,056</td><td>SNA026と同じ飛行機</td></tr>
+    <tr><td>ANA1098 ★ 最安</td><td>ANA（ソラシド運航）</td><td>那覇 20:45 → 羽田 23:00</td><td class="num">¥13,222</td><td>羽田行きで最安。ANAマイルも付く</td></tr>
+    <tr><td>SKY522</td><td>スカイマーク</td><td>那覇 20:45 → 羽田 22:55</td><td class="num">¥14,726</td><td></td></tr>
+    <tr><td>JAL922</td><td>JAL</td><td>那覇 20:50 → 羽田 23:05</td><td class="num">¥25,003</td><td></td></tr>
+    <tr><td><b>ANA478 ★ 推奨</b></td><td>ANA</td><td><b>那覇 20:55 → 羽田 23:10</b></td><td class="num"><b>¥14,680</b></td><td>ANA自社機材。冬ダイヤで20:55発</td></tr>
+    <tr><td>ANA1134</td><td>ANA（ソラシド運航）</td><td>那覇 21:10 → 羽田 23:25</td><td class="num">¥14,680</td><td></td></tr>
+    <tr><td>MM508</td><td>Peach</td><td>那覇 18:30 → 成田 21:00</td><td class="num">¥12,842</td><td>成田から都心へ ¥1,300〜3,250・60〜90分</td></tr>
+    <tr><td>JJP336 ★</td><td>Jetstar</td><td>那覇 20:05 → 成田 22:25</td><td class="num">¥12,270</td><td>成田夜便。都心着は24時前後。手荷物7kg</td></tr>
+  </table></div>
+
+  <div class="cat-head"><h3>往復の組み合わせ（2名）</h3><span class="sub">価格は上の表の合計。成田便は交通費（京成本線 ¥1,300前後×往復×2名）を加算</span></div>
+  <div class="tbl-wrap"><table>
+    <tr><th>案</th><th>往路</th><th>復路</th><th class="num">2名合計</th><th>評価</th></tr>
+    <tr><td><b>A 推奨</b></td><td>ANA479 20:15→22:50</td><td>ANA478 20:55→23:10</td><td class="num"><b>¥60,066</b></td><td>羽田・ANA自社便・手荷物10kg。旅程どおり</td></tr>
+    <tr><td>B 羽田で最安</td><td>ANA479 20:15→22:50</td><td>ANA1098 20:45→23:00</td><td class="num">¥57,150</td><td>復路がソラシド機材になるだけ。Aより¥2,916安い</td></tr>
+    <tr><td>C ソラシド往復</td><td>SNA025 19:10→21:55</td><td>SNA026 20:25→22:35</td><td class="num">¥58,068</td><td>往路が1時間早く着いて夜が楽。ANAマイルなし</td></tr>
+    <tr><td>D 成田LCC</td><td>JJP339 19:05→22:10</td><td>JJP336 20:05→22:25</td><td class="num">¥49,080＋交通 約¥5,200＝¥54,280</td><td>Aより約¥5,800安いが、成田往復で＋2〜3時間、手荷物7kg制限、遅延時の振替が弱い</td></tr>
+  </table></div>
+  <div class="note">10/25からANAは冬ダイヤ。上の表は冬ダイヤの時刻。価格は日々動くので、決めたらその場で予約。</div>
 
   <div class="section">
     <h3 class="section-title">🚗 レンタカー <small>推奨：ABCレンタカー 那覇空港営業所</small></h3>
     <div class="tip"><b>10/24 23:00 時間外受取 → 10/27 18:00 返却（3日）</b>。ABCは<b>営業時間外（20:00〜23:30着便）でも事前予約で受取可、時間外料金¥3,300</b>。送迎8分。返却は出発90分前まで。コンパクト（ヤリス級）免責込み日帰り¥5,900〜6,450 → 3日で<b>¥18,000前後＋NOC¥550/日＋時間外¥3,300</b>。ETCカード貸出あり。</div>
     <div class="grid">
-      <div class="card top"><h4>案A：到着夜に受取（推奨）</h4><div class="desc">22:45着 → 23:00送迎 → 23:35ホテル。翌朝7:00にそのまま北部へ。<b>+¥3,300</b>で朝の1時間と体力を買う。</div></div>
-      <div class="card"><h4>案B：翌朝 空港で受取</h4><div class="desc">到着夜はゆいレール（¥270×2）。翌朝ゆいレールで空港へ戻り8:00受取。¥3,300節約、北部出発が8:30になる。</div></div>
-      <div class="card"><h4>案C：翌朝 市内店で受取</h4><div class="desc">ニッポンレンタカー県庁前店（8:00〜・徒歩9分）など。空港返却の乗り捨て料は要確認。</div></div>
+      <div class="card panel"><h4>案A：到着夜に受取（推奨）</h4><div class="desc">22:45着 → 23:00送迎 → 23:35ホテル。翌朝7:00にそのまま北部へ。<b>+¥3,300</b>で朝の1時間と体力を買う。</div></div>
+      <div class="card panel"><h4>案B：翌朝 空港で受取</h4><div class="desc">到着夜はゆいレール（¥270×2）。翌朝ゆいレールで空港へ戻り8:00受取。¥3,300節約、北部出発が8:30になる。</div></div>
+      <div class="card panel"><h4>案C：翌朝 市内店で受取</h4><div class="desc">ニッポンレンタカー県庁前店（8:00〜・徒歩9分）など。空港返却の乗り捨て料は要確認。</div></div>
     </div>
     <div class="tbl-wrap"><table>
       <tr><th>会社</th><th>深夜受取</th><th>備考</th></tr>
@@ -691,9 +740,9 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
   <div class="section">
     <h3 class="section-title">🏨 宿：スマイルホテル那覇シティリゾート <span class="badge b-ok">予約済</span></h3>
     <div class="grid">
-      <div class="card top"><h4>予約内容（楽天トラベル）</h4><div class="desc">10/24(土)〜10/27(火) 3泊・大人2名・スタンダードダブル（禁煙・140cm・16㎡）・素泊り。<br>支払済 <b>¥18,024</b>（クーポン適用後）。予約番号 REDACTED-RESERVATION。<br>無料キャンセルは <b>10/22(木) 23:59まで</b>。</div></div>
-      <div class="card"><h4>やること</h4><div class="desc">☎098-869-2511 に「10/24は23:30頃到着」と連絡（到着予定15:00で登録されているため）。駐車場利用の旨も伝える。</div></div>
-      <div class="card"><h4>基本</h4><div class="desc">久米2-32-1。県庁前駅 徒歩9分、国際通り 徒歩10分、波の上ビーチ 徒歩7分、空港から車10分。駐車86台 ¥1,000/泊 先着。Wi-Fi・コインランドリー。朝食（¥2,300）は今回使わない。</div></div>
+      <div class="card panel"><h4>予約内容（楽天トラベル）</h4><div class="desc">10/24(土)〜10/27(火) 3泊・大人2名・スタンダードダブル（禁煙・140cm・16㎡）・素泊り。<br>支払済 <b>¥18,024</b>（クーポン適用後）。予約番号 REDACTED-RESERVATION。<br>無料キャンセルは <b>10/22(木) 23:59まで</b>。</div></div>
+      <div class="card panel"><h4>やること</h4><div class="desc">☎098-869-2511 に「10/24は23:30頃到着」と連絡（到着予定15:00で登録されているため）。駐車場利用の旨も伝える。</div></div>
+      <div class="card panel"><h4>基本</h4><div class="desc">久米2-32-1。県庁前駅 徒歩9分、国際通り 徒歩10分、波の上ビーチ 徒歩7分、空港から車10分。駐車86台 ¥1,000/泊 先着。Wi-Fi・コインランドリー。朝食（¥2,300）は今回使わない。</div></div>
     </div>
   </div>
 
@@ -719,7 +768,7 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
     <ul class="check">
       <li class="done"><b>ホテル</b>：スマイルホテル那覇シティリゾート 10/24〜27（楽天・¥18,024・REDACTED-RESERVATION） <small>9/9 予約済み</small></li>
       <li><b>ホテルへ電話</b>：☎098-869-2511「10/24は23:30頃到着」 <small>航空券確定後</small></li>
-      <li><b>航空券</b>：ANA NH479（10/24 20:15）／NH478（10/27 20:40）2名 <small>できるだけ早く。ソラシド・スカイマークと同日比較してから</small></li>
+      <li><b>航空券</b>：ANA479（10/24 20:15）／ANA478（10/27 20:55）2名・預け荷物なし <small>「移動・宿」の便リストから選んで、その場で予約（価格は日々動く）</small></li>
       <li><b>レンタカー</b>：ABCレンタカー那覇空港 10/24 23:00受取（時間外・便名を伝える）〜10/27 18:00返却、コンパクト、免責＋NOC、ETCカード <small>航空券確定後すぐ</small></li>
       <li><b>美榮</b>：10/26(月) 19:30 2名 ☎098-867-1356 <small>10/10まで。取れなければ うりずん</small></li>
       <li><b>焼肉もとぶ牧場 もとぶ店</b>：10/25(日) 18:40 2名 ☎0980-51-6777 or ネット <small>10/15まで</small></li>
@@ -731,10 +780,10 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
   <div class="section">
     <h3 class="section-title">🎒 持ち物</h3>
     <div class="grid">
-      <div class="card"><h4>必須</h4><div class="desc">免許証（運転する人全員）・クレカ・保険証・充電器＆車載ケーブル・モバイルバッテリー・折りたたみ傘</div></div>
-      <div class="card"><h4>服装</h4><div class="desc">半袖＋薄手の長袖（朝晩・水族館の冷房）・歩きやすい靴（斎場御嶽・城跡は石段）・帽子・サングラス・日焼け止め</div></div>
-      <div class="card"><h4>海・水辺</h4><div class="desc">水着・ラッシュガード・速乾タオル・マリンシューズ・防水スマホケース・ビーチサンダル</div></div>
-      <div class="card"><h4>あると良い</h4><div class="desc">虫よけ（北部）・ウェットティッシュ（天ぷら・タコライス）・エコバッグ・保冷バッグ</div></div>
+      <div class="card panel"><h4>必須</h4><div class="desc">免許証（運転する人全員）・クレカ・保険証・充電器＆車載ケーブル・モバイルバッテリー・折りたたみ傘</div></div>
+      <div class="card panel"><h4>服装</h4><div class="desc">半袖＋薄手の長袖（朝晩・水族館の冷房）・歩きやすい靴（斎場御嶽・城跡は石段）・帽子・サングラス・日焼け止め</div></div>
+      <div class="card panel"><h4>海・水辺</h4><div class="desc">水着・ラッシュガード・速乾タオル・マリンシューズ・防水スマホケース・ビーチサンダル</div></div>
+      <div class="card panel"><h4>あると良い</h4><div class="desc">虫よけ（北部）・ウェットティッシュ（天ぷら・タコライス）・エコバッグ・保冷バッグ</div></div>
     </div>
   </div>
 
@@ -757,23 +806,23 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
   <h2 class="page-title"><span class="icon">💴</span>予算</h2>
   <p class="page-lead">ホテルは実額。ほかは2026-09-11時点の目安（2名合計）で、決まり次第差し替えます。</p>
   <div class="kpi-row">
-    <div class="kpi"><div class="v">¥52,000</div><div class="l">航空券（ANA往復2名・目安）</div></div>
+    <div class="kpi"><div class="v">¥60,066</div><div class="l">航空券（ANA往復2名・9/12表示）</div></div>
     <div class="kpi"><div class="v">¥34,000</div><div class="l">車・高速・燃料・駐車（目安）</div></div>
     <div class="kpi"><div class="v">¥18,024</div><div class="l">ホテル3泊（実額）</div></div>
     <div class="kpi"><div class="v">¥67,000</div><div class="l">食事・入場（目安）</div></div>
   </div>
   <div class="tbl-wrap"><table>
     <tr><th>項目</th><th>内訳</th><th class="num">金額（2名）</th><th>状態</th></tr>
-    <tr><td>航空券</td><td>NH479 ¥13,073 ＋ NH478 ¥12,891 ×2名</td><td class="num">¥52,000</td><td>目安</td></tr>
+    <tr><td>航空券</td><td>ANA479 ¥15,353 ＋ ANA478 ¥14,680 ×2名（9/12 トラベルコ表示）</td><td class="num">¥60,066</td><td>目安（未予約）</td></tr>
     <tr><td>レンタカー</td><td>ABC コンパクト3日（免責込）＋NOC ¥550×3＋時間外 ¥3,300</td><td class="num">¥23,000</td><td>目安</td></tr>
     <tr><td>高速・燃料・駐車</td><td>高速 ¥3,000／ガソリン ¥3,500／ホテルP ¥3,000／観光P ¥1,500</td><td class="num">¥11,000</td><td>目安</td></tr>
     <tr><td>ホテル</td><td>スマイルホテル那覇シティリゾート ダブル3泊 素泊り（楽天・クーポン後）</td><td class="num">¥18,024</td><td><span class="badge b-ok">支払済</span></td></tr>
     <tr><td>入場料</td><td>美ら海 ¥2,180／今帰仁 ¥1,000／首里城 ¥600／玉陵 ¥300／斎場御嶽 ¥600／中城 ¥400 ×2名</td><td class="num">¥10,200</td><td>目安</td></tr>
     <tr><td>食事</td><td>Day0 88Jr ¥4,000／Day1 許田¥1,500・きしもと¥2,000・ぜんざい¥600・もとぶ牧場¥13,000／Day2 いゆまち¥2,500・首里そば¥1,600・天ぷら¥800・浜辺の茶屋¥2,000・美榮¥18,000／Day3 ポーたま¥1,000・キングタコス¥1,600・ブルーシール¥1,000・ジャッキー¥7,000</td><td class="num">¥56,600</td><td>目安</td></tr>
     <tr><td>お土産・雑費</td><td>—</td><td class="num">¥10,000</td><td>目安</td></tr>
-    <tr><td><b>合計</b></td><td></td><td class="num"><b>約¥181,000</b></td><td></td></tr>
+    <tr><td><b>合計</b></td><td></td><td class="num"><b>約¥189,000</b></td><td></td></tr>
   </table></div>
-  <div class="note">安くするなら：①往路をソラシド/スカイマークにして到着を21:55に ②美榮を うりずん に（−¥10,000）③レンタカーを案Bに（−¥3,300）。ここまでで約¥20,000下がります。</div>
+  <div class="note">安くするなら：①復路をANA1098（−¥2,916）か成田LCC往復（−¥5,800・成田往復の時間と7kg制限つき）②美榮を うりずん に（−¥10,000）③レンタカーを案Bに（−¥3,300）。</div>
 </section>
 
 </main>
@@ -1097,7 +1146,7 @@ function openSpot(k){const s=SPOTS[k]; if(!s) return;
 function closeSpot(){sheet.hidden=true; sheetBg.hidden=true; document.body.style.overflow='';}
 sheetBg.addEventListener('click',closeSpot); document.getElementById('sheetClose').addEventListener('click',closeSpot);
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!sheet.hidden) closeSpot();});
-document.querySelectorAll('[data-spot]').forEach(el=>{el.classList.add('clickable'); el.addEventListener('click',e=>{if(e.target.closest('a')) return; openSpot(el.dataset.spot);});});
+document.querySelectorAll('[data-spot]').forEach(el=>{el.classList.add('clickable'); el.insertAdjacentHTML('beforeend','<span class="more">詳細を見る ›</span>'); el.addEventListener('click',e=>{if(e.target.closest('a')) return; openSpot(el.dataset.spot);});});
 
 /* 店カード・殿堂カードにリンク行を付ける */
 document.querySelectorAll('[data-shop]').forEach(el=>{const k=el.dataset.shop; if(!SHOPS[k]) return; el.id=el.id||('shop-'+k); (el.querySelector('.body')||el).insertAdjacentHTML('beforeend',shopLinks(k));});
