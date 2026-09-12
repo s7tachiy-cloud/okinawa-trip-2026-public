@@ -1,0 +1,486 @@
+{
+ "hero_kouri": {
+  "file": "hero_kouri.jpg",
+  "title": "File:Kouri Bridge (15130568259).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Kouri_Bridge_(15130568259).jpg",
+  "license": "CC BY 2.0",
+  "artist": "Takuya ASADA",
+  "size": [
+   1400,
+   933
+  ]
+ },
+ "manzamo": {
+  "file": "manzamo.jpg",
+  "title": "File:Cape Manzamo 5.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File:Cape_Manzamo_5.JPG",
+  "license": "CC BY-SA 4.0",
+  "artist": "そらみみ",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "bise": {
+  "file": "bise.jpg",
+  "title": "File:フクギ並木 20160121 - panoramio.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:%E3%83%95%E3%82%AF%E3%82%AE%E4%B8%A6%E6%9C%A8_20160121_-_panoramio.jpg",
+  "license": "CC BY 3.0",
+  "artist": "690 Noda",
+  "size": [
+   1400,
+   933
+  ]
+ },
+ "okinawa_soba": {
+  "file": "okinawa_soba.jpg",
+  "title": "File:Okinawa soba and mixed rice.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Okinawa_soba_and_mixed_rice.jpg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Mokkie",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "churaumi": {
+  "file": "churaumi.jpg",
+  "title": "File:Okinawa Aquarium.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Okinawa_Aquarium.jpg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Jordy Meow",
+  "size": [
+   1400,
+   934
+  ]
+ },
+ "nakijin": {
+  "file": "nakijin.jpg",
+  "title": "File:Nakijin Castle 20221229-2.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Nakijin_Castle_20221229-2.jpg",
+  "license": "CC BY-SA 4.0",
+  "artist": "Suicasmo",
+  "size": [
+   1400,
+   933
+  ]
+ },
+ "kouri_heart": {
+  "file": "kouri_heart.jpg",
+  "title": "File:JP 沖繩 Okinawa Nago Kouri Island n Road Bridge n Beach January 2026 N13P 09.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:JP_%E6%B2%96%E7%B9%A9_Okinawa_Nago_Kouri_Island_n_Road_Bridge_n_Beach_January_2026_N13P_09.jpg",
+  "license": "CC0",
+  "artist": "NORTLAUKAU 26088 JP",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "yakiniku": {
+  "file": "yakiniku.jpg",
+  "title": "File:JP 日本 Japan 沖繩 OKINAWA 那霸 Naha 久茂地 Kumoji MK Building shop 和牛燒肉店 BBQ Motobu WAGYU Yakiniku Beef Restaurant lunch meal January 2025 R12S 25.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:JP_%E6%97%A5%E6%9C%AC_Japan_%E6%B2%96%E7%B9%A9_OKINAWA_%E9%82%A3%E9%9C%B8_Naha_%E4%B9%85%E8%8C%82%E5%9C%B0_Kumoji_MK_Building_shop_%E5%92%8C%E7%89%9B%E7%87%92%E8%82%89%E5%BA%97_BBQ_Motobu_WAGYU_Yakiniku_Beef_Restaurant_lunch_meal_January_2025_R12S_25.jpg",
+  "license": "CC0",
+  "artist": "Naha Mama Pavilionz",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "kaisendon2": {
+  "file": "kaisendon2.jpg",
+  "title": "File:Kaisendon - sashimi fish bowl - July 2014.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Kaisendon_-_sashimi_fish_bowl_-_July_2014.jpg",
+  "license": "CC BY 3.0",
+  "artist": "nesnad",
+  "size": [
+   1400,
+   1046
+  ]
+ },
+ "shuri_ext": {
+  "file": "shuri_ext.jpg",
+  "title": "File:Naha Shuri Castle32bs5s4592.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Naha_Shuri_Castle32bs5s4592.jpg",
+  "license": "CC BY 2.5",
+  "artist": "663highland",
+  "size": [
+   1400,
+   932
+  ]
+ },
+ "ou_island": {
+  "file": "ou_island.jpg",
+  "title": "File:Ou Bridge Nanjo 202208.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Ou_Bridge_Nanjo_202208.jpg",
+  "license": "CC BY-SA 4.0",
+  "artist": "Kugel~commonswiki",
+  "size": [
+   1400,
+   933
+  ]
+ },
+ "sefa2": {
+  "file": "sefa2.jpg",
+  "title": "File:Okinawa Nanjo Sefa-utaki Gusuku site Sangui hdsr VLux5 15.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Okinawa_Nanjo_Sefa-utaki_Gusuku_site_Sangui_hdsr_VLux5_15.jpg",
+  "license": "CC BY 4.0",
+  "artist": "Hyppolyte de Saint-Rambert",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "chinen": {
+  "file": "chinen.jpg",
+  "title": "File:Chinen-Misaki-Park.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Chinen-Misaki-Park.jpg",
+  "license": "CC0",
+  "artist": "MaedaAkihiko",
+  "size": [
+   1400,
+   933
+  ]
+ },
+ "niraikanai": {
+  "file": "niraikanai.jpg",
+  "title": "File:Coast and Nirai-Kanaibashi Bridges on south side from Cape Chinen Park.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File:Coast_and_Nirai-Kanaibashi_Bridges_on_south_side_from_Cape_Chinen_Park.JPG",
+  "license": "CC BY-SA 4.0",
+  "artist": "そらみみ (Soramimi)",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "senaga": {
+  "file": "senaga.jpg",
+  "title": "File:JP 日本 Japan 沖繩 OKINAWA 豐見城市 Tomigusuku 琉球 Ryukyu 瀨長島 Senagajima Umikaji Terrace view 機場跑道 Aport Runway n 東海 East Sea January 2025 R12S 220.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:JP_%E6%97%A5%E6%9C%AC_Japan_%E6%B2%96%E7%B9%A9_OKINAWA_%E8%B1%90%E8%A6%8B%E5%9F%8E%E5%B8%82_Tomigusuku_%E7%90%89%E7%90%83_Ryukyu_%E7%80%A8%E9%95%B7%E5%B3%B6_Senagajima_Umikaji_Terrace_view_%E6%A9%9F%E5%A0%B4%E8%B7%91%E9%81%93_Aport_Runway_n_%E6%9D%B1%E6%B5%B7_East_Sea_January_2025_R12S_220.jpg",
+  "license": "CC0",
+  "artist": "Naha Mama Pavilionz",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "ryukyu_cuisine": {
+  "file": "ryukyu_cuisine.jpg",
+  "title": "File:Porc Okinawa - Tora Taverna Japonesa.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Porc_Okinawa_-_Tora_Taverna_Japonesa.jpg",
+  "license": "CC BY-SA 4.0",
+  "artist": "Francesc Fort",
+  "size": [
+   1400,
+   1051
+  ]
+ },
+ "awamori": {
+  "file": "awamori.jpg",
+  "title": "File:Awamori at Miyakojima01s3s4500.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Awamori_at_Miyakojima01s3s4500.jpg",
+  "license": "CC BY 2.5",
+  "artist": "663highland",
+  "size": [
+   1400,
+   933
+  ]
+ },
+ "porktamago": {
+  "file": "porktamago.jpg",
+  "title": "File:Pork and tamago onigiri 001.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Pork_and_tamago_onigiri_001.jpg",
+  "license": "CC0",
+  "artist": "Ocdp",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "nakagusuku": {
+  "file": "nakagusuku.jpg",
+  "title": "File:Nakagusuku Castle02n2700.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Nakagusuku_Castle02n2700.jpg",
+  "license": "CC BY 2.5",
+  "artist": "663highland",
+  "size": [
+   1400,
+   933
+  ]
+ },
+ "kaichudoro": {
+  "file": "kaichudoro.jpg",
+  "title": "File:Kaichu-Doro.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Kaichu-Doro.jpg",
+  "license": "Public domain",
+  "artist": "N",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "hamahiga": {
+  "file": "hamahiga.jpg",
+  "title": "File:Hamahiga Island seen from Kafu Banta 202107 01.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Hamahiga_Island_seen_from_Kafu_Banta_202107_01.jpg",
+  "license": "CC BY-SA 4.0",
+  "artist": "Kugel~commonswiki",
+  "size": [
+   1400,
+   933
+  ]
+ },
+ "tacorice": {
+  "file": "tacorice.jpg",
+  "title": "File:Taco Rice.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Taco_Rice.jpg",
+  "license": "CC BY 2.0",
+  "artist": "Nelo Hotsuma",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "amvillage": {
+  "file": "amvillage.jpg",
+  "title": "File:Mihama Town Resort American Village 1.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File:Mihama_Town_Resort_American_Village_1.JPG",
+  "license": "Public domain",
+  "artist": "Abasaa",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "steak": {
+  "file": "steak.jpg",
+  "title": "File:JP-47 Naha Jacks-Steak-House.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:JP-47_Naha_Jacks-Steak-House.jpg",
+  "license": "CC BY-SA 2.0",
+  "artist": "Flickr user: ayustety\n\nTokyo, Japan\n\n https://www.flickr.com/people/ayustety/",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "sataandagi": {
+  "file": "sataandagi.jpg",
+  "title": "File:Sata andagi 001.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Sata_andagi_001.jpg",
+  "license": "CC0",
+  "artist": "Ocdp",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "blueseal": {
+  "file": "blueseal.jpg",
+  "title": "File:JP 日本 Japan 沖繩 OKINAWA Ashibinaa mall 豐見城市 Tomigusuku shop Blue Seal Ice Cream January 2025 R12S 10.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:JP_%E6%97%A5%E6%9C%AC_Japan_%E6%B2%96%E7%B9%A9_OKINAWA_Ashibinaa_mall_%E8%B1%90%E8%A6%8B%E5%9F%8E%E5%B8%82_Tomigusuku_shop_Blue_Seal_Ice_Cream_January_2025_R12S_10.jpg",
+  "license": "CC0",
+  "artist": "Naha Mama Pavilionz",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "kokusaidori": {
+  "file": "kokusaidori.jpg",
+  "title": "File:Night at Kokusai-dori 20250503182722.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Night_at_Kokusai-dori_20250503182722.jpg",
+  "license": "CC BY-SA 4.0",
+  "artist": "TurnOnTheNight",
+  "size": [
+   1400,
+   933
+  ]
+ },
+ "umibudo": {
+  "file": "umibudo.jpg",
+  "title": "File:Caulerpa lentillifera (3820470276).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Caulerpa_lentillifera_(3820470276).jpg",
+  "license": "CC BY-SA 2.0",
+  "artist": "pelican from Tokyo, Japan",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "zanpa": {
+  "file": "zanpa.jpg",
+  "title": "File:Cliff of Cape Zampa.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File:Cliff_of_Cape_Zampa.JPG",
+  "license": "CC BY-SA 4.0",
+  "artist": "そらみみ (Soramimi)",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "maeda": {
+  "file": "maeda.jpg",
+  "title": "File:Coral reef life near Akajima 19.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Coral_reef_life_near_Akajima_19.jpg",
+  "license": "CC BY-SA 2.0",
+  "artist": "keiyac",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "tamaudun": {
+  "file": "tamaudun.jpg",
+  "title": "File:2nd gate of Tamaudun 2.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File:2nd_gate_of_Tamaudun_2.JPG",
+  "license": "CC BY-SA 4.0",
+  "artist": "そらみみ",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "yuirail": {
+  "file": "yuirail.jpg",
+  "title": "File:Yui-Rail Monorail Line - panoramio.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Yui-Rail_Monorail_Line_-_panoramio.jpg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Nagono",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "naha_airport": {
+  "file": "naha_airport.jpg",
+  "title": "File:Naha Airport12s3s4350.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Naha_Airport12s3s4350.jpg",
+  "license": "CC BY 2.5",
+  "artist": "663highland",
+  "size": [
+   1400,
+   933
+  ]
+ },
+ "goya": {
+  "file": "goya.jpg",
+  "title": "File:Goya Champuru at Yumenoya.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Goya_Champuru_at_Yumenoya.jpg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Jpatokal",
+  "size": [
+   1400,
+   928
+  ]
+ },
+ "sunset_okinawa": {
+  "file": "sunset_okinawa.jpg",
+  "title": "File:Okinawa sunset - panoramio.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Okinawa_sunset_-_panoramio.jpg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Jun Maegawa",
+  "size": [
+   1400,
+   933
+  ]
+ },
+ "market": {
+  "file": "market.jpg",
+  "title": "File:JP-47 Naha Makishi-Public-Market fish store.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:JP-47_Naha_Makishi-Public-Market_fish_store.jpg",
+  "license": "CC BY 2.0",
+  "artist": "Flickr user: jetalone / Hajime NAKANO\n\nTokyo, Japan\n\n https://www.flickr.com/people/jetalone/",
+  "size": [
+   1280,
+   960
+  ]
+ },
+ "emerald_beach": {
+  "file": "emerald_beach.jpg",
+  "title": "File:Okinawa Ocean Expo Park Emerald Beach hdsr Vlux5 04.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Okinawa_Ocean_Expo_Park_Emerald_Beach_hdsr_Vlux5_04.jpg",
+  "license": "CC BY 4.0",
+  "artist": "Hyppolyte de Saint-Rambert",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "naminoue": {
+  "file": "naminoue.jpg",
+  "title": "File:Naha Naminoue Beach & Naminoue-gu 13.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Naha_Naminoue_Beach_%26_Naminoue-gu_13.jpg",
+  "license": "CC BY 4.0",
+  "artist": "Zairon",
+  "size": [
+   1400,
+   946
+  ]
+ },
+ "ana_plane": {
+  "file": "ana_plane.jpg",
+  "title": "File:All Nippon Airways, B787-8, JA819A (24080939481).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:All_Nippon_Airways,_B787-8,_JA819A_(24080939481).jpg",
+  "license": "CC BY 2.0",
+  "artist": "lasta29",
+  "size": [
+   1400,
+   933
+  ]
+ },
+ "tempura_ok": {
+  "file": "tempura_ok.jpg",
+  "title": "File:Oujima nanjyou 02.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Oujima_nanjyou_02.jpg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Asacyan",
+  "size": [
+   1400,
+   932
+  ]
+ },
+ "shisa": {
+  "file": "shisa.jpg",
+  "title": "File:2016-02-27 Shisa in Taketomi-jima 竹富島のシーサー DSCF2887.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:2016-02-27_Shisa_in_Taketomi-jima_%E7%AB%B9%E5%AF%8C%E5%B3%B6%E3%81%AE%E3%82%B7%E3%83%BC%E3%82%B5%E3%83%BC_DSCF2887.jpg",
+  "license": "CC BY-SA 4.0",
+  "artist": "松岡明芳",
+  "size": [
+   1400,
+   933
+  ]
+ },
+ "bingata": {
+  "file": "bingata.jpg",
+  "title": "File:Bingata pattern 1.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Bingata_pattern_1.jpg",
+  "license": "CC BY 2.0",
+  "artist": "Bruno Cordioli",
+  "size": [
+   1400,
+   933
+  ]
+ },
+ "okinawa_sea": {
+  "file": "okinawa_sea.jpg",
+  "title": "File:Aharenbeach off.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Aharenbeach_off.jpg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Tetsuji",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "sanshin": {
+  "file": "sanshin.jpg",
+  "title": "File:Jakarta sanshin club.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Jakarta_sanshin_club.jpg",
+  "license": "CC BY 2.0",
+  "artist": "Seika",
+  "size": [
+   1280,
+   960
+  ]
+ }
+}
