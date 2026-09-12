@@ -183,7 +183,32 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
 .credits ul{columns:2;column-gap:24px;list-style:none;margin-top:8px}
 .credits li{break-inside:avoid;margin-bottom:3px}
 .credits a{color:rgba(251,248,241,.8)}
+/* sheet */
+.clickable{cursor:pointer}
+.clickable h4::after{content:" ›";color:var(--sea);font-weight:400}
+.sheet-bg{position:fixed;inset:0;background:rgba(6,43,71,.55);z-index:80;backdrop-filter:blur(2px)}
+.sheet{position:fixed;top:0;right:0;bottom:0;width:min(560px,100%);background:var(--bg);z-index:90;overflow-y:auto;box-shadow:-8px 0 30px rgba(0,0,0,.25);animation:slide .25s ease}
+@keyframes slide{from{transform:translateX(40px);opacity:0}to{transform:none;opacity:1}}
+.sheet-close{position:absolute;top:12px;right:12px;width:38px;height:38px;border-radius:50%;border:none;background:rgba(0,0,0,.45);color:#fff;font-size:1.1rem;cursor:pointer;z-index:2}
+.sheet-img img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+.sheet-body{padding:18px 22px 40px}
+.sheet-area{font-size:.78rem;color:var(--muted);letter-spacing:.05em}
+.sheet-body h2{font-size:1.45rem;margin:2px 0 8px}
+.sheet-lead{font-size:.95rem;margin-bottom:12px}
+.sheet-links{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.sheet-info{display:grid;grid-template-columns:1fr 1fr;gap:6px 14px;background:#fff;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:.85rem;margin-bottom:16px}
+.sheet-info div span{display:inline-block;min-width:4.5em;color:var(--muted);font-size:.75rem}
+.sheet-body h3{font-size:1rem;margin:16px 0 6px;color:var(--sea-dark)}
+.sheet-body p{font-size:.9rem}
+.sheet-body ul{padding-left:1.2em;font-size:.9rem}
+.sheet-body li{margin-bottom:4px}
+.tl-links{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.tl-links .btn,.card .links .btn{font-size:.74rem;padding:4px 10px}
+.card .links{margin-top:10px;display:flex;gap:6px;flex-wrap:wrap}
+.card.flash{box-shadow:0 0 0 3px var(--sun),var(--shadow-hover)}
+[data-goto]{color:var(--sea);font-weight:700;border-bottom:1px dotted var(--sea)}
 @media (max-width:600px){
+  .sheet{width:100%}
   .photo-strip{grid-template-columns:repeat(3,1fr)}.mosaic{aspect-ratio:16/9}.banner{aspect-ratio:16/8}.credits ul{columns:1}.chips{top:50px}
   .day-header{padding:14px 14px;gap:10px}.day-number{font-size:1.7rem;min-width:52px}.day-body{padding:4px 14px 18px}
   .tl{margin-left:2px;padding-left:16px}.tl-item{padding-left:8px}.tl-item::before{left:-24px}
@@ -271,10 +296,10 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
       <div class="day-meta"><span>🚗 走行 約6km</span><span>🅿 ホテル駐車 ¥1,000/泊</span><span>🍽 夜食：ステーキハウス88Jr.松山店（元気があれば）</span></div>
       <div class="tl">
         <div class="tl-item move"><div class="tl-time">18:30</div><div class="tl-title">羽田空港 第2ターミナル 到着</div><div class="tl-desc">保安検査は出発20分前まで。土曜夜は混むので1時間半前に。夕食は羽田で軽く。</div></div>
-        <div class="tl-item move"><div class="tl-time">20:15</div><div class="tl-title">ANA NH479 羽田 → 那覇 22:45</div><div class="tl-desc">2時間30分。<span class="badge b-alt">代替</span> ソラシド SNA25 19:10→21:55／スカイマーク SKY523 18:50→21:50（安い日はこちら）</div></div>
-        <div class="tl-item move"><div class="tl-time">23:00</div><div class="tl-title">ABCレンタカー 送迎バスで営業所へ（約8分）</div><div class="tl-desc">到着ロビーで電話→送迎。<b>時間外受取（20:00〜23:30着便）＋¥3,300</b>。ETCカードも借りる。<div class="tl-alt">お金優先なら ゆいレール（23:30最終）で県庁前→徒歩9分。翌朝ゆいレールで空港へ戻り8:00受取（¥3,300節約・朝1時間ロス）</div></div></div>
-        <div class="tl-item move"><div class="tl-time">23:35</div><div class="tl-title">スマイルホテル那覇シティリゾート チェックイン <span class="badge b-ok">予約済</span></div><div class="tl-desc">那覇市久米2-32-1（☎098-869-2511）。到着予定15:00で予約しているので、<b>「23:30頃到着」を事前に電話</b>（2時間以上遅れる場合は要連絡の規定）。駐車場は先着86台 ¥1,000/泊。</div></div>
-        <div class="tl-item food"><div class="tl-time">23:50</div><div class="tl-title">夜食：ステーキハウス88Jr. 松山店（徒歩5分・土曜は翌5:00まで）</div><div class="tl-desc">沖縄の夜の締めは「ステーキ」が流儀。1,000円ステーキをシェア。疲れていればローソン限定「ポーク玉子おにぎり」で沖縄気分だけ。</div></div>
+        <div class="tl-item move" data-map="羽田空港 第2ターミナル"><div class="tl-time">20:15</div><div class="tl-title">ANA NH479 羽田 → 那覇 22:45</div><div class="tl-desc">2時間30分。<span class="badge b-alt">代替</span> ソラシド SNA25 19:10→21:55／スカイマーク SKY523 18:50→21:50（安い日はこちら）</div></div>
+        <div class="tl-item move" data-map="ABCレンタカー 那覇空港営業所"><div class="tl-time">23:00</div><div class="tl-title">ABCレンタカー 送迎バスで営業所へ（約8分）</div><div class="tl-desc">到着ロビーで電話→送迎。<b>時間外受取（20:00〜23:30着便）＋¥3,300</b>。ETCカードも借りる。<div class="tl-alt">お金優先なら ゆいレール（23:30最終）で県庁前→徒歩9分。翌朝ゆいレールで空港へ戻り8:00受取（¥3,300節約・朝1時間ロス）</div></div></div>
+        <div class="tl-item move" data-map="スマイルホテル那覇シティリゾート"><div class="tl-time">23:35</div><div class="tl-title">スマイルホテル那覇シティリゾート チェックイン <span class="badge b-ok">予約済</span></div><div class="tl-desc">那覇市久米2-32-1（☎098-869-2511）。到着予定15:00で予約しているので、<b>「23:30頃到着」を事前に電話</b>（2時間以上遅れる場合は要連絡の規定）。駐車場は先着86台 ¥1,000/泊。</div></div>
+        <div class="tl-item food" data-shopref="s88jr" data-map="ステーキハウス88Jr. 松山店"><div class="tl-time">23:50</div><div class="tl-title">夜食：ステーキハウス88Jr. 松山店（徒歩5分・土曜は翌5:00まで）</div><div class="tl-desc">沖縄の夜の締めは「ステーキ」が流儀。1,000円ステーキをシェア。疲れていればローソン限定「ポーク玉子おにぎり」で沖縄気分だけ。</div></div>
       </div>
     </div>
   </div>
@@ -302,15 +327,15 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
       <div class="day-meta"><span>🚗 走行 約230km</span><span>🛣 高速 那覇→屋嘉 ¥800前後／許田→那覇 ETC ¥1,040</span><span>🌅 日没 17:53</span></div>
       <div class="tl">
         <div class="tl-item move"><div class="tl-time">7:00</div><div class="tl-title">ホテル出発（那覇IC → 屋嘉IC）</div><div class="tl-desc">日曜早朝は渋滞なし。コンビニでコーヒーだけ。</div></div>
-        <div class="tl-item spot must"><div class="tl-time">8:00</div><div class="tl-title">万座毛 <span class="badge b-must">名所</span></div><div class="tl-desc">8:00開門・入場無料・駐車無料。象の鼻の断崖と朝の海。30分。</div></div>
-        <div class="tl-item food"><div class="tl-time">9:05</div><div class="tl-title">道の駅 許田（8:30〜）朝ごはん <span class="badge b-food">名物</span></div><div class="tl-desc"><b>三矢本舗の揚げたてサーターアンダギー</b>、沖縄天ぷら、カットパイン、シークヮーサージュース。美ら海の割引前売券もここで。25分。</div></div>
-        <div class="tl-item spot"><div class="tl-time">10:00</div><div class="tl-title">備瀬のフクギ並木</div><div class="tl-desc">午前の木漏れ日が一番きれい。集落を歩いて海まで40分。駐車は集落入口（¥500前後）。</div></div>
-        <div class="tl-item food must"><div class="tl-time">10:50</div><div class="tl-title">きしもと食堂 本店（11:00開店） <span class="badge b-must">名物</span></div><div class="tl-desc">明治38年創業、木灰汁で打つ麺の元祖・本部そば。<b>開店10分前に並ぶ</b>。ソーキそば＋じゅーしー。<div class="tl-alt">山原そば（本部・11:30〜売切／月火休）／きしもと食堂 八重岳店（席が多く待ちが短い）</div></div></div>
-        <div class="tl-item spot must"><div class="tl-time">12:15</div><div class="tl-title">沖縄美ら海水族館 <span class="badge b-must">名所</span></div><div class="tl-desc">8:30〜18:30（入館〜17:30）大人¥2,180。黒潮の海・ジンベエザメ、<b>15:00の給餌解説</b>に合わせて滞在。オキちゃん劇場（イルカ）は無料。3時間。</div></div>
-        <div class="tl-item food"><div class="tl-time">15:35</div><div class="tl-title">新垣ぜんざい屋（本部・渡久地） <span class="badge b-food">名物</span></div><div class="tl-desc">創業70年・氷ぜんざい¥300一択。12:00〜18:00、<b>月曜休</b>なので日曜の今日が唯一のチャンス。</div></div>
-        <div class="tl-item spot"><div class="tl-time">16:10</div><div class="tl-title">今帰仁城跡（世界遺産）</div><div class="tl-desc">8:00〜18:00（最終入城17:30）¥1,000。曲線の石垣と海の眺め。45分。</div></div>
-        <div class="tl-item spot must"><div class="tl-time">17:15</div><div class="tl-title">古宇利大橋 → 古宇利島 → 橋のたもとで夕日 <span class="badge b-must">名所</span></div><div class="tl-desc">橋は無料。ハートロック（ティーヌ浜）は駐車¥300〜。<b>17:53の日没</b>は古宇利ビーチ（橋の南詰）から橋越しに。</div></div>
-        <div class="tl-item food must"><div class="tl-time">18:40</div><div class="tl-title">焼肉もとぶ牧場 もとぶ店 <span class="badge b-must">名物</span> <span class="badge b-rsv">要予約</span></div><div class="tl-desc">牧場直営の「もとぶ牛」。17:00〜22:00 年中無休。☎0980-51-6777／ネット予約可。上カルビ・イチボ・もとぶ牛にぎり。<div class="tl-alt">焼肉もとぶ牧場 名護店（帰路上）／那覇に戻って うりずん（〜24:00 無休）</div></div></div>
+        <div class="tl-item spot must" data-spotref="manzamo" data-map="万座毛"><div class="tl-time">8:00</div><div class="tl-title">万座毛 <span class="badge b-must">名所</span></div><div class="tl-desc">8:00開門・入場無料・駐車無料。象の鼻の断崖と朝の海。30分。</div></div>
+        <div class="tl-item food" data-shopref="mitsuya" data-map="道の駅許田"><div class="tl-time">9:05</div><div class="tl-title">道の駅 許田（8:30〜）朝ごはん <span class="badge b-food">名物</span></div><div class="tl-desc"><b>三矢本舗の揚げたてサーターアンダギー</b>、沖縄天ぷら、カットパイン、シークヮーサージュース。美ら海の割引前売券もここで。25分。</div></div>
+        <div class="tl-item spot" data-spotref="bise" data-map="備瀬のフクギ並木"><div class="tl-time">10:00</div><div class="tl-title">備瀬のフクギ並木</div><div class="tl-desc">午前の木漏れ日が一番きれい。集落を歩いて海まで40分。駐車は集落入口（¥500前後）。</div></div>
+        <div class="tl-item food must" data-shopref="kishimoto" data-map="きしもと食堂 本店 本部町"><div class="tl-time">10:50</div><div class="tl-title">きしもと食堂 本店（11:00開店） <span class="badge b-must">名物</span></div><div class="tl-desc">明治38年創業、木灰汁で打つ麺の元祖・本部そば。<b>開店10分前に並ぶ</b>。ソーキそば＋じゅーしー。<div class="tl-alt">山原そば（本部・11:30〜売切／月火休）／きしもと食堂 八重岳店（席が多く待ちが短い）</div></div></div>
+        <div class="tl-item spot must" data-spotref="churaumi" data-map="沖縄美ら海水族館"><div class="tl-time">12:15</div><div class="tl-title">沖縄美ら海水族館 <span class="badge b-must">名所</span></div><div class="tl-desc">8:30〜18:30（入館〜17:30）大人¥2,180。黒潮の海・ジンベエザメ、<b>15:00の給餌解説</b>に合わせて滞在。オキちゃん劇場（イルカ）は無料。3時間。</div></div>
+        <div class="tl-item food" data-shopref="aragaki" data-map="新垣ぜんざい屋 本部町"><div class="tl-time">15:35</div><div class="tl-title">新垣ぜんざい屋（本部・渡久地） <span class="badge b-food">名物</span></div><div class="tl-desc">創業70年・氷ぜんざい¥300一択。12:00〜18:00、<b>月曜休</b>なので日曜の今日が唯一のチャンス。</div></div>
+        <div class="tl-item spot" data-spotref="nakijin" data-map="今帰仁城跡"><div class="tl-time">16:10</div><div class="tl-title">今帰仁城跡（世界遺産）</div><div class="tl-desc">8:00〜18:00（最終入城17:30）¥1,000。曲線の石垣と海の眺め。45分。</div></div>
+        <div class="tl-item spot must" data-spotref="kouri" data-map="古宇利大橋"><div class="tl-time">17:15</div><div class="tl-title">古宇利大橋 → 古宇利島 → 橋のたもとで夕日 <span class="badge b-must">名所</span></div><div class="tl-desc">橋は無料。ハートロック（ティーヌ浜）は駐車¥300〜。<b>17:53の日没</b>は古宇利ビーチ（橋の南詰）から橋越しに。</div></div>
+        <div class="tl-item food must" data-shopref="motobu" data-map="焼肉もとぶ牧場 もとぶ店"><div class="tl-time">18:40</div><div class="tl-title">焼肉もとぶ牧場 もとぶ店 <span class="badge b-must">名物</span> <span class="badge b-rsv">要予約</span></div><div class="tl-desc">牧場直営の「もとぶ牛」。17:00〜22:00 年中無休。☎0980-51-6777／ネット予約可。上カルビ・イチボ・もとぶ牛にぎり。<div class="tl-alt">焼肉もとぶ牧場 名護店（帰路上）／那覇に戻って うりずん（〜24:00 無休）</div></div></div>
         <div class="tl-item move"><div class="tl-time">20:15</div><div class="tl-title">許田IC → 那覇 帰着 22:00頃</div><div class="tl-desc">飲まない方が運転（検問が多い）。</div></div>
       </div>
     </div>
@@ -338,18 +363,18 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
       </div>
       <div class="day-meta"><span>🚗 走行 約80km（高速なし）</span><span>🌅 日没 17:52</span><span>⚠ 平日：58号バスレーン 7:30-9:00 / 17:30-19:00（左端車線に入らない）</span></div>
       <div class="tl">
-        <div class="tl-item food must"><div class="tl-time">7:40</div><div class="tl-title">泊いゆまち（泊漁港の魚市場）で朝ごはん <span class="badge b-must">名物</span></div><div class="tl-desc">ホテルから車10分。6:00〜18:00・施設は無休。<b>まぐろ丼・海鮮丼</b>（¥1,000前後）、海ぶどう、もずく。テラスで。</div></div>
-        <div class="tl-item spot must"><div class="tl-time">9:00</div><div class="tl-title">首里城公園（世界遺産・守礼門〜正殿） <span class="badge b-must">名所</span></div><div class="tl-desc">8:00〜19:00（有料区域 ¥600）。復元なった正殿の外観と朱色の城郭、東のアザナからの那覇一望。1時間30分。県営駐車場 ¥320/2h。</div></div>
-        <div class="tl-item spot"><div class="tl-time">10:40</div><div class="tl-title">玉陵 → 金城町石畳道（時間があれば）</div><div class="tl-desc">王家の墓（¥300・20分）。石畳道は守礼門から徒歩5分、琉球王国の道を下って上る30分。</div></div>
-        <div class="tl-item food must"><div class="tl-time">11:15</div><div class="tl-title">首里そば 本店（11:30開店） <span class="badge b-must">名物</span></div><div class="tl-desc">透明なスープと手打ち麺、那覇の「そばの王道」。11:30〜14:00 売切終了、木・日休。開店15分前に並ぶ。<div class="tl-alt">田舎 公設市場南店（ソーキそば¥500・無休）／しむじょう（首里・古民家・火水休）</div></div></div>
-        <div class="tl-item food must"><div class="tl-time">13:00</div><div class="tl-title">奥武島 中本鮮魚てんぷら店 <span class="badge b-must">名物</span></div><div class="tl-desc">首里から35分。3代続く「沖縄天ぷら」の代表格。魚・イカ・もずく天 各¥100前後を橋のたもとで。木曜休。4〜5個をシェア。</div></div>
-        <div class="tl-item spot must"><div class="tl-time">14:00</div><div class="tl-title">斎場御嶽（せーふぁうたき・世界遺産） <span class="badge b-must">名所</span></div><div class="tl-desc">9:00〜18:00（販売17:15まで）¥600。<b>チケットは南城市地域物産館で買ってから徒歩10分</b>。三庫理から久高島を望む。1時間。</div></div>
-        <div class="tl-item spot"><div class="tl-time">15:15</div><div class="tl-title">知念岬公園 → ニライカナイ橋</div><div class="tl-desc">知念岬は無料P・太平洋の展望（20分）。ニライカナイ橋は橋の上の展望台から（駐車場なし・路肩に短時間）。</div></div>
-        <div class="tl-item food must"><div class="tl-time">16:00</div><div class="tl-title">浜辺の茶屋（月曜は14:00〜） <span class="badge b-must">名物</span></div><div class="tl-desc">波打ち際の窓席、沖縄カフェの元祖。満潮なら窓の下が海。50分。<div class="tl-alt">カフェくるくま（無休・〜19:00）／山の茶屋 楽水（同経営・森側）</div></div></div>
-        <div class="tl-item spot must"><div class="tl-time">17:30</div><div class="tl-title">瀬長島ウミカジテラス：夕日と着陸機 <span class="badge b-must">名所</span></div><div class="tl-desc">那覇空港の滑走路延長線上。<b>17:52の日没</b>と頭上を降りてくる飛行機。夜景になるまで1時間。</div></div>
+        <div class="tl-item food must" data-shopref="iyumachi" data-map="泊いゆまち"><div class="tl-time">7:40</div><div class="tl-title">泊いゆまち（泊漁港の魚市場）で朝ごはん <span class="badge b-must">名物</span></div><div class="tl-desc">ホテルから車10分。6:00〜18:00・施設は無休。<b>まぐろ丼・海鮮丼</b>（¥1,000前後）、海ぶどう、もずく。テラスで。</div></div>
+        <div class="tl-item spot must" data-spotref="shuri" data-map="首里城公園"><div class="tl-time">9:00</div><div class="tl-title">首里城公園（世界遺産・守礼門〜正殿） <span class="badge b-must">名所</span></div><div class="tl-desc">8:00〜19:00（有料区域 ¥600）。復元なった正殿の外観と朱色の城郭、東のアザナからの那覇一望。1時間30分。県営駐車場 ¥320/2h。</div></div>
+        <div class="tl-item spot" data-spotref="tamaudun" data-map="玉陵"><div class="tl-time">10:40</div><div class="tl-title">玉陵 → 金城町石畳道（時間があれば）</div><div class="tl-desc">王家の墓（¥300・20分）。石畳道は守礼門から徒歩5分、琉球王国の道を下って上る30分。</div></div>
+        <div class="tl-item food must" data-shopref="shurisoba" data-map="首里そば 那覇市首里赤田町"><div class="tl-time">11:15</div><div class="tl-title">首里そば 本店（11:30開店） <span class="badge b-must">名物</span></div><div class="tl-desc">透明なスープと手打ち麺、那覇の「そばの王道」。11:30〜14:00 売切終了、木・日休。開店15分前に並ぶ。<div class="tl-alt">田舎 公設市場南店（ソーキそば¥500・無休）／しむじょう（首里・古民家・火水休）</div></div></div>
+        <div class="tl-item food must" data-shopref="nakamoto" data-spotref="ou" data-map="奥武島 中本鮮魚てんぷら店"><div class="tl-time">13:00</div><div class="tl-title">奥武島 中本鮮魚てんぷら店 <span class="badge b-must">名物</span></div><div class="tl-desc">首里から35分。3代続く「沖縄天ぷら」の代表格。魚・イカ・もずく天 各¥100前後を橋のたもとで。木曜休。4〜5個をシェア。</div></div>
+        <div class="tl-item spot must" data-spotref="sefa" data-map="斎場御嶽"><div class="tl-time">14:00</div><div class="tl-title">斎場御嶽（せーふぁうたき・世界遺産） <span class="badge b-must">名所</span></div><div class="tl-desc">9:00〜18:00（販売17:15まで）¥600。<b>チケットは南城市地域物産館で買ってから徒歩10分</b>。三庫理から久高島を望む。1時間。</div></div>
+        <div class="tl-item spot" data-spotref="chinen" data-map="知念岬公園"><div class="tl-time">15:15</div><div class="tl-title">知念岬公園 → ニライカナイ橋</div><div class="tl-desc">知念岬は無料P・太平洋の展望（20分）。ニライカナイ橋は橋の上の展望台から（駐車場なし・路肩に短時間）。</div></div>
+        <div class="tl-item food must" data-shopref="hamabe" data-spotref="hamabe" data-map="浜辺の茶屋"><div class="tl-time">16:00</div><div class="tl-title">浜辺の茶屋（月曜は14:00〜） <span class="badge b-must">名物</span></div><div class="tl-desc">波打ち際の窓席、沖縄カフェの元祖。満潮なら窓の下が海。50分。<div class="tl-alt">カフェくるくま（無休・〜19:00）／山の茶屋 楽水（同経営・森側）</div></div></div>
+        <div class="tl-item spot must" data-spotref="senaga" data-map="瀬長島ウミカジテラス"><div class="tl-time">17:30</div><div class="tl-title">瀬長島ウミカジテラス：夕日と着陸機 <span class="badge b-must">名所</span></div><div class="tl-desc">那覇空港の滑走路延長線上。<b>17:52の日没</b>と頭上を降りてくる飛行機。夜景になるまで1時間。</div></div>
         <div class="tl-item move"><div class="tl-time">19:00</div><div class="tl-title">ホテルへ戻り、車を置く</div><div class="tl-desc">ここからは徒歩。</div></div>
-        <div class="tl-item food must"><div class="tl-time">19:30</div><div class="tl-title">琉球料理 美榮（みえ） <span class="badge b-must">名物</span> <span class="badge b-rsv">要予約</span></div><div class="tl-desc">1958年創業、正統の琉球料理を古い屋敷の個室でコースで。18:00〜22:00、日休・不定休、<b>☎098-867-1356 予約必須</b>。9品¥7,000／11品¥9,000／13品¥12,000。ホテルから徒歩8分。<div class="tl-alt">うりずん（安里・〜24:00 無休・古酒とラフテー）／琉音（久米・徒歩3分・山本彩香の後継・最終入店19:00・要確認）</div></div></div>
-        <div class="tl-item spot"><div class="tl-time">21:30</div><div class="tl-title">国際通り 夜さんぽ → 2軒目</div><div class="tl-desc">御菓子御殿・新垣ちんすこう・ブルーシールで寄り道。もう一杯なら 泡盛倉庫（県庁前・800種）か カラカラとちぶぐゎ〜（久茂地）。</div></div>
+        <div class="tl-item food must" data-shopref="mie" data-map="琉球料理 美榮 那覇"><div class="tl-time">19:30</div><div class="tl-title">琉球料理 美榮（みえ） <span class="badge b-must">名物</span> <span class="badge b-rsv">要予約</span></div><div class="tl-desc">1958年創業、正統の琉球料理を古い屋敷の個室でコースで。18:00〜22:00、日休・不定休、<b>☎098-867-1356 予約必須</b>。9品¥7,000／11品¥9,000／13品¥12,000。ホテルから徒歩8分。<div class="tl-alt">うりずん（安里・〜24:00 無休・古酒とラフテー）／琉音（久米・徒歩3分・山本彩香の後継・最終入店19:00・要確認）</div></div></div>
+        <div class="tl-item spot" data-spotref="kokusai" data-map="国際通り 那覇"><div class="tl-time">21:30</div><div class="tl-title">国際通り 夜さんぽ → 2軒目</div><div class="tl-desc">御菓子御殿・新垣ちんすこう・ブルーシールで寄り道。もう一杯なら 泡盛倉庫（県庁前・800種）か カラカラとちぶぐゎ〜（久茂地）。</div></div>
       </div>
     </div>
   </div>
@@ -376,19 +401,19 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
       </div>
       <div class="day-meta"><span>🚗 走行 約130km</span><span>⏰ レンタカー返却 18:00・保安検査 20:20まで</span></div>
       <div class="tl">
-        <div class="tl-item spot"><div class="tl-time">6:50</div><div class="tl-title">波の上ビーチ 朝さんぽ（徒歩7分）</div><div class="tl-desc">波上宮の崖の下、那覇唯一のビーチ。20分。</div></div>
-        <div class="tl-item food"><div class="tl-time">7:20</div><div class="tl-title">ポーたま 牧志市場本店（7:00〜） <span class="badge b-food">名物</span></div><div class="tl-desc">ポーク玉子おにぎりの本家。油みそ・ゴーヤ天など。チェックアウト前に車で5分。</div></div>
+        <div class="tl-item spot" data-spotref="naminoue" data-map="波の上ビーチ"><div class="tl-time">6:50</div><div class="tl-title">波の上ビーチ 朝さんぽ（徒歩7分）</div><div class="tl-desc">波上宮の崖の下、那覇唯一のビーチ。20分。</div></div>
+        <div class="tl-item food" data-shopref="porktamago" data-map="ポーたま 牧志市場本店"><div class="tl-time">7:20</div><div class="tl-title">ポーたま 牧志市場本店（7:00〜） <span class="badge b-food">名物</span></div><div class="tl-desc">ポーク玉子おにぎりの本家。油みそ・ゴーヤ天など。チェックアウト前に車で5分。</div></div>
         <div class="tl-item move"><div class="tl-time">8:00</div><div class="tl-title">チェックアウト → 330号を北へ</div><div class="tl-desc">荷物は車へ。平日朝の330号は混むので8時発。</div></div>
-        <div class="tl-item spot"><div class="tl-time">8:40</div><div class="tl-title">中城城跡（世界遺産）</div><div class="tl-desc">8:30〜17:00 ¥400 無休。ペリーも絶賛したアーチ門、東西に海。45分。</div></div>
-        <div class="tl-item spot must"><div class="tl-time">10:00</div><div class="tl-title">海中道路 → 海の駅あやはし館 <span class="badge b-must">名所</span></div><div class="tl-desc">全長4.7km、両側が海のドライブ。</div></div>
-        <div class="tl-item spot"><div class="tl-time">10:30</div><div class="tl-title">浜比嘉島：シルミチュー・浜集落 → 果報バンタ</div><div class="tl-desc">琉球開闢の神話の島（45分）。時間があれば宮城島の果報バンタ（絶景の崖・無料・ぬちまーす工場隣、＋40分）。</div></div>
-        <div class="tl-item food must"><div class="tl-time">12:00</div><div class="tl-title">キングタコス 金武本店 <span class="badge b-must">名物</span></div><div class="tl-desc">浜比嘉から35分。タコライス発祥の系譜、山盛りの「タコライスチーズ野菜」。平日11:30〜翌5:00 無休。<div class="tl-alt">高江洲そば（浦添・ゆし豆腐そば・日休）</div></div></div>
-        <div class="tl-item spot"><div class="tl-time">13:00</div><div class="tl-title">御菓子御殿 恩納村本店 → 読谷 やちむんの里（時間があれば）</div><div class="tl-desc">紅いもタルトの製造見学とお土産。やちむんの里は登り窯と工房（火曜休の工房あり・40分）。</div></div>
-        <div class="tl-item spot must"><div class="tl-time">14:45</div><div class="tl-title">美浜アメリカンビレッジ → サンセットビーチ <span class="badge b-must">名所</span></div><div class="tl-desc">北谷の米軍文化の街。<b>ブルーシール北谷本店</b>でアイス、海沿いのボードウォーク。1時間30分。<div class="tl-alt">お腹に余裕があれば GORDIE'S（砂辺・炭火バーガー）を軽く</div></div></div>
+        <div class="tl-item spot" data-spotref="nakagusuku" data-map="中城城跡"><div class="tl-time">8:40</div><div class="tl-title">中城城跡（世界遺産）</div><div class="tl-desc">8:30〜17:00 ¥400 無休。ペリーも絶賛したアーチ門、東西に海。45分。</div></div>
+        <div class="tl-item spot must" data-spotref="kaichudoro" data-map="海中道路"><div class="tl-time">10:00</div><div class="tl-title">海中道路 → 海の駅あやはし館 <span class="badge b-must">名所</span></div><div class="tl-desc">全長4.7km、両側が海のドライブ。</div></div>
+        <div class="tl-item spot" data-spotref="kafu" data-map="浜比嘉島"><div class="tl-time">10:30</div><div class="tl-title">浜比嘉島：シルミチュー・浜集落 → 果報バンタ</div><div class="tl-desc">琉球開闢の神話の島（45分）。時間があれば宮城島の果報バンタ（絶景の崖・無料・ぬちまーす工場隣、＋40分）。</div></div>
+        <div class="tl-item food must" data-shopref="kingtacos" data-map="キングタコス 金武本店"><div class="tl-time">12:00</div><div class="tl-title">キングタコス 金武本店 <span class="badge b-must">名物</span></div><div class="tl-desc">浜比嘉から35分。タコライス発祥の系譜、山盛りの「タコライスチーズ野菜」。平日11:30〜翌5:00 無休。<div class="tl-alt">高江洲そば（浦添・ゆし豆腐そば・日休）</div></div></div>
+        <div class="tl-item spot" data-shopref="goten" data-spotref="yomitan" data-map="やちむんの里"><div class="tl-time">13:00</div><div class="tl-title">御菓子御殿 恩納村本店 → 読谷 やちむんの里（時間があれば）</div><div class="tl-desc">紅いもタルトの製造見学とお土産。やちむんの里は登り窯と工房（火曜休の工房あり・40分）。</div></div>
+        <div class="tl-item spot must" data-spotref="amvillage" data-map="美浜アメリカンビレッジ"><div class="tl-time">14:45</div><div class="tl-title">美浜アメリカンビレッジ → サンセットビーチ <span class="badge b-must">名所</span></div><div class="tl-desc">北谷の米軍文化の街。<b>ブルーシール北谷本店</b>でアイス、海沿いのボードウォーク。1時間30分。<div class="tl-alt">お腹に余裕があれば GORDIE'S（砂辺・炭火バーガー）を軽く</div></div></div>
         <div class="tl-item move"><div class="tl-time">16:20</div><div class="tl-title">58号を南へ（夕方渋滞込み 45分）</div><div class="tl-desc">17:30以降はバスレーン規制。早めに出る。</div></div>
-        <div class="tl-item food must"><div class="tl-time">17:05</div><div class="tl-title">ジャッキーステーキハウス（那覇・西町） <span class="badge b-must">名物</span></div><div class="tl-desc">1953年創業、沖縄ステーキの原点。テンダーロイン L を鉄板で。11:00〜22:30、第2・第4水曜休、予約不可（17時台は待ちが短い）。空港まで車10分。<div class="tl-alt">ステーキハウス88 辻本店（無休）</div></div></div>
-        <div class="tl-item move"><div class="tl-time">18:00</div><div class="tl-title">ABCレンタカー 那覇空港営業所 返却（給油済み）</div><div class="tl-desc">返却は出発90分前まで。送迎8分で空港へ。</div></div>
-        <div class="tl-item food"><div class="tl-time">18:30</div><div class="tl-title">那覇空港：お土産 ＆ A&amp;W ルートビア</div><div class="tl-desc">機内用にポーたま（到着ロビー店〜21:00）、御菓子御殿・新垣ちんすこう・泡盛。最後にA&amp;W（3F・〜20:00）でルートビア。</div></div>
+        <div class="tl-item food must" data-shopref="jackie" data-map="ジャッキーステーキハウス 那覇"><div class="tl-time">17:05</div><div class="tl-title">ジャッキーステーキハウス（那覇・西町） <span class="badge b-must">名物</span></div><div class="tl-desc">1953年創業、沖縄ステーキの原点。テンダーロイン L を鉄板で。11:00〜22:30、第2・第4水曜休、予約不可（17時台は待ちが短い）。空港まで車10分。<div class="tl-alt">ステーキハウス88 辻本店（無休）</div></div></div>
+        <div class="tl-item move" data-map="ABCレンタカー 那覇空港営業所"><div class="tl-time">18:00</div><div class="tl-title">ABCレンタカー 那覇空港営業所 返却（給油済み）</div><div class="tl-desc">返却は出発90分前まで。送迎8分で空港へ。</div></div>
+        <div class="tl-item food" data-shopref="aw" data-map="那覇空港"><div class="tl-time">18:30</div><div class="tl-title">那覇空港：お土産 ＆ A&amp;W ルートビア</div><div class="tl-desc">機内用にポーたま（到着ロビー店〜21:00）、御菓子御殿・新垣ちんすこう・泡盛。最後にA&amp;W（3F・〜20:00）でルートビア。</div></div>
         <div class="tl-item move"><div class="tl-time">20:40</div><div class="tl-title">ANA NH478 那覇 → 羽田 23:10</div><div class="tl-desc">保安検査は20:20まで。<span class="badge b-alt">代替</span> ソラシド SNA26 20:25→22:35／スカイマーク SKY522 20:45→22:55／JAL JL922 20:30→23:00</div></div>
       </div>
     </div>
@@ -423,53 +448,53 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
 
   <div class="cat-head"><h3>🏆 絶対に行くべき5店</h3><span class="sub">この5つを外さなければ「沖縄のご飯はうまい」になります。全部旅程に入っています</span></div>
   <div class="grid">
-    <div class="card photo top"><img src="assets/img/th/okinawa_soba.jpg" alt=""><div class="body"><h4>1. きしもと食堂 本店 <span class="tag">Day1 昼</span></h4><div class="hook">明治38年創業。木灰の灰汁で打つ麺と澄んだカツオ出汁。沖縄そばの「原点」はここにしかない。修学旅行で食べたそばとは別物。</div><div class="h">本部町｜11:00〜17:00 売切｜水休｜開店10分前に並ぶ</div></div></div>
-    <div class="card photo top"><img src="assets/img/th/steak.jpg" alt=""><div class="body"><h4>2. ジャッキーステーキハウス <span class="tag">Day3 夕</span></h4><div class="hook">1953年、米軍統治下に生まれた沖縄ステーキの原点。鉄板のテンダーロインにスープとサラダ。空港10分なので最後の一食に。</div><div class="h">那覇・西町｜11:00〜22:30｜第2・第4水休｜予約不可</div></div></div>
-    <div class="card photo top"><img src="assets/img/th/ryukyu_cuisine.jpg" alt=""><div class="body"><h4>3. 琉球料理 美榮 <span class="tag">Day2 夜</span></h4><div class="hook">1958年創業、宮廷料理を古い屋敷の個室でコースに。ミヌダル・ジーマーミ豆腐・ラフテーが「本来の味」で揃う、沖縄で数少ない店。</div><div class="h">久茂地｜18:00〜22:00｜日休｜要予約 ☎098-867-1356</div></div></div>
-    <div class="card photo top"><img src="assets/img/th/yakiniku.jpg" alt=""><div class="body"><h4>4. 焼肉もとぶ牧場 もとぶ店 <span class="tag">Day1 夜</span></h4><div class="hook">牧場直営。ビール粕の発酵飼料で育てた「もとぶ牛」を産地で。北部まで来た日にしか食べられない。</div><div class="h">本部町｜17:00〜22:00｜無休｜要予約 ☎0980-51-6777</div></div></div>
-    <div class="card photo top"><img src="assets/img/th/kaisendon2.jpg" alt=""><div class="body"><h4>5. 泊いゆまち <span class="tag">Day2 朝</span></h4><div class="hook">那覇の魚市場。近海マグロの丼と海ぶどうを、朝の港のテラスで。観光地の海鮮丼と比べものにならない鮮度と値段。</div><div class="h">泊漁港｜6:00〜18:00｜無休｜¥1,000前後</div></div></div>
-    <div class="card photo"><img src="assets/img/th/awamori.jpg" alt=""><div class="body"><h4>次点：うりずん <span class="tag">Day2 代替</span></h4><div class="hook">1972年創業、ドゥル天発祥、100種の古酒。美榮が取れなければここ。夜の沖縄はここで完成する。</div><div class="h">安里｜17:30〜24:00｜無休</div></div></div>
+    <div class="card photo top" data-shop="kishimoto"><img src="assets/img/th/okinawa_soba.jpg" alt=""><div class="body"><h4>1. きしもと食堂 本店 <span class="tag">Day1 昼</span></h4><div class="hook">明治38年創業。木灰の灰汁で打つ麺と澄んだカツオ出汁。沖縄そばの「原点」はここにしかない。修学旅行で食べたそばとは別物。</div><div class="h">本部町｜11:00〜17:00 売切｜水休｜開店10分前に並ぶ</div></div></div>
+    <div class="card photo top" data-shop="jackie"><img src="assets/img/th/steak.jpg" alt=""><div class="body"><h4>2. ジャッキーステーキハウス <span class="tag">Day3 夕</span></h4><div class="hook">1953年、米軍統治下に生まれた沖縄ステーキの原点。鉄板のテンダーロインにスープとサラダ。空港10分なので最後の一食に。</div><div class="h">那覇・西町｜11:00〜22:30｜第2・第4水休｜予約不可</div></div></div>
+    <div class="card photo top" data-shop="mie"><img src="assets/img/th/ryukyu_cuisine.jpg" alt=""><div class="body"><h4>3. 琉球料理 美榮 <span class="tag">Day2 夜</span></h4><div class="hook">1958年創業、宮廷料理を古い屋敷の個室でコースに。ミヌダル・ジーマーミ豆腐・ラフテーが「本来の味」で揃う、沖縄で数少ない店。</div><div class="h">久茂地｜18:00〜22:00｜日休｜要予約 ☎098-867-1356</div></div></div>
+    <div class="card photo top" data-shop="motobu"><img src="assets/img/th/yakiniku.jpg" alt=""><div class="body"><h4>4. 焼肉もとぶ牧場 もとぶ店 <span class="tag">Day1 夜</span></h4><div class="hook">牧場直営。ビール粕の発酵飼料で育てた「もとぶ牛」を産地で。北部まで来た日にしか食べられない。</div><div class="h">本部町｜17:00〜22:00｜無休｜要予約 ☎0980-51-6777</div></div></div>
+    <div class="card photo top" data-shop="iyumachi"><img src="assets/img/th/kaisendon2.jpg" alt=""><div class="body"><h4>5. 泊いゆまち <span class="tag">Day2 朝</span></h4><div class="hook">那覇の魚市場。近海マグロの丼と海ぶどうを、朝の港のテラスで。観光地の海鮮丼と比べものにならない鮮度と値段。</div><div class="h">泊漁港｜6:00〜18:00｜無休｜¥1,000前後</div></div></div>
+    <div class="card photo" data-shop="urizun"><img src="assets/img/th/awamori.jpg" alt=""><div class="body"><h4>次点：うりずん <span class="tag">Day2 代替</span></h4><div class="hook">1972年創業、ドゥル天発祥、100種の古酒。美榮が取れなければここ。夜の沖縄はここで完成する。</div><div class="h">安里｜17:30〜24:00｜無休</div></div></div>
   </div>
 
   <div class="banner" style="margin-top:34px"><img src="assets/img/ryukyu_cuisine.jpg" alt=""><div class="cap">名物から選ぶ<small>18の名物と、それを食べるべき店</small></div></div>
 
   <div class="grid" id="meibutsu">
     <div class="card photo"><img src="assets/img/th/okinawa_soba.jpg" alt=""><div class="body"><h4>沖縄そば</h4><div class="hook">カツオと豚の澄んだスープ、小麦の平麺。南北で麺が違う。</div>
-      <div class="h">◎ <b>きしもと食堂 本店</b>（本部）木灰汁の元祖・本部そば <span class="tag">Day1</span><br>◎ <b>首里そば</b>（首里）那覇の王道・手打ち <span class="tag">Day2</span><br>○ <b>田舎 公設市場南店</b>（市場）ソーキそば¥500・無休の保険</div></div></div>
+      <div class="h">◎ <a href="#shop-kishimoto" data-goto="kishimoto">きしもと食堂 本店</a>（本部）木灰汁の元祖・本部そば <span class="tag">Day1</span><br>◎ <a href="#shop-shurisoba" data-goto="shurisoba">首里そば</a>（首里）那覇の王道・手打ち <span class="tag">Day2</span><br>○ <a href="#shop-inaka" data-goto="inaka">田舎 公設市場南店</a>（市場）ソーキそば¥500・無休の保険</div></div></div>
     <div class="card photo"><img src="assets/img/th/goya.jpg" alt=""><div class="body"><h4>ソーキ・てびち・じゅーしー</h4><div class="hook">骨付き豚バラ煮込み／豚足／炊き込みご飯。そばの相棒。</div>
-      <div class="h">◎ <b>山原そば</b>（本部）てびちそばの名店・月火休<br>◎ <b>きしもと食堂</b> ソーキそば＋じゅーしー <span class="tag">Day1</span><br>○ <b>しむじょう</b>（首里）古民家・1日100食・火水休</div></div></div>
+      <div class="h">◎ <a href="#shop-yanbarusoba" data-goto="yanbarusoba">山原そば</a>（本部）てびちそばの名店・月火休<br>◎ <a href="#shop-kishimoto" data-goto="kishimoto">きしもと食堂</a> ソーキそば＋じゅーしー <span class="tag">Day1</span><br>○ <a href="#shop-shimujo" data-goto="shimujo">しむじょう</a>（首里）古民家・1日100食・火水休</div></div></div>
     <div class="card photo"><img src="assets/img/th/steak.jpg" alt=""><div class="body"><h4>ステーキ</h4><div class="hook">米軍文化から根づいた「夜の締めはステーキ」。</div>
-      <div class="h">◎ <b>ジャッキーステーキハウス</b>（西町）1953年・テンダーロイン <span class="tag">Day3</span><br>○ <b>ステーキハウス88Jr. 松山店</b> 深夜〜翌5時・1,000円〜 <span class="tag">Day0</span><br>○ <b>キャプテンズイン 国際通り店</b> 鉄板パフォーマンス・無休</div></div></div>
+      <div class="h">◎ <a href="#shop-jackie" data-goto="jackie">ジャッキーステーキハウス</a>（西町）1953年・テンダーロイン <span class="tag">Day3</span><br>○ <a href="#shop-s88jr" data-goto="s88jr">ステーキハウス88Jr. 松山店</a> 深夜〜翌5時・1,000円〜 <span class="tag">Day0</span><br>○ <a href="#shop-captains" data-goto="captains">キャプテンズイン 国際通り店</a> 鉄板パフォーマンス・無休</div></div></div>
     <div class="card photo"><img src="assets/img/th/yakiniku.jpg" alt=""><div class="body"><h4>もとぶ牛（県産和牛）</h4><div class="hook">ビール粕の発酵飼料で育つ、甘みの強い赤身。</div>
-      <div class="h">◎ <b>焼肉もとぶ牧場 もとぶ店</b> 牧場直営・無休・要予約 <span class="tag">Day1</span><br>○ <b>焼肉もとぶ牧場 名護店</b> 帰路上の代替</div></div></div>
+      <div class="h">◎ <a href="#shop-motobu" data-goto="motobu">焼肉もとぶ牧場 もとぶ店</a> 牧場直営・無休・要予約 <span class="tag">Day1</span><br>○ <b>焼肉もとぶ牧場 名護店</b> 帰路上の代替</div></div></div>
     <div class="card photo"><img src="assets/img/th/ryukyu_cuisine.jpg" alt=""><div class="body"><h4>あぐー豚</h4><div class="hook">脂が甘い在来豚。しゃぶしゃぶか炭火で。</div>
-      <div class="h">◎ <b>ぶうや</b>（泉崎・徒歩10分）炭火焼／しゃぶは2日前予約<br>○ <b>アグーとんかつ コション</b>（浮島通り）とんかつで<br>○ <b>抱瓶 久茂地店</b> あぐー料理も・〜翌1時</div></div></div>
+      <div class="h">◎ <a href="#shop-buuya" data-goto="buuya">ぶうや</a>（泉崎・徒歩10分）炭火焼／しゃぶは2日前予約<br>○ <a href="#shop-cochon" data-goto="cochon">アグーとんかつ コション</a>（浮島通り）とんかつで<br>○ <a href="#shop-dachibin" data-goto="dachibin">抱瓶 久茂地店</a> あぐー料理も・〜翌1時</div></div></div>
     <div class="card photo"><img src="assets/img/th/bingata.jpg" alt=""><div class="body"><h4>琉球料理（ミヌダル・イナムドゥチ・ドゥルワカシー・ジーマーミ豆腐）</h4><div class="hook">王朝の宮廷料理。コースで一度に揃うのは専門店だけ。</div>
-      <div class="h">◎ <b>美榮</b>（久茂地）1958年・個室コース・要予約 <span class="tag">Day2</span><br>○ <b>琉音</b>（久米・徒歩3分）名店「山本彩香」の後継・水日休・要確認<br>○ <b>首里天楼</b>（国際通り）舞踊つきコース・無休</div></div></div>
+      <div class="h">◎ <a href="#shop-mie" data-goto="mie">美榮</a>（久茂地）1958年・個室コース・要予約 <span class="tag">Day2</span><br>○ <a href="#shop-ryune" data-goto="ryune">琉音</a>（久米・徒歩3分）名店「山本彩香」の後継・水日休・要確認<br>○ <b>首里天楼</b>（国際通り）舞踊つきコース・無休</div></div></div>
     <div class="card photo"><img src="assets/img/th/umibudo.jpg" alt=""><div class="body"><h4>ラフテー・海ぶどう・ミミガー・島らっきょう</h4><div class="hook">居酒屋の定番四天王。泡盛と一緒に。</div>
-      <div class="h">◎ <b>うりずん</b>（安里）1972年・ドゥル天発祥・無休<br>◎ <b>ゆうなんぎい</b>（久茂地）家庭料理の名店・日休・予約不可<br>○ <b>泊いゆまち</b> 海ぶどうは市場で買うのが一番新鮮 <span class="tag">Day2</span></div></div></div>
+      <div class="h">◎ <a href="#shop-urizun" data-goto="urizun">うりずん</a>（安里）1972年・ドゥル天発祥・無休<br>◎ <a href="#shop-yunangi" data-goto="yunangi">ゆうなんぎい</a>（久茂地）家庭料理の名店・日休・予約不可<br>○ <a href="#shop-iyumachi" data-goto="iyumachi">泊いゆまち</a> 海ぶどうは市場で買うのが一番新鮮 <span class="tag">Day2</span></div></div></div>
     <div class="card photo"><img src="assets/img/th/kaisendon2.jpg" alt=""><div class="body"><h4>海鮮丼・まぐろ・県産魚</h4><div class="hook">那覇は近海マグロの水揚げ地。朝の市場が一番。</div>
-      <div class="h">◎ <b>泊いゆまち</b>（泊漁港）6:00〜・まぐろ丼¥1,000前後 <span class="tag">Day2</span><br>○ <b>魚まる 小禄本店</b> 魚屋直営の海鮮丼・空港近く<br>○ <b>糸満漁民食堂</b> 県産魚のバター焼き・火休</div></div></div>
+      <div class="h">◎ <a href="#shop-iyumachi" data-goto="iyumachi">泊いゆまち</a>（泊漁港）6:00〜・まぐろ丼¥1,000前後 <span class="tag">Day2</span><br>○ <a href="#shop-uomaru" data-goto="uomaru">魚まる 小禄本店</a> 魚屋直営の海鮮丼・空港近く<br>○ <a href="#shop-itoman" data-goto="itoman">糸満漁民食堂</a> 県産魚のバター焼き・火休</div></div></div>
     <div class="card photo"><img src="assets/img/th/tempura_ok.jpg" alt=""><div class="body"><h4>沖縄天ぷら</h4><div class="hook">衣が厚くて味つき、おやつ感覚で1個¥100。</div>
-      <div class="h">◎ <b>中本鮮魚てんぷら店</b>（奥武島）3代続く代表格・木休 <span class="tag">Day2</span><br>○ <b>大城てんぷら店</b>（奥武島）月火・第4日曜休<br>○ <b>道の駅許田</b> 北部の朝ごはんに <span class="tag">Day1</span></div></div></div>
+      <div class="h">◎ <a href="#shop-nakamoto" data-goto="nakamoto">中本鮮魚てんぷら店</a>（奥武島）3代続く代表格・木休 <span class="tag">Day2</span><br>○ <b>大城てんぷら店</b>（奥武島）月火・第4日曜休<br>○ <a href="#shop-mitsuya" data-goto="mitsuya">道の駅許田</a> 北部の朝ごはんに <span class="tag">Day1</span></div></div></div>
     <div class="card photo"><img src="assets/img/th/tacorice.jpg" alt=""><div class="body"><h4>タコライス</h4><div class="hook">金武町の基地の街で生まれた、沖縄発の米軍メシ。</div>
-      <div class="h">◎ <b>キングタコス 金武本店</b> 発祥の系譜・山盛り・無休 <span class="tag">Day3</span><br>○ <b>チャーリー多幸寿</b>（コザ）1956年・タコスの老舗</div></div></div>
+      <div class="h">◎ <a href="#shop-kingtacos" data-goto="kingtacos">キングタコス 金武本店</a> 発祥の系譜・山盛り・無休 <span class="tag">Day3</span><br>○ <b>チャーリー多幸寿</b>（コザ）1956年・タコスの老舗</div></div></div>
     <div class="card photo"><img src="assets/img/th/amvillage.jpg" alt=""><div class="body"><h4>ハンバーガー（アメリカン）</h4><div class="hook">米軍ゆかりの炭火バーガー。</div>
-      <div class="h">◎ <b>GORDIE'S</b>（北谷・砂辺）炭火焼・不定休 <span class="tag">Day3 任意</span><br>○ <b>キャプテンカンガルー</b>（本部）極厚パティ・美ら海の近く<br>○ <b>Zooton's 国際通り店</b> 徒歩圏・火日は16:30まで</div></div></div>
+      <div class="h">◎ <a href="#shop-gordies" data-goto="gordies">GORDIE'S</a>（北谷・砂辺）炭火焼・不定休 <span class="tag">Day3 任意</span><br>○ <a href="#shop-kangaroo" data-goto="kangaroo">キャプテンカンガルー</a>（本部）極厚パティ・美ら海の近く<br>○ <b>Zooton's 国際通り店</b> 徒歩圏・火日は16:30まで</div></div></div>
     <div class="card photo"><img src="assets/img/th/porktamago.jpg" alt=""><div class="body"><h4>ポーたま（ポーク玉子おにぎり）</h4><div class="hook">沖縄の朝の定番。具は油みそ・ゴーヤ天など。</div>
-      <div class="h">◎ <b>ポーたま 牧志市場本店</b> 7:00〜・無休 <span class="tag">Day3</span><br>○ <b>ポーたま 那覇空港店</b> 機内用に・〜21:00</div></div></div>
+      <div class="h">◎ <a href="#shop-porktamago" data-goto="porktamago">ポーたま 牧志市場本店</a> 7:00〜・無休 <span class="tag">Day3</span><br>○ <b>ポーたま 那覇空港店</b> 機内用に・〜21:00</div></div></div>
     <div class="card photo"><img src="assets/img/th/sataandagi.jpg" alt=""><div class="body"><h4>サーターアンダギー</h4><div class="hook">揚げたてを買えるかで別物になる。</div>
-      <div class="h">◎ <b>三矢本舗</b>（道の駅許田）揚げたて <span class="tag">Day1</span><br>○ <b>歩のサーターアンダギー</b>（公設市場）「幻」と呼ばれる・日水休</div></div></div>
+      <div class="h">◎ <a href="#shop-mitsuya" data-goto="mitsuya">三矢本舗</a>（道の駅許田）揚げたて <span class="tag">Day1</span><br>○ <b>歩のサーターアンダギー</b>（公設市場）「幻」と呼ばれる・日水休</div></div></div>
     <div class="card photo"><img src="assets/img/th/sunset_okinawa.jpg" alt=""><div class="body"><h4>沖縄ぜんざい（氷ぜんざい）</h4><div class="hook">甘く煮た金時豆の上にかき氷。冷たいのが沖縄流。</div>
-      <div class="h">◎ <b>新垣ぜんざい屋</b>（本部）創業70年・¥300一択・月休 <span class="tag">Day1</span><br>○ <b>富士家 泊本店</b>（泊）那覇の名店・無休<br>○ <b>千日</b>（久米・徒歩5分）1962年・月休</div></div></div>
+      <div class="h">◎ <a href="#shop-aragaki" data-goto="aragaki">新垣ぜんざい屋</a>（本部）創業70年・¥300一択・月休 <span class="tag">Day1</span><br>○ <a href="#shop-fujiya" data-goto="fujiya">富士家 泊本店</a>（泊）那覇の名店・無休<br>○ <b>千日</b>（久米・徒歩5分）1962年・月休</div></div></div>
     <div class="card photo"><img src="assets/img/th/blueseal.jpg" alt=""><div class="body"><h4>ブルーシール</h4><div class="hook">「アメリカ生まれ沖縄育ち」のアイス。紅イモ・塩ちんすこう。</div>
-      <div class="h">◎ <b>ブルーシール 北谷本店</b> アメリカンビレッジ隣 <span class="tag">Day3</span><br>○ <b>ブルーシール 国際通り店</b> 夜さんぽに</div></div></div>
+      <div class="h">◎ <a href="#shop-blueseal" data-goto="blueseal">ブルーシール 北谷本店</a> アメリカンビレッジ隣 <span class="tag">Day3</span><br>○ <b>ブルーシール 国際通り店</b> 夜さんぽに</div></div></div>
     <div class="card photo"><img src="assets/img/th/shisa.jpg" alt=""><div class="body"><h4>紅いもタルト・ちんすこう</h4><div class="hook">お土産の二大定番。発祥の店で買う。</div>
-      <div class="h">◎ <b>御菓子御殿 恩納村本店</b> 元祖紅いもタルト・製造見学 <span class="tag">Day3</span><br>◎ <b>新垣ちんすこう本舗</b>（国際通り／空港）<br>○ <b>わしたショップ 国際通り本店</b> 県産品ならここ・〜22:00</div></div></div>
+      <div class="h">◎ <a href="#shop-goten" data-goto="goten">御菓子御殿 恩納村本店</a> 元祖紅いもタルト・製造見学 <span class="tag">Day3</span><br>◎ <b>新垣ちんすこう本舗</b>（国際通り／空港）<br>○ <b>わしたショップ 国際通り本店</b> 県産品ならここ・〜22:00</div></div></div>
     <div class="card photo"><img src="assets/img/th/awamori.jpg" alt=""><div class="body"><h4>泡盛・古酒（クース）</h4><div class="hook">3年以上寝かせた古酒は香りが別物。</div>
-      <div class="h">◎ <b>うりずん</b>（安里）100種の古酒 <span class="tag">Day2 代替</span><br>○ <b>泡盛倉庫</b>（県庁前）800種・月〜土18:00〜24:00<br>○ <b>カラカラとちぶぐゎ〜</b>（久茂地）泡盛マイスター夫婦・日休</div></div></div>
+      <div class="h">◎ <a href="#shop-urizun" data-goto="urizun">うりずん</a>（安里）100種の古酒 <span class="tag">Day2 代替</span><br>○ <a href="#shop-awamorisoko" data-goto="awamorisoko">泡盛倉庫</a>（県庁前）800種・月〜土18:00〜24:00<br>○ <a href="#shop-karakara" data-goto="karakara">カラカラとちぶぐゎ〜</a>（久茂地）泡盛マイスター夫婦・日休</div></div></div>
     <div class="card photo"><img src="assets/img/th/emerald_beach.jpg" alt=""><div class="body"><h4>海カフェ・南国フルーツ</h4><div class="hook">海を見ながらのコーヒーと、パイン・シークヮーサー。</div>
-      <div class="h">◎ <b>浜辺の茶屋</b>（南城）波打ち際の窓席 <span class="tag">Day2</span><br>○ <b>カフェくるくま</b>（南城）太平洋一望・無休<br>○ <b>田中果実店</b>（恩納）マンゴーパフェ・火水休</div></div></div>
+      <div class="h">◎ <a href="#shop-hamabe" data-goto="hamabe">浜辺の茶屋</a>（南城）波打ち際の窓席 <span class="tag">Day2</span><br>○ <b>カフェくるくま</b>（南城）太平洋一望・無休<br>○ <b>田中果実店</b>（恩納）マンゴーパフェ・火水休</div></div></div>
   </div>
 
   <div class="cat-head"><h3>店から選ぶ</h3><span class="sub">旅程に入っている店＋代替。タグは ◎最高／○食べられる。名物で絞り込めます</span></div>
@@ -491,41 +516,41 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
   </div>
 
   <div class="grid" id="shops">
-    <div class="card top" data-t="旅程 そば"><h4>きしもと食堂 本店 <span class="badge b-must">Day1</span></h4><div class="meta">本部町｜美ら海から10分</div><div class="h"><b>◎ 本部そば</b> <b>◎ ソーキ</b> ○ じゅーしー</div><div class="hours">11:00〜17:00 売切終了｜水休｜予約不可・開店前に並ぶ｜¥800〜</div></div>
-    <div class="card top" data-t="旅程 そば"><h4>首里そば 本店 <span class="badge b-must">Day2</span></h4><div class="meta">首里｜首里城から車5分</div><div class="h"><b>◎ 沖縄そば</b> ○ 煮つけ</div><div class="hours">11:30〜14:00 売切終了｜木・日休｜予約不可｜¥650〜</div></div>
-    <div class="card" data-t="そば"><h4>山原そば</h4><div class="meta">本部町伊豆味｜美ら海から20分</div><div class="h"><b>◎ てびちそば</b> <b>◎ ソーキそば</b></div><div class="hours">11:30〜売切｜月・火休（Day1日曜のみ可）</div></div>
-    <div class="card" data-t="そば"><h4>田舎 公設市場南店</h4><div class="meta">松尾｜ホテルから徒歩12分</div><div class="h"><b>◎ ソーキそば ¥500</b></div><div class="hours">10:00〜18:30頃｜無休（要確認）</div></div>
-    <div class="card" data-t="そば"><h4>しむじょう</h4><div class="meta">首里｜登録有形文化財の古民家</div><div class="h"><b>◎ 沖縄そば</b>（1日100食）</div><div class="hours">11:00〜15:00 売切｜火・水休</div></div>
-    <div class="card" data-t="そば"><h4>高江洲そば</h4><div class="meta">浦添｜那覇から20分</div><div class="h"><b>◎ ゆし豆腐そば</b>（元祖）</div><div class="hours">10:00〜18:00｜日休</div></div>
-    <div class="card top" data-t="旅程 ステーキ"><h4>ジャッキーステーキハウス <span class="badge b-must">Day3</span></h4><div class="meta">那覇市西町｜空港から車10分</div><div class="h"><b>◎ テンダーロイン</b> ○ タコス</div><div class="hours">11:00〜22:30（LO22:00）｜第2・第4水休｜予約不可｜¥3,000前後</div></div>
-    <div class="card top" data-t="旅程 ステーキ 深夜"><h4>ステーキハウス88Jr. 松山店 <span class="badge b-must">Day0</span></h4><div class="meta">松山｜ホテルから徒歩5分</div><div class="h">○ 1,000円ステーキ（深夜の締め）</div><div class="hours">月〜木18:00〜翌3:00／金土〜翌5:00｜日休｜☎098-869-7888</div></div>
-    <div class="card" data-t="ステーキ"><h4>キャプテンズイン 国際通り店</h4><div class="meta">久茂地｜徒歩8分</div><div class="h">○ 鉄板焼きステーキ（目の前で調理）</div><div class="hours">11:30〜17:00／17:00〜22:30｜無休｜ネット予約可</div></div>
-    <div class="card top" data-t="旅程 牛"><h4>焼肉もとぶ牧場 もとぶ店 <span class="badge b-must">Day1</span> <span class="badge b-rsv">要予約</span></h4><div class="meta">本部町｜古宇利から30分</div><div class="h"><b>◎ もとぶ牛</b>（上カルビ・イチボ・にぎり）</div><div class="hours">11:00〜15:00／17:00〜22:00｜無休｜☎0980-51-6777｜¥5,000〜7,000/人</div></div>
-    <div class="card" data-t="あぐー"><h4>やんばる島豚あぐー 炭火焼 ぶうや</h4><div class="meta">泉崎｜徒歩10分</div><div class="h"><b>◎ あぐー炭火焼</b> <b>◎ あぐーしゃぶ</b>（2日前予約）</div><div class="hours">17:00〜23:00｜定休 要確認</div></div>
-    <div class="card" data-t="あぐー"><h4>アグーとんかつ コション 浮島通り店</h4><div class="meta">牧志｜徒歩15分</div><div class="h"><b>◎ あぐーとんかつ</b></div><div class="hours">要確認（行列あり）</div></div>
-    <div class="card top" data-t="旅程 琉球料理 泡盛"><h4>琉球料理 美榮 <span class="badge b-must">Day2</span> <span class="badge b-rsv">要予約</span></h4><div class="meta">久茂地1-8-8｜徒歩8分</div><div class="h"><b>◎ 琉球宮廷料理コース</b> ○ 古酒</div><div class="hours">18:00〜22:00｜日休・不定休｜☎098-867-1356｜9品¥7,000／11品¥9,000／13品¥12,000</div></div>
-    <div class="card" data-t="琉球料理 泡盛 海鮮"><h4>古酒と琉球料理 うりずん</h4><div class="meta">安里388-5｜ゆいレール安里駅すぐ</div><div class="h"><b>◎ ドゥル天</b> <b>◎ 古酒</b> ○ ラフテー ○ 海ぶどう ○ ジーマーミ豆腐</div><div class="hours">17:30〜24:00｜無休｜ホットペッパー予約可｜☎098-885-2178</div></div>
-    <div class="card" data-t="琉球料理"><h4>ゆうなんぎい</h4><div class="meta">久茂地3-3-3｜徒歩8分</div><div class="h"><b>◎ ラフテー</b> <b>◎ ゴーヤーチャンプルー</b> ○ ミミガー</div><div class="hours">12:00〜15:00／17:30〜22:30｜日休｜予約不可</div></div>
-    <div class="card" data-t="琉球料理"><h4>郷土料理 琉音</h4><div class="meta">久米｜ホテルから徒歩3分</div><div class="h"><b>◎ 琉球家庭料理</b>（山本彩香の後継）</div><div class="hours">17:00〜22:00（最終入店19:00）｜水・日休｜要確認・要予約</div></div>
-    <div class="card" data-t="琉球料理 あぐー 深夜"><h4>抱瓶 那覇久茂地店</h4><div class="meta">久茂地｜徒歩8分</div><div class="h">○ 沖縄料理全般 ○ あぐー ○ 泡盛</div><div class="hours">17:00〜翌1:00（金土〜翌2:00）｜無休</div></div>
-    <div class="card top" data-t="旅程 海鮮 朝"><h4>泊いゆまち <span class="badge b-must">Day2 朝</span></h4><div class="meta">泊漁港｜車10分・無料P</div><div class="h"><b>◎ まぐろ丼</b> <b>◎ 海ぶどう</b> ○ 生もずく ○ 刺身</div><div class="hours">6:00〜18:00｜施設無休｜¥1,000前後</div></div>
-    <div class="card" data-t="海鮮"><h4>魚まる 小禄本店</h4><div class="meta">那覇市高良｜空港近く</div><div class="h"><b>◎ 海鮮丼</b>（魚屋直営）</div><div class="hours">11:00〜21:00｜不定休（要確認）</div></div>
-    <div class="card" data-t="海鮮"><h4>糸満漁民食堂</h4><div class="meta">糸満市西崎｜那覇から30分</div><div class="h"><b>◎ 県産魚のバター焼き</b> ○ 刺身定食</div><div class="hours">11:30〜15:00／18:00〜22:00｜火休</div></div>
-    <div class="card top" data-t="旅程 天ぷら"><h4>中本鮮魚てんぷら店 <span class="badge b-must">Day2</span></h4><div class="meta">奥武島｜首里から35分</div><div class="h"><b>◎ 魚天・イカ天・もずく天</b></div><div class="hours">10:30〜18:00頃｜木休｜1個¥100前後</div></div>
-    <div class="card top" data-t="旅程 アメリカン 深夜"><h4>キングタコス 金武本店 <span class="badge b-must">Day3</span></h4><div class="meta">金武町｜海中道路から35分</div><div class="h"><b>◎ タコライスチーズ野菜</b> ○ タコス</div><div class="hours">平日11:30〜翌5:00／土日祝10:30〜｜無休｜¥700前後</div></div>
-    <div class="card" data-t="アメリカン"><h4>GORDIE'S</h4><div class="meta">北谷町砂辺｜アメリカンビレッジから10分</div><div class="h"><b>◎ 炭火焼バーガー</b></div><div class="hours">11:00〜20:00頃｜不定休｜予約不可</div></div>
-    <div class="card" data-t="アメリカン"><h4>キャプテンカンガルー</h4><div class="meta">本部町崎本部｜美ら海から15分</div><div class="h"><b>◎ 極厚パティのバーガー</b></div><div class="hours">11:00〜21:00｜不定休｜行列</div></div>
-    <div class="card top" data-t="旅程 朝"><h4>ポーたま 牧志市場本店 <span class="badge b-must">Day3 朝</span></h4><div class="meta">松尾｜徒歩13分／車5分</div><div class="h"><b>◎ ポーク玉子おにぎり</b>（油みそ・ゴーヤ天）</div><div class="hours">7:00〜20:00｜無休｜空港到着ロビー店 7:00〜21:00</div></div>
-    <div class="card" data-t="朝 甘味"><h4>C&amp;C BREAKFAST OKINAWA</h4><div class="meta">松尾｜徒歩10分</div><div class="h">○ フルーツパンケーキ ○ アサイーボウル</div><div class="hours">9:00〜15:00（土日祝8:00〜）｜火休（10/27不可）</div></div>
-    <div class="card top" data-t="旅程 甘味"><h4>三矢本舗（道の駅許田） <span class="badge b-must">Day1 朝</span></h4><div class="meta">名護市許田｜許田IC降りてすぐ</div><div class="h"><b>◎ 揚げたてサーターアンダギー</b> ○ 沖縄天ぷら ○ カットパイン</div><div class="hours">道の駅 8:30〜19:00</div></div>
-    <div class="card top" data-t="旅程 甘味"><h4>新垣ぜんざい屋 <span class="badge b-must">Day1</span></h4><div class="meta">本部町渡久地｜美ら海から10分</div><div class="h"><b>◎ 氷ぜんざい ¥300</b>（メニューはこれだけ）</div><div class="hours">12:00〜18:00｜月休</div></div>
-    <div class="card" data-t="甘味"><h4>富士家 泊本店</h4><div class="meta">泊｜いゆまちから5分</div><div class="h"><b>◎ 沖縄ぜんざい</b></div><div class="hours">11:00〜19:00（10〜5月）｜無休</div></div>
-    <div class="card top" data-t="旅程 甘味"><h4>浜辺の茶屋 <span class="badge b-must">Day2</span></h4><div class="meta">南城市玉城｜斎場御嶽から15分</div><div class="h"><b>◎ 窓席のコーヒー</b> ○ 自家製ケーキ</div><div class="hours">10:00〜20:00（月は14:00〜）｜無休</div></div>
-    <div class="card top" data-t="旅程 甘味"><h4>ブルーシール 北谷本店 <span class="badge b-must">Day3</span></h4><div class="meta">北谷｜アメリカンビレッジ隣</div><div class="h"><b>◎ 紅イモ</b> ○ 塩ちんすこう ○ シークヮーサー</div><div class="hours">〜22:00前後｜無休</div></div>
-    <div class="card top" data-t="旅程 甘味"><h4>御菓子御殿 恩納村本店／国際通り松尾店 <span class="badge b-must">Day3</span></h4><div class="meta">恩納村（万座毛から10分）／国際通り</div><div class="h"><b>◎ 元祖紅いもタルト</b>（本店は製造見学つき）</div><div class="hours">9:00〜（本店は〜18:00・国際通り店〜22:00目安）｜無休</div></div>
-    <div class="card" data-t="泡盛 深夜"><h4>泡盛倉庫</h4><div class="meta">県庁前｜徒歩8分</div><div class="h"><b>◎ 泡盛 800種</b></div><div class="hours">月〜土18:00〜24:00｜日休</div></div>
-    <div class="card" data-t="泡盛 深夜"><h4>カラカラとちぶぐゎ〜</h4><div class="meta">久茂地｜徒歩8分</div><div class="h"><b>◎ 古酒の飲み比べ</b> ○ 琉球料理</div><div class="hours">18:00〜24:00｜日休</div></div>
-    <div class="card" data-t="アメリカン"><h4>A&amp;W 那覇空港店</h4><div class="meta">国内線3F</div><div class="h"><b>◎ ルートビア</b> ○ カーリーフライ</div><div class="hours">7:00頃〜20:00｜無休</div></div>
+    <div class="card top" data-t="旅程 そば" data-shop="kishimoto"><h4>きしもと食堂 本店 <span class="badge b-must">Day1</span></h4><div class="meta">本部町｜美ら海から10分</div><div class="h"><b>◎ 本部そば</b> <b>◎ ソーキ</b> ○ じゅーしー</div><div class="hours">11:00〜17:00 売切終了｜水休｜予約不可・開店前に並ぶ｜¥800〜</div></div>
+    <div class="card top" data-t="旅程 そば" data-shop="shurisoba"><h4>首里そば 本店 <span class="badge b-must">Day2</span></h4><div class="meta">首里｜首里城から車5分</div><div class="h"><b>◎ 沖縄そば</b> ○ 煮つけ</div><div class="hours">11:30〜14:00 売切終了｜木・日休｜予約不可｜¥650〜</div></div>
+    <div class="card" data-t="そば" data-shop="yanbarusoba"><h4>山原そば</h4><div class="meta">本部町伊豆味｜美ら海から20分</div><div class="h"><b>◎ てびちそば</b> <b>◎ ソーキそば</b></div><div class="hours">11:30〜売切｜月・火休（Day1日曜のみ可）</div></div>
+    <div class="card" data-t="そば" data-shop="inaka"><h4>田舎 公設市場南店</h4><div class="meta">松尾｜ホテルから徒歩12分</div><div class="h"><b>◎ ソーキそば ¥500</b></div><div class="hours">10:00〜18:30頃｜無休（要確認）</div></div>
+    <div class="card" data-t="そば" data-shop="shimujo"><h4>しむじょう</h4><div class="meta">首里｜登録有形文化財の古民家</div><div class="h"><b>◎ 沖縄そば</b>（1日100食）</div><div class="hours">11:00〜15:00 売切｜火・水休</div></div>
+    <div class="card" data-t="そば" data-shop="takaesu"><h4>高江洲そば</h4><div class="meta">浦添｜那覇から20分</div><div class="h"><b>◎ ゆし豆腐そば</b>（元祖）</div><div class="hours">10:00〜18:00｜日休</div></div>
+    <div class="card top" data-t="旅程 ステーキ" data-shop="jackie"><h4>ジャッキーステーキハウス <span class="badge b-must">Day3</span></h4><div class="meta">那覇市西町｜空港から車10分</div><div class="h"><b>◎ テンダーロイン</b> ○ タコス</div><div class="hours">11:00〜22:30（LO22:00）｜第2・第4水休｜予約不可｜¥3,000前後</div></div>
+    <div class="card top" data-t="旅程 ステーキ 深夜" data-shop="s88jr"><h4>ステーキハウス88Jr. 松山店 <span class="badge b-must">Day0</span></h4><div class="meta">松山｜ホテルから徒歩5分</div><div class="h">○ 1,000円ステーキ（深夜の締め）</div><div class="hours">月〜木18:00〜翌3:00／金土〜翌5:00｜日休｜☎098-869-7888</div></div>
+    <div class="card" data-t="ステーキ" data-shop="captains"><h4>キャプテンズイン 国際通り店</h4><div class="meta">久茂地｜徒歩8分</div><div class="h">○ 鉄板焼きステーキ（目の前で調理）</div><div class="hours">11:30〜17:00／17:00〜22:30｜無休｜ネット予約可</div></div>
+    <div class="card top" data-t="旅程 牛" data-shop="motobu"><h4>焼肉もとぶ牧場 もとぶ店 <span class="badge b-must">Day1</span> <span class="badge b-rsv">要予約</span></h4><div class="meta">本部町｜古宇利から30分</div><div class="h"><b>◎ もとぶ牛</b>（上カルビ・イチボ・にぎり）</div><div class="hours">11:00〜15:00／17:00〜22:00｜無休｜☎0980-51-6777｜¥5,000〜7,000/人</div></div>
+    <div class="card" data-t="あぐー" data-shop="buuya"><h4>やんばる島豚あぐー 炭火焼 ぶうや</h4><div class="meta">泉崎｜徒歩10分</div><div class="h"><b>◎ あぐー炭火焼</b> <b>◎ あぐーしゃぶ</b>（2日前予約）</div><div class="hours">17:00〜23:00｜定休 要確認</div></div>
+    <div class="card" data-t="あぐー" data-shop="cochon"><h4>アグーとんかつ コション 浮島通り店</h4><div class="meta">牧志｜徒歩15分</div><div class="h"><b>◎ あぐーとんかつ</b></div><div class="hours">要確認（行列あり）</div></div>
+    <div class="card top" data-t="旅程 琉球料理 泡盛" data-shop="mie"><h4>琉球料理 美榮 <span class="badge b-must">Day2</span> <span class="badge b-rsv">要予約</span></h4><div class="meta">久茂地1-8-8｜徒歩8分</div><div class="h"><b>◎ 琉球宮廷料理コース</b> ○ 古酒</div><div class="hours">18:00〜22:00｜日休・不定休｜☎098-867-1356｜9品¥7,000／11品¥9,000／13品¥12,000</div></div>
+    <div class="card" data-t="琉球料理 泡盛 海鮮" data-shop="urizun"><h4>古酒と琉球料理 うりずん</h4><div class="meta">安里388-5｜ゆいレール安里駅すぐ</div><div class="h"><b>◎ ドゥル天</b> <b>◎ 古酒</b> ○ ラフテー ○ 海ぶどう ○ ジーマーミ豆腐</div><div class="hours">17:30〜24:00｜無休｜ホットペッパー予約可｜☎098-885-2178</div></div>
+    <div class="card" data-t="琉球料理" data-shop="yunangi"><h4>ゆうなんぎい</h4><div class="meta">久茂地3-3-3｜徒歩8分</div><div class="h"><b>◎ ラフテー</b> <b>◎ ゴーヤーチャンプルー</b> ○ ミミガー</div><div class="hours">12:00〜15:00／17:30〜22:30｜日休｜予約不可</div></div>
+    <div class="card" data-t="琉球料理" data-shop="ryune"><h4>郷土料理 琉音</h4><div class="meta">久米｜ホテルから徒歩3分</div><div class="h"><b>◎ 琉球家庭料理</b>（山本彩香の後継）</div><div class="hours">17:00〜22:00（最終入店19:00）｜水・日休｜要確認・要予約</div></div>
+    <div class="card" data-t="琉球料理 あぐー 深夜" data-shop="dachibin"><h4>抱瓶 那覇久茂地店</h4><div class="meta">久茂地｜徒歩8分</div><div class="h">○ 沖縄料理全般 ○ あぐー ○ 泡盛</div><div class="hours">17:00〜翌1:00（金土〜翌2:00）｜無休</div></div>
+    <div class="card top" data-t="旅程 海鮮 朝" data-shop="iyumachi"><h4>泊いゆまち <span class="badge b-must">Day2 朝</span></h4><div class="meta">泊漁港｜車10分・無料P</div><div class="h"><b>◎ まぐろ丼</b> <b>◎ 海ぶどう</b> ○ 生もずく ○ 刺身</div><div class="hours">6:00〜18:00｜施設無休｜¥1,000前後</div></div>
+    <div class="card" data-t="海鮮" data-shop="uomaru"><h4>魚まる 小禄本店</h4><div class="meta">那覇市高良｜空港近く</div><div class="h"><b>◎ 海鮮丼</b>（魚屋直営）</div><div class="hours">11:00〜21:00｜不定休（要確認）</div></div>
+    <div class="card" data-t="海鮮" data-shop="itoman"><h4>糸満漁民食堂</h4><div class="meta">糸満市西崎｜那覇から30分</div><div class="h"><b>◎ 県産魚のバター焼き</b> ○ 刺身定食</div><div class="hours">11:30〜15:00／18:00〜22:00｜火休</div></div>
+    <div class="card top" data-t="旅程 天ぷら" data-shop="nakamoto"><h4>中本鮮魚てんぷら店 <span class="badge b-must">Day2</span></h4><div class="meta">奥武島｜首里から35分</div><div class="h"><b>◎ 魚天・イカ天・もずく天</b></div><div class="hours">10:30〜18:00頃｜木休｜1個¥100前後</div></div>
+    <div class="card top" data-t="旅程 アメリカン 深夜" data-shop="kingtacos"><h4>キングタコス 金武本店 <span class="badge b-must">Day3</span></h4><div class="meta">金武町｜海中道路から35分</div><div class="h"><b>◎ タコライスチーズ野菜</b> ○ タコス</div><div class="hours">平日11:30〜翌5:00／土日祝10:30〜｜無休｜¥700前後</div></div>
+    <div class="card" data-t="アメリカン" data-shop="gordies"><h4>GORDIE'S</h4><div class="meta">北谷町砂辺｜アメリカンビレッジから10分</div><div class="h"><b>◎ 炭火焼バーガー</b></div><div class="hours">11:00〜20:00頃｜不定休｜予約不可</div></div>
+    <div class="card" data-t="アメリカン" data-shop="kangaroo"><h4>キャプテンカンガルー</h4><div class="meta">本部町崎本部｜美ら海から15分</div><div class="h"><b>◎ 極厚パティのバーガー</b></div><div class="hours">11:00〜21:00｜不定休｜行列</div></div>
+    <div class="card top" data-t="旅程 朝" data-shop="porktamago"><h4>ポーたま 牧志市場本店 <span class="badge b-must">Day3 朝</span></h4><div class="meta">松尾｜徒歩13分／車5分</div><div class="h"><b>◎ ポーク玉子おにぎり</b>（油みそ・ゴーヤ天）</div><div class="hours">7:00〜20:00｜無休｜空港到着ロビー店 7:00〜21:00</div></div>
+    <div class="card" data-t="朝 甘味" data-shop="cc"><h4>C&amp;C BREAKFAST OKINAWA</h4><div class="meta">松尾｜徒歩10分</div><div class="h">○ フルーツパンケーキ ○ アサイーボウル</div><div class="hours">9:00〜15:00（土日祝8:00〜）｜火休（10/27不可）</div></div>
+    <div class="card top" data-t="旅程 甘味" data-shop="mitsuya"><h4>三矢本舗（道の駅許田） <span class="badge b-must">Day1 朝</span></h4><div class="meta">名護市許田｜許田IC降りてすぐ</div><div class="h"><b>◎ 揚げたてサーターアンダギー</b> ○ 沖縄天ぷら ○ カットパイン</div><div class="hours">道の駅 8:30〜19:00</div></div>
+    <div class="card top" data-t="旅程 甘味" data-shop="aragaki"><h4>新垣ぜんざい屋 <span class="badge b-must">Day1</span></h4><div class="meta">本部町渡久地｜美ら海から10分</div><div class="h"><b>◎ 氷ぜんざい ¥300</b>（メニューはこれだけ）</div><div class="hours">12:00〜18:00｜月休</div></div>
+    <div class="card" data-t="甘味" data-shop="fujiya"><h4>富士家 泊本店</h4><div class="meta">泊｜いゆまちから5分</div><div class="h"><b>◎ 沖縄ぜんざい</b></div><div class="hours">11:00〜19:00（10〜5月）｜無休</div></div>
+    <div class="card top" data-t="旅程 甘味" data-shop="hamabe"><h4>浜辺の茶屋 <span class="badge b-must">Day2</span></h4><div class="meta">南城市玉城｜斎場御嶽から15分</div><div class="h"><b>◎ 窓席のコーヒー</b> ○ 自家製ケーキ</div><div class="hours">10:00〜20:00（月は14:00〜）｜無休</div></div>
+    <div class="card top" data-t="旅程 甘味" data-shop="blueseal"><h4>ブルーシール 北谷本店 <span class="badge b-must">Day3</span></h4><div class="meta">北谷｜アメリカンビレッジ隣</div><div class="h"><b>◎ 紅イモ</b> ○ 塩ちんすこう ○ シークヮーサー</div><div class="hours">〜22:00前後｜無休</div></div>
+    <div class="card top" data-t="旅程 甘味" data-shop="goten"><h4>御菓子御殿 恩納村本店／国際通り松尾店 <span class="badge b-must">Day3</span></h4><div class="meta">恩納村（万座毛から10分）／国際通り</div><div class="h"><b>◎ 元祖紅いもタルト</b>（本店は製造見学つき）</div><div class="hours">9:00〜（本店は〜18:00・国際通り店〜22:00目安）｜無休</div></div>
+    <div class="card" data-t="泡盛 深夜" data-shop="awamorisoko"><h4>泡盛倉庫</h4><div class="meta">県庁前｜徒歩8分</div><div class="h"><b>◎ 泡盛 800種</b></div><div class="hours">月〜土18:00〜24:00｜日休</div></div>
+    <div class="card" data-t="泡盛 深夜" data-shop="karakara"><h4>カラカラとちぶぐゎ〜</h4><div class="meta">久茂地｜徒歩8分</div><div class="h"><b>◎ 古酒の飲み比べ</b> ○ 琉球料理</div><div class="hours">18:00〜24:00｜日休</div></div>
+    <div class="card" data-t="アメリカン" data-shop="aw"><h4>A&amp;W 那覇空港店</h4><div class="meta">国内線3F</div><div class="h"><b>◎ ルートビア</b> ○ カーリーフライ</div><div class="hours">7:00頃〜20:00｜無休</div></div>
   </div>
 
   <div class="section">
@@ -553,14 +578,14 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
     <img src="assets/img/th/hero_kouri.jpg" alt="">
   </div>
   <div class="grid">
-    <div class="card top"><h4>◎ 沖縄美ら海水族館</h4><div class="hook">ジンベエザメ3匹が泳ぐ「黒潮の海」。給餌解説は15:00と17:00。</div><div class="hours">8:30〜18:30（入館〜17:30）｜¥2,180（道の駅許田の前売券が安い）｜3時間</div></div>
-    <div class="card top"><h4>◎ 古宇利大橋・古宇利島</h4><div class="hook">海の上を2km走る橋。橋の南詰のビーチから夕日。ハートロックは干潮時。</div><div class="hours">常時｜無料（ハートロックP ¥300〜）｜1時間</div></div>
-    <div class="card top"><h4>◎ 万座毛</h4><div class="hook">象の鼻の断崖。朝イチが人が少ない。</div><div class="hours">8:00〜20:00｜無料・P無料｜30分</div></div>
-    <div class="card top"><h4>◎ 備瀬のフクギ並木</h4><div class="hook">防風林の並木道を海まで歩く。午前の光が一番きれい。</div><div class="hours">常時｜P ¥500前後｜40分</div></div>
-    <div class="card top"><h4>◎ 今帰仁城跡（世界遺産）</h4><div class="hook">曲線の石垣と海の眺め。</div><div class="hours">8:00〜18:00｜¥1,000｜45分</div></div>
-    <div class="card"><h4>○ 瀬底ビーチ</h4><div class="hook">本島屈指の透明度。海に入るならここ。</div><div class="hours">9:00〜17:00（10月下旬まで）｜P ¥1,000｜1時間〜</div></div>
-    <div class="card"><h4>○ ブセナ海中公園</h4><div class="hook">雨でも魚が見られる海中展望塔。</div><div class="hours">9:00〜18:00｜展望塔¥1,050／ボート¥1,560｜30分</div></div>
-    <div class="card"><h4>○ 大石林山・辺戸岬</h4><div class="hook">本島最北端の奇岩と岬。今回は遠すぎるので次回向き。</div><div class="hours">大石林山 9:30〜17:30 ¥1,200｜那覇から2時間半</div></div>
+    <div class="card top" data-spot="churaumi"><h4>◎ 沖縄美ら海水族館</h4><div class="hook">ジンベエザメ3匹が泳ぐ「黒潮の海」。給餌解説は15:00と17:00。</div><div class="hours">8:30〜18:30（入館〜17:30）｜¥2,180（道の駅許田の前売券が安い）｜3時間</div></div>
+    <div class="card top" data-spot="kouri"><h4>◎ 古宇利大橋・古宇利島</h4><div class="hook">海の上を2km走る橋。橋の南詰のビーチから夕日。ハートロックは干潮時。</div><div class="hours">常時｜無料（ハートロックP ¥300〜）｜1時間</div></div>
+    <div class="card top" data-spot="manzamo"><h4>◎ 万座毛</h4><div class="hook">象の鼻の断崖。朝イチが人が少ない。</div><div class="hours">8:00〜20:00｜無料・P無料｜30分</div></div>
+    <div class="card top" data-spot="bise"><h4>◎ 備瀬のフクギ並木</h4><div class="hook">防風林の並木道を海まで歩く。午前の光が一番きれい。</div><div class="hours">常時｜P ¥500前後｜40分</div></div>
+    <div class="card top" data-spot="nakijin"><h4>◎ 今帰仁城跡（世界遺産）</h4><div class="hook">曲線の石垣と海の眺め。</div><div class="hours">8:00〜18:00｜¥1,000｜45分</div></div>
+    <div class="card" data-spot="sesoko"><h4>○ 瀬底ビーチ</h4><div class="hook">本島屈指の透明度。海に入るならここ。</div><div class="hours">9:00〜17:00（10月下旬まで）｜P ¥1,000｜1時間〜</div></div>
+    <div class="card" data-spot="busena"><h4>○ ブセナ海中公園</h4><div class="hook">雨でも魚が見られる海中展望塔。</div><div class="hours">9:00〜18:00｜展望塔¥1,050／ボート¥1,560｜30分</div></div>
+    <div class="card" data-spot="daisekirinzan"><h4>○ 大石林山・辺戸岬</h4><div class="hook">本島最北端の奇岩と岬。今回は遠すぎるので次回向き。</div><div class="hours">大石林山 9:30〜17:30 ¥1,200｜那覇から2時間半</div></div>
   </div>
 
   <div class="cat-head"><h3>那覇・南部</h3><span class="sub">Day2｜那覇から車で15〜45分</span></div>
@@ -572,17 +597,17 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
     <img src="assets/img/th/kokusaidori.jpg" alt="">
   </div>
   <div class="grid">
-    <div class="card top"><h4>◎ 首里城公園（世界遺産）</h4><div class="hook">守礼門から復元なった正殿の外観へ。東のアザナから那覇一望。正殿内部は11/23公開。</div><div class="hours">8:00〜19:00｜有料区域 ¥600｜1.5時間</div></div>
-    <div class="card top"><h4>◎ 斎場御嶽（世界遺産）</h4><div class="hook">琉球最高の聖地。三角岩「三庫理」の先に久高島。</div><div class="hours">9:00〜18:00（販売〜17:15）｜¥600・南城市地域物産館で購入｜1時間</div></div>
-    <div class="card top"><h4>◎ 瀬長島ウミカジテラス</h4><div class="hook">滑走路の延長線上。夕日と頭上の着陸機、白い階段の街。</div><div class="hours">10:00〜21:00｜無料・P無料｜1時間</div></div>
-    <div class="card top"><h4>◎ 知念岬公園・ニライカナイ橋</h4><div class="hook">270度の海と久高島。橋は上の展望台から見下ろす。</div><div class="hours">常時｜無料（橋はPなし）｜30分</div></div>
-    <div class="card top"><h4>◎ 奥武島</h4><div class="hook">天ぷらと猫の小島。橋を渡って5分。</div><div class="hours">常時｜無料｜30分</div></div>
-    <div class="card"><h4>○ 玉陵・金城町石畳道</h4><div class="hook">王家の墓と、王国時代の石畳。首里城とセット。</div><div class="hours">玉陵 ¥300｜石畳は常時無料｜計40分</div></div>
-    <div class="card"><h4>○ 国際通り・壺屋やちむん通り・公設市場</h4><div class="hook">夜さんぽと土産。市場は10/25（第4日曜）休。</div><div class="hours">市場 8:00〜22:00｜徒歩10分</div></div>
-    <div class="card"><h4>○ 波の上ビーチ・波上宮</h4><div class="hook">ホテルから徒歩7分。朝の散歩に。</div><div class="hours">常時｜無料｜20分</div></div>
-    <div class="card"><h4>○ ガンガラーの谷</h4><div class="hook">太古の森をガイドと歩く。予約制。</div><div class="hours">10/12/14/16時発｜¥2,500｜80分</div></div>
-    <div class="card"><h4>○ 琉球温泉 龍神の湯（瀬長島）</h4><div class="hook">海と夕日を見ながら温泉。最終日の締めにも。</div><div class="hours">6:00〜24:00｜¥2,000｜1.5時間</div></div>
-    <div class="card"><h4>○ おきなわワールド・玉泉洞</h4><div class="hook">雨の日の切り札。鍾乳洞は年中快適。</div><div class="hours">9:00〜17:30｜¥2,000｜2時間</div></div>
+    <div class="card top" data-spot="shuri"><h4>◎ 首里城公園（世界遺産）</h4><div class="hook">守礼門から復元なった正殿の外観へ。東のアザナから那覇一望。正殿内部は11/23公開。</div><div class="hours">8:00〜19:00｜有料区域 ¥600｜1.5時間</div></div>
+    <div class="card top" data-spot="sefa"><h4>◎ 斎場御嶽（世界遺産）</h4><div class="hook">琉球最高の聖地。三角岩「三庫理」の先に久高島。</div><div class="hours">9:00〜18:00（販売〜17:15）｜¥600・南城市地域物産館で購入｜1時間</div></div>
+    <div class="card top" data-spot="senaga"><h4>◎ 瀬長島ウミカジテラス</h4><div class="hook">滑走路の延長線上。夕日と頭上の着陸機、白い階段の街。</div><div class="hours">10:00〜21:00｜無料・P無料｜1時間</div></div>
+    <div class="card top" data-spot="chinen"><h4>◎ 知念岬公園・ニライカナイ橋</h4><div class="hook">270度の海と久高島。橋は上の展望台から見下ろす。</div><div class="hours">常時｜無料（橋はPなし）｜30分</div></div>
+    <div class="card top" data-spot="ou"><h4>◎ 奥武島</h4><div class="hook">天ぷらと猫の小島。橋を渡って5分。</div><div class="hours">常時｜無料｜30分</div></div>
+    <div class="card" data-spot="tamaudun"><h4>○ 玉陵・金城町石畳道</h4><div class="hook">王家の墓と、王国時代の石畳。首里城とセット。</div><div class="hours">玉陵 ¥300｜石畳は常時無料｜計40分</div></div>
+    <div class="card" data-spot="kokusai"><h4>○ 国際通り・壺屋やちむん通り・公設市場</h4><div class="hook">夜さんぽと土産。市場は10/25（第4日曜）休。</div><div class="hours">市場 8:00〜22:00｜徒歩10分</div></div>
+    <div class="card" data-spot="naminoue"><h4>○ 波の上ビーチ・波上宮</h4><div class="hook">ホテルから徒歩7分。朝の散歩に。</div><div class="hours">常時｜無料｜20分</div></div>
+    <div class="card" data-spot="gangala"><h4>○ ガンガラーの谷</h4><div class="hook">太古の森をガイドと歩く。予約制。</div><div class="hours">10/12/14/16時発｜¥2,500｜80分</div></div>
+    <div class="card" data-spot="ryujin"><h4>○ 琉球温泉 龍神の湯（瀬長島）</h4><div class="hook">海と夕日を見ながら温泉。最終日の締めにも。</div><div class="hours">6:00〜24:00｜¥2,000｜1.5時間</div></div>
+    <div class="card" data-spot="okinawaworld"><h4>○ おきなわワールド・玉泉洞</h4><div class="hook">雨の日の切り札。鍾乳洞は年中快適。</div><div class="hours">9:00〜17:30｜¥2,000｜2時間</div></div>
   </div>
 
   <div class="cat-head"><h3>中部</h3><span class="sub">Day3｜那覇から車で30〜70分</span></div>
@@ -594,14 +619,14 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
     <img src="assets/img/th/zanpa.jpg" alt="">
   </div>
   <div class="grid">
-    <div class="card top"><h4>◎ 海中道路・浜比嘉島</h4><div class="hook">両側が海の4.7km。浜比嘉島は琉球開闢の神話の島、赤瓦の集落。</div><div class="hours">常時｜無料（あやはし館P300台）｜1.5時間</div></div>
-    <div class="card top"><h4>◎ 中城城跡（世界遺産）</h4><div class="hook">ペリーも絶賛したアーチ門。東西に海。</div><div class="hours">8:30〜17:00｜¥400｜45分</div></div>
-    <div class="card top"><h4>◎ 美浜アメリカンビレッジ・サンセットビーチ</h4><div class="hook">米軍文化の街。ブルーシール本店、ボードウォーク、ハロウィン装飾。</div><div class="hours">店ごと（〜22時台）｜無料｜1.5時間</div></div>
-    <div class="card"><h4>○ 果報バンタ・ぬちまーす</h4><div class="hook">宮城島の絶景の崖と、海塩の工場見学。海中道路から20分。</div><div class="hours">工場 9:00〜17:30｜無料｜40分</div></div>
-    <div class="card"><h4>○ 読谷 やちむんの里・残波岬</h4><div class="hook">登り窯と工房で器を選ぶ。残波岬は白い灯台と断崖。</div><div class="hours">工房 9:30〜17:30（火休あり）｜灯台¥300｜計1時間</div></div>
-    <div class="card"><h4>○ 真栄田岬・青の洞窟</h4><div class="hook">シュノーケルツアーは通年。10月は水温25〜27℃。</div><div class="hours">ツアー ¥3,000〜5,800｜2.5時間</div></div>
-    <div class="card"><h4>○ 港川外人住宅</h4><div class="hook">米軍住宅を改装したカフェと雑貨の街。雨の日向き。</div><div class="hours">店ごと｜那覇から20分｜1時間</div></div>
-    <div class="card"><h4>○ 勝連城跡（世界遺産）</h4><div class="hook">海中道路の帰りに。丘の上の城壁。</div><div class="hours">9:00〜18:00｜¥600｜45分</div></div>
+    <div class="card top" data-spot="kaichudoro"><h4>◎ 海中道路・浜比嘉島</h4><div class="hook">両側が海の4.7km。浜比嘉島は琉球開闢の神話の島、赤瓦の集落。</div><div class="hours">常時｜無料（あやはし館P300台）｜1.5時間</div></div>
+    <div class="card top" data-spot="nakagusuku"><h4>◎ 中城城跡（世界遺産）</h4><div class="hook">ペリーも絶賛したアーチ門。東西に海。</div><div class="hours">8:30〜17:00｜¥400｜45分</div></div>
+    <div class="card top" data-spot="amvillage"><h4>◎ 美浜アメリカンビレッジ・サンセットビーチ</h4><div class="hook">米軍文化の街。ブルーシール本店、ボードウォーク、ハロウィン装飾。</div><div class="hours">店ごと（〜22時台）｜無料｜1.5時間</div></div>
+    <div class="card" data-spot="kafu"><h4>○ 果報バンタ・ぬちまーす</h4><div class="hook">宮城島の絶景の崖と、海塩の工場見学。海中道路から20分。</div><div class="hours">工場 9:00〜17:30｜無料｜40分</div></div>
+    <div class="card" data-spot="yomitan"><h4>○ 読谷 やちむんの里・残波岬</h4><div class="hook">登り窯と工房で器を選ぶ。残波岬は白い灯台と断崖。</div><div class="hours">工房 9:30〜17:30（火休あり）｜灯台¥300｜計1時間</div></div>
+    <div class="card" data-spot="maeda"><h4>○ 真栄田岬・青の洞窟</h4><div class="hook">シュノーケルツアーは通年。10月は水温25〜27℃。</div><div class="hours">ツアー ¥3,000〜5,800｜2.5時間</div></div>
+    <div class="card" data-spot="minatogawa"><h4>○ 港川外人住宅</h4><div class="hook">米軍住宅を改装したカフェと雑貨の街。雨の日向き。</div><div class="hours">店ごと｜那覇から20分｜1時間</div></div>
+    <div class="card" data-spot="katsuren"><h4>○ 勝連城跡（世界遺産）</h4><div class="hook">海中道路の帰りに。丘の上の城壁。</div><div class="hours">9:00〜18:00｜¥600｜45分</div></div>
   </div>
 
   <div class="cat-head"><h3>体験</h3><span class="sub">ふたりで1つ入れるなら</span></div>
@@ -796,6 +821,276 @@ function toggleDay(h){h.parentElement.classList.toggle('open');}
     Object.entries(j).forEach(([k,v])=>{const li=document.createElement('li'); const a=document.createElement('a'); a.href=v.page; a.target='_blank'; a.rel='noopener'; a.textContent=(v.title||'').replace(/^File:/,''); li.appendChild(a); li.append(' — '+(v.artist||'')+' / '+(v.license||'')); ul.appendChild(li);});
   }).catch(()=>{});
 })();
+</script>
+<!-- ===== スポット詳細シート ===== -->
+<div class="sheet-bg" id="sheetBg" hidden></div>
+<aside class="sheet" id="sheet" hidden aria-modal="true" role="dialog" aria-labelledby="sheetTitle">
+  <button class="sheet-close" id="sheetClose" aria-label="閉じる">✕</button>
+  <div class="sheet-img"><img id="sheetImg" src="" alt=""></div>
+  <div class="sheet-body">
+    <div class="sheet-area" id="sheetArea"></div>
+    <h2 id="sheetTitle"></h2>
+    <p class="sheet-lead" id="sheetLead"></p>
+    <div class="sheet-links" id="sheetLinks"></div>
+    <div class="sheet-info" id="sheetInfo"></div>
+    <div id="sheetAbout"></div>
+  </div>
+</aside>
+
+<script>
+/* ===== スポット詳細データ ===== */
+const SPOTS = {
+churaumi:{t:"沖縄美ら海水族館",area:"北部・本部町（海洋博公園）",img:"churaumi",lead:"3匹のジンベエザメとマンタが泳ぐ巨大水槽「黒潮の海」。世界最大級のアクリルパネル越しに、海の中に立っている気分になる。",
+ about:"1975年の沖縄国際海洋博覧会の跡地に2002年開館。世界で初めてジンベエザメの複数飼育・長期飼育に成功した水族館で、黒潮の海は深さ10m・水量7,500トン。館外には無料のイルカショー（オキちゃん劇場）、ウミガメ館、マナティー館、エメラルドビーチが広がる。",
+ see:["黒潮の海：ジンベエザメの給餌解説は15:00と17:00。垂直に立って食べる姿は必見","黒潮探検（水槽の上から見る通路）は時間限定・無料","カフェ「オーシャンブルー」は水槽横の席が争奪戦。開館直後か15時以降","オキちゃん劇場（イルカ・無料）は11:00/13:00/14:30/16:00頃"],
+ tips:["日曜は混む。12時台入館なら順路を逆に回って黒潮の海を先に","チケットは道の駅許田やコンビニの前売りが1割ほど安い。16時以降の入館割引もある（要確認）","駐車場は北ゲート（P7）が入口に近い","館内は冷房が強いので薄手の羽織り"],
+ info:{hours:"8:30〜18:30（入館〜17:30）",price:"大人 ¥2,180",time:"3時間",drive:"那覇から約2時間（許田IC経由）",park:"無料（P7北ゲートが近い）"},
+ map:"沖縄美ら海水族館",url:"https://churaumi.okinawa/"},
+kouri:{t:"古宇利大橋・古宇利島",area:"北部・今帰仁村",img:"hero_kouri",lead:"エメラルドの海の上を2kmまっすぐ走る橋。渡った先は「恋の島」と呼ばれる周囲8kmの小さな島。",
+ about:"2005年開通の古宇利大橋は通行無料の橋として日本屈指の長さ。島には琉球の人類発祥神話（アダムとイブに似た伝説）が残り、北側のティーヌ浜には2つ並んだ「ハートロック」がある。島一周は車で15分。",
+ see:["橋の南詰（屋我地島側）の駐車場から橋と海を一望。ここが定番の撮影ポイント","橋を渡った先の古宇利ビーチ（橋のたもと）は橋越しに夕日が沈む","ハートロック（ティーヌ浜）は干潮時に岩の近くまで歩ける","古宇利オーシャンタワー（10:00〜18:00）は島と橋を上から"],
+ tips:["夕日は17:20には着く。日没17:53","ハートロックの駐車場は私営で¥300〜500。徒歩5分の下り坂","エビ料理のキッチンカー（KOURI SHRIMP）が名物だが今回は夕食前なので見るだけ"],
+ info:{hours:"常時",price:"無料（ハートロックP ¥300〜）",time:"1時間",drive:"那覇から約2時間",park:"橋の南詰に無料P"},
+ map:"古宇利大橋",url:"https://www.kouri-oceantower.com/"},
+manzamo:{t:"万座毛",area:"中部・恩納村",img:"manzamo",lead:"「万人を座らせる広い草原」と王が讃えた断崖。象の鼻の形をした岩と、真っ青な東シナ海。",
+ about:"18世紀、琉球国王・尚敬が「万人が座するに足る」と讃えたことが名の由来。高さ約20mの隆起サンゴ礁の断崖で、沖縄海岸国定公園の中心。2020年に施設がリニューアルされ、遊歩道は一周10分。",
+ see:["象の鼻の岩を遊歩道の突端から","朝は逆光にならず海の色が一番きれい","夕日の名所でもある（西向き）"],
+ tips:["8:00開門。朝イチは観光バスが来る前で人が少ない","ヒールは避ける。風が強い日は帽子に注意","御菓子御殿の恩納村本店が車で10分（Day3に寄る）"],
+ info:{hours:"8:00〜20:00（3〜10月）",price:"無料",time:"30分",drive:"那覇から約1時間（屋嘉IC）",park:"無料"},
+ map:"万座毛",url:"https://www.manzamo.jp/"},
+bise:{t:"備瀬のフクギ並木",area:"北部・本部町",img:"bise",lead:"約2万本のフクギが集落を包む、緑のトンネル。木漏れ日の道を抜けると伊江島の見える海に出る。",
+ about:"フクギは台風から家を守る防風林として、琉球王国時代に植えられた。備瀬集落には樹齢300年級の木もあり、約250戸の家々を碁盤目状の並木道がつなぐ。集落全体が今も暮らしの場で、静かに歩く。",
+ see:["集落入口から海側の「備瀬崎」まで約1km。海に出ると伊江島のタッチュー（城山）が正面","午前は東からの光が木漏れ日になる","水牛車（有料）も走っている"],
+ tips:["駐車場は集落入口の有料P（¥500前後）か海側の備瀬崎P","住民の生活道なので車は入れない。自転車レンタルもあるが徒歩で十分","美ら海水族館から車で5分。組み合わせやすい"],
+ info:{hours:"常時",price:"無料",time:"40分",drive:"那覇から約2時間",park:"¥500前後"},
+ map:"備瀬のフクギ並木",url:"https://www.motobu-ka.com/"},
+nakijin:{t:"今帰仁城跡（世界遺産）",area:"北部・今帰仁村",img:"nakijin",lead:"波打つ曲線の石垣が1.5km続く、北山王の城。石垣の上から海と山が一望。",
+ about:"14世紀、琉球が三山に分かれていた時代の北山王の居城。1416年に中山（首里）に滅ぼされた後も監守が置かれた。2000年「琉球王国のグスク及び関連遺産群」として世界遺産登録。石垣は野面積みで、首里城とは違う荒々しさがある。",
+ see:["平郎門をくぐった先の階段と、両脇の石垣","主郭（本丸）から海を見下ろす","1月下旬は日本一早い桜（寒緋桜）で有名"],
+ tips:["最終入城17:30。夕方は逆光が石垣をきれいに照らす","坂と階段があるので歩きやすい靴","チケット売り場の隣に歴史文化センターあり（共通券）"],
+ info:{hours:"8:00〜18:00（最終入城17:30）",price:"¥1,000",time:"45分",drive:"那覇から約2時間",park:"無料"},
+ map:"今帰仁城跡",url:"https://www.nakijinjoseki-osi.jp/"},
+sesoko:{t:"瀬底ビーチ",area:"北部・本部町",img:"sesoko",lead:"本島屈指の透明度と白い砂。瀬底大橋を渡った島の西側、夕日も美しい天然ビーチ。",
+ about:"1985年開通の瀬底大橋で本部半島とつながる周囲8kmの島。ビーチは天然の白砂で、沖にサンゴ礁が広がりシュノーケルの魚影が濃い。海に入るなら北部で一番。",
+ see:["伊江島と水納島を正面に見る海","夕日は橋のたもとより島の西側のビーチから"],
+ tips:["10月下旬は監視員がいる遊泳期間の終盤。波の高い日は無理をしない","駐車場は1日¥1,000。シャワーあり"],
+ info:{hours:"9:00〜17:00（遊泳期間 4月中旬〜10月下旬）",price:"無料（P ¥1,000）",time:"1時間〜",drive:"那覇から約1時間50分",park:"¥1,000"},
+ map:"瀬底ビーチ",url:""},
+busena:{t:"ブセナ海中公園",area:"北部・名護市",img:"busena",lead:"桟橋の先の海中展望塔と、グラス底ボート。服のまま、雨でも、熱帯魚とサンゴが見られる。",
+ about:"ブセナ岬の先端にある海中公園。海中展望塔は水深5mの窓からサンゴ礁の魚を観察でき、グラス底ボートは20分で岬の周りを一周する。2000年の九州・沖縄サミット会場だったブセナテラスの敷地内。",
+ see:["海中展望塔の丸窓（24個）から見るスズメダイやチョウチョウウオ","グラス底ボートは船底がガラス"],
+ tips:["雨の日の北部プランの切り札","展望塔とボートのセット券がある"],
+ info:{hours:"9:00〜18:00（4〜10月）",price:"展望塔 ¥1,050／ボート ¥1,560",time:"30〜60分",drive:"那覇から約1時間20分",park:"無料"},
+ map:"ブセナ海中公園",url:"https://www.busena-marinepark.com/"},
+daisekirinzan:{t:"大石林山・辺戸岬",area:"北部・国頭村（本島最北端）",img:"daisekirinzan",lead:"2億年前の石灰岩が林立する奇岩の山と、与論島を望む最北端の岬。今回は距離的に次回向き。",
+ about:"大石林山は熱帯カルストの奇岩と亜熱帯の森を歩く遊歩道（4コース）。琉球の始まりの地「安須森（アスムイ）」として今も聖地。辺戸岬は本島最北端、天気が良ければ22km先の与論島が見える。",
+ see:["奇岩・巨石コース（1km・35分）","辺戸岬の断崖と太平洋・東シナ海の境目"],
+ tips:["那覇から片道2時間半。北部の日に足すと帰着が24時近くなるので、今回は候補外"],
+ info:{hours:"大石林山 9:30〜17:30（最終受付16:00）",price:"¥1,200",time:"1時間＋岬30分",drive:"那覇から約2時間半",park:"無料"},
+ map:"大石林山",url:"https://www.sekirinzan.com/"},
+shuri:{t:"首里城公園（世界遺産）",area:"那覇・首里",img:"shuri_ext",lead:"琉球王国450年の王城。2019年の火災から復元された朱の正殿を、守礼門から城郭を登って見に行く。",
+ about:"14世紀末に築かれ、1429年から1879年まで琉球王国の政治・文化の中心。太平洋戦争で全焼し1992年に復元、2000年に城跡が世界遺産に。2019年10月31日の火災で正殿など主要建物を失い、2026年秋に正殿が再建された。正殿内部の一般公開は11月23日から。今回は復元された外観と、東のアザナからの那覇の眺めを見る。",
+ see:["守礼門：「守礼之邦」の額。2,000円札の門","園比屋武御嶽石門（世界遺産）：門の横の小さな石門","歓会門〜瑞泉門〜漏刻門と登る城郭の石段","正殿の外観（有料区域）と、東のアザナ（物見台）からの那覇一望"],
+ tips:["8:00開園。朝は涼しく人も少ない","有料区域は¥600。奉神門から先","駐車は県営首里城公園駐車場（¥320/2h）","徒歩3分に玉陵、5分に金城町石畳道"],
+ info:{hours:"無料区域 8:00〜19:30／有料区域 8:00〜19:00（入場〜18:30）",price:"有料区域 ¥600",time:"1時間30分",drive:"那覇市内から15分",park:"県営P ¥320/2h"},
+ map:"首里城公園",url:"https://oki-park.jp/shurijo/"},
+tamaudun:{t:"玉陵・金城町石畳道",area:"那覇・首里",img:"tamaudun",lead:"第二尚氏王統の巨大な石造りの墓（世界遺産）と、王国時代の面影を残す石畳の坂道。",
+ about:"玉陵（たまうどぅん）は1501年、尚真王が父の遺骨を移すために築いた陵墓。琉球石灰岩の切石で作られた3つの墓室が並ぶ。金城町石畳道は首里城から南へ下る16世紀の官道の一部で、全長約300mの琉球石灰岩の石畳。",
+ see:["玉陵の墓室の前に立つ2体のシーサー","石畳道の途中にある「首里金城の大アカギ」（樹齢200年超）"],
+ tips:["石畳は下りより登りがきつい。守礼門側から下って戻る場合は時間をみて","玉陵は20分、石畳は30分"],
+ info:{hours:"玉陵 9:00〜18:00／石畳 常時",price:"玉陵 ¥300／石畳 無料",time:"計40分",drive:"首里城から徒歩3〜5分",park:"首里城のPから徒歩"},
+ map:"玉陵",url:""},
+sefa:{t:"斎場御嶽（せーふぁうたき・世界遺産）",area:"南部・南城市",img:"sefa2",lead:"琉球王国最高の聖地。巨岩が寄りかかる三角の空間「三庫理」の先に、神の島・久高島が見える。",
+ about:"琉球開闢の神アマミキヨが作ったとされる七御嶽の一つで、王国時代は国王と聞得大君（最高神女）だけが入れた祈りの場。「斎場」は「最高位」の意味。6つの拝所（イビ）を森の道でつなぐ。2000年に世界遺産登録。今も祈りの場なので、大声や拝所への立ち入りは避ける。",
+ see:["大庫理（うふぐーい）：最初の大きな拝所","寄満（ゆいんち）：王国の台所を意味する拝所","三庫理（さんぐーい）：2つの巨岩が作る三角形の通路。抜けた先に久高島遥拝所"],
+ tips:["チケットは現地では買えない。車で3分の「南城市地域物産館」で買ってから徒歩10分（またはシャトル）","石段と坂道。雨の日は滑るので歩きやすい靴","2026年10月1日から料金改定で¥600","旧暦5月1〜3日・10月1〜3日は休息日（今回は該当せず）"],
+ info:{hours:"9:00〜18:00（チケット販売〜17:15・入場〜17:30）",price:"¥600",time:"1時間",drive:"那覇から約40分",park:"南城市地域物産館（無料）"},
+ map:"斎場御嶽",url:"https://sefa.okinawa/"},
+chinen:{t:"知念岬公園・ニライカナイ橋",area:"南部・南城市",img:"chinen",lead:"270度の太平洋と、神の島・久高島。橋の上から海へ下る絶景ドライブ。",
+ about:"知念岬は太平洋に突き出た岬の公園で、芝生の先に久高島とコマカ島が浮かぶ。ニライカナイ橋は国道331号から県道86号へ下る全長660mの高架橋で、「ニライ」「カナイ」2つの橋がカーブしながら海へ向かう。名は海の彼方の理想郷「ニライカナイ」から。",
+ see:["知念岬の芝生の先端から久高島","ニライカナイ橋はトンネルの上の展望台から見下ろすのが正解（橋の上は停車不可）","パラグライダーの発着地でもある"],
+ tips:["展望台の駐車場はなく路肩に短時間。長居しない","斎場御嶽から知念岬は車5分、ニライカナイ橋はさらに10分"],
+ info:{hours:"常時",price:"無料",time:"30分",drive:"那覇から約45分",park:"知念岬は無料P／橋はPなし"},
+ map:"知念岬公園",url:""},
+ou:{t:"奥武島",area:"南部・南城市",img:"ou_island",lead:"橋で渡れる周囲1.6kmの漁師の島。揚げたて天ぷらと、港でくつろぐ猫。",
+ about:"本島と100mの橋でつながる小島。もずくの養殖と漁業の島で、島の入口に天ぷら店が並ぶ。5月の海神祭（ハーリー）が有名。中本鮮魚てんぷら店は島の橋のたもと、大城てんぷら店は少し奥。",
+ see:["中本鮮魚てんぷら店の行列と、目の前の海","港の猫","島一周は徒歩30分、車で5分"],
+ tips:["天ぷらは注文してから揚げるので5〜10分待つ","橋のたもとに無料P。混む日は島内のPへ"],
+ info:{hours:"常時（天ぷら店 10:30〜18:00頃）",price:"無料",time:"30分",drive:"那覇から約35分",park:"無料"},
+ map:"奥武島 中本鮮魚てんぷら店",url:"https://nakamotosengyoten.com/"},
+hamabe:{t:"浜辺の茶屋",area:"南部・南城市",img:"emerald_beach",lead:"満潮なら窓の下が海。沖縄の「海カフェ」の元祖で、静かな午後を過ごす。",
+ about:"1994年、新原ビーチのそばに開いた木造の小さなカフェ。窓際のカウンター席は目の前が海で、干潮時は干潟、満潮時は波打ち際になる。姉妹店に森側の「山の茶屋 楽水」、丘の上の「天空の茶屋」。",
+ see:["窓際の席（先着）。潮位で表情が変わる","自家製ケーキとコーヒー"],
+ tips:["月曜は14:00開店（他曜日は10:00）","駐車場は坂の上。徒歩3分","混む時間帯は待つ。15〜16時が比較的空く"],
+ info:{hours:"10:00〜20:00（月曜 14:00〜）",price:"コーヒー ¥600前後",time:"50分",drive:"那覇から約35分",park:"無料（坂の上）"},
+ map:"浜辺の茶屋",url:""},
+senaga:{t:"瀬長島ウミカジテラス",area:"南部・豊見城市（空港そば）",img:"senaga",lead:"那覇空港の滑走路の延長線上。夕日と、頭上を降りてくる飛行機と、白い階段の街。",
+ about:"那覇空港の南、橋でつながる周囲1.5kmの島。西斜面に白い建物が段々に並ぶウミカジテラス（2015年開業）は、地中海の街を思わせるショッピングエリア。島の東側の道路は着陸機が真上を通る。琉球温泉「龍神の湯」もある。",
+ see:["夕日（10月下旬は17:50頃）","着陸機の真下（島の東側、空港寄りの道）","夜は建物がライトアップ"],
+ tips:["夕日の30分前には着く。駐車場は島に3か所、無料","風が強い日は寒いので羽織りを","食事は那覇に戻ってからにして、ここでは飲み物だけ"],
+ info:{hours:"10:00〜21:00",price:"無料",time:"1時間",drive:"那覇から約20分（空港から15分）",park:"無料"},
+ map:"瀬長島ウミカジテラス",url:"https://www.umikajiterrace.com/"},
+kokusai:{t:"国際通り・壺屋やちむん通り・公設市場",area:"那覇・中心部",img:"kokusaidori",lead:"戦後の焼け野原から復興した「奇跡の1マイル」。夜さんぽと土産、路地の市場と焼き物の街。",
+ about:"国際通りは県庁前から安里まで1.6km。戦後、映画館「アーニー・パイル国際劇場」の名から通り名がついた。一本裏に第一牧志公設市場（1階が鮮魚・精肉、2階が食堂）、その先に壺屋やちむん通り（300年続く焼き物の街）。",
+ see:["公設市場：1階で魚を買って2階で調理してもらう「持ち上げ」。10/25（第4日曜）は休み","壺屋やちむん通り：石畳と登り窯「南ヌ窯」、器の店","日曜12〜18時は歩行者天国（トランジットモール）"],
+ tips:["ホテルから徒歩10分。車は置いていく","御菓子御殿・新垣ちんすこう・わしたショップ・ブルーシールは通り沿い","夜は栄町市場や松山へ2軒目に"],
+ info:{hours:"公設市場 8:00〜22:00（第4日曜休）",price:"無料",time:"1時間",drive:"ホテルから徒歩10分",park:"—"},
+ map:"国際通り 那覇",url:"https://naha-kokusaidori.okinawa/"},
+naminoue:{t:"波の上ビーチ・波上宮",area:"那覇・久米",img:"naminoue",lead:"崖の上の朱い社殿と、那覇で唯一のビーチ。ホテルから徒歩7分の朝さんぽ。",
+ about:"波上宮は琉球八社の最上位で、海に突き出た崖の上に建つ。その崖の下が波の上ビーチ。市街地にあるので気軽に海が見られる。朝は地元の人の散歩道。",
+ see:["崖の上の社殿を海側（ビーチ）から見上げる","日の出は6:35頃"],
+ tips:["Day3の朝、ポーたまの前に20分","遊泳は10月まで"],
+ info:{hours:"常時（遊泳 9:00〜18:00・〜10月）",price:"無料",time:"20分",drive:"ホテルから徒歩7分",park:"—"},
+ map:"波の上ビーチ",url:"https://naminouegu.jp/"},
+gangala:{t:"ガンガラーの谷",area:"南部・南城市",img:"gangala",lead:"鍾乳洞が崩れてできた太古の森を、ガイドと歩く80分。2万年前の人骨が出た洞窟がある。",
+ about:"数十万年前の鍾乳洞が崩壊してできた谷で、亜熱帯の森に鍾乳石と巨大なガジュマルが混在する。港川人の骨が見つかった発掘現場もあり、予約制のガイドツアーでのみ入れる。入口の「ケイブカフェ」は洞窟の中。",
+ see:["大主（ウフシュ）ガジュマル：谷の主","イナグ洞・イキガ洞：命の誕生を祈る洞窟","ケイブカフェ（ツアー前後に）"],
+ tips:["ツアーは10/12/14/16時発。前日17時までに予約","おきなわワールドの向かい。雨の日の南部プランと相性がいい"],
+ info:{hours:"ツアー 10:00／12:00／14:00／16:00",price:"¥2,500",time:"80分",drive:"那覇から約40分",park:"無料"},
+ map:"ガンガラーの谷",url:"https://www.gangala.com/"},
+ryujin:{t:"琉球温泉 龍神の湯（瀬長島）",area:"南部・豊見城市",img:"senaga",lead:"海と夕日を見ながら入る天然温泉。空港から15分なので、最終日の締めにも使える。",
+ about:"瀬長島ホテルの日帰り温泉。地下1,000mから湧く塩化物泉で、露天風呂から東シナ海と飛行機が見える。6:00〜24:00と長く、朝風呂にも。",
+ see:["露天風呂からの夕日と着陸機","立ち湯・寝湯"],
+ tips:["タオル付き。手ぶらで可","Day2の瀬長島の夕日の後に入るなら、美榮の予約を20:00にずらす"],
+ info:{hours:"6:00〜24:00（最終受付23:00）",price:"¥2,000",time:"1時間30分",drive:"那覇から約20分",park:"無料"},
+ map:"琉球温泉 龍神の湯",url:"https://www.resorts.co.jp/senaga/ryujinhotspring"},
+okinawaworld:{t:"おきなわワールド・玉泉洞",area:"南部・南城市",img:"gyokusendo",lead:"全長5kmの鍾乳洞（公開890m）と、琉球の街並みを再現したテーマパーク。雨の日の切り札。",
+ about:"玉泉洞は30万年かけてできた鍾乳洞で、鍾乳石の数は100万本以上、国内最多。洞内は年中21℃。地上には琉球王国城下町（登録有形文化財の古民家）、ハブ博物公園、エイサーショーがある。",
+ see:["玉泉洞「青の泉」「黄金の盃」","スーパーエイサー（1日数回）","ハブショー"],
+ tips:["鍾乳洞は足元が濡れる。滑りにくい靴","ガンガラーの谷と向かい合わせ"],
+ info:{hours:"9:00〜17:30（入園〜16:30）",price:"¥2,000",time:"2時間",drive:"那覇から約40分",park:"無料"},
+ map:"おきなわワールド",url:"https://www.gyokusendo.co.jp/okinawaworld/"},
+kaichudoro:{t:"海中道路・浜比嘉島",area:"中部・うるま市",img:"kaichudoro",lead:"両側が海の4.7kmの道路を渡り、神話の島へ。赤瓦の集落と小さな港。",
+ about:"1972年開通の海中道路は、本島と平安座島を結ぶ海上の一般道（橋ではなく堤防道路）。中間の「海の駅あやはし館」で休憩できる。渡った先の浜比嘉島は琉球開闢の神アマミチュー・シルミチューが住んだとされる島で、シルミチュー霊場（洞窟）とアマミチューの墓がある。",
+ see:["海中道路の途中の駐車帯から両側の海","浜比嘉大橋を渡って、浜集落の赤瓦と港","シルミチュー霊場：108段の石段の上の洞窟（子宝祈願）","果報バンタ（宮城島）：海中道路からさらに20分の絶景の崖"],
+ tips:["干潮だと海中道路の海が浅く見える。満潮の方が青い","あやはし館の駐車場は300台無料","浜比嘉島の集落内は道が細い。集落入口のPに置いて歩く"],
+ info:{hours:"常時",price:"無料",time:"1時間30分",drive:"那覇から約1時間",park:"無料"},
+ map:"海中道路",url:"https://www.uruma-ru.jp/"},
+kafu:{t:"果報バンタ・ぬちまーす観光製塩ファクトリー",area:"中部・うるま市宮城島",img:"kafubanta",lead:"「幸せの岬」を意味する高さ120mの崖から、ぬちの浜とサンゴ礁の海を見下ろす。",
+ about:"果報（かふう）は沖縄の言葉で「幸せ」、バンタは「崖」。海中道路から宮城島へ渡った丘の上にあり、隣接する塩工場「ぬちまーす」の敷地内。工場では海水を霧にして乾かす製法（世界初）を無料で見学できる。",
+ see:["果報バンタの展望台（工場の裏手、徒歩3分）","製塩工場の見学（無料ガイド）","三天御座（みてぃんうざ）：龍神の伝説の洞窟"],
+ tips:["海中道路から車20分。浜比嘉島と合わせて＋40分","ぬちまーすの塩は土産に軽くて良い"],
+ info:{hours:"工場 9:00〜17:30",price:"無料",time:"40分",drive:"那覇から約1時間20分",park:"無料"},
+ map:"果報バンタ",url:"https://nuchima-su.co.jp/tour/"},
+nakagusuku:{t:"中城城跡（世界遺産）",area:"中部・北中城村",img:"nakagusuku",lead:"1853年に上陸したペリーの一行が測量して驚いた、精巧なアーチ門と6つの郭。東西に海が見える丘の城。",
+ about:"15世紀に護佐丸が拡張した城で、琉球のグスクの中でも石積みの技術が最も高いとされる。野面積み・布積み・相方積みの3種の石垣を一か所で見られる。護佐丸は1458年、阿麻和利（勝連城主）に攻められ自害した。",
+ see:["三の郭の相方（あいかた）積みの石垣","一の郭からの太平洋と東シナ海","裏門のアーチ（ペリーが「エジプト式」と評した）"],
+ tips:["駐車場から入口までカートで送ってくれる","朝8:30開門。Day3の最初に"],
+ info:{hours:"8:30〜17:00",price:"¥400",time:"45分",drive:"那覇から約35分",park:"無料"},
+ map:"中城城跡",url:"https://www.nakagusuku-jo.jp/"},
+katsuren:{t:"勝連城跡（世界遺産）",area:"中部・うるま市",img:"katsuren",lead:"最後の城主・阿麻和利の居城。丘の上に段々に重なる城壁から海中道路まで見渡せる。",
+ about:"12〜13世紀築、沖縄のグスクで最も古いとされる。15世紀の城主・阿麻和利は貿易で栄えたが、1458年に首里に滅ぼされた。2016年、城跡からローマ帝国のコインが出土して話題に。",
+ see:["一の郭からの360度の眺め（海中道路・金武湾）","2021年開館の「あまわりパーク」（歴史文化施設）"],
+ tips:["海中道路の帰りに立ち寄れる（車10分）","階段が多い"],
+ info:{hours:"9:00〜18:00（最終入場17:30）",price:"¥600",time:"45分",drive:"那覇から約1時間",park:"無料"},
+ map:"勝連城跡",url:"https://www.katsuren-jo.jp/"},
+amvillage:{t:"美浜アメリカンビレッジ・サンセットビーチ",area:"中部・北谷町",img:"amvillage",lead:"米軍基地の返還地にできたアメリカ西海岸風の街。観覧車跡のショッピングエリア、海沿いのボードウォーク、ブルーシール本店。",
+ about:"1998年から開発された北谷町美浜のエンタメ地区。カラフルな建物にカフェ・雑貨・ライブハウスが入り、外国人も多い。隣接するサンセットビーチは人工ビーチで、夕日の名所。10月はハロウィン装飾。",
+ see:["デポアイランドのボードウォーク（海沿い）","ブルーシール 北谷本店（アメリカンビレッジの隣）","サンセットビーチの夕方の光"],
+ tips:["駐車場は無料が多いが、混む時間は満車","GORDIE'S（炭火バーガー）は砂辺の隣町、車10分","Day3は16:20には出ないと58号の夕方渋滞にはまる"],
+ info:{hours:"店ごと（多くが〜22時台）",price:"無料",time:"1時間30分",drive:"那覇から約30分",park:"無料（多数）"},
+ map:"美浜アメリカンビレッジ",url:"https://www.okinawa-americanvillage.com/"},
+yomitan:{t:"読谷 やちむんの里・残波岬",area:"中部・読谷村",img:"tsuboya2",lead:"登り窯と19の工房が集まる焼き物の里と、白い灯台の断崖。器を選ぶならここ。",
+ about:"1972年、人間国宝・金城次郎が壺屋から読谷に窯を移したのが始まり。共同の登り窯「読谷山焼北窯」を中心に工房と直売所が点在する。残波岬は高さ30mの断崖が2km続き、白い灯台（上れる）が立つ。",
+ see:["北窯の登り窯と共同売店","各工房の直売所（月〜火に休む工房あり）","残波岬の灯台（¥300）と断崖"],
+ tips:["Day3に寄るなら金武から45分。時間があればの枠","器は割れ物。梱包してくれる店が多い"],
+ info:{hours:"工房 9:30〜17:30（工房ごと）／灯台 9:30〜16:30",price:"見学無料／灯台 ¥300",time:"計1時間",drive:"那覇から約50分",park:"無料"},
+ map:"やちむんの里",url:"https://www.yomitan-kankou.jp/tourist/watch/1611319504/"},
+maeda:{t:"真栄田岬・青の洞窟",area:"中部・恩納村",img:"maeda",lead:"洞窟の入口から差す光で海が青く輝く、本島で一番人気のシュノーケルスポット。",
+ about:"真栄田岬の断崖の下にある海食洞。水深は浅く、ツアーなら泳げなくても参加できる。魚のえさやり付きのツアーが多い。10月下旬の水温は25〜27℃で、ウェットスーツを貸してくれる。",
+ see:["洞窟内の青い光（午前中が明るい）","岬の展望台からの海"],
+ tips:["彼女が希望すればDay3の午前をここに差替え（9:00集合→12:30キングタコス）","ツアーは前日までに予約。波が高いと中止になる"],
+ info:{hours:"ツアーは通年",price:"¥3,000〜5,800",time:"2時間30分",drive:"那覇から約1時間",park:"¥100/h"},
+ map:"真栄田岬",url:""},
+minatogawa:{t:"港川外人住宅",area:"中部・浦添市",img:"blueseal",lead:"米軍関係者が住んだ平屋の住宅街が、カフェと雑貨の街に。雨の日の中部プランに。",
+ about:"1950〜60年代に米軍関係者向けに建てられたコンクリート平屋の住宅約70棟が残り、2010年頃からカフェやパン屋、雑貨店に生まれ変わった。通りは米国の州名（ステイト）で区画されている。",
+ see:["oHacorté（フルーツタルト）","ippe coppe（天然酵母食パン・火水休）","雑貨とアンティーク"],
+ tips:["駐車場が少ない。近くのコインPへ","那覇から20分。空港へも30分"],
+ info:{hours:"店ごと",price:"無料",time:"1時間",drive:"那覇から約20分",park:"コインP"},
+ map:"港川外人住宅",url:""}
+};
+
+/* ===== 店リンク（食べログ／公式／予約） ===== */
+const SHOPS = {
+kishimoto:{n:"きしもと食堂 本店",map:"きしもと食堂 本店 本部町",official:"https://www.hotpepper.jp/strJ000114138/",offLabel:"店舗情報"},
+shurisoba:{n:"首里そば",map:"首里そば 那覇市首里赤田町"},
+yanbarusoba:{n:"山原そば",map:"山原そば 本部町伊豆味",official:"https://www.hotpepper.jp/strJ000596947/",offLabel:"店舗情報"},
+inaka:{n:"田舎 公設市場南店",map:"田舎 公設市場南店 那覇"},
+shimujo:{n:"しむじょう",map:"しむじょう 那覇市首里"},
+takaesu:{n:"高江洲そば",map:"高江洲そば 浦添",official:"https://gourmet.tsuku2.jp/shop/0000054194"},
+jackie:{n:"ジャッキーステーキハウス",map:"ジャッキーステーキハウス 那覇",official:"https://steak.co.jp/"},
+s88jr:{n:"ステーキハウス88Jr. 松山店",map:"ステーキハウス88Jr. 松山店",official:"https://s88.co.jp/shop/jr/matsuyama/",tabelog:"https://tabelog.com/okinawa/A4701/A470101/47019140/"},
+captains:{n:"キャプテンズイン 国際通り店",map:"キャプテンズイン 国際通り店",official:"https://www.okinawa-steak.com/shop/kokusai/",reserve:"https://www.okinawa-steak.com/shop/kokusai/",resLabel:"予約（公式）"},
+motobu:{n:"焼肉もとぶ牧場 もとぶ店",map:"焼肉もとぶ牧場 もとぶ店",official:"https://f556000.gorp.jp/",reserve:"https://motobu-farm-motobu.foodre.jp/",resLabel:"ネット予約"},
+buuya:{n:"ぶうや",map:"やんばる島豚あぐー 炭火焼 ぶうや 那覇",reserve:"https://www.hotpepper.jp/strJ000971610/",resLabel:"ホットペッパー"},
+cochon:{n:"アグーとんかつ コション 浮島通り店",map:"アグーとんかつ コション 浮島通り店"},
+mie:{n:"琉球料理 美榮",map:"琉球料理 美榮 那覇",official:"http://ryukyu-mie.com/",reserve:"tel:0988671356",resLabel:"電話予約 098-867-1356"},
+urizun:{n:"うりずん",map:"古酒と琉球料理 うりずん 安里",official:"http://urizun.okinawa/",tabelog:"https://tabelog.com/okinawa/A4701/A470101/47000019/",reserve:"https://www.hotpepper.jp/strJ000114092/",resLabel:"ホットペッパー"},
+yunangi:{n:"ゆうなんぎい",map:"ゆうなんぎい 那覇市久茂地"},
+ryune:{n:"郷土料理 琉音",map:"郷土料理 琉音 那覇市久米"},
+dachibin:{n:"抱瓶 那覇久茂地店",map:"抱瓶 那覇久茂地店",official:"https://dachibin-okinawa.com/"},
+iyumachi:{n:"泊いゆまち",map:"泊いゆまち",official:"https://www.tomariiyumachi.com/"},
+uomaru:{n:"魚まる 小禄本店",map:"魚屋直営食堂 魚まる 小禄本店"},
+itoman:{n:"糸満漁民食堂",map:"糸満漁民食堂"},
+nakamoto:{n:"中本鮮魚てんぷら店",map:"中本鮮魚てんぷら店 奥武島",official:"https://nakamotosengyoten.com/"},
+kingtacos:{n:"キングタコス 金武本店",map:"キングタコス 金武本店",official:"https://www.visitkintown.jp/spot/kingtacos-honten",offLabel:"金武町観光"},
+gordies:{n:"GORDIE'S",map:"GORDIE'S 北谷町砂辺"},
+kangaroo:{n:"キャプテンカンガルー",map:"キャプテンカンガルー 本部町"},
+porktamago:{n:"ポーたま 牧志市場本店",map:"ポーたま 牧志市場本店",official:"https://porktamago.com/shop/001-mks/"},
+cc:{n:"C&C BREAKFAST OKINAWA",map:"C&C BREAKFAST OKINAWA 那覇"},
+mitsuya:{n:"三矢本舗 道の駅許田",map:"道の駅許田",official:"https://www.yanbaru-b.co.jp/",offLabel:"道の駅許田"},
+aragaki:{n:"新垣ぜんざい屋",map:"新垣ぜんざい屋 本部町",official:"https://www.hotpepper.jp/strJ000114127/",offLabel:"店舗情報"},
+fujiya:{n:"富士家 泊本店",map:"富士家 泊本店 ぜんざい"},
+hamabe:{n:"浜辺の茶屋",map:"浜辺の茶屋 南城市"},
+blueseal:{n:"ブルーシール 北谷本店",map:"ブルーシール 北谷本店",official:"https://www.blueseal.co.jp/"},
+goten:{n:"御菓子御殿 恩納村本店",map:"御菓子御殿 恩納村本店",official:"https://www.okashigoten.co.jp/"},
+awamorisoko:{n:"泡盛倉庫",map:"泡盛倉庫 那覇市"},
+karakara:{n:"カラカラとちぶぐゎ〜",map:"カラカラとちぶぐゎ〜 那覇市久茂地"},
+aw:{n:"A&W 那覇空港店",map:"A&W 那覇空港店",official:"https://www.awok.co.jp/"}
+};
+const gmap=q=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
+const tlog=q=>"https://tabelog.com/okinawa/rstLst/?sw="+encodeURIComponent(q);
+function shopLinks(k){const s=SHOPS[k]; if(!s) return ""; let h='<div class="links">';
+  h+='<a class="btn" target="_blank" rel="noopener" href="'+(s.tabelog||tlog(s.n))+'">食べログ</a>';
+  if(s.official) h+='<a class="btn" target="_blank" rel="noopener" href="'+s.official+'">'+(s.offLabel||"公式HP")+'</a>';
+  if(s.reserve) h+='<a class="btn solid" target="_blank" rel="noopener" href="'+s.reserve+'">'+(s.resLabel||"予約")+'</a>';
+  h+='<a class="btn" target="_blank" rel="noopener" href="'+gmap(s.map)+'">📍 地図</a></div>'; return h;}
+
+/* ===== シート表示 ===== */
+const sheet=document.getElementById('sheet'), sheetBg=document.getElementById('sheetBg');
+function openSpot(k){const s=SPOTS[k]; if(!s) return;
+  document.getElementById('sheetImg').src='assets/img/'+s.img+'.jpg';
+  document.getElementById('sheetArea').textContent=s.area;
+  document.getElementById('sheetTitle').textContent=s.t;
+  document.getElementById('sheetLead').textContent=s.lead;
+  let links='<a class="btn solid" target="_blank" rel="noopener" href="'+gmap(s.map)+'">📍 Googleマップ</a>';
+  if(s.url) links+='<a class="btn" target="_blank" rel="noopener" href="'+s.url+'">公式サイト</a>';
+  document.getElementById('sheetLinks').innerHTML=links;
+  const i=s.info; document.getElementById('sheetInfo').innerHTML=
+    '<div><span>営業</span>'+i.hours+'</div><div><span>料金</span>'+i.price+'</div><div><span>所要</span>'+i.time+'</div><div><span>那覇から</span>'+i.drive+'</div><div><span>駐車</span>'+i.park+'</div>';
+  document.getElementById('sheetAbout').innerHTML='<h3>どんな場所か</h3><p>'+s.about+'</p><h3>見どころ</h3><ul>'+s.see.map(x=>'<li>'+x+'</li>').join('')+'</ul><h3>コツ</h3><ul>'+s.tips.map(x=>'<li>'+x+'</li>').join('')+'</ul>';
+  sheet.hidden=false; sheetBg.hidden=false; document.body.style.overflow='hidden'; sheet.scrollTop=0; document.getElementById('sheetClose').focus();}
+function closeSpot(){sheet.hidden=true; sheetBg.hidden=true; document.body.style.overflow='';}
+sheetBg.addEventListener('click',closeSpot); document.getElementById('sheetClose').addEventListener('click',closeSpot);
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!sheet.hidden) closeSpot();});
+document.querySelectorAll('[data-spot]').forEach(el=>{el.classList.add('clickable'); el.addEventListener('click',e=>{if(e.target.closest('a')) return; openSpot(el.dataset.spot);});});
+
+/* 店カード・殿堂カードにリンク行を付ける */
+document.querySelectorAll('[data-shop]').forEach(el=>{const k=el.dataset.shop; if(!SHOPS[k]) return; el.id=el.id||('shop-'+k); (el.querySelector('.body')||el).insertAdjacentHTML('beforeend',shopLinks(k));});
+/* 名物カード内の店名 → 店カードへ */
+function gotoShop(k){const el=document.getElementById('shop-'+k); if(!el) return; const chips=document.getElementById('chips'); if(chips){chips.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active',c.dataset.f==='all')); document.querySelectorAll('#shops .card').forEach(c=>c.hidden=false);}
+  if(!el.closest('.page').classList.contains('active')) showPage(el.closest('.page').id.replace('page-',''));
+  setTimeout(()=>{el.scrollIntoView({behavior:'smooth',block:'center'}); el.classList.add('flash'); setTimeout(()=>el.classList.remove('flash'),1600);},60);}
+document.querySelectorAll('[data-goto]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault(); gotoShop(a.dataset.goto);}));
+/* スケジュールの行にリンク（地図／スポット詳細／店） */
+document.querySelectorAll('.tl-item[data-map],.tl-item[data-spotref],.tl-item[data-shopref]').forEach(el=>{
+  let h='<div class="tl-links">';
+  if(el.dataset.map) h+='<a class="btn" target="_blank" rel="noopener" href="'+gmap(el.dataset.map)+'">📍 地図</a>';
+  if(el.dataset.spotref) h+='<a class="btn" href="#" data-openspot="'+el.dataset.spotref+'">🗺 スポット詳細</a>';
+  if(el.dataset.shopref){ const s=SHOPS[el.dataset.shopref]; if(s){ h+='<a class="btn" href="#" data-gotoshop="'+el.dataset.shopref+'">🍽 店カード</a>'; h+='<a class="btn" target="_blank" rel="noopener" href="'+(s.tabelog||tlog(s.n))+'">食べログ</a>'; if(s.official) h+='<a class="btn" target="_blank" rel="noopener" href="'+s.official+'">'+(s.offLabel||"公式")+'</a>'; if(s.reserve) h+='<a class="btn solid" target="_blank" rel="noopener" href="'+s.reserve+'">'+(s.resLabel||"予約")+'</a>'; } }
+  h+='</div>'; el.querySelector('.tl-desc').insertAdjacentHTML('beforeend',h);});
+document.addEventListener('click',e=>{const a=e.target.closest('[data-openspot]'); if(a){e.preventDefault(); openSpot(a.dataset.openspot); return;}
+  const b=e.target.closest('[data-gotoshop]'); if(b){e.preventDefault(); gotoShop(b.dataset.gotoshop);}});
 </script>
 </body>
 </html>

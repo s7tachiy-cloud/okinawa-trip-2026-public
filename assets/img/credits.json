@@ -482,5 +482,104 @@
    1280,
    960
   ]
+ },
+ "sesoko": {
+  "file": "sesoko.jpg",
+  "title": "File:Sesoko beach.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File:Sesoko_beach.JPG",
+  "license": "CC BY 3.0",
+  "artist": "Snap55",
+  "size": [
+   1365,
+   768
+  ]
+ },
+ "busena": {
+  "file": "busena.jpg",
+  "title": "File:Busena Resort14bs3200.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Busena_Resort14bs3200.jpg",
+  "license": "CC BY 2.5",
+  "artist": "663highland",
+  "size": [
+   1400,
+   933
+  ]
+ },
+ "gangala": {
+  "file": "gangala.jpg",
+  "title": "File:Cave Caffe, the Valley of Gangala 202312 01.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Cave_Caffe,_the_Valley_of_Gangala_202312_01.jpg",
+  "license": "CC BY-SA 4.0",
+  "artist": "Kugel~commonswiki",
+  "size": [
+   1400,
+   933
+  ]
+ },
+ "gyokusendo": {
+  "file": "gyokusendo.jpg",
+  "title": "File:Aonoizumi gyokusendou cave okinawa.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File:Aonoizumi_gyokusendou_cave_okinawa.JPG",
+  "license": "CC BY 3.0",
+  "artist": "かわかみ みお",
+  "size": [
+   1400,
+   931
+  ]
+ },
+ "kafubanta": {
+  "file": "kafubanta.jpg",
+  "title": "File:Kafu Banta 202107.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Kafu_Banta_202107.jpg",
+  "license": "CC BY-SA 4.0",
+  "artist": "Kugel~commonswiki",
+  "size": [
+   1400,
+   933
+  ]
+ },
+ "katsuren": {
+  "file": "katsuren.jpg",
+  "title": "File:Katsuren Castle ruins.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Katsuren_Castle_ruins.jpg",
+  "license": "CC BY 2.0",
+  "artist": "kanegen",
+  "size": [
+   1400,
+   930
+  ]
+ },
+ "tsuboya2": {
+  "file": "tsuboya2.jpg",
+  "title": "File:Jiro Kinjo Small Fish Plate.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Jiro_Kinjo_Small_Fish_Plate.jpg",
+  "license": "CC BY-SA 4.0",
+  "artist": "Jpatokal",
+  "size": [
+   1399,
+   1400
+  ]
+ },
+ "hedo": {
+  "file": "hedo.jpg",
+  "title": "File:Cape Hedo 202011.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Cape_Hedo_202011.jpg",
+  "license": "CC BY-SA 4.0",
+  "artist": "Kugel~commonswiki",
+  "size": [
+   1400,
+   933
+  ]
+ },
+ "daisekirinzan": {
+  "file": "daisekirinzan.jpg",
+  "title": "File:Daisekirinzan.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Daisekirinzan.jpg",
+  "license": "CC BY-SA 4.0",
+  "artist": "Yanbaru917",
+  "size": [
+   1400,
+   1050
+  ]
  }
 }
