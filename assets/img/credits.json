@@ -581,5 +581,70 @@
    1400,
    1050
   ]
+ },
+ "glass_sample": {
+  "file": "glass_sample.jpg",
+  "title": "File:Ryukyu Glass 1.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Ryukyu_Glass_1.jpg",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "yawning hunter",
+  "size": [
+   960,
+   720
+  ],
+  "changes": "Wikimedia Commons thumbnail; CSS crops may be used for layout."
+ },
+ "chinsuko_sample": {
+  "file": "chinsuko_sample.jpg",
+  "title": "File:Chinsuko.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Chinsuko.jpg",
+  "license": "CC BY-SA 3.0",
+  "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+  "artist": "Kkkdc",
+  "size": [
+   960,
+   720
+  ],
+  "changes": "Wikimedia Commons thumbnail; CSS crops may be used for layout."
+ },
+ "pizza_sample": {
+  "file": "pizza_sample.jpg",
+  "title": "File:Pizza Margherita (14565452088).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Pizza_Margherita_(14565452088).jpg",
+  "license": "CC BY 2.0",
+  "license_url": "https://creativecommons.org/licenses/by/2.0",
+  "artist": "jeffreyw",
+  "size": [
+   960,
+   636
+  ],
+  "changes": "Wikimedia Commons thumbnail; CSS crops may be used for layout."
+ },
+ "burger_sample": {
+  "file": "burger_sample.jpg",
+  "title": "File:Cheeseburger with onions at Hatfield Heath Festival 2017.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Cheeseburger_with_onions_at_Hatfield_Heath_Festival_2017.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Acabashi",
+  "size": [
+   960,
+   960
+  ],
+  "changes": "Wikimedia Commons thumbnail; CSS crops may be used for layout."
+ },
+ "shikuwasa_sample": {
+  "file": "shikuwasa_sample.jpg",
+  "title": "File:Citrus depressa var kugani.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Citrus_depressa_var_kugani.jpg",
+  "license": "CC BY-SA 4.0",
+  "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "artist": "Jpbrigand2",
+  "size": [
+   960,
+   646
+  ],
+  "changes": "Wikimedia Commons thumbnail; CSS crops may be used for layout."
  }
 }

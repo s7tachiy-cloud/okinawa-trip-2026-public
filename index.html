@@ -258,6 +258,33 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
 .card .more{border:0;cursor:pointer;font-family:inherit}.card .more:focus-visible{outline:3px solid var(--sun)}
 .sheet-body,.sheet-links{overflow-wrap:anywhere}.sheet-info{grid-template-columns:1fr}
 @media(max-width:600px){.tbl-wrap.stack tr:first-child{display:block}.tbl-wrap.stack thead{display:none}.food-compare{padding:16px}.grid{gap:12px}}
+
+/* Discovery: wishes first, cuisines and regions for browsing. */
+.discovery-photo{margin:0;background:var(--bg-alt)}
+.discovery-photo img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
+.discovery-photo figcaption{padding:7px 12px;font-size:.73rem;line-height:1.6;color:var(--muted);background:var(--bg-alt)}
+.food-desires{border:2px solid var(--coral);border-radius:var(--r);padding:18px;background:#FFF4E9}
+.food-desires>p{font-size:.85rem;color:var(--muted);margin:8px 0 16px}
+.desire-grid,.cuisine-grid,.souvenir-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.desire-grid .card{border:0}.desire-grid .badge{font-size:.85rem;margin:0}
+.food-compare.photo{padding:0}.food-compare .body{flex:1}
+.booking-state{font-size:.84rem;font-weight:700;color:var(--sea-dark);margin:10px 0}
+.food-order{margin:24px 0 12px}.discovery-chips{position:static;gap:8px;backdrop-filter:none;background:transparent}
+.chip{min-height:44px}.chip:focus-visible,.btn:focus-visible,a:focus-visible{outline:3px solid var(--sun-dark);outline-offset:3px}
+.chip span{font-size:.75rem}.filter-result{font-size:.82rem;color:var(--muted);margin-bottom:16px}
+.cuisine-section{margin:0 0 36px;scroll-margin-top:80px}
+.cuisine-intro{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px;align-items:center;margin-bottom:16px;background:var(--bg-alt);border-radius:var(--r);overflow:hidden}
+.cuisine-intro>div{padding:16px 20px 16px 0}.cuisine-intro h3{margin:6px 0 12px}.cuisine-intro p{font-size:.9rem}.cuisine-intro .eyebrow{color:var(--sea-dark);font-size:.8rem;font-weight:700}
+.card[id]{scroll-margin-top:90px}.card h3,.card h4{overflow-wrap:anywhere}
+.spot-card .badge{margin:0 0 8px}.spot-card .switch-reason{font-size:.85rem;color:var(--muted);margin-top:10px}.switch-reason b{display:block;color:var(--sea-dark)}
+.spot-card>.body{padding:14px 16px}.spot-card:not(.photo){padding:0}.spot-card .btn{display:inline-block;margin-top:12px}
+.souvenir-route{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 28px}.souvenir-route h3{font-size:1rem;margin:12px 0 8px}.souvenir-route p{font-size:.87rem;margin-bottom:8px}
+.souvenir-card{padding:0;overflow:hidden}.souvenir-card>.body{padding:18px}.gift-recipient{color:var(--coral-dark);font-weight:700;font-size:.84rem;margin-bottom:6px}.gift-why{margin:12px 0}
+.souvenir-card dl{font-size:.87rem}.souvenir-card dt{color:var(--sea-dark);font-weight:700;margin:14px 0 4px}.souvenir-card dd{margin:0}
+.footer-nav{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:20px}.footer-nav a{color:#fff;border:1px solid #7C96A7;padding:8px 12px;border-radius:999px;min-height:44px}.footer-nav a[aria-current="page"]{background:var(--sea)}
+.check.has-input li{padding-left:32px}.check.has-input li::before{content:none}.check input{position:absolute;left:3px;top:12px;width:20px;height:20px;accent-color:var(--sea)}.check input:focus-visible{outline:3px solid var(--sun-dark);outline-offset:3px}
+#sheetPhotoCaption{font-size:.78rem;color:var(--muted);padding:8px 16px;background:var(--bg-alt)}
+@media(max-width:600px){.desire-grid,.cuisine-grid,.souvenir-grid,.souvenir-route,.cuisine-intro{grid-template-columns:1fr}.food-desires{padding:12px}.cuisine-intro{gap:0}.cuisine-intro>div{padding:16px}.discovery-chips{gap:6px}.chip{padding:7px 10px}.cuisine-section{margin-bottom:28px}}
 </style>
 </head>
 <body>
@@ -279,44 +306,145 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
 
 <nav>
   <div class="nav-inner" role="tablist" aria-label="ページ切替">
-    <button class="nav-btn active" role="tab" aria-selected="true" aria-controls="page-schedule" tabindex="0" onclick="showPage('schedule', this)">✈ スケジュール</button>
-    <button class="nav-btn" role="tab" aria-selected="false" aria-controls="page-food" tabindex="-1" onclick="showPage('food', this)">🍽 グルメ</button>
-    <button class="nav-btn" role="tab" aria-selected="false" aria-controls="page-spots" tabindex="-1" onclick="showPage('spots', this)">🗺 スポット</button>
-    <button class="nav-btn" role="tab" aria-selected="false" aria-controls="page-access" tabindex="-1" onclick="showPage('access', this)">🚗 移動・宿</button>
-    <button class="nav-btn" role="tab" aria-selected="false" aria-controls="page-prep" tabindex="-1" onclick="showPage('prep', this)">📋 予約・持ち物</button>
-    <button class="nav-btn" role="tab" aria-selected="false" aria-controls="page-budget" tabindex="-1" onclick="showPage('budget', this)">💴 予算</button>
+    <button class="nav-btn active" role="tab" aria-selected="true" id="tab-schedule" aria-controls="page-schedule" tabindex="0" onclick="showPage('schedule', this)">✈ スケジュール</button>
+    <button class="nav-btn" role="tab" aria-selected="false" id="tab-food" aria-controls="page-food" tabindex="-1" onclick="showPage('food', this)">🍽 グルメ</button>
+    <button class="nav-btn" role="tab" aria-selected="false" id="tab-spots" aria-controls="page-spots" tabindex="-1" onclick="showPage('spots', this)">🗺 スポット</button>
+    <button class="nav-btn" role="tab" aria-selected="false" id="tab-souvenirs" aria-controls="page-souvenirs" tabindex="-1" onclick="showPage('souvenirs', this)">🎁 お土産</button>
+    <button class="nav-btn" role="tab" aria-selected="false" id="tab-access" aria-controls="page-access" tabindex="-1" onclick="showPage('access', this)">🚗 移動・宿</button>
+    <button class="nav-btn" role="tab" aria-selected="false" id="tab-prep" aria-controls="page-prep" tabindex="-1" onclick="showPage('prep', this)">📋 予約・持ち物</button>
+    <button class="nav-btn" role="tab" aria-selected="false" id="tab-budget" aria-controls="page-budget" tabindex="-1" onclick="showPage('budget', this)">💴 予算</button>
   </div>
 </nav>
 
 <main>
-<section class="page active" id="page-schedule" role="tabpanel"><h2 class="page-title">✈ スケジュール</h2>
-<div class="banner"><img src="assets/img/churaumi.jpg" alt=""><div class="cap">おいしい食事と、沖縄らしい景色をゆっくり<small>予定時刻は移動・駐車・待ち時間を含む計画目安です。</small></div></div><div class="dayjump" id="dayjump"></div><div class="intro"><b>25(日)</b> 首里・南部の魚料理・グラス選び・明るいウミカジ・あぐーしゃぶ ／ <b>26(月)</b> 古宇利・沖縄そば・美ら海・那覇でまーちぬ家 ／ <b>27(火)</b> ポーたま・中城・ENZO・牧港アイス・市内土産・早いステーキ</div><div class="note">ホテル3泊は予約・支払済み。航空券・車・飲食店は予約状況未確認です。下記の飲食店は候補で、席や食事開始時刻を確約するものではありません。</div><div class="day-card open"><button class="day-header" type="button" aria-expanded="true" onclick="toggleDay(this)"><span class="day-number">00<small>SAT</small></span><span class="day-info"><span class="day-date">2026.10.24 (土)</span><span class="day-title">羽田から夜便で那覇へ</span><span class="day-theme">到着後はホテルで休む。夜食は体力と営業時間次第。</span></span><span class="day-toggle" aria-hidden="true">▼</span></button><div class="day-body"><div class="photo-strip"><figure><img src="assets/img/th/ana_plane.jpg" alt=""><figcaption>候補 ANA479 20:15発</figcaption></figure><figure><img src="assets/img/th/naha_airport.jpg" alt=""><figcaption>候補 22:50着</figcaption></figure></div><div class="tl"><div class="tl-item move" data-map="羽田空港 第2ターミナル"><div class="tl-time">18:30目安</div><div class="tl-title">羽田空港へ</div><div class="tl-desc">軽めの夕食と搭乗準備。航空券確定後にターミナル・搭乗締切を確認。</div></div><div class="tl-item move"><div class="tl-time">20:15 → 22:50</div><div class="tl-title">候補 ANA479 羽田 → 那覇</div><div class="tl-desc">9/12調査時の便候補。片道1名 ¥15,353は当時の表示額で、現在価格・空席・予約は未確認。</div></div><div class="tl-item move" data-map="スマイルホテル那覇シティリゾート"><div class="tl-time">到着・荷物受取後</div><div class="tl-title">タクシー等でホテルへ</div><div class="tl-desc">22:50着から23:00の車受取は見込まない。夜間受取の条件が未確認のため、<b>レンタカーは25朝受取を第一案</b>にする。タクシー乗場の待ち時間も考慮。</div></div><div class="tl-item move"><div class="tl-time">深夜・到着後</div><div class="tl-title">ホテルにチェックイン</div><div class="tl-desc">スマイルホテル那覇シティリゾートは予約済み。<b>遅着連絡と深夜チェックイン可否を事前に確認</b>する。☎098-869-2511。</div></div><div class="tl-item food" data-shopref="s88jr"><div class="tl-time">元気があれば</div><div class="tl-title">任意：ステーキハウス88Jr. 松山店</div><div class="tl-desc">営業・受付を当日確認してから徒歩等で。翌朝に備えて軽食だけでもよい。夜食予算は2名 ¥4,000の見積り。</div></div></div></div></div><div class="day-card open"><button class="day-header" type="button" aria-expanded="true" onclick="toggleDay(this)"><span class="day-number">01<small>SUN</small></span><span class="day-info"><span class="day-date">2026.10.25 (日)</span><span class="day-title">首里 → 糸満の魚料理 → グラス → ウミカジ → まつもと</span><span class="day-theme">南部に絞り、ウミカジは昼の景色から日没前後まで。</span></span><span class="day-toggle" aria-hidden="true">▼</span></button><div class="day-body"><div class="photo-strip"><figure><img src="assets/img/th/shuri_ext.jpg" alt=""><figcaption>首里城公園</figcaption></figure><figure><img src="assets/img/th/senaga.jpg" alt=""><figcaption>ウミカジは15:30から</figcaption></figure><figure><img src="assets/img/th/awamori.jpg" alt=""><figcaption>夕食前に車をホテルへ</figcaption></figure></div><div class="tl"><div class="tl-item move"><div class="tl-time">朝</div><div class="tl-title">軽食・レンタカー受取</div><div class="tl-desc">受取店・開始時刻は未確定。首里9時着に間に合う店舗を確認する。受取に時間がかかる場合は朝食の寄り道を省略し、必要なら首里の滞在を短縮。泊いゆまちは早く受け取れた場合の代替。</div></div><div class="tl-item spot" data-spotref="shuri" data-map="首里城公園"><div class="tl-time">09:00～10:15</div><div class="tl-title">首里城公園</div><div class="tl-desc">復元中の見学。<b>正殿内部の公開は11/23からで、10月は入れない</b>。守礼門・城郭を楽しむ。有料区域は大人1名 ¥400（旅行日適用）。</div></div><div class="tl-item move"><div class="tl-time">10:15～11:15</div><div class="tl-title">糸満へ移動・駐車・開店待ち</div><div class="tl-desc">道中の混雑を見ながら南下。11:30開店に合わせ、名所は追加しない。</div></div><div class="tl-item food" data-shopref="itoman" data-map="糸満漁民食堂 糸満市西崎町4-17"><div class="tl-time">11:30～12:45</div><div class="tl-title">糸満漁民食堂：島魚料理</div><div class="tl-desc">25昼の第一候補。県産魚の料理で沖縄そばとは違う昼食を。予約不可。<b>12:00までの入店が見込めない場合に切替判断</b>。<div class="tl-alt">とらやへ替えるなら那覇への移動と、その後ガラス村へ戻る時間も確認。難しければ道の駅いとまんで軽食（営業・販売状況は要確認）。御殿山は掲載保留で営業状況を確認できないため、今回は候補外。</div></div></div><div class="tl-item spot" data-spotref="glass" data-map="琉球ガラス村 糸満市福地169"><div class="tl-time">13:15～14:15</div><div class="tl-title">琉球ガラス村でグラスを選ぶ</div><div class="tl-desc"><b>60分、店で比べて気に入れば購入</b>。制作体験は入れない。入場・駐車無料。沖縄産を希望する場合は産地表示を確認し、耐熱・食洗機対応や持帰り梱包も相談。</div></div><div class="tl-item move"><div class="tl-time">14:15～15:30</div><div class="tl-title">瀬長島へ、移動と余裕時間</div><div class="tl-desc">駐車待ち・休憩を含める。空いた時間を名所追加で埋めず、15:30到着を守る。</div></div><div class="tl-item spot" data-spotref="senaga" data-map="瀬長島ウミカジテラス"><div class="tl-time">15:30～18:00</div><div class="tl-title">瀬長島ウミカジテラス</div><div class="tl-desc"><b>明るい時間の白い街並みと海、日没前後の景色</b>をゆっくり。ここではカフェ・軽食。店舗ごとに営業時間が異なる。</div></div><div class="tl-item move" data-map="スマイルホテル那覇シティリゾート"><div class="tl-time">19:00目安</div><div class="tl-title">ホテルに戻り車を置く</div><div class="tl-desc">夕食へは徒歩・タクシー等。飲酒する前に運転を終える。</div></div><div class="tl-item food" data-shopref="matsumoto" data-map="まつもと 那覇市松山1-10-8"><div class="tl-time">19:30～21:00</div><div class="tl-title">まつもと：あぐーしゃぶしゃぶ（第一候補・未予約）</div><div class="tl-desc">魚・そば・翌日の郷土料理と味を変える夜。<b>電話予約のみ</b> ☎098-861-1890（公式は14～17時の問合せ推奨）。<div class="tl-alt">満席ならしゃぶしゃぶ金武本店（コースのみ）。しゃぶが取れなければうりずん。うりずんは翌日の郷土料理と重なる。</div></div></div></div></div></div><div class="day-card open"><button class="day-header" type="button" aria-expanded="true" onclick="toggleDay(this)"><span class="day-number">02<small>MON</small></span><span class="day-info"><span class="day-date">2026.10.26 (月)</span><span class="day-title">古宇利の景色 → きしもと → 美ら海 → まーちぬ家</span><span class="day-theme">水族館は約3時間。夜は那覇に戻って郷土料理。</span></span><span class="day-toggle" aria-hidden="true">▼</span></button><div class="day-body"><div class="photo-strip"><figure><img src="assets/img/th/hero_kouri.jpg" alt=""><figcaption>古宇利大橋の景色</figcaption></figure><figure><img src="assets/img/th/okinawa_soba.jpg" alt=""><figcaption>きしもと食堂</figcaption></figure><figure><img src="assets/img/th/churaumi.jpg" alt=""><figcaption>美ら海水族館</figcaption></figure></div><div class="tl"><div class="tl-item move"><div class="tl-time">07:30</div><div class="tl-title">那覇ホテル出発</div><div class="tl-desc">高速道路で北へ。<b>渋滞時は古宇利を先に省略</b>し、美ら海と夜の那覇を優先。走行時間は計画目安。</div></div><div class="tl-item food" data-shopref="mitsuya" data-map="道の駅許田"><div class="tl-time">08:45～09:00</div><div class="tl-title">許田で休憩</div><div class="tl-desc">トイレ・飲み物・軽食。三矢本舗などの営業は当日確認し、食べられなくても長居しない。</div></div><div class="tl-item spot" data-spotref="kouri" data-map="古宇利大橋"><div class="tl-time">09:45～10:15</div><div class="tl-title">古宇利大橋と施設から海を見る</div><div class="tl-desc">橋の眺めを楽しむ30分。利用施設の駐車場に停め、歩道や施設内の安全な場所から。砂浜への立寄りは入れない。</div></div><div class="tl-item food" data-shopref="kishimoto" data-map="きしもと食堂 本店 本部町渡久地5"><div class="tl-time">11:15待ち／11:30～12:20昼食</div><div class="tl-title">きしもと食堂 本店</div><div class="tl-desc">既存の沖縄そば・じゅーしー枠を維持。予約不可・売切あり。<b>12:00までに食事開始が難しければ切替</b>。<div class="tl-alt">キャプテンカンガルーなどへ。そちらも並ぶ場合は水族館に早く移動し館内食を検討。代替でも席・食事開始は確約しない。</div></div></div><div class="tl-item spot" data-spotref="churaumi" data-map="沖縄美ら海水族館"><div class="tl-time">12:40～15:30</div><div class="tl-title">沖縄美ら海水族館</div><div class="tl-desc">約3時間（2時間50分）。通常8:30～18:30・最終入館17:30、大人1名 ¥2,180。<b>15時の給餌は当日の開催表で確認</b>。黒潮の海を軸に見学し、15:30に出発する。</div></div><div class="tl-item move"><div class="tl-time">15:30発 → 18:15～18:30</div><div class="tl-title">休憩を挟み、那覇ホテルへ</div><div class="tl-desc">長距離移動の余裕を取り、ホテルに車を置いてから夕食へ。今帰仁城跡・備瀬は差替候補で、主行程に追加しない。</div></div><div class="tl-item food" data-shopref="marchinu" data-map="まーちぬ家 那覇 前島"><div class="tl-time">19:30～21:30</div><div class="tl-title">まーちぬ家（第一候補・未予約）</div><div class="tl-desc">今回の強い希望を月曜夜に。日曜休のため25夜には置かない。☎098-863-5159。<b>北部の夕食と同日に組まない</b>。<div class="tl-alt">予約できなければ那覇の郷土料理店を再検討。もとぶ牧場・松の古民家・鉄板焼朝日は、まーちぬ家を外して北部夕食へ変更する場合のみ。</div></div></div></div></div></div><div class="day-card open"><button class="day-header" type="button" aria-expanded="true" onclick="toggleDay(this)"><span class="day-number">03<small>TUE</small></span><span class="day-info"><span class="day-date">2026.10.27 (火)</span><span class="day-title">ポーたま → 中城 → ENZO → 牧港 → 土産 → 早めのジャッキー</span><span class="day-theme">帰りの便と車返却を守り、行列が長ければ食事を切り替える。</span></span><span class="day-toggle" aria-hidden="true">▼</span></button><div class="day-body"><div class="photo-strip"><figure><img src="assets/img/th/nakagusuku.jpg" alt=""><figcaption>中城城跡</figcaption></figure><figure><img src="assets/img/th/steak.jpg" alt=""><figcaption>早い時間のジャッキー</figcaption></figure><figure><img src="assets/img/th/naha_airport.jpg" alt=""><figcaption>18:30空港を目標に</figcaption></figure></div><div class="tl"><div class="tl-item food" data-shopref="porktamago" data-map="ポーたま 牧志市場本店"><div class="tl-time">07:20</div><div class="tl-title">ポーたま 牧志市場本店（必須）</div><div class="tl-desc">7:00～20:00・年中無休（公式）。行列・受取・朝食時間を含めて出発準備。早めに並び、受取が遅れたらその後の観光を短縮。</div></div><div class="tl-item move" data-map="スマイルホテル那覇シティリゾート"><div class="tl-time">08:15</div><div class="tl-title">ホテルチェックアウト</div><div class="tl-desc">荷物をまとめ中城へ。朝の渋滞を見込む。</div></div><div class="tl-item spot" data-spotref="nakagusuku" data-map="中城城跡"><div class="tl-time">09:00～10:00</div><div class="tl-title">中城城跡</div><div class="tl-desc">石垣と海の眺めを1時間。大人1名 ¥500。10月は受付8:30～17:00、閉門17:30。</div></div><div class="tl-item move"><div class="tl-time">10:00～11:30</div><div class="tl-title">恩納・真栄田へ移動、開店まで余裕</div><div class="tl-desc">駐車・道路状況を確認。海中道路などを追加しない。</div></div><div class="tl-item food" data-shopref="enzo" data-map="pizzeria da ENZO 恩納村真栄田715-3"><div class="tl-time">11:30～12:45</div><div class="tl-title">pizzeria da ENZO（第一候補・未予約）</div><div class="tl-desc">沖縄食材のピザ・イタリアンで変化を。予約時に<b>ランチ内容・料金・所要時間</b>を確認。掲載コースを昼の必須メニューとは扱わない。<div class="tl-alt">事前の予約確認でENZOが取れなければ、27昼を11時の高江洲そばに変更。恩納へ北上せず浦添～北谷中心へ変更すれば、アメリカンビレッジを入れやすい。主案への追加はしない。</div></div></div><div class="tl-item food" data-shopref="blueseal" data-map="ブルーシール 牧港店"><div class="tl-time">13:45～14:15</div><div class="tl-title">ブルーシール 牧港店</div><div class="tl-desc">2024年に建て替えリニューアルした牧港本店へ。本店に立ち寄る楽しみを入れ、那覇へ戻る途中で30分アイス休憩。営業時間は訪問前に確認。</div></div><div class="tl-item spot" data-spotref="souvenirs" data-map="御菓子御殿 国際通り松尾店"><div class="tl-time">15:00～16:00</div><div class="tl-title">国際通りでお土産をまとめて買う</div><div class="tl-desc"><b>御菓子御殿 国際通り松尾店 → わしたショップ 国際通り店</b>。徒歩・会計込み60分。菓子は前者、黒糖・果汁・調味料などは後者。周辺有料駐車場の空きを確認。</div></div><div class="tl-item food" data-shopref="jackie" data-map="ジャッキーステーキハウス 那覇"><div class="tl-time">16:15～17:15</div><div class="tl-title">ジャッキーステーキハウス</div><div class="tl-desc">早い夕食。予約不可・毎週水曜など休業。<b>16:40までに着席できそうになければ空港食へ切替</b>。必須店ではないので便より優先しない。</div></div><div class="tl-item move"><div class="tl-time">17:15～18:00</div><div class="tl-title">給油 → 18:00レンタカー返却</div><div class="tl-desc">返却営業所は未確定。給油場所・手続・空港送迎時間を予約時に確認。那覇市内想定より遠い営業所ならさらに前倒しする。</div></div><div class="tl-item move" data-map="那覇空港"><div class="tl-time">18:30目標</div><div class="tl-title">那覇空港：チェックイン・保安検査を優先</div><div class="tl-desc">買い漏れは15～20分だけ。ジャッキーを見送ったら空港食（各店の営業・混雑を確認）。主な土産は市内で購入済みに。</div></div><div class="tl-item move"><div class="tl-time">20:45 → 23:00</div><div class="tl-title">候補 ANA1098 那覇 → 羽田</div><div class="tl-desc">9/12調査時の候補（ソラシド運航）。1名 ¥13,222は当時の表示額。実予約・時刻・空席は購入前に確認。</div></div></div></div></div>
+<section class="page active" id="page-schedule" role="tabpanel" aria-labelledby="tab-schedule"><h2 class="page-title">✈ スケジュール</h2>
+<div class="banner"><img src="assets/img/churaumi.jpg" alt=""><div class="cap">おいしい食事と、沖縄らしい景色をゆっくり<small>予定時刻は移動・駐車・待ち時間を含む計画目安です。</small></div></div><div class="dayjump" id="dayjump"></div><div class="intro"><b>25(日)</b> 首里・南部の魚料理・グラス選び・明るいウミカジ・あぐーしゃぶ ／ <b>26(月)</b> 古宇利・沖縄そば・美ら海・那覇でまーちぬ家 ／ <b>27(火)</b> ポーたま・中城・ENZO・牧港アイス・市内土産・早いステーキ</div><div class="note">ホテル3泊は予約・支払済み。航空券・車・飲食店は予約状況未確認です。下記の飲食店は候補で、席や食事開始時刻を確約するものではありません。</div><div class="day-card open"><button class="day-header" type="button" aria-expanded="true" onclick="toggleDay(this)"><span class="day-number">00<small>SAT</small></span><span class="day-info"><span class="day-date">2026.10.24 (土)</span><span class="day-title">羽田から夜便で那覇へ</span><span class="day-theme">到着後はホテルで休む。夜食は体力と営業時間次第。</span></span><span class="day-toggle" aria-hidden="true">▼</span></button><div class="day-body"><div class="photo-strip"><figure><img src="assets/img/th/ana_plane.jpg" alt=""><figcaption>候補 ANA479 20:15発</figcaption></figure><figure><img src="assets/img/th/naha_airport.jpg" alt=""><figcaption>候補 22:50着</figcaption></figure></div><div class="tl"><div class="tl-item move" data-map="羽田空港 第2ターミナル"><div class="tl-time">18:30目安</div><div class="tl-title">羽田空港へ</div><div class="tl-desc">軽めの夕食と搭乗準備。航空券確定後にターミナル・搭乗締切を確認。</div></div><div class="tl-item move"><div class="tl-time">20:15 → 22:50</div><div class="tl-title">候補 ANA479 羽田 → 那覇</div><div class="tl-desc">9/12調査時の便候補。片道1名 ¥15,353は当時の表示額で、現在価格・空席・予約は未確認。</div></div><div class="tl-item move" data-map="スマイルホテル那覇シティリゾート"><div class="tl-time">到着・荷物受取後</div><div class="tl-title">タクシー等でホテルへ</div><div class="tl-desc">22:50着から23:00の車受取は見込まない。夜間受取の条件が未確認のため、<b>レンタカーは25朝受取を第一案</b>にする。タクシー乗場の待ち時間も考慮。</div></div><div class="tl-item move"><div class="tl-time">深夜・到着後</div><div class="tl-title">ホテルにチェックイン</div><div class="tl-desc">スマイルホテル那覇シティリゾートは予約済み。<b>遅着連絡と深夜チェックイン可否を事前に確認</b>する。☎098-869-2511。</div></div><div class="tl-item food" data-shopref="s88jr"><div class="tl-time">元気があれば</div><div class="tl-title">任意：ステーキハウス88Jr. 松山店</div><div class="tl-desc">営業・受付を当日確認してから徒歩等で。翌朝に備えて軽食だけでもよい。夜食予算は2名 ¥4,000の見積り。</div></div></div></div></div><div class="day-card open"><button class="day-header" type="button" aria-expanded="true" onclick="toggleDay(this)"><span class="day-number">01<small>SUN</small></span><span class="day-info"><span class="day-date">2026.10.25 (日)</span><span class="day-title">首里 → 糸満の魚料理 → グラス → ウミカジ → まつもと</span><span class="day-theme">南部に絞り、ウミカジは昼の景色から日没前後まで。</span></span><span class="day-toggle" aria-hidden="true">▼</span></button><div class="day-body"><div class="photo-strip"><figure><img src="assets/img/th/shuri_ext.jpg" alt=""><figcaption>首里城公園</figcaption></figure><figure><img src="assets/img/th/senaga.jpg" alt=""><figcaption>ウミカジは15:30から</figcaption></figure><figure><img src="assets/img/th/awamori.jpg" alt=""><figcaption>夕食前に車をホテルへ</figcaption></figure></div><div class="tl"><div class="tl-item move"><div class="tl-time">朝</div><div class="tl-title">軽食・レンタカー受取</div><div class="tl-desc">受取店・開始時刻は未確定。首里9時着に間に合う店舗を確認する。受取に時間がかかる場合は朝食の寄り道を省略し、必要なら首里の滞在を短縮。泊いゆまちは早く受け取れた場合の代替。</div></div><div class="tl-item spot" data-spotref="shuri" data-map="首里城公園"><div class="tl-time">09:00～10:15</div><div class="tl-title">首里城公園</div><div class="tl-desc">復元中の見学。<b>正殿内部の公開は11/23からで、10月は入れない</b>。守礼門・城郭を楽しむ。有料区域は大人1名 ¥400（旅行日適用）。</div></div><div class="tl-item move"><div class="tl-time">10:15～11:15</div><div class="tl-title">糸満へ移動・駐車・開店待ち</div><div class="tl-desc">道中の混雑を見ながら南下。11:30開店に合わせ、名所は追加しない。</div></div><div class="tl-item food" data-shopref="itoman" data-map="糸満漁民食堂 糸満市西崎町4-17"><div class="tl-time">11:30～12:45</div><div class="tl-title">糸満漁民食堂：島魚料理</div><div class="tl-desc">25昼の第一候補。県産魚の料理で沖縄そばとは違う昼食を。予約不可。<b>12:00までの入店が見込めない場合に切替判断</b>。<div class="tl-alt">とらやへ替えるなら那覇への移動と、その後ガラス村へ戻る時間も確認。難しければ道の駅いとまんで軽食（営業・販売状況は要確認）。御殿山は掲載保留で営業状況を確認できないため、今回は候補外。</div></div></div><div class="tl-item spot" data-spotref="glass" data-map="琉球ガラス村 糸満市福地169"><div class="tl-time">13:15～14:15</div><div class="tl-title">琉球ガラス村でグラスを選ぶ</div><div class="tl-desc"><a class="btn" href="#souvenirs" data-page-link="souvenirs">🎁 お土産の選び方</a><br><b>60分、店で比べて気に入れば購入</b>。制作体験は入れない。入場・駐車無料。沖縄産を希望する場合は産地表示を確認し、耐熱・食洗機対応や持帰り梱包も相談。</div></div><div class="tl-item move"><div class="tl-time">14:15～15:30</div><div class="tl-title">瀬長島へ、移動と余裕時間</div><div class="tl-desc">駐車待ち・休憩を含める。空いた時間を名所追加で埋めず、15:30到着を守る。</div></div><div class="tl-item spot" data-spotref="senaga" data-map="瀬長島ウミカジテラス"><div class="tl-time">15:30～18:00</div><div class="tl-title">瀬長島ウミカジテラス</div><div class="tl-desc"><b>明るい時間の白い街並みと海、日没前後の景色</b>をゆっくり。ここではカフェ・軽食。店舗ごとに営業時間が異なる。</div></div><div class="tl-item move" data-map="スマイルホテル那覇シティリゾート"><div class="tl-time">19:00目安</div><div class="tl-title">ホテルに戻り車を置く</div><div class="tl-desc">夕食へは徒歩・タクシー等。飲酒する前に運転を終える。</div></div><div class="tl-item food" data-shopref="matsumoto" data-map="まつもと 那覇市松山1-10-8"><div class="tl-time">19:30～21:00</div><div class="tl-title">まつもと：あぐーしゃぶしゃぶ（第一候補・未予約）</div><div class="tl-desc">魚・そば・翌日の郷土料理と味を変える夜。<b>電話予約のみ</b> ☎098-861-1890（公式は14～17時の問合せ推奨）。<div class="tl-alt">満席ならしゃぶしゃぶ金武本店（コースのみ）。しゃぶが取れなければうりずん。うりずんは翌日の郷土料理と重なる。</div></div></div></div></div></div><div class="day-card open"><button class="day-header" type="button" aria-expanded="true" onclick="toggleDay(this)"><span class="day-number">02<small>MON</small></span><span class="day-info"><span class="day-date">2026.10.26 (月)</span><span class="day-title">古宇利の景色 → きしもと → 美ら海 → まーちぬ家</span><span class="day-theme">水族館は約3時間。夜は那覇に戻って郷土料理。</span></span><span class="day-toggle" aria-hidden="true">▼</span></button><div class="day-body"><div class="photo-strip"><figure><img src="assets/img/th/hero_kouri.jpg" alt=""><figcaption>古宇利大橋の景色</figcaption></figure><figure><img src="assets/img/th/okinawa_soba.jpg" alt=""><figcaption>きしもと食堂</figcaption></figure><figure><img src="assets/img/th/churaumi.jpg" alt=""><figcaption>美ら海水族館</figcaption></figure></div><div class="tl"><div class="tl-item move"><div class="tl-time">07:30</div><div class="tl-title">那覇ホテル出発</div><div class="tl-desc">高速道路で北へ。<b>渋滞時は古宇利を先に省略</b>し、美ら海と夜の那覇を優先。走行時間は計画目安。</div></div><div class="tl-item food" data-shopref="mitsuya" data-map="道の駅許田"><div class="tl-time">08:45～09:00</div><div class="tl-title">許田で休憩</div><div class="tl-desc">トイレ・飲み物・軽食。三矢本舗などの営業は当日確認し、食べられなくても長居しない。</div></div><div class="tl-item spot" data-spotref="kouri" data-map="古宇利大橋"><div class="tl-time">09:45～10:15</div><div class="tl-title">古宇利大橋と施設から海を見る</div><div class="tl-desc">橋の眺めを楽しむ30分。利用施設の駐車場に停め、歩道や施設内の安全な場所から。砂浜への立寄りは入れない。</div></div><div class="tl-item food" data-shopref="kishimoto" data-map="きしもと食堂 本店 本部町渡久地5"><div class="tl-time">11:15待ち／11:30～12:20昼食</div><div class="tl-title">きしもと食堂 本店</div><div class="tl-desc">既存の沖縄そば・じゅーしー枠を維持。予約不可・売切あり。<b>12:00までに食事開始が難しければ切替</b>。<div class="tl-alt">キャプテンカンガルーなどへ。そちらも並ぶ場合は水族館に早く移動し館内食を検討。代替でも席・食事開始は確約しない。</div></div></div><div class="tl-item spot" data-spotref="churaumi" data-map="沖縄美ら海水族館"><div class="tl-time">12:40～15:30</div><div class="tl-title">沖縄美ら海水族館</div><div class="tl-desc">約3時間（2時間50分）。通常8:30～18:30・最終入館17:30、大人1名 ¥2,180。<b>15時の給餌は当日の開催表で確認</b>。黒潮の海を軸に見学し、15:30に出発する。</div></div><div class="tl-item move"><div class="tl-time">15:30発 → 18:15～18:30</div><div class="tl-title">休憩を挟み、那覇ホテルへ</div><div class="tl-desc">長距離移動の余裕を取り、ホテルに車を置いてから夕食へ。今帰仁城跡・備瀬は差替候補で、主行程に追加しない。</div></div><div class="tl-item food" data-shopref="marchinu" data-map="まーちぬ家 那覇 前島"><div class="tl-time">19:30～21:30</div><div class="tl-title">まーちぬ家（第一候補・未予約）</div><div class="tl-desc">今回の強い希望を月曜夜に。日曜休のため25夜には置かない。☎098-863-5159。<b>北部の夕食と同日に組まない</b>。<div class="tl-alt">予約できなければ那覇の郷土料理店を再検討。もとぶ牧場・松の古民家・鉄板焼朝日は、まーちぬ家を外して北部夕食へ変更する場合のみ。</div></div></div></div></div></div><div class="day-card open"><button class="day-header" type="button" aria-expanded="true" onclick="toggleDay(this)"><span class="day-number">03<small>TUE</small></span><span class="day-info"><span class="day-date">2026.10.27 (火)</span><span class="day-title">ポーたま → 中城 → ENZO → 牧港 → 土産 → 早めのジャッキー</span><span class="day-theme">帰りの便と車返却を守り、行列が長ければ食事を切り替える。</span></span><span class="day-toggle" aria-hidden="true">▼</span></button><div class="day-body"><div class="photo-strip"><figure><img src="assets/img/th/nakagusuku.jpg" alt=""><figcaption>中城城跡</figcaption></figure><figure><img src="assets/img/th/steak.jpg" alt=""><figcaption>早い時間のジャッキー</figcaption></figure><figure><img src="assets/img/th/naha_airport.jpg" alt=""><figcaption>18:30空港を目標に</figcaption></figure></div><div class="tl"><div class="tl-item food" data-shopref="porktamago" data-map="ポーたま 牧志市場本店"><div class="tl-time">07:20</div><div class="tl-title">ポーたま 牧志市場本店（必須）</div><div class="tl-desc">7:00～20:00・年中無休（公式）。行列・受取・朝食時間を含めて出発準備。早めに並び、受取が遅れたらその後の観光を短縮。</div></div><div class="tl-item move" data-map="スマイルホテル那覇シティリゾート"><div class="tl-time">08:15</div><div class="tl-title">ホテルチェックアウト</div><div class="tl-desc">荷物をまとめ中城へ。朝の渋滞を見込む。</div></div><div class="tl-item spot" data-spotref="nakagusuku" data-map="中城城跡"><div class="tl-time">09:00～10:00</div><div class="tl-title">中城城跡</div><div class="tl-desc">石垣と海の眺めを1時間。大人1名 ¥500。10月は受付8:30～17:00、閉門17:30。</div></div><div class="tl-item move"><div class="tl-time">10:00～11:30</div><div class="tl-title">恩納・真栄田へ移動、開店まで余裕</div><div class="tl-desc">駐車・道路状況を確認。海中道路などを追加しない。</div></div><div class="tl-item food" data-shopref="enzo" data-map="pizzeria da ENZO 恩納村真栄田715-3"><div class="tl-time">11:30～12:45</div><div class="tl-title">pizzeria da ENZO（第一候補・未予約）</div><div class="tl-desc">沖縄食材のピザ・イタリアンで変化を。予約時に<b>ランチ内容・料金・所要時間</b>を確認。掲載コースを昼の必須メニューとは扱わない。<div class="tl-alt">事前の予約確認でENZOが取れなければ、27昼を11時の高江洲そばに変更。恩納へ北上せず浦添～北谷中心へ変更すれば、アメリカンビレッジを入れやすい。主案への追加はしない。</div></div></div><div class="tl-item food" data-shopref="blueseal" data-map="ブルーシール 牧港店"><div class="tl-time">13:45～14:15</div><div class="tl-title">ブルーシール 牧港店</div><div class="tl-desc">2024年に建て替えリニューアルした牧港本店へ。本店に立ち寄る楽しみを入れ、那覇へ戻る途中で30分アイス休憩。営業時間は訪問前に確認。</div></div><div class="tl-item spot" data-spotref="souvenirs" data-map="御菓子御殿 国際通り松尾店"><div class="tl-time">15:00～16:00</div><div class="tl-title">国際通りでお土産をまとめて買う</div><div class="tl-desc"><a class="btn" href="#souvenirs" data-page-link="souvenirs">🎁 お土産の選び方</a><br><b>御菓子御殿 国際通り松尾店 → わしたショップ 国際通り店</b>。徒歩・会計込み60分。菓子は前者、黒糖・果汁・調味料などは後者。周辺有料駐車場の空きを確認。</div></div><div class="tl-item food" data-shopref="jackie" data-map="ジャッキーステーキハウス 那覇"><div class="tl-time">16:15～17:15</div><div class="tl-title">ジャッキーステーキハウス</div><div class="tl-desc">早い夕食。予約不可・毎週水曜など休業。<b>16:40までに着席できそうになければ空港食へ切替</b>。必須店ではないので便より優先しない。</div></div><div class="tl-item move"><div class="tl-time">17:15～18:00</div><div class="tl-title">給油 → 18:00レンタカー返却</div><div class="tl-desc">返却営業所は未確定。給油場所・手続・空港送迎時間を予約時に確認。那覇市内想定より遠い営業所ならさらに前倒しする。</div></div><div class="tl-item move" data-map="那覇空港"><div class="tl-time">18:30目標</div><div class="tl-title">那覇空港：チェックイン・保安検査を優先</div><div class="tl-desc">買い漏れは15～20分だけ。ジャッキーを見送ったら空港食（各店の営業・混雑を確認）。主な土産は市内で購入済みに。</div></div><div class="tl-item move"><div class="tl-time">20:45 → 23:00</div><div class="tl-title">候補 ANA1098 那覇 → 羽田</div><div class="tl-desc">9/12調査時の候補（ソラシド運航）。1名 ¥13,222は当時の表示額。実予約・時刻・空席は購入前に確認。</div></div></div></div></div>
 </section>
 
-<section class="page" id="page-food" role="tabpanel"><h2 class="page-title">🍽 グルメ</h2>
-<div class="banner"><img src="assets/img/okinawa_soba.jpg" alt=""><div class="cap">旅程と料理の違いから選ぶ<small>昼・夜の6食と、必須のポーたまを軸に。点数の順位ではなく、曜日・移動・料理の違いで比較。</small></div></div><div class="intro"><b>25昼 糸満漁民食堂／夜 まつもと</b><br><b>26昼 きしもと食堂／夜 まーちぬ家</b><br><b>27朝 ポーたま／昼 ENZO／夕 ジャッキー（行列次第）</b></div><p class="page-lead">ご提示の23店をすべて比較し、以前の候補も必要な場面に残しました。<b>主案も未予約</b>です。店名からご提示の掲載ページへ進めます。</p><div class="note">営業情報は2026-09-14閲覧時の公式・店舗掲載内容。臨休、実際の予約枠、当日のメニューは未確認です。金武は掲載サイトと営業時間が異なるため公式を優先。すべての情報を確認済みとは扱いません。</div><div class="chips" id="chips" aria-label="飲食店の絞り込み"><button class="chip active" data-f="all">全店</button><button class="chip " data-f="主案">主案</button><button class="chip " data-f="代替">代替</button><button class="chip " data-f="保留">今回は保留</button><button class="chip " data-f="そば">そば</button><button class="chip " data-f="既存">以前からの候補</button></div><div class="grid" id="shops"><article class="card food-compare top" data-shop="marchinu" data-t="主案 郷土料理" data-comparison="true"><div class="meta"><span class="badge b-must">主案</span> 郷土料理｜那覇・前島</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47003193/" target="_blank" rel="noopener">まーちぬ家</a></h4><p class="hook">沖縄の家庭料理と泡盛</p><p class="decision">26(月)夜。強い希望を優先し、北部から那覇へ戻って郷土料理を楽しむ。</p><div class="hours"><b>掲載営業</b> 月～土17:00～23:00／日休<br><b>予約</b> 予約可・☎098-863-5159</div></article><article class="card food-compare " data-shop="akatakaji" data-t="保留 郷土料理" data-comparison="true"><div class="meta"><span class="badge b-alt">今回は保留</span> 郷土料理｜那覇・首里</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470102/47000037/" target="_blank" rel="noopener">赤田風</a></h4><p class="hook">琉球料理</p><p class="decision">26夜はまーちぬ家、27夜は帰路を優先。琉球料理を深く楽しむ別案として残す。</p><div class="hours"><b>掲載営業</b> 月～土18:00～23:00／日休<br><b>予約</b> 予約制</div></article><article class="card food-compare " data-shop="bidoro" data-t="保留 郷土料理" data-comparison="true"><div class="meta"><span class="badge b-alt">今回は保留</span> 郷土料理｜那覇・牧志</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47002122/" target="_blank" rel="noopener">旬菜処びいどろ</a></h4><p class="hook">郷土料理</p><p class="decision">唯一合う27(火)夜が帰路と重なる。今回は昼と早い夕食を優先。</p><div class="hours"><b>掲載営業</b> 火～土17:00～23:00／日月休<br><b>予約</b> 電話予約</div></article><article class="card food-compare top" data-shop="itoman" data-t="主案 魚料理" data-comparison="true"><div class="meta"><span class="badge b-must">主案</span> 魚料理｜糸満市西崎町4-17</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4704/A470402/47012172/" target="_blank" rel="noopener">糸満漁民食堂</a></h4><p class="hook">島魚料理・魚のバター焼き</p><p class="decision">25(日)昼。琉球ガラス村と同じ南部で、島魚料理をそばとは別の一食にできる。</p><div class="hours"><b>掲載営業</b> 11:30～15:00（LO14:30）／18:00～22:00（LO21:30）／火休・最終月曜夕休<br><b>予約</b> 予約不可</div></article><article class="card food-compare " data-shop="takaesu" data-t="代替 そば" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> そば｜浦添市伊祖3-36-2</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4703/A470404/47000071/" target="_blank" rel="noopener">高江洲そば</a></h4><p class="hook">ゆし豆腐そば</p><p class="decision">事前の予約確認でENZOが取れなければ、27(火)11時の代替。恩納へ北上せず浦添～北谷中心へ変更。牧港アイスともつながる。</p><div class="hours"><b>掲載営業</b> 10:00～15:45／日休<br><b>予約</b> 予約不可</div></article><article class="card food-compare " data-shop="toraya" data-t="代替 そば" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> そば｜那覇市赤嶺1-5-14</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470103/47002599/" target="_blank" rel="noopener">とらや</a></h4><p class="hook">沖縄そば</p><p class="decision">25(日)昼の代替。糸満からの戻りとガラス村への移動を確認。火曜の27日は休み。</p><div class="hours"><b>掲載営業</b> 11:00～17:00／火休<br><b>予約</b> 予約不可</div></article><article class="card food-compare " data-shop="yuunami" data-t="代替 そば" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> そば｜那覇</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470103/47013540/" target="_blank" rel="noopener">ゆうなみ坂下店</a></h4><p class="hook">沖縄そば</p><p class="decision">那覇のそば予備。主案のそばはきしもとを維持し、食べ比べを詰め込まない。</p><div class="hours"><b>掲載営業</b> 11:00～21:00掲載<br><b>予約</b> 予約不可</div></article><article class="card food-compare " data-shop="eibun" data-t="代替 そば" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> そば｜那覇市壺屋1-5-14</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47017975/" target="_blank" rel="noopener">OKINAWA SOBA EIBUN</a></h4><p class="hook">創作沖縄そば</p><p class="decision">創作そばの那覇代替。きしもとと交換するなら検討し、単純な追加にはしない。</p><div class="hours"><b>掲載営業</b> 11:00～20:00（LO19:30）／売切終了<br><b>予約</b> TableCheck予約可の掲載あり</div></article><article class="card food-compare top" data-shop="kishimoto" data-t="主案 そば" data-comparison="true"><div class="meta"><span class="badge b-must">主案</span> そば｜本部町渡久地5</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4702/A470202/47000068/" target="_blank" rel="noopener">きしもと食堂 本店</a></h4><p class="hook">沖縄そば・じゅーしー</p><p class="decision">26(月)昼を維持。本部から美ら海へ進む途中で、沖縄そばとじゅーしーを楽しめる。</p><div class="hours"><b>掲載営業</b> 11:00～17:00（LO16:45）／水休・売切あり<br><b>予約</b> 予約不可</div></article><article class="card food-compare " data-shop="sumanume" data-t="代替 そば" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> そば｜那覇市国場40-1</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470103/47001964/" target="_blank" rel="noopener">すーまぬめぇ</a></h4><p class="hook">古民家で沖縄そば</p><p class="decision">那覇の古民家そばを楽しむ代替。主案のきしもととは別日程に替える場合に。</p><div class="hours"><b>掲載営業</b> 平日10:00～22:00／土11:00～22:00／日11:00～21:00掲載・不定休<br><b>予約</b> 予約は15時以降</div></article><article class="card food-compare " data-shop="standeibun" data-t="代替 そば" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> そば｜那覇</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47029893/" target="_blank" rel="noopener">STAND EIBUN</a></h4><p class="hook">朝の沖縄そば</p><p class="decision">朝そばの予備。27朝の必須ポーたまを押し出さず、25朝も車受取優先。</p><div class="hours"><b>掲載営業</b> 8:00～16:00掲載<br><b>予約</b> 予約不可</div></article><article class="card food-compare " data-shop="kin" data-t="代替 しゃぶ" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> しゃぶ｜那覇市牧志1-9-4</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47023328/" target="_blank" rel="noopener">しゃぶしゃぶ金武本店</a></h4><p class="hook">あぐーしゃぶしゃぶ</p><p class="decision">25夜まつもと満席時。那覇でしゃぶを楽しみ、運転は夕食前に終える。</p><div class="hours"><b>掲載営業</b> 公式17:00～21:30（掲載サイトと相違あり）<br><b>予約</b> コースのみ・席のみ予約不可</div></article><article class="card food-compare top" data-shop="matsumoto" data-t="主案 しゃぶ" data-comparison="true"><div class="meta"><span class="badge b-must">主案</span> しゃぶ｜那覇市松山1-10-8 2F</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47027108/" target="_blank" rel="noopener">まつもと</a></h4><p class="hook">あぐーしゃぶしゃぶ</p><p class="decision">25夜。魚・そば・翌日の郷土居酒屋と重複を避け、あぐーしゃぶを一食に。</p><div class="hours"><b>掲載営業</b> 公式17:00～22:00<br><b>予約</b> 電話予約のみ・☎098-861-1890</div></article><article class="card food-compare " data-shop="san" data-t="代替 しゃぶ" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> しゃぶ｜恩納村真栄田63 2F</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4703/A470303/47017259/" target="_blank" rel="noopener">島豚・琉球牛 燦 別邸</a></h4><p class="hook">島豚・琉球牛</p><p class="decision">恩納昼へ変更する別案。主案ではしゃぶ枠を那覇の夜へまとめる。</p><div class="hours"><b>掲載営業</b> 11:00～22:00（料理LO21:00）／不定休<br><b>予約</b> 予約可</div></article><article class="card food-compare " data-shop="matsu" data-t="代替 肉料理" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> 肉料理｜名護市大南2-14-5</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4702/A470201/47014042/" target="_blank" rel="noopener">やんばるダイニング松の古民家</a></h4><p class="hook">古民家の肉料理</p><p class="decision">北部夕食へ変更する場合だけ。26夜まーちぬ家との両立はしない。</p><div class="hours"><b>掲載営業</b> 17:30～／日休・終了時刻要確認<br><b>予約</b> 予約可</div></article><article class="card food-compare " data-shop="bombance" data-t="保留 創作料理" data-comparison="true"><div class="meta"><span class="badge b-alt">今回は保留</span> 創作料理｜古宇利島</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4702/A470202/47028361/" target="_blank" rel="noopener">La BOMBANCE 古宇利島</a></h4><p class="hook">創作料理（しゃぶ専門ではない）</p><p class="decision">食事そのものを目的に時間を取る店。今回は美ら海の約3時間と那覇夕食を優先。</p><div class="hours"><b>掲載営業</b> 12:00～15:30（LO14:00）／17:30～23:00（LO21:00）掲載<br><b>予約</b> 予約条件を店舗へ確認</div></article><article class="card food-compare " data-shop="bacar" data-t="保留 イタリアン" data-comparison="true"><div class="meta"><span class="badge b-alt">今回は保留</span> イタリアン｜那覇市久茂地3-16-15</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47003553/" target="_blank" rel="noopener">BACAR</a></h4><p class="hook">薪窯ピザ</p><p class="decision">24は深夜着、25～27は休業曜日。店の良し悪しではなく日程が合わないため保留。</p><div class="hours"><b>掲載営業</b> 営業日17:00～19:15／19:30～22:00・日月火休掲載<br><b>予約</b> 予約条件を店舗へ確認</div></article><article class="card food-compare top" data-shop="enzo" data-t="主案 イタリアン" data-comparison="true"><div class="meta"><span class="badge b-must">主案</span> イタリアン｜恩納村真栄田715-3</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4703/A470303/47015653/" target="_blank" rel="noopener">pizzeria da ENZO</a></h4><p class="hook">ピザ・イタリアン</p><p class="decision">27昼。沖縄食材のピザ・イタリアンで味に変化をつけ、施設から景色も楽しむ。</p><div class="hours"><b>掲載営業</b> 11:30～15:00（LO14:15）／17:30～22:00（LO21:00）・不定休<br><b>予約</b> 予約可・ランチ内容と所要時間は要確認</div></article><article class="card food-compare " data-shop="burrata" data-t="保留 イタリアン" data-comparison="true"><div class="meta"><span class="badge b-alt">今回は保留</span> イタリアン｜沖縄市園田3-9-11</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4703/A470301/47019115/" target="_blank" rel="noopener">BURRATA</a></h4><p class="hook">イタリアン</p><p class="decision">25日曜は南部から遠回り。26・27は休業曜日のため今回の主案には入れない。</p><div class="hours"><b>掲載営業</b> 水～日11:30～20:00／月火休<br><b>予約</b> 予約条件を店舗へ確認</div></article><article class="card food-compare " data-shop="oshouse" data-t="保留 肉料理" data-comparison="true"><div class="meta"><span class="badge b-alt">今回は保留</span> 肉料理｜那覇</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47001572/" target="_blank" rel="noopener">O's House</a></h4><p class="hook">ステーキ</p><p class="decision">月曜はまーちぬ家優先、火曜は開店が遅い。帰路前に早く食べられるジャッキーを維持。</p><div class="hours"><b>掲載営業</b> 月～土17:30～22:00／日祝休<br><b>予約</b> 予約条件を店舗へ確認</div></article><article class="card food-compare " data-shop="asahi" data-t="代替 肉料理" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> 肉料理｜名護市大南2-1-42</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4702/A470201/47019810/" target="_blank" rel="noopener">鉄板焼朝日</a></h4><p class="hook">鉄板焼き</p><p class="decision">北部夕食へ変更時のみ。26夜まーちぬ家と同日に予定しない。</p><div class="hours"><b>掲載営業</b> 17:00～21:00（LO20:00）／木休<br><b>予約</b> 予約可</div></article><article class="card food-compare " data-shop="kangaroo" data-t="代替 バーガー" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> バーガー｜本部町崎本部930-1</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4702/A470202/47027004/" target="_blank" rel="noopener">キャプテンカンガルー</a></h4><p class="hook">ハンバーガー</p><p class="decision">26昼きしもとの待ちが長い場合。ここも並ぶなら水族館へ移動し館内食を検討。</p><div class="hours"><b>掲載営業</b> 11:00～17:00（LO16:30）／16時以降は持帰りのみ掲載<br><b>予約</b> 予約不可</div></article><article class="card food-compare " data-shop="ralph" data-t="代替 バーガー" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> バーガー｜沖縄市園田1-2-28</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4703/A470301/47021518/" target="_blank" rel="noopener">ラルフズバーガーレストラン</a></h4><p class="hook">ハンバーガー</p><p class="decision">27昼を中城～コザ中心へ変更する場合。ENZO主案への追加はしない。</p><div class="hours"><b>掲載営業</b> 月火土日11:00～15:30／水木金休<br><b>予約</b> 予約不可</div></article><article class="card food-compare" data-shop="porktamago" data-t="主案 既存"><div class="meta"><span class="badge b-alt">主案・既存候補</span></div><h4><a class="shop-name" href="https://porktamago.com/shop/001-mks/" target="_blank" rel="noopener">ポーたま 牧志市場本店</a></h4><p class="decision">27朝の必須。ポーク玉子おにぎりを行列込みで。</p><div class="hours">公式7:00～20:00・年中無休</div></article><article class="card food-compare" data-shop="jackie" data-t="主案 既存"><div class="meta"><span class="badge b-alt">主案・既存候補</span></div><h4><a class="shop-name" href="https://steak.co.jp/pages/shisetu" target="_blank" rel="noopener">ジャッキーステーキハウス</a></h4><p class="decision">27夕16:15。16:40に着席できそうになければ空港食へ。</p><div class="hours">公式11:00～22:30頃・受付22時まで／毎週水曜・元旦・お盆休／予約不可</div></article><article class="card food-compare" data-shop="blueseal" data-t="主案 既存"><div class="meta"><span class="badge b-alt">主案・既存候補</span></div><h4><a class="shop-name" href="https://map.blueseal.co.jp/shop-info/?id=makiminato" target="_blank" rel="noopener">ブルーシール 牧港店</a></h4><p class="decision">27の13:45～14:15。2024年に建て替えリニューアルした本店を選び、那覇へ戻る動線でアイスを楽しむ。<a href="https://www.blueseal.co.jp/company/news_release/news_release_20240606.html" target="_blank" rel="noopener">本店の公式紹介</a></p><div class="hours">営業時間は公式店舗案内で訪問前に確認</div></article><article class="card food-compare" data-shop="mitsuya" data-t="主案 既存"><div class="meta"><span class="badge b-alt">主案・既存候補</span></div><h4><a class="shop-name" href="https://www.yanbaru-b.co.jp/" target="_blank" rel="noopener">三矢本舗（道の駅許田）</a></h4><p class="decision">26朝の短い許田休憩で軽食。営業していなければ飲み物等だけに。</p><div class="hours">個店の営業・販売状況は当日確認</div></article><article class="card food-compare" data-shop="udunyama" data-t="保留 既存"><div class="meta"><span class="badge b-alt">今回は候補外・既存候補</span></div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470102/47000051/" target="_blank" rel="noopener">御殿山</a></h4><p class="decision">掲載保留で営業状況を確認できないため今回は候補外。店の評価を理由に外すのではなく、当日の代替として頼れないため。</p><div class="hours">営業状況未確認・掲載保留。当日の代替にはしない</div></article><article class="card food-compare" data-shop="urizun" data-t="代替 既存"><div class="meta"><span class="badge b-alt">代替・既存候補</span></div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47000019/" target="_blank" rel="noopener">古酒と琉球料理 うりずん</a></h4><p class="decision">25夜、しゃぶ店が取れないとき。ドゥル天など郷土料理は翌日のまーちぬ家と重なる。</p><div class="hours">店舗関係者掲載17:30～24:00（LO23:30）・各曜日。空席・臨休は確認</div></article><article class="card food-compare" data-shop="motobu" data-t="代替 既存"><div class="meta"><span class="badge b-alt">代替・既存候補</span></div><h4><a class="shop-name" href="https://motobu-farm-motobu.foodre.jp/" target="_blank" rel="noopener">焼肉もとぶ牧場 もとぶ店</a></h4><p class="decision">北部で夕食する日程へ切り替えた場合だけ。26夜まーちぬ家とは両立しない。</p><div class="hours">公式11:30～15:00（LO14:00）／17:00～22:00（LO21:30）。空席・臨休は店舗へ確認</div></article><article class="card food-compare" data-shop="iyumachi" data-t="代替 既存"><div class="meta"><span class="badge b-alt">代替・既存候補</span></div><h4><a class="shop-name" href="https://www.tomariiyumachi.com/" target="_blank" rel="noopener">泊いゆまち</a></h4><p class="decision">25朝、車を早く受け取れた場合の魚市場朝食。首里9時着が難しければ寄らない。</p><div class="hours">施設・各店の営業は訪問前に確認</div></article><article class="card food-compare" data-shop="s88jr" data-t="代替 既存"><div class="meta"><span class="badge b-alt">代替・既存候補</span></div><h4><a class="shop-name" href="https://s88.co.jp/shop/jr/matsuyama/" target="_blank" rel="noopener">ステーキハウス88Jr. 松山店</a></h4><p class="decision">24深夜の任意の夜食。疲れていれば休む。</p><div class="hours">営業時間・受付・現在価格は当日確認</div></article><article class="card food-compare" data-shop="nakamoto" data-t="代替 既存"><div class="meta"><span class="badge b-alt">代替・既存候補</span></div><h4><a class="shop-name" href="https://nakamotosengyoten.com/" target="_blank" rel="noopener">中本鮮魚てんぷら店</a></h4><p class="decision">奥武島を回る南部の別日程なら沖縄天ぷら。25のグラス・ウミカジに追加しない。</p><div class="hours">営業日・価格は訪問前に確認</div></article><article class="card food-compare" data-shop="kingtacos" data-t="代替 既存"><div class="meta"><span class="badge b-alt">代替・既存候補</span></div><h4><a class="shop-name" href="https://www.visitkintown.jp/spot/kingtacos-honten" target="_blank" rel="noopener">キングタコス 金武本店</a></h4><p class="decision">金武中心へ変更する別案。今回はENZOと帰路の余裕を優先。</p><div class="hours">営業時間は店舗・観光案内で確認</div></article><article class="card food-compare" data-shop="aw" data-t="代替 既存"><div class="meta"><span class="badge b-alt">代替・既存候補</span></div><h4><a class="shop-name" href="https://www.awok.co.jp/" target="_blank" rel="noopener">A&amp;W 那覇空港店</a></h4><p class="decision">27ジャッキーを見送ったときなど、空港食の候補。</p><div class="hours">空港店の営業・混雑・受付を当日確認</div></article></div>
+<section class="page" id="page-food" role="tabpanel" aria-labelledby="tab-food">
+<h2 class="page-title" tabindex="-1">🍽 グルメ</h2>
+<p class="page-lead">まずは、二人が楽しみにしている食事から。</p>
+<div id="shops">
+<section class="food-desires" id="food-desires" aria-labelledby="desires-title">
+<h3 id="desires-title">今回、大切にしたい2店</h3>
+<p>「二人の希望」「旅程の主案」「予約状況」を分けて表示しています。</p>
+<div class="grid desire-grid"><article class="card food-compare photo" data-shop="porktamago" data-t="主案 既存"><figure class="discovery-photo"><img src="assets/img/porktamago.jpg" alt="ポーク玉子おにぎりの料理イメージ" width="1400" height="1050" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません</figcaption></figure><div class="body"><div class="meta"><span class="badge b-must" data-desire="must">二人の希望：必須</span></div><h4><a class="shop-name" href="https://porktamago.com/shop/001-mks/" target="_blank" rel="noopener">ポーたま 牧志市場本店</a></h4><p class="booking-state">旅程の主案：27(火) 07:20 朝食</p><p class="decision">27朝の必須。ポーク玉子おにぎりを行列込みで。</p><div class="hours">公式7:00～20:00・年中無休</div></div></article>
+<article class="card food-compare photo" data-shop="marchinu" data-t="主案 郷土料理" data-comparison="true"><figure class="discovery-photo"><img src="assets/img/ryukyu_cuisine.jpg" alt="豚肉の煮込み料理のイメージ" width="1400" height="1050" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません（別店舗で撮影した豚肉料理）</figcaption></figure><div class="body"><div class="meta"><span class="badge b-rsv" data-desire="strong">二人の希望：強い希望</span> 郷土料理｜那覇・前島</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47003193/" target="_blank" rel="noopener">まーちぬ家</a></h4><p class="booking-state">旅程の主案：26(月) 19:30～21:30｜未予約</p><p class="hook">沖縄の家庭料理と泡盛</p><p class="decision">26(月)夜。強い希望を優先し、北部から那覇へ戻って郷土料理を楽しむ。</p><div class="hours"><b>掲載営業</b> 月～土17:00～23:00／日休<br><b>予約</b> 予約可・☎098-863-5159</div></div></article></div></section>
+<p class="page-lead food-order">おすすめ順は、二人の希望・旅程への組み込みやすさ・料理の違いを基準にしています。</p>
+<div class="chips discovery-chips" id="chips" role="group" aria-label="料理ジャンルで絞り込み">
+<button type="button" class="chip active" data-f="all" aria-pressed="true" aria-controls="food-categories">全ジャンル <span>35店</span></button><button type="button" class="chip" data-f="local" aria-pressed="false" aria-controls="food-local">沖縄料理・地魚 <span>6店</span></button><button type="button" class="chip" data-f="soba" aria-pressed="false" aria-controls="food-soba">沖縄そば <span>8店</span></button><button type="button" class="chip" data-f="pork" aria-pressed="false" aria-controls="food-pork">あぐー・豚料理 <span>4店</span></button><button type="button" class="chip" data-f="creative" aria-pressed="false" aria-controls="food-creative">ピザ・創作料理 <span>4店</span></button><button type="button" class="chip" data-f="steak" aria-pressed="false" aria-controls="food-steak">ステーキ・焼肉 <span>5店</span></button><button type="button" class="chip" data-f="casual" aria-pressed="false" aria-controls="food-casual">バーガー・タコライス <span>4店</span></button><button type="button" class="chip" data-f="snacks" aria-pressed="false" aria-controls="food-snacks">スイーツ・軽食 <span>3店</span></button></div><p id="food-results" class="filter-result" role="status">全35店を表示（冒頭の希望2店を含む）</p>
+<div id="food-categories"><section class="cuisine-section" id="food-local" data-cuisine="local" aria-labelledby="food-title-local"><div class="cuisine-intro"><figure class="discovery-photo"><img src="assets/img/kaisendon2.jpg" alt="海鮮丼の料理イメージ" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません</figcaption></figure><div><p class="eyebrow">5店 ＋ 冒頭のまーちぬ家</p><h3 id="food-title-local">沖縄料理・地魚</h3><p>島魚と郷土料理を別の食事で。26夜のまーちぬ家は上の希望カードへ。</p><a href="#shop-marchinu" data-goto="marchinu">強い希望のまーちぬ家を見る ↑</a></div></div><div class="grid cuisine-grid"><article class="card food-compare photo" data-shop="itoman" data-t="主案 魚料理" data-comparison="true"><figure class="discovery-photo"><img src="assets/img/kaisendon2.jpg" alt="海鮮丼の料理イメージ" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません</figcaption></figure><div class="body"><div class="meta"><span class="badge b-spot">旅程の主案</span> 魚料理｜糸満市西崎町4-17</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4704/A470402/47012172/" target="_blank" rel="noopener">糸満漁民食堂</a></h4><p class="hook">島魚料理・魚のバター焼き</p><p class="decision">25(日)昼。琉球ガラス村と同じ南部で、島魚料理をそばとは別の一食にできる。</p><div class="hours"><b>掲載営業</b> 11:30～15:00（LO14:30）／18:00～22:00（LO21:30）／火休・最終月曜夕休<br><b>予約</b> 予約不可</div></div></article>
+<article class="card food-compare" data-shop="urizun" data-t="代替 既存"><div class="meta"><span class="badge b-alt">代替</span></div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47000019/" target="_blank" rel="noopener">古酒と琉球料理 うりずん</a></h4><p class="decision">25夜、しゃぶ店が取れないとき。ドゥル天など郷土料理は翌日のまーちぬ家と重なる。</p><div class="hours">店舗関係者掲載17:30～24:00（LO23:30）・各曜日。空席・臨休は確認</div></article>
+<article class="card food-compare" data-shop="iyumachi" data-t="代替 既存"><div class="meta"><span class="badge b-alt">代替</span></div><h4><a class="shop-name" href="https://www.tomariiyumachi.com/" target="_blank" rel="noopener">泊いゆまち</a></h4><p class="decision">25朝、車を早く受け取れた場合の魚市場朝食。首里9時着が難しければ寄らない。</p><div class="hours">施設・各店の営業は訪問前に確認</div></article>
+<article class="card food-compare " data-shop="akatakaji" data-t="保留 郷土料理" data-comparison="true"><div class="meta"><span class="badge b-alt">今回は保留</span> 郷土料理｜那覇・首里</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470102/47000037/" target="_blank" rel="noopener">赤田風</a></h4><p class="hook">琉球料理</p><p class="decision">26夜はまーちぬ家、27夜は帰路を優先。琉球料理を深く楽しむ別案として残す。</p><div class="hours"><b>掲載営業</b> 月～土18:00～23:00／日休<br><b>予約</b> 予約制</div></article>
+<article class="card food-compare " data-shop="bidoro" data-t="保留 郷土料理" data-comparison="true"><div class="meta"><span class="badge b-alt">今回は保留</span> 郷土料理｜那覇・牧志</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47002122/" target="_blank" rel="noopener">旬菜処びいどろ</a></h4><p class="hook">郷土料理</p><p class="decision">唯一合う27(火)夜が帰路と重なる。今回は昼と早い夕食を優先。</p><div class="hours"><b>掲載営業</b> 火～土17:00～23:00／日月休<br><b>予約</b> 電話予約</div></article></div></section>
+<section class="cuisine-section" id="food-soba" data-cuisine="soba" aria-labelledby="food-title-soba"><div class="cuisine-intro"><figure class="discovery-photo"><img src="assets/img/okinawa_soba.jpg" alt="沖縄そばとじゅーしーの料理イメージ" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません</figcaption></figure><div><p class="eyebrow">8店</p><h3 id="food-title-soba">沖縄そば</h3><p>本部のきしもとを軸に、ゆし豆腐・創作・古民家の違いから選ぶ。</p></div></div><div class="grid cuisine-grid"><article class="card food-compare photo" data-shop="kishimoto" data-t="主案 そば" data-comparison="true"><figure class="discovery-photo"><img src="assets/img/okinawa_soba.jpg" alt="沖縄そばとじゅーしーの料理イメージ" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません</figcaption></figure><div class="body"><div class="meta"><span class="badge b-spot">旅程の主案</span> そば｜本部町渡久地5</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4702/A470202/47000068/" target="_blank" rel="noopener">きしもと食堂 本店</a></h4><p class="hook">沖縄そば・じゅーしー</p><p class="decision">26(月)昼を維持。本部から美ら海へ進む途中で、沖縄そばとじゅーしーを楽しめる。</p><div class="hours"><b>掲載営業</b> 11:00～17:00（LO16:45）／水休・売切あり<br><b>予約</b> 予約不可</div></div></article>
+<article class="card food-compare " data-shop="takaesu" data-t="代替 そば" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> そば｜浦添市伊祖3-36-2</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4703/A470404/47000071/" target="_blank" rel="noopener">高江洲そば</a></h4><p class="hook">ゆし豆腐そば</p><p class="decision">事前の予約確認でENZOが取れなければ、27(火)11時の代替。恩納へ北上せず浦添～北谷中心へ変更。牧港アイスともつながる。</p><div class="hours"><b>掲載営業</b> 10:00～15:45／日休<br><b>予約</b> 予約不可</div></article>
+<article class="card food-compare " data-shop="toraya" data-t="代替 そば" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> そば｜那覇市赤嶺1-5-14</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470103/47002599/" target="_blank" rel="noopener">とらや</a></h4><p class="hook">沖縄そば</p><p class="decision">25(日)昼の代替。糸満からの戻りとガラス村への移動を確認。火曜の27日は休み。</p><div class="hours"><b>掲載営業</b> 11:00～17:00／火休<br><b>予約</b> 予約不可</div></article>
+<article class="card food-compare " data-shop="eibun" data-t="代替 そば" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> そば｜那覇市壺屋1-5-14</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47017975/" target="_blank" rel="noopener">OKINAWA SOBA EIBUN</a></h4><p class="hook">創作沖縄そば</p><p class="decision">創作そばの那覇代替。きしもとと交換するなら検討し、単純な追加にはしない。</p><div class="hours"><b>掲載営業</b> 11:00～20:00（LO19:30）／売切終了<br><b>予約</b> TableCheck予約可の掲載あり</div></article>
+<article class="card food-compare " data-shop="sumanume" data-t="代替 そば" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> そば｜那覇市国場40-1</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470103/47001964/" target="_blank" rel="noopener">すーまぬめぇ</a></h4><p class="hook">古民家で沖縄そば</p><p class="decision">那覇の古民家そばを楽しむ代替。主案のきしもととは別日程に替える場合に。</p><div class="hours"><b>掲載営業</b> 平日10:00～22:00／土11:00～22:00／日11:00～21:00掲載・不定休<br><b>予約</b> 予約は15時以降</div></article>
+<article class="card food-compare " data-shop="yuunami" data-t="代替 そば" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> そば｜那覇</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470103/47013540/" target="_blank" rel="noopener">ゆうなみ坂下店</a></h4><p class="hook">沖縄そば</p><p class="decision">那覇のそば予備。主案のそばはきしもとを維持し、食べ比べを詰め込まない。</p><div class="hours"><b>掲載営業</b> 11:00～21:00掲載<br><b>予約</b> 予約不可</div></article>
+<article class="card food-compare " data-shop="standeibun" data-t="代替 そば" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> そば｜那覇</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47029893/" target="_blank" rel="noopener">STAND EIBUN</a></h4><p class="hook">朝の沖縄そば</p><p class="decision">朝そばの予備。27朝の必須ポーたまを押し出さず、25朝も車受取優先。</p><div class="hours"><b>掲載営業</b> 8:00～16:00掲載<br><b>予約</b> 予約不可</div></article>
+<article class="card food-compare" data-shop="udunyama" data-t="保留 既存"><div class="meta"><span class="badge b-alt">今回は候補外</span></div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470102/47000051/" target="_blank" rel="noopener">御殿山</a></h4><p class="decision">掲載保留で営業状況を確認できないため今回は候補外。店の評価を理由に外すのではなく、当日の代替として頼れないため。</p><div class="hours">営業状況未確認・掲載保留。当日の代替にはしない</div></article></div></section>
+<section class="cuisine-section" id="food-pork" data-cuisine="pork" aria-labelledby="food-title-pork"><div class="cuisine-intro"><figure class="discovery-photo"><img src="assets/img/ryukyu_cuisine.jpg" alt="豚肉の煮込み料理のイメージ" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません（別店舗の豚肉料理・あぐーやしゃぶしゃぶの写真ではありません）</figcaption></figure><div><p class="eyebrow">4店</p><h3 id="food-title-pork">あぐー・豚料理</h3><p>25夜は那覇でしゃぶしゃぶ。恩納・名護は日程を替える場合に。</p></div></div><div class="grid cuisine-grid"><article class="card food-compare" data-shop="matsumoto" data-t="主案 しゃぶ" data-comparison="true"><div class="meta"><span class="badge b-spot">旅程の主案</span> しゃぶ｜那覇市松山1-10-8 2F</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47027108/" target="_blank" rel="noopener">まつもと</a></h4><p class="booking-state">未予約</p><p class="hook">あぐーしゃぶしゃぶ</p><p class="decision">25夜。魚・そば・翌日の郷土居酒屋と重複を避け、あぐーしゃぶを一食に。</p><div class="hours"><b>掲載営業</b> 公式17:00～22:00<br><b>予約</b> 電話予約のみ・☎098-861-1890</div></article>
+<article class="card food-compare " data-shop="kin" data-t="代替 しゃぶ" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> しゃぶ｜那覇市牧志1-9-4</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47023328/" target="_blank" rel="noopener">しゃぶしゃぶ金武本店</a></h4><p class="hook">あぐーしゃぶしゃぶ</p><p class="decision">25夜まつもと満席時。那覇でしゃぶを楽しみ、運転は夕食前に終える。</p><div class="hours"><b>掲載営業</b> 公式17:00～21:30（掲載サイトと相違あり）<br><b>予約</b> コースのみ・席のみ予約不可</div></article>
+<article class="card food-compare " data-shop="san" data-t="代替 しゃぶ" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> しゃぶ｜恩納村真栄田63 2F</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4703/A470303/47017259/" target="_blank" rel="noopener">島豚・琉球牛 燦 別邸</a></h4><p class="hook">島豚・琉球牛</p><p class="decision">恩納昼へ変更する別案。主案ではしゃぶ枠を那覇の夜へまとめる。</p><div class="hours"><b>掲載営業</b> 11:00～22:00（料理LO21:00）／不定休<br><b>予約</b> 予約可</div></article>
+<article class="card food-compare " data-shop="matsu" data-t="代替 肉料理" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> 肉料理｜名護市大南2-14-5</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4702/A470201/47014042/" target="_blank" rel="noopener">やんばるダイニング松の古民家</a></h4><p class="hook">古民家の肉料理</p><p class="decision">北部夕食へ変更する場合だけ。26夜まーちぬ家との両立はしない。</p><div class="hours"><b>掲載営業</b> 17:30～／日休・終了時刻要確認<br><b>予約</b> 予約可</div></article></div></section>
+<section class="cuisine-section" id="food-creative" data-cuisine="creative" aria-labelledby="food-title-creative"><div class="cuisine-intro"><figure class="discovery-photo"><img src="assets/img/pizza_sample.jpg" alt="料理のイメージ／店舗の提供写真ではありません（ピザ）" width="960" height="636" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません（ピザ）</figcaption></figure><div><p class="eyebrow">4店</p><h3 id="food-title-creative">ピザ・創作料理</h3><p>沖縄食材を違う食べ方で。27昼のENZOから検討。</p></div></div><div class="grid cuisine-grid"><article class="card food-compare photo" data-shop="enzo" data-t="主案 イタリアン" data-comparison="true"><figure class="discovery-photo"><img src="assets/img/pizza_sample.jpg" alt="料理のイメージ／店舗の提供写真ではありません（ピザ）" width="960" height="636" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません（ピザ）</figcaption></figure><div class="body"><div class="meta"><span class="badge b-spot">旅程の主案</span> イタリアン｜恩納村真栄田715-3</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4703/A470303/47015653/" target="_blank" rel="noopener">pizzeria da ENZO</a></h4><p class="booking-state">未予約</p><p class="hook">ピザ・イタリアン</p><p class="decision">27昼。沖縄食材のピザ・イタリアンで味に変化をつけ、施設から景色も楽しむ。</p><div class="hours"><b>掲載営業</b> 11:30～15:00（LO14:15）／17:30～22:00（LO21:00）・不定休<br><b>予約</b> 予約可・ランチ内容と所要時間は要確認</div></div></article>
+<article class="card food-compare " data-shop="bombance" data-t="保留 創作料理" data-comparison="true"><div class="meta"><span class="badge b-alt">今回は保留</span> 創作料理｜古宇利島</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4702/A470202/47028361/" target="_blank" rel="noopener">La BOMBANCE 古宇利島</a></h4><p class="hook">創作料理（しゃぶ専門ではない）</p><p class="decision">食事そのものを目的に時間を取る店。今回は美ら海の約3時間と那覇夕食を優先。</p><div class="hours"><b>掲載営業</b> 12:00～15:30（LO14:00）／17:30～23:00（LO21:00）掲載<br><b>予約</b> 予約条件を店舗へ確認</div></article>
+<article class="card food-compare " data-shop="burrata" data-t="保留 イタリアン" data-comparison="true"><div class="meta"><span class="badge b-alt">今回は保留</span> イタリアン｜沖縄市園田3-9-11</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4703/A470301/47019115/" target="_blank" rel="noopener">BURRATA</a></h4><p class="hook">イタリアン</p><p class="decision">25日曜は南部から遠回り。26・27は休業曜日のため今回の主案には入れない。</p><div class="hours"><b>掲載営業</b> 水～日11:30～20:00／月火休<br><b>予約</b> 予約条件を店舗へ確認</div></article>
+<article class="card food-compare " data-shop="bacar" data-t="保留 イタリアン" data-comparison="true"><div class="meta"><span class="badge b-alt">今回は保留</span> イタリアン｜那覇市久茂地3-16-15</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47003553/" target="_blank" rel="noopener">BACAR</a></h4><p class="hook">薪窯ピザ</p><p class="decision">24は深夜着、25～27は休業曜日。店の良し悪しではなく日程が合わないため保留。</p><div class="hours"><b>掲載営業</b> 営業日17:00～19:15／19:30～22:00・日月火休掲載<br><b>予約</b> 予約条件を店舗へ確認</div></article></div></section>
+<section class="cuisine-section" id="food-steak" data-cuisine="steak" aria-labelledby="food-title-steak"><div class="cuisine-intro"><figure class="discovery-photo"><img src="assets/img/yakiniku.jpg" alt="焼肉料理のイメージ" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません（もとぶ牧場の那覇店での撮影・もとぶ店の写真ではありません）</figcaption></figure><div><p class="eyebrow">5店</p><h3 id="food-title-steak">ステーキ・焼肉</h3><p>早い時間のジャッキーを軸に。北部の夕食は那覇の夜と交換。</p></div></div><div class="grid cuisine-grid"><article class="card food-compare photo" data-shop="jackie" data-t="主案 既存"><figure class="discovery-photo"><img src="assets/img/steak.jpg" alt="ジャッキーステーキハウスの外観" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>ジャッキーの外観（過去の撮影・店舗の提供写真ではありません）</figcaption></figure><div class="body"><div class="meta"><span class="badge b-alt">旅程の主案</span></div><h4><a class="shop-name" href="https://steak.co.jp/pages/shisetu" target="_blank" rel="noopener">ジャッキーステーキハウス</a></h4><p class="decision">27夕16:15。16:40に着席できそうになければ空港食へ。</p><div class="hours">公式11:00～22:30頃・受付22時まで／毎週水曜・元旦・お盆休／予約不可</div></div></article>
+<article class="card food-compare" data-shop="s88jr" data-t="代替 既存"><div class="meta"><span class="badge b-alt">代替</span></div><h4><a class="shop-name" href="https://s88.co.jp/shop/jr/matsuyama/" target="_blank" rel="noopener">ステーキハウス88Jr. 松山店</a></h4><p class="decision">24深夜の任意の夜食。疲れていれば休む。</p><div class="hours">営業時間・受付・現在価格は当日確認</div></article>
+<article class="card food-compare" data-shop="motobu" data-t="代替 既存"><div class="meta"><span class="badge b-alt">代替</span></div><h4><a class="shop-name" href="https://motobu-farm-motobu.foodre.jp/" target="_blank" rel="noopener">焼肉もとぶ牧場 もとぶ店</a></h4><p class="decision">北部で夕食する日程へ切り替えた場合だけ。26夜まーちぬ家とは両立しない。</p><div class="hours">公式11:30～15:00（LO14:00）／17:00～22:00（LO21:30）。空席・臨休は店舗へ確認</div></article>
+<article class="card food-compare " data-shop="asahi" data-t="代替 肉料理" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> 肉料理｜名護市大南2-1-42</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4702/A470201/47019810/" target="_blank" rel="noopener">鉄板焼朝日</a></h4><p class="hook">鉄板焼き</p><p class="decision">北部夕食へ変更時のみ。26夜まーちぬ家と同日に予定しない。</p><div class="hours"><b>掲載営業</b> 17:00～21:00（LO20:00）／木休<br><b>予約</b> 予約可</div></article>
+<article class="card food-compare " data-shop="oshouse" data-t="保留 肉料理" data-comparison="true"><div class="meta"><span class="badge b-alt">今回は保留</span> 肉料理｜那覇</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47001572/" target="_blank" rel="noopener">O's House</a></h4><p class="hook">ステーキ</p><p class="decision">月曜はまーちぬ家優先、火曜は開店が遅い。帰路前に早く食べられるジャッキーを維持。</p><div class="hours"><b>掲載営業</b> 月～土17:30～22:00／日祝休<br><b>予約</b> 予約条件を店舗へ確認</div></article></div></section>
+<section class="cuisine-section" id="food-casual" data-cuisine="casual" aria-labelledby="food-title-casual"><div class="cuisine-intro"><figure class="discovery-photo"><img src="assets/img/tacorice.jpg" alt="タコライスの料理イメージ" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません</figcaption></figure><div><p class="eyebrow">4店</p><h3 id="food-title-casual">バーガー・タコライス</h3><p>本部の昼や空港食の代替。遠回りになる金武は別案に。</p></div></div><div class="grid cuisine-grid"><article class="card food-compare  photo" data-shop="kangaroo" data-t="代替 バーガー" data-comparison="true"><figure class="discovery-photo"><img src="assets/img/burger_sample.jpg" alt="バーガーの料理イメージ／店舗の提供写真ではありません" width="960" height="960" loading="lazy" decoding="async"><figcaption>バーガーの料理イメージ／店舗の提供写真ではありません</figcaption></figure><div class="body"><div class="meta"><span class="badge b-alt">代替</span> バーガー｜本部町崎本部930-1</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4702/A470202/47027004/" target="_blank" rel="noopener">キャプテンカンガルー</a></h4><p class="hook">ハンバーガー</p><p class="decision">26昼きしもとの待ちが長い場合。ここも並ぶなら水族館へ移動し館内食を検討。</p><div class="hours"><b>掲載営業</b> 11:00～17:00（LO16:30）／16時以降は持帰りのみ掲載<br><b>予約</b> 予約不可</div></div></article>
+<article class="card food-compare" data-shop="aw" data-t="代替 既存"><div class="meta"><span class="badge b-alt">代替</span></div><h4><a class="shop-name" href="https://www.awok.co.jp/" target="_blank" rel="noopener">A&amp;W 那覇空港店</a></h4><p class="decision">27ジャッキーを見送ったときなど、空港食の候補。</p><div class="hours">空港店の営業・混雑・受付を当日確認</div></article>
+<article class="card food-compare " data-shop="ralph" data-t="代替 バーガー" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> バーガー｜沖縄市園田1-2-28</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4703/A470301/47021518/" target="_blank" rel="noopener">ラルフズバーガーレストラン</a></h4><p class="hook">ハンバーガー</p><p class="decision">27昼を中城～コザ中心へ変更する場合。ENZO主案への追加はしない。</p><div class="hours"><b>掲載営業</b> 月火土日11:00～15:30／水木金休<br><b>予約</b> 予約不可</div></article>
+<article class="card food-compare photo" data-shop="kingtacos" data-t="代替 既存"><figure class="discovery-photo"><img src="assets/img/tacorice.jpg" alt="タコライスの料理イメージ" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません</figcaption></figure><div class="body"><div class="meta"><span class="badge b-alt">代替</span></div><h4><a class="shop-name" href="https://www.visitkintown.jp/spot/kingtacos-honten" target="_blank" rel="noopener">キングタコス 金武本店</a></h4><p class="decision">金武中心へ変更する別案。今回はENZOと帰路の余裕を優先。</p><div class="hours">営業時間は店舗・観光案内で確認</div></div></article></div></section>
+<section class="cuisine-section" id="food-snacks" data-cuisine="snacks" aria-labelledby="food-title-snacks"><div class="cuisine-intro"><figure class="discovery-photo"><img src="assets/img/sataandagi.jpg" alt="サーターアンダギーの料理イメージ" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません</figcaption></figure><div><p class="eyebrow">3店</p><h3 id="food-title-snacks">スイーツ・軽食</h3><p>牧港のアイス、許田の小休憩。奥武島は南部を組み替える日に。</p></div></div><div class="grid cuisine-grid"><article class="card food-compare" data-shop="blueseal" data-t="主案 既存"><div class="meta"><span class="badge b-alt">旅程の主案</span></div><h4><a class="shop-name" href="https://map.blueseal.co.jp/shop-info/?id=makiminato" target="_blank" rel="noopener">BLUE SEAL ブルーシール 牧港本店</a></h4><p class="booking-state">希望の立寄り｜27(火) 13:45に立寄る予定</p><p class="decision">27の13:45～14:15。2024年に建て替えリニューアルした本店を選び、那覇へ戻る動線でアイスを楽しむ。<a href="https://www.blueseal.co.jp/company/news_release/news_release_20240606.html" target="_blank" rel="noopener">本店の公式紹介</a></p><div class="hours">営業時間は公式店舗案内で訪問前に確認</div></article>
+<article class="card food-compare photo" data-shop="mitsuya" data-t="主案 既存"><figure class="discovery-photo"><img src="assets/img/sataandagi.jpg" alt="サーターアンダギーの料理イメージ" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません</figcaption></figure><div class="body"><div class="meta"><span class="badge b-alt">旅程の主案</span></div><h4><a class="shop-name" href="https://www.yanbaru-b.co.jp/" target="_blank" rel="noopener">三矢本舗（道の駅許田）</a></h4><p class="decision">26朝の短い許田休憩で軽食。営業していなければ飲み物等だけに。</p><div class="hours">個店の営業・販売状況は当日確認</div></div></article>
+<article class="card food-compare" data-shop="nakamoto" data-t="代替 既存"><div class="meta"><span class="badge b-alt">代替</span></div><h4><a class="shop-name" href="https://nakamotosengyoten.com/" target="_blank" rel="noopener">中本鮮魚てんぷら店</a></h4><p class="decision">奥武島を回る南部の別日程なら沖縄天ぷら。25のグラス・ウミカジに追加しない。</p><div class="hours">営業日・価格は訪問前に確認</div></article></div></section>
+</div></div>
+<div class="note">主案の予約可能店も未予約です。営業情報は2026-09-14閲覧時の公式・店舗掲載内容。臨休、予約枠、メニューは訪問前に確認してください。店名から掲載ページへ進めます。<a href="#photo-credits">写真の出典・利用条件</a></div>
 </section>
 
-<section class="page" id="page-spots" role="tabpanel"><h2 class="page-title">🗺 スポット</h2>
-<div class="banner"><img src="assets/img/senaga.jpg" alt=""><div class="cap">景色と街を、食事の合間に<small>主な観光は首里・古宇利・美ら海・中城・ウミカジ。</small></div></div><p class="page-lead">海は施設や橋の景色として楽しみます。海水浴・砂浜滞在・制作体験は予定から外しました。下の「差替・任意」は主行程に追加する予定ではありません。</p><div class="cat-head"><h3>主案の観光と買い物</h3></div><div class="grid"><article class="card photo" data-spot="shuri"><img src="assets/img/th/shuri_ext.jpg" alt=""><div class="body"><h4>首里城公園</h4><div class="hook">25(日)9:00～10:15。復元中の姿と城郭を見学。</div><div class="hours">75分｜大人1名 ¥400（10月の有料区域）</div></div></article><article class="card photo" data-spot="senaga"><img src="assets/img/th/senaga.jpg" alt=""><div class="body"><h4>瀬長島ウミカジテラス</h4><div class="hook">25(日)15:30～18:00。昼の海から日没前後まで。</div><div class="hours">2時間30分｜散策無料・飲食等別途</div></div></article><article class="card photo" data-spot="kouri"><img src="assets/img/th/hero_kouri.jpg" alt=""><div class="body"><h4>古宇利大橋</h4><div class="hook">26(月)9:45～10:15。橋と施設から海を見る。</div><div class="hours">30分｜橋の通行無料・施設等別途</div></div></article><article class="card photo" data-spot="churaumi"><img src="assets/img/th/churaumi.jpg" alt=""><div class="body"><h4>沖縄美ら海水族館</h4><div class="hook">26(月)12:40～15:30。黒潮の海を軸に約3時間。</div><div class="hours">2時間50分｜大人1名 ¥2,180</div></div></article><article class="card photo" data-spot="nakagusuku"><img src="assets/img/th/nakagusuku.jpg" alt=""><div class="body"><h4>中城城跡</h4><div class="hook">27(火)9:00～10:00。石垣と海を1時間。</div><div class="hours">60分｜大人1名 ¥500</div></div></article><article class="card " data-spot="glass"><div class="body"><h4>琉球ガラス村</h4><div class="hook">25(日)13:15～14:15。グラスを比較し、好きなら購入。</div><div class="hours">60分｜入場・駐車無料／商品代別途</div></div></article><article class="card " data-spot="souvenirs"><div class="body"><h4>国際通りのお土産</h4><div class="hook">27(火)15:00～16:00。菓子と調味料を2店でまとめ買い。</div><div class="hours">徒歩・会計込み60分｜商品代・駐車代別途</div></div></article></div><div class="cat-head"><h3>差替・任意の候補</h3></div><div class="grid"><article class="card photo" data-spot="nakijin"><img src="assets/img/th/nakijin.jpg" alt=""><div class="body"><h4>今帰仁城跡</h4><div class="hook">古宇利などと差し替える場合の城跡。</div><div class="hours">計画目安60分｜要確認</div></div></article><article class="card photo" data-spot="bise"><img src="assets/img/th/bise.jpg" alt=""><div class="body"><h4>備瀬のフクギ並木</h4><div class="hook">北部の予定を減らすときの集落散策。</div><div class="hours">計画目安40～60分｜駐車等は要確認</div></div></article><article class="card photo" data-spot="amvillage"><img src="assets/img/th/amvillage.jpg" alt=""><div class="body"><h4>美浜アメリカンビレッジ</h4><div class="hook">事前にENZOの予約が取れず、浦添～北谷中心へ替える場合。</div><div class="hours">計画目安45～60分｜店舗利用・駐車等は要確認</div></div></article><article class="card photo" data-spot="central"><img src="assets/img/th/kaichudoro.jpg" alt=""><div class="body"><h4>海中道路・浜比嘉島・万座毛</h4><div class="hook">中部の景色を中心に組み替える場合。</div><div class="hours">主案と差し替えて再計画｜料金・駐車は施設ごとに確認</div></div></article><article class="card " data-spot="pineapple"><div class="body"><h4>ナゴパイナップルパーク</h4><div class="hook">無理に入れず、パークを楽しみたい場合だけ。</div><div class="hours">計画目安60～90分｜16歳以上¥1,500掲載・購入前確認</div></div></article><article class="card " data-spot="jungle"><div class="body"><h4>南部ウワーガージャングル</h4><div class="hook">夜の自然を楽しむ場合。ウミカジ日没とは競合。</div><div class="hours">80分｜大人¥3,500／装備付き¥4,500掲載</div></div></article><article class="card " data-spot="stars"><div class="body"><h4>月と明るい星を少し見る</h4><div class="hook">10/26は満月。遠出せず短時間だけ。</div><div class="hours">任意で短時間｜追加費用は場所次第</div></div></article></div><div class="note">確認日：2026-09-14。詳細の公式・観光案内を参照し、未確認とした営業時間・料金は出発前に確認してください。天候により屋外を短縮し、運転と休憩の余裕を優先します。</div>
+<section class="page" id="page-spots" role="tabpanel" aria-labelledby="tab-spots">
+<h2 class="page-title" tabindex="-1">🗺 スポット</h2>
+<p class="page-lead">今回の旅程は、首里・古宇利・美ら海・中城・ウミカジの<b>主要観光5体験＋グラス選び・買い物</b>。ほかにも選べる場所を残しています。</p>
+<div class="intro">全28件から、行きたい場所を選び直せます。「主案」は今の旅程、「差替候補」は予定を交換する場合、「今回は見送り」は今の時間配分では難しいもの。全部を回る計画ではありません。海水浴・砂浜滞在・制作体験は予定から外しました。</div>
+<div class="chips discovery-chips" id="spot-chips" role="group" aria-label="スポットの地域で絞り込み">
+<button type="button" class="chip active" data-region="all" aria-pressed="true" aria-controls="spot-catalogue">全地域 28件</button><button type="button" class="chip" data-region="naha" aria-pressed="false" aria-controls="spot-catalogue">那覇 6件</button><button type="button" class="chip" data-region="south" aria-pressed="false" aria-controls="spot-catalogue">南部 9件</button><button type="button" class="chip" data-region="central" aria-pressed="false" aria-controls="spot-catalogue">中部 8件</button><button type="button" class="chip" data-region="north" aria-pressed="false" aria-controls="spot-catalogue">北部 5件</button></div><p id="spot-results" class="filter-result" role="status">28件を表示</p><div id="spot-catalogue" class="grid"><article class="card spot-card photo" id="spot-shuri" data-spot="shuri" data-region="naha" data-status="主案"><figure class="discovery-photo"><img src="assets/img/shuri_ext.jpg" alt="首里城公園（過去の撮影）" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>首里城公園（過去の撮影）</figcaption></figure><div class="body"><div class="meta">那覇｜城・文化</div><span class="badge b-spot">主案</span><h4>首里城公園</h4><p class="hook">25(日)9:00～10:15。復元中の姿と城郭を見学。</p><p class="switch-reason"><b>予定の守り方</b> 25は10:15出発を守る。屋外を歩けない天候なら南部の屋内候補へ日程ごと見直す。</p><div class="hours">75分｜大人1名 ¥400（10月の有料区域）</div></div></article>
+<article class="card spot-card photo" id="spot-senaga" data-spot="senaga" data-region="south" data-status="主案"><figure class="discovery-photo"><img src="assets/img/senaga.jpg" alt="瀬長島ウミカジテラス（過去の撮影）" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>瀬長島ウミカジテラス（過去の撮影）</figcaption></figure><div class="body"><div class="meta">南部｜テラス・海景色</div><span class="badge b-spot">主案</span><h4>瀬長島ウミカジテラス</h4><p class="hook">25(日)15:30～18:00。昼の海から日没前後まで。</p><p class="switch-reason"><b>予定の守り方</b> 明るい時間の滞在を優先。荒天時は営業・安全を確認し、近くの屋内で休憩。</p><div class="hours">2時間30分｜散策無料・飲食等別途</div></div></article>
+<article class="card spot-card photo" id="spot-kouri" data-spot="kouri" data-region="north" data-status="主案"><figure class="discovery-photo"><img src="assets/img/hero_kouri.jpg" alt="古宇利大橋（過去の撮影）" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>古宇利大橋（過去の撮影）</figcaption></figure><div class="body"><div class="meta">北部｜橋・海景色</div><span class="badge b-spot">主案</span><h4>古宇利大橋</h4><p class="hook">26(月)9:45～10:15。橋と施設から海を見る。</p><p class="switch-reason"><b>予定の守り方</b> 高速渋滞ならここを先に省略。美ら海と那覇のまーちぬ家を守る。</p><div class="hours">30分｜橋の通行無料・施設等別途</div></div></article>
+<article class="card spot-card photo" id="spot-churaumi" data-spot="churaumi" data-region="north" data-status="主案"><figure class="discovery-photo"><img src="assets/img/churaumi.jpg" alt="沖縄美ら海水族館（過去の撮影）" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>沖縄美ら海水族館（過去の撮影）</figcaption></figure><div class="body"><div class="meta">北部｜水族館</div><span class="badge b-spot">主案</span><h4>沖縄美ら海水族館</h4><p class="hook">26(月)12:40～15:30。黒潮の海を軸に約3時間。</p><p class="switch-reason"><b>予定の守り方</b> 美ら海の約3時間は維持。昼食待ちが長ければ館内食へ切り替える。</p><div class="hours">2時間50分｜大人1名 ¥2,180</div></div></article>
+<article class="card spot-card photo" id="spot-nakagusuku" data-spot="nakagusuku" data-region="central" data-status="主案"><figure class="discovery-photo"><img src="assets/img/nakagusuku.jpg" alt="中城城跡（過去の撮影）" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>中城城跡（過去の撮影）</figcaption></figure><div class="body"><div class="meta">中部｜城跡・文化</div><span class="badge b-spot">主案</span><h4>中城城跡</h4><p class="hook">27(火)9:00～10:00。石垣と海を1時間。</p><p class="switch-reason"><b>予定の守り方</b> 10時出発を基準に。雨で石段が危険なら屋外見学を短縮・見送り。</p><div class="hours">60分｜大人1名 ¥500</div></div></article>
+<article class="card spot-card photo" id="spot-glass" data-spot="glass" data-region="south" data-status="主案"><figure class="discovery-photo"><img src="assets/img/glass_sample.jpg" alt="琉球グラスの作品例。琉球ガラス村の売場写真ではありません。" width="960" height="720" loading="lazy" decoding="async"><figcaption>琉球グラスの作品例。琉球ガラス村の売場写真ではありません。</figcaption></figure><div class="body"><div class="meta">南部｜グラス・買い物</div><span class="badge b-spot">主案</span><h4>琉球ガラス村</h4><p class="hook">25(日)13:15～14:15。グラスを比較し、好きなら購入。</p><p class="switch-reason"><b>予定の守り方</b> 店で見て好きなら購入。気に入る物がなければ買わず、15:30ウミカジ着を守る。</p><div class="hours">60分｜入場・駐車無料／商品代別途</div><a class="btn" href="#souvenirs" data-page-link="souvenirs">🎁 お土産の選び方</a></div></article>
+<article class="card spot-card photo" id="spot-souvenirs" data-spot="souvenirs" data-region="naha" data-status="主案"><figure class="discovery-photo"><img src="assets/img/kokusaidori.jpg" alt="国際通りの夜景。今回の買い物は27日15～16時です。" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>国際通りの夜景。今回の買い物は27日15～16時です。</figcaption></figure><div class="body"><div class="meta">那覇｜菓子・買い物</div><span class="badge b-spot">主案</span><h4>国際通りのお土産</h4><p class="hook">27(火)15:00～16:00。菓子と調味料を2店でまとめ買い。</p><p class="switch-reason"><b>予定の守り方</b> 27の15～16時にまとめて購入。空港は買い漏れ15～20分だけ。</p><div class="hours">徒歩・会計込み60分｜商品代・駐車代別途</div><a class="btn" href="#souvenirs" data-page-link="souvenirs">🎁 お土産の選び方</a></div></article>
+<article class="card spot-card photo" id="spot-tamaudun" data-spot="tamaudun" data-region="naha" data-status="差替候補"><figure class="discovery-photo"><img src="assets/img/tamaudun.jpg" alt="玉陵（過去の撮影）" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>玉陵（過去の撮影）</figcaption></figure><div class="body"><div class="meta">那覇｜文化・世界遺産</div><span class="badge b-alt">差替候補</span><h4>玉陵</h4><p class="hook">石造りの王家の墓を訪ね、首里の歴史を知る。</p><p class="switch-reason"><b>選び替えるなら</b> 首里の文化を深く見る日へ変更する場合に。25は10:15首里出発を守り、城と墓の両方を無理に詰め込まない。</p></div></article>
+<article class="card spot-card photo" id="spot-tsuboya" data-spot="tsuboya" data-region="naha" data-status="差替候補"><figure class="discovery-photo"><img src="assets/img/tsuboya2.jpg" alt="やちむんの作品例：金城次郎の魚文皿。通りの店舗や販売中の商品を示す写真ではありません。" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>やちむんの作品例：金城次郎の魚文皿。通りの店舗や販売中の商品を示す写真ではありません。</figcaption></figure><div class="body"><div class="meta">那覇｜街歩き・器</div><span class="badge b-alt">差替候補</span><h4>壺屋やちむん通り</h4><p class="hook">焼き物の街を歩き、暮らしで使う器を探す。</p><p class="switch-reason"><b>選び替えるなら</b> 那覇の街歩きへ組み替える場合に。27の土産60分へ追加せず、購入したい店の営業を先に確認。制作体験は不要。</p></div></article>
+<article class="card spot-card photo" id="spot-market" data-spot="market" data-region="naha" data-status="差替候補"><figure class="discovery-photo"><img src="assets/img/market.jpg" alt="公設市場の魚売場（過去の撮影・現在の建物や店舗配置とは異なる場合があります）" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>公設市場の魚売場（過去の撮影・現在の建物や店舗配置とは異なる場合があります）</figcaption></figure><div class="body"><div class="meta">那覇｜市場・食文化</div><span class="badge b-alt">差替候補</span><h4>第一牧志公設市場</h4><p class="hook">魚や食材を見て歩く、那覇の食文化の入口。</p><p class="switch-reason"><b>選び替えるなら</b> 那覇中心の別案で市場を見たい場合に。旧情報では第4日曜休のため25日は頼らず、公式の営業日を再確認。27朝ポーたまからの追加はしない。</p></div></article>
+<article class="card spot-card photo" id="spot-sefa" data-spot="sefa" data-region="south" data-status="差替候補"><figure class="discovery-photo"><img src="assets/img/sefa2.jpg" alt="斎場御嶽（過去の撮影）" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>斎場御嶽（過去の撮影）</figcaption></figure><div class="body"><div class="meta">南部｜文化・祈り</div><span class="badge b-alt">差替候補</span><h4>斎場御嶽</h4><p class="hook">森と巨岩に囲まれた、琉球の祈りの場。</p><p class="switch-reason"><b>選び替えるなら</b> 南部東側の文化を主題に再計画する日に。25日のグラス・ウミカジへ追加せず、休息日・公開区域・足元を確認。</p></div></article>
+<article class="card spot-card photo" id="spot-chinen" data-spot="chinen" data-region="south" data-status="差替候補"><figure class="discovery-photo"><img src="assets/img/chinen.jpg" alt="知念岬公園（過去の撮影）" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>知念岬公園（過去の撮影）</figcaption></figure><div class="body"><div class="meta">南部｜岬・景色</div><span class="badge b-alt">差替候補</span><h4>知念岬公園</h4><p class="hook">公園から太平洋と島々を望む。</p><p class="switch-reason"><b>選び替えるなら</b> 斎場御嶽など南部東側へ組み替える場合の短い散策。強風・雨なら見送り、ウミカジの明るい滞在を守る。</p></div></article>
+<article class="card spot-card photo" id="spot-niraikanai" data-spot="niraikanai" data-region="south" data-status="差替候補"><figure class="discovery-photo"><img src="assets/img/niraikanai.jpg" alt="知念岬公園から見た海岸とニライカナイ橋" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>知念岬公園から見た海岸とニライカナイ橋</figcaption></figure><div class="body"><div class="meta">南部｜ドライブ・景色</div><span class="badge b-alt">差替候補</span><h4>ニライカナイ橋</h4><p class="hook">海へ向かってカーブする橋の景色。</p><p class="switch-reason"><b>選び替えるなら</b> 南部東側の移動で通る場合に。橋上・路肩の停車はしない。安全に利用できる展望場所と正規駐車場を確認できなければ車窓のみ。</p></div></article>
+<article class="card spot-card photo" id="spot-ou" data-spot="ou" data-region="south" data-status="差替候補"><figure class="discovery-photo"><img src="assets/img/ou_island.jpg" alt="奥武島（過去の撮影）" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>奥武島（過去の撮影）</figcaption></figure><div class="body"><div class="meta">南部｜集落・食べ歩き</div><span class="badge b-alt">差替候補</span><h4>奥武島</h4><p class="hook">橋でつながる漁師の島で、港の景色と沖縄天ぷら。</p><p class="switch-reason"><b>選び替えるなら</b> 南部東側の町歩きを選ぶ日なら。25のグラス・ウミカジへ上乗せしない。店の行列も見込み、海水浴は予定しない。</p><a href="#shop-nakamoto" data-goto="nakamoto">中本鮮魚てんぷら店の候補を見る</a></div></article>
+<article class="card spot-card photo" id="spot-okinawaworld" data-spot="okinawaworld" data-region="south" data-status="差替候補"><figure class="discovery-photo"><img src="assets/img/gyokusendo.jpg" alt="玉泉洞・おきなわワールド（過去の撮影）" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>玉泉洞・おきなわワールド（過去の撮影）</figcaption></figure><div class="body"><div class="meta">南部｜鍾乳洞・文化</div><span class="badge b-alt">差替候補</span><h4>玉泉洞・おきなわワールド</h4><p class="hook">鍾乳洞の造形と、地上の琉球文化を楽しむ。</p><p class="switch-reason"><b>選び替えるなら</b> 雨で屋外の城跡を見直す場合の南部別案。洞内も足元は濡れるため営業・公開状況を確認し、グラスとウミカジの時間を再計画。</p></div></article>
+<article class="card spot-card photo" id="spot-gangala" data-spot="gangala" data-region="south" data-status="差替候補"><figure class="discovery-photo"><img src="assets/img/gangala.jpg" alt="ガンガラーの谷の洞窟入口付近。現在の利用条件は要確認。" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>ガンガラーの谷の洞窟入口付近。現在の利用条件は要確認。</figcaption></figure><div class="body"><div class="meta">南部｜森・ガイド散策</div><span class="badge b-alt">差替候補</span><h4>ガンガラーの谷</h4><p class="hook">洞窟と木々の景色を、ガイドと歩く自然体験。</p><p class="switch-reason"><b>選び替えるなら</b> 森歩きを目的に南部を組み替える場合だけ。事前にツアー枠・集合・所要時間を確認。雨天の屋内代替とは扱わず、25主案へ追加しない。</p></div></article>
+<article class="card spot-card photo" id="spot-amvillage" data-spot="amvillage" data-region="central" data-status="差替候補"><figure class="discovery-photo"><img src="assets/img/amvillage.jpg" alt="美浜アメリカンビレッジ（過去の撮影）" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>美浜アメリカンビレッジ（過去の撮影）</figcaption></figure><div class="body"><div class="meta">中部｜街歩き・買い物</div><span class="badge b-alt">差替候補</span><h4>美浜アメリカンビレッジ</h4><p class="hook">事前にENZOの予約が取れず、浦添～北谷中心へ替える場合。</p><p class="switch-reason"><b>選び替えるなら</b> ENZOの予約が取れず、高江洲そばと浦添～北谷中心へ組み替える場合に。</p></div></article>
+<article class="card spot-card photo" id="spot-manzamo" data-spot="manzamo" data-region="central" data-status="差替候補"><figure class="discovery-photo"><img src="assets/img/manzamo.jpg" alt="万座毛（過去の撮影）" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>万座毛（過去の撮影）</figcaption></figure><div class="body"><div class="meta">中部｜岬・景色</div><span class="badge b-alt">差替候補</span><h4>万座毛</h4><p class="hook">特徴ある岩と海を、遊歩道から眺める。</p><p class="switch-reason"><b>選び替えるなら</b> 27を恩納の景色中心に組み替える場合に。ENZO・牧港・那覇土産へ追加しない。強風・荒天なら見送り。</p></div></article>
+<article class="card spot-card photo" id="spot-zanpa" data-spot="zanpa" data-region="central" data-status="差替候補"><figure class="discovery-photo"><img src="assets/img/zanpa.jpg" alt="残波岬（過去の撮影）" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>残波岬（過去の撮影）</figcaption></figure><div class="body"><div class="meta">中部｜岬・灯台</div><span class="badge b-alt">差替候補</span><h4>残波岬</h4><p class="hook">白い灯台と断崖がつくる読谷の海景色。</p><p class="switch-reason"><b>選び替えるなら</b> 27の昼を読谷の景色中心へ替える場合に。ENZO後の追加を約束せず、風と移動時間で判断。崖際へ出ない。</p></div></article>
+<article class="card spot-card photo" id="spot-central" data-spot="central" data-region="central" data-status="差替候補"><figure class="discovery-photo"><img src="assets/img/kaichudoro.jpg" alt="海中道路（過去の撮影）" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>海中道路（過去の撮影）</figcaption></figure><div class="body"><div class="meta">中部｜ドライブ・海景色</div><span class="badge b-alt">差替候補</span><h4>海中道路</h4><p class="hook">両側に海が広がる道を走り、施設で休憩。</p><p class="switch-reason"><b>選び替えるなら</b> 27日を東海岸中心へ再計画する場合だけ。ENZO・牧港へ追加しない。</p></div></article>
+<article class="card spot-card photo" id="spot-hamahiga" data-spot="hamahiga" data-region="central" data-status="差替候補"><figure class="discovery-photo"><img src="assets/img/hamahiga.jpg" alt="果報バンタから望む浜比嘉島。集落内部の写真ではありません。" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>果報バンタから望む浜比嘉島。集落内部の写真ではありません。</figcaption></figure><div class="body"><div class="meta">中部｜集落・島景色</div><span class="badge b-alt">差替候補</span><h4>浜比嘉島</h4><p class="hook">赤瓦の集落や港に、島の暮らしを感じる。</p><p class="switch-reason"><b>選び替えるなら</b> 海中道路を選ぶ東海岸の日程なら。島は一つに絞り、集落の正規駐車場から歩く。祈りの場を尊重し、砂浜滞在はしない。</p></div></article>
+<article class="card spot-card photo" id="spot-katsuren" data-spot="katsuren" data-region="central" data-status="差替候補"><figure class="discovery-photo"><img src="assets/img/katsuren.jpg" alt="勝連城跡（過去の撮影）" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>勝連城跡（過去の撮影）</figcaption></figure><div class="body"><div class="meta">中部｜城跡・文化</div><span class="badge b-alt">差替候補</span><h4>勝連城跡</h4><p class="hook">丘の上に重なる石垣と、東海岸の眺め。</p><p class="switch-reason"><b>選び替えるなら</b> 27を中城から東海岸の城と景色へ替える場合に。城を両方詰め込まず、石段を歩ける天候と体力で判断。</p></div></article>
+<article class="card spot-card photo" id="spot-kafu" data-spot="kafu" data-region="central" data-status="差替候補"><figure class="discovery-photo"><img src="assets/img/kafubanta.jpg" alt="果報バンタ（過去の撮影）" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>果報バンタ（過去の撮影）</figcaption></figure><div class="body"><div class="meta">中部｜岬・塩</div><span class="badge b-alt">差替候補</span><h4>果報バンタ</h4><p class="hook">宮城島の高台から、サンゴ礁の海を見渡す。</p><p class="switch-reason"><b>選び替えるなら</b> 東海岸の島景色を主題にする別案。海中道路からさらに移動するため浜比嘉などと選択し、帰路の余裕を確保。</p></div></article>
+<article class="card spot-card photo" id="spot-nakijin" data-spot="nakijin" data-region="north" data-status="差替候補"><figure class="discovery-photo"><img src="assets/img/nakijin.jpg" alt="今帰仁城跡（過去の撮影）" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>今帰仁城跡（過去の撮影）</figcaption></figure><div class="body"><div class="meta">北部｜城跡・文化</div><span class="badge b-alt">差替候補</span><h4>今帰仁城跡</h4><p class="hook">古宇利などと差し替える場合の城跡。</p><p class="switch-reason"><b>選び替えるなら</b> 26の古宇利と交換するなら。石段を歩く時間を確保し、美ら海15:30出発を守る。</p></div></article>
+<article class="card spot-card photo" id="spot-bise" data-spot="bise" data-region="north" data-status="差替候補"><figure class="discovery-photo"><img src="assets/img/bise.jpg" alt="備瀬のフクギ並木（過去の撮影）" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>備瀬のフクギ並木（過去の撮影）</figcaption></figure><div class="body"><div class="meta">北部｜集落・木陰</div><span class="badge b-alt">差替候補</span><h4>備瀬のフクギ並木</h4><p class="hook">北部の予定を減らすときの集落散策。</p><p class="switch-reason"><b>選び替えるなら</b> 26の古宇利を省いて静かな散策を選ぶなら。美ら海の滞在を削らない。</p></div></article>
+<article class="card spot-card" id="spot-pineapple" data-spot="pineapple" data-region="north" data-status="差替候補"><div class="body"><div class="meta">北部｜パーク・買い物</div><span class="badge b-alt">差替候補</span><h4>ナゴパイナップルパーク</h4><p class="hook">無理に入れず、パークを楽しみたい場合だけ。</p><p class="switch-reason"><b>選び替えるなら</b> パークを楽しみたければ古宇利などと交換。美ら海・昼食を削って無理に追加しない。</p><a class="btn" href="#souvenirs" data-page-link="souvenirs">🎁 お土産の選び方</a></div></article>
+<article class="card spot-card" id="spot-jungle" data-spot="jungle" data-region="south" data-status="今回は見送り"><div class="body"><div class="meta">南部｜夜の自然ツアー</div><span class="badge b-alt">今回は見送り</span><h4>南部ウワーガージャングル</h4><p class="hook">夜の自然を楽しむ場合。ウミカジ日没とは競合。</p><p class="switch-reason"><b>選び替えるなら</b> ウミカジ日没と那覇夕食に競合するため現行では見送り。夜の自然を優先するなら予約枠確認後に再計画。</p></div></article>
+<article class="card spot-card" id="spot-stars" data-spot="stars" data-region="naha" data-status="差替候補"><div class="body"><div class="meta">那覇｜月・星／任意の過ごし方</div><span class="badge b-alt">差替候補</span><h4>月と明るい星を少し見る</h4><p class="hook">10/26は満月。遠出せず短時間だけ。</p><p class="switch-reason"><b>選び替えるなら</b> 疲れていなければ宿周辺の安全な場所で短時間。10/26は満月で暗い星は見えにくい。</p></div></article>
+</div><div class="note">営業時間・料金・公開区域は訪問前に確認してください。差替候補は移動時間も含めて選び直し、食事と帰路の余裕を確保しましょう。<a href="#photo-credits">写真の出典・利用条件</a></div></section>
+
+<section class="page" id="page-souvenirs" role="tabpanel" aria-labelledby="tab-souvenirs">
+<h2 class="page-title" tabindex="-1">🎁 お土産</h2>
+<p class="page-lead">二人の記念、配るお菓子、家で使う沖縄の味。<b>予算は2名合計 ¥15,000の計画枠</b>です。グラスは店で見て、気に入ったら買いましょう。</p>
+<div class="souvenir-route" aria-label="お土産を買うタイミング">
+<article class="card"><span class="badge b-spot">25(日) 13:15～14:15</span><h3>琉球ガラス村で比べる</h3><p>60分で色・形・持ち心地を見比べる。見るだけでもOK、制作体験の予約は不要。</p><a href="#spot-glass" data-openspot="glass">場所・詳細を見る</a></article>
+<article class="card"><span class="badge b-spot">27(火) 15:00～16:00</span><h3>御菓子御殿松尾 → わした</h3><p>菓子は御殿、自宅用はわした。徒歩・会計込み60分、両店で重複買いしない。</p><a href="#spot-souvenirs" data-openspot="souvenirs">場所・詳細を見る</a></article>
+<article class="card"><span class="badge b-alt">27(火) 空港で15～20分</span><h3>買い漏れだけ補う</h3><p>主なお土産は市内で購入。18時返却・18:30空港目標を守り、搭乗手続きを優先。</p><a href="#schedule" data-page-link="schedule">スケジュールへ</a></article>
+</div>
+<div class="grid souvenir-grid"><article class="card souvenir-card photo" id="gift-glass" data-souvenir="glass"><figure class="discovery-photo"><img src="assets/img/glass_sample.jpg" alt="琉球グラスの作品例。店頭の在庫・販売商品とは異なります。" width="960" height="720" loading="lazy" decoding="async"><figcaption>琉球グラスの作品例。店頭の在庫・販売商品とは異なります。</figcaption></figure><div class="body"><p class="gift-recipient">二人の記念</p><h3>琉球グラス</h3><p class="gift-why">二人で家でも使える記念品。色・形・重さ・口当たりを比べ、気に入るものがあれば選ぶ。</p><dl><dt>買う場所・タイミング</dt><dd>琉球ガラス村｜25(日) 13:15～14:15</dd><dt>選ぶとき・持帰り・保存</dt><dd>沖縄産を希望するなら産地を確認（自社ベトナム製もあります）。耐熱・食洗機対応は商品表示を確認。緩衝材と梱包を相談し、割れないよう持ち帰る。</dd></dl><div class="links"><a href="https://www.ryukyu-glass.co.jp/about" target="_blank" rel="noopener">琉球ガラス村 公式案内</a></div></div></article>
+<article class="card souvenir-card" id="gift-tart" data-souvenir="tart"><div class="body"><p class="gift-recipient">配り用</p><h3>紅いもタルト</h3><p class="gift-why">紅いもの味を楽しんでもらう定番候補。渡す人数に合わせ、箱の個数・個包装の有無を確認。</p><dl><dt>買う場所・タイミング</dt><dd>御菓子御殿 国際通り松尾店｜27(火) 15～16時</dd><dt>選ぶとき・持帰り・保存</dt><dd>元祖紅いもタルト10個 ¥2,160（税込）は公式通販掲載額。実店舗価格は確認。常温30日の賞味期限は購入日から30日ではありません。ラベルを見て渡す日まで余裕があるか確認。生タルトは冷凍の別商品。</dd></dl><div class="links"><a href="https://okashigoten.com/products/detail/256" target="_blank" rel="noopener">公式通販の商品情報</a></div></div></article>
+<article class="card souvenir-card photo" id="gift-chinsuko" data-souvenir="chinsuko"><figure class="discovery-photo"><img src="assets/img/chinsuko_sample.jpg" alt="ちんすこうのイメージ。銘柄・包装は店頭で選べます。" width="960" height="720" loading="lazy" decoding="async"><figcaption>ちんすこうのイメージ。銘柄・包装は店頭で選べます。</figcaption></figure><div class="body"><p class="gift-recipient">配り用</p><h3>ちんすこう</h3><p class="gift-why">職場・友人などへ、食べきれる小分けのお菓子を選びたいときに。味や包装の違いを比べる。</p><dl><dt>買う場所・タイミング</dt><dd>御菓子御殿 国際通り松尾店｜27(火) 15～16時</dd><dt>選ぶとき・持帰り・保存</dt><dd>個包装・原材料・賞味期限は商品ごとに確認。砕けやすいので荷物の底で押しつぶさず、箱を保護。保存方法はラベルに従う。</dd></dl><div class="links"><a href="https://www.okashigoten.co.jp/matsuo-shop" target="_blank" rel="noopener">松尾店の公式案内</a></div></div></article>
+<article class="card souvenir-card" id="gift-sugar" data-souvenir="sugar"><div class="body"><p class="gift-recipient">自宅用</p><h3>黒糖</h3><p class="gift-why">家で少しずつおやつや料理に使いたい二人へ。産地や味、純黒糖・加工黒糖など表示の違いを見比べる。</p><dl><dt>買う場所・タイミング</dt><dd>わしたショップ 国際通り店｜27(火) 15～16時</dd><dt>選ぶとき・持帰り・保存</dt><dd>使い切れる量を選び、持ち帰る重さも確認。開封後の湿気対策・保存方法・賞味期限は各商品のラベルに従う。</dd></dl><div class="links"><a href="https://corp.washita.co.jp/shop/kokusai-dori/" target="_blank" rel="noopener">わしたの公式案内</a></div></div></article>
+<article class="card souvenir-card photo" id="gift-citrus" data-souvenir="citrus"><figure class="discovery-photo"><img src="assets/img/shikuwasa_sample.jpg" alt="シークヮーサー果実の断面。購入候補は果汁・調味料です。" width="960" height="646" loading="lazy" decoding="async"><figcaption>シークヮーサー果実の断面。購入候補は果汁・調味料です。</figcaption></figure><div class="body"><p class="gift-recipient">自宅用</p><h3>シークヮーサー果汁・調味料</h3><p class="gift-why">飲み物や料理に沖縄の風味を足したいときに。果汁率・加糖の有無や使い道を見て選ぶ。</p><dl><dt>買う場所・タイミング</dt><dd>わしたショップ 国際通り店｜27(火) 15～16時</dd><dt>選ぶとき・持帰り・保存</dt><dd>液体の重さと瓶の割れに注意し、漏れ防止に袋へ。開栓後の冷蔵要否・保存方法・賞味期限をラベルで確認。航空会社の持込み条件も確認。</dd></dl><div class="links"><a href="https://corp.washita.co.jp/shop/kokusai-dori/" target="_blank" rel="noopener">わしたの公式案内</a></div></div></article>
+<article class="card souvenir-card" id="gift-chili" data-souvenir="chili"><div class="body"><p class="gift-recipient">自宅用</p><h3>島とうがらし・コーレーグース</h3><p class="gift-why">辛いものが好きな二人へ。そばや料理に少量ずつ使える薬味を、辛さの好みに合わせて選ぶ。</p><dl><dt>買う場所・タイミング</dt><dd>わしたショップ 国際通り店｜27(火) 15～16時</dd><dt>選ぶとき・持帰り・保存</dt><dd>コーレーグースは泡盛漬けの商品があるため原材料・アルコール表示を確認。瓶の破損・液漏れを防ぎ、開栓後の保存は商品表示に従う。</dd></dl><div class="links"><a href="https://corp.washita.co.jp/shop/kokusai-dori/" target="_blank" rel="noopener">わしたの公式案内</a></div></div></article>
+<article class="card souvenir-card photo" id="gift-awamori" data-souvenir="awamori"><figure class="discovery-photo"><img src="assets/img/awamori.jpg" alt="宮古島で撮影された泡盛の瓶の陳列" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>泡盛の銘柄・瓶のイメージ（宮古島での撮影）。わしたの売場・現在の価格や取扱商品を示す写真ではありません。</figcaption></figure><div class="body"><p class="gift-recipient">お酒好きへ</p><h3>泡盛</h3><p class="gift-why">お酒を楽しむ人や自宅用に。銘柄・度数・熟成の違いを見て、飲み方や好みを店で相談する。</p><dl><dt>買う場所・タイミング</dt><dd>わしたショップ 国際通り店｜27(火) 15～16時</dd><dt>選ぶとき・持帰り・保存</dt><dd>度数・容量で航空会社の持込み条件を確認。重量と割れ物の梱包を考えて選ぶ。保存方法は商品表示に従い、運転前は飲まない。</dd></dl><div class="links"><a href="https://corp.washita.co.jp/shop/kokusai-dori/" target="_blank" rel="noopener">わしたの公式案内</a></div></div></article>
+<article class="card souvenir-card" id="gift-pineapple" data-souvenir="pineapple"><div class="body"><p class="gift-recipient">パーク採用時</p><h3>パイナップル菓子</h3><p class="gift-why">パークの思い出を持ち帰りたい場合だけ。焼菓子などから好みと持ち運びやすさで選ぶ。</p><dl><dt>買う場所・タイミング</dt><dd>ナゴパイナップルパーク｜26の古宇利などと差し替えた場合のみ</dd><dt>選ぶとき・持帰り・保存</dt><dd>お土産のためだけにパークを追加しない。要冷蔵・個包装・賞味期限・原材料を確認し、常温で運べるかラベルと店員に確認。</dd></dl><div class="links"><a href="https://www.nagopine.com/access.html" target="_blank" rel="noopener">パークの公式案内</a></div></div></article>
+</div><div class="section"><h3 class="section-title">買う場所のメモ</h3><div class="grid">
+<div class="card panel"><h4>琉球ガラス村</h4><p>糸満市福地169。9:30～17:30・年中無休、入場・駐車無料。商品代別途。</p><a href="https://www.ryukyu-glass.co.jp/faq" target="_blank" rel="noopener">公式FAQ</a></div>
+<div class="card panel"><h4>御菓子御殿 国際通り松尾店</h4><p>那覇市松尾1-2-5。9～22時掲載。まず配り用のお菓子を購入。</p><a href="https://www.okashigoten.co.jp/matsuo-shop" target="_blank" rel="noopener">公式店舗案内</a></div>
+<div class="card panel"><h4>わしたショップ 国際通り店</h4><p>那覇市久茂地3-2-22 JAドリーム館1F。9～22時・年始休掲載。黒糖・果汁・調味料などを選ぶ。</p><a href="https://corp.washita.co.jp/shop/kokusai-dori/" target="_blank" rel="noopener">公式店舗案内</a></div></div></div>
+<div class="note">店舗・商品情報は2026-09-14の確認資料に基づきます。価格・在庫・営業日は購入前に確認。市内は周辺有料駐車場の当日の空きを確認し、路上駐車はしません。<a href="#budget" data-page-link="budget">2名の全体予算を見る</a> · <a href="#photo-credits">写真の出典・利用条件</a></div>
 </section>
 
-<section class="page" id="page-access" role="tabpanel"><h2 class="page-title">🚗 移動・宿</h2>
+<section class="page" id="page-access" role="tabpanel" aria-labelledby="tab-access"><h2 class="page-title">🚗 移動・宿</h2>
 <div class="banner"><img src="assets/img/ana_plane.jpg" alt=""><div class="cap">航空便の候補と、予約済みの宿<small>便と車は未確定。ホテルのみ予約・支払済み。</small></div></div><div class="tip"><b>往路候補：10/24 ANA479 羽田20:15 → 那覇22:50<br>復路候補：10/27 ANA1098 那覇20:45 → 羽田23:00（ソラシド運航）</b><br>航空券は9/12調査時のトラベルコ表示を保存した参考値。現在の時刻・運賃・手荷物条件・空席・実予約は未確認です。<a class="btn" href="https://www.ana.co.jp/" target="_blank" rel="noopener">ANA公式で確認</a></div><div class="tbl-wrap stack"><table><thead><tr><th>候補</th><th>片道1名・当時表示額</th><th>選ぶ理由・条件</th></tr></thead><tbody><tr><td>往路 ANA479 20:15→22:50</td><td>¥15,353</td><td>遅い出発に合わせる第一候補</td></tr><tr><td>往路 SNA025 19:10→21:55</td><td>¥15,469</td><td>出発に間に合えば早くホテルへ。<a class="btn" href="https://www.solaseedair.jp/" target="_blank" rel="noopener">ソラシド公式</a></td></tr><tr><td>往路 SKY523 18:25→21:05</td><td>¥17,970</td><td>さらに早く出られる場合。<a class="btn" href="https://www.skymark.co.jp/" target="_blank" rel="noopener">スカイマーク公式</a></td></tr><tr><td>復路 ANA1098 20:45→23:00</td><td>¥13,222</td><td>ソラシド運航のANA便名候補</td></tr><tr><td>復路 ANA478 20:55→23:10</td><td>¥14,680</td><td>ANA自社機材の候補・現在条件要確認</td></tr></tbody></table></div><div class="note">第一候補の往復2名は (¥15,353＋¥13,222)×2＝¥57,150。マイルは運賃条件で変わるため、現金予算から差し引きません。</div><div class="section"><h3 class="section-title">レンタカーは25朝受取を第一案に</h3><div class="grid"><div class="card panel"><h4>到着夜</h4><div class="desc">那覇22:50着の候補便からは、荷物受取後にタクシー等でホテルへ。深夜の送迎・貸出が可能とはまだ確認できていません。</div></div><div class="card panel"><h4>25朝の受取</h4><div class="desc">那覇市内などで首里9時着に間に合う開始時刻を確認。営業所・送迎・補償・ETC・料金は未確定。遅ければ朝食の寄り道を省略。</div></div><div class="card panel"><h4>27の返却</h4><div class="desc">給油して18:00返却、18:30空港が目標。営業所・給油場所・空港送迎の所要時間を確認。那覇市内想定と違えば予定を前倒し。</div></div></div></div><div class="section"><h3 class="section-title">宿：スマイルホテル那覇シティリゾート <span class="badge b-ok">予約・支払済み</span></h3><div class="grid"><div class="card panel"><h4>3泊・2名 ¥18,024</h4><div class="desc">10/24～27、ダブル・素泊り。予約情報で確認できた支払済み実額を保持。久米2-32-1。<br>保存済み予約情報の無料キャンセル期限は<b>10/22(木)23:59</b>。変更・取消の前に予約控えで条件を確認。</div></div><div class="card panel"><h4>遅着と駐車を確認</h4><div class="desc">☎098-869-2511。航空券確定後に深夜到着を連絡し、チェックイン可否を確認。25・26夜の駐車条件・空き・料金も確認。<a class="btn" target="_blank" rel="noopener" href="https://smile-hotels.com/hotels/okinawa-nahacity/">ホテル公式</a></div></div></div></div><div class="section"><h3 class="section-title">日別ルートと運転の余裕</h3><div class="grid"><div class="card panel"><h4>25 南部</h4><div class="desc">那覇→首里→糸満漁民食堂→琉球ガラス村→瀬長島→那覇。ウミカジ15:30着を守る。</div></div><div class="card panel"><h4>26 北部往復</h4><div class="desc">那覇→許田→古宇利→本部の昼食→美ら海→那覇。高速・休憩・渋滞を見込み、遅れたら古宇利を省略。</div></div><div class="card panel"><h4>27 中部から空港</h4><div class="desc">那覇→中城→ENZO→牧港→那覇の土産→ジャッキー→給油・返却→空港。返却店確定後に再調整。</div></div></div><ul class="check"><li>朝夕の渋滞と駐車待ちを見込む。バスレーン・交通規制は現地標識を優先。</li><li>25・26の夕食前は車をホテルに置く。飲酒後は運転せず徒歩・タクシー等を使う。</li><li>10/23～25は奥武山公園で沖縄の産業まつり。25日は周辺混雑を見込み、見学を無理に追加しない。具体的な交通規制は未確認。<a href="https://okinawa-ric.jp/news/info/r8-sangyomaturi-bosyu.html" target="_blank" rel="noopener">主催側の案内</a></li><li>写真や買い物のために路上へ停めず、施設・有料駐車場を利用する。</li><li>長距離移動は休憩を挟む。便・営業所の条件が確定したら到着・返却時間を再確認する。</li></ul></div>
 </section>
 
-<section class="page" id="page-prep" role="tabpanel"><h2 class="page-title">📋 予約・持ち物</h2>
-<p class="page-lead">ホテルは予約・支払済み。その他は予約状況未確認です。ここは準備リストで、予約を実行した記録ではありません。</p><ul class="check"><li class="done"><b>ホテル3泊 ¥18,024</b>：予約・支払済み。保存情報の無料キャンセル期限は10/22(木)23:59（条件は予約控えで確認）。</li><li><b>航空券</b>：10/24夜便・10/27夜便の時刻、運賃条件、空席を確認。</li><li><b>ホテルへ遅着連絡</b>：☎098-869-2511。深夜チェックインと駐車条件を確認。</li><li><b>レンタカー</b>：25朝の受取時刻と営業所、27の18時返却・空港送迎、給油場所、補償・ETCを確認。</li><li><b>まつもと</b>：25(日)19:30、2名の電話予約を検討。☎098-861-1890（問合せ14～17時推奨）。満席なら金武、次にうりずん。</li><li><b>まーちぬ家</b>：26(月)19:30、2名。☎098-863-5159。日曜休なので25夜には予約しない。</li><li><b>ENZO</b>：27(火)11:30、2名。ランチの選択肢・料金・所要時間を確認。事前の予約確認で席が取れなければ、11時の高江洲そばへ日程変更。</li><li><b>並ぶ店の切替条件</b>：糸満12時入店、きしもと12時食事開始、ジャッキー16:40着席の見込みで判断。</li><li><b>出発前</b>：臨休・予約内容・天気・美ら海の当日開催表を確認。ポーたまの朝の行列も見込む。</li></ul><div class="section"><h3 class="section-title">持ち物</h3><div class="grid"><div class="card panel"><h4>運転・連絡</h4><div class="desc">運転者全員の免許証、決済手段、充電器・車載ケーブル、モバイルバッテリー、予約控え。</div></div><div class="card panel"><h4>歩く・天候に備える</h4><div class="desc">歩きやすい靴、薄手の羽織り、帽子、日焼け止め、折りたたみ傘、虫よけ。城跡の石段は雨で滑りやすい。</div></div><div class="card panel"><h4>買い物</h4><div class="desc">エコバッグ、割れ物を守る緩衝材、持帰り用の空き容量。液体・酒類・食品の持込み条件は航空会社で確認。</div></div></div></div><div class="section"><h3 class="section-title">お土産は2回に分けて</h3><div class="grid"><div class="card panel"><h4>25 13:15～14:15：グラス</h4><div class="desc">琉球ガラス村で60分。2人の記念に好きなものがあれば購入。産地、耐熱・食洗機対応、梱包を確認。<a class="btn" href="https://www.ryukyu-glass.co.jp/about" target="_blank" rel="noopener">公式案内</a></div></div><div class="card panel"><h4>27 15:00～16:00：菓子と自宅用</h4><div class="desc">御菓子御殿 国際通り松尾店（松尾1-2-5／9～22時）で紅いもタルト・ちんすこう。わしたショップ 国際通り店（久茂地3-2-22／9～22時・年始休）で黒糖・果汁・調味料・島唐辛子、酒好きなら泡盛。<a class="btn" href="https://www.okashigoten.co.jp/matsuo-shop" target="_blank" rel="noopener">松尾店</a><a class="btn" href="https://corp.washita.co.jp/shop/kokusai-dori/" target="_blank" rel="noopener">わした国際通り店</a></div></div><div class="card panel"><h4>賞味期限・持帰り</h4><div class="desc">元祖紅いもタルト10個¥2,160は公式通販掲載額（税込）。実店舗価格を確認。常温30日の賞味期限は購入日から30日ではないためラベルを見る。生タルトは冷凍の別商品。<a class="btn" href="https://okashigoten.com/products/detail/256" target="_blank" rel="noopener">商品情報</a></div></div></div><div class="note">市内の徒歩・会計込み60分。両店で重複買いを避け、周辺有料駐車場を利用。空港は手続を優先し、買い漏れ15～20分だけにします。</div></div>
+<section class="page" id="page-prep" role="tabpanel" aria-labelledby="tab-prep"><h2 class="page-title">📋 予約・持ち物</h2>
+<p class="page-lead">ホテルは予約・支払済み。その他は予約状況未確認です。ここは準備リストで、予約を実行した記録ではありません。チェックはこの端末に保存します。</p><ul class="check"><li class="done" data-check="hotel"><b>ホテル3泊 ¥18,024</b>：予約・支払済み。保存情報の無料キャンセル期限は10/22(木)23:59（条件は予約控えで確認）。</li><li data-check="flights"><b>航空券</b>：10/24夜便・10/27夜便の時刻、運賃条件、空席を確認。</li><li data-check="late-checkin"><b>ホテルへ遅着連絡</b>：☎098-869-2511。深夜チェックインと駐車条件を確認。</li><li data-check="rental"><b>レンタカー</b>：25朝の受取時刻と営業所、27の18時返却・空港送迎、給油場所、補償・ETCを確認。</li><li data-check="matsumoto"><b>まつもと</b>：25(日)19:30、2名の電話予約を検討。☎098-861-1890（問合せ14～17時推奨）。満席なら金武、次にうりずん。</li><li data-check="marchinu"><b>まーちぬ家</b>：26(月)19:30、2名。☎098-863-5159。日曜休なので25夜には予約しない。</li><li data-check="enzo"><b>ENZO</b>：27(火)11:30、2名。ランチの選択肢・料金・所要時間を確認。事前の予約確認で席が取れなければ、11時の高江洲そばへ日程変更。</li><li data-check="queues"><b>並ぶ店の切替条件</b>：糸満12時入店、きしもと12時食事開始、ジャッキー16:40着席の見込みで判断。</li><li data-check="departure"><b>出発前</b>：臨休・予約内容・天気・美ら海の当日開催表を確認。ポーたまの朝の行列も見込む。</li></ul><div class="section"><h3 class="section-title">持ち物</h3><div class="grid"><div class="card panel"><h4>運転・連絡</h4><div class="desc">運転者全員の免許証、決済手段、充電器・車載ケーブル、モバイルバッテリー、予約控え。</div></div><div class="card panel"><h4>歩く・天候に備える</h4><div class="desc">歩きやすい靴、薄手の羽織り、帽子、日焼け止め、折りたたみ傘、虫よけ。城跡の石段は雨で滑りやすい。</div></div><div class="card panel"><h4>買い物</h4><div class="desc">エコバッグ、割れ物を守る緩衝材、持帰り用の空き容量。液体・酒類・食品の持込み条件は航空会社で確認。</div></div></div></div><div class="note">お土産は25日にグラス、27日に菓子と自宅用を。<a href="#souvenirs" data-page-link="souvenirs">買うもの・場所・持帰りの注意をまとめて見る →</a></div>
 </section>
 
-<section class="page" id="page-budget" role="tabpanel"><h2 class="page-title">💴 予算</h2>
+<section class="page" id="page-budget" role="tabpanel" aria-labelledby="tab-budget"><h2 class="page-title">💴 予算</h2>
 <p class="page-lead"><b>以下はすべて2名合計</b>。ホテル以外は参考値・計画見積りです。飲食店の現在価格・予約条件を確認し、決まった額へ更新します。</p><div class="kpi-row"><div class="kpi"><div class="v">¥231,234</div><div class="l">旅行全体・2名</div></div><div class="kpi"><div class="v">¥18,024</div><div class="l">ホテル・支払済み</div></div><div class="kpi"><div class="v">¥75,900</div><div class="l">食事の計画枠・2名</div></div><div class="kpi"><div class="v">¥15,000</div><div class="l">予備費</div></div></div><div class="tbl-wrap stack"><table id="budget-table"><thead><tr><th>項目</th><th>内訳</th><th>金額・2名</th><th>状態</th></tr></thead><tbody><tr data-budget-amount="57150"><td>航空券</td><td>(往路15,353＋復路13,222)×2。9/12当時の表示額</td><td class="num">¥57,150</td><td>未予約・参考値</td></tr><tr data-budget-amount="18024"><td>ホテル</td><td>ダブル・素泊り3泊・2名</td><td class="num">¥18,024</td><td>支払済み実額</td></tr><tr data-budget-amount="23000"><td>レンタカー</td><td>25朝～27夕の車・補償の計画枠</td><td class="num">¥23,000</td><td>見積り・会社未確定</td></tr><tr data-budget-amount="4000"><td>高速</td><td>北部往復等</td><td class="num">¥4,000</td><td>見積り</td></tr><tr data-budget-amount="5000"><td>ガソリン</td><td>3日間の走行分</td><td class="num">¥5,000</td><td>見積り</td></tr><tr data-budget-amount="6000"><td>駐車</td><td>ホテル・観光・市内買い物</td><td class="num">¥6,000</td><td>見積り</td></tr><tr data-budget-amount="6000"><td>タクシー等</td><td>到着夜・飲酒夕食時等</td><td class="num">¥6,000</td><td>見積り</td></tr><tr data-budget-amount="6160"><td>入場料</td><td>(美ら海2,180＋首里400＋中城500)×2</td><td class="num">¥6,160</td><td>掲載料金の計画額</td></tr><tr data-budget-amount="75900"><td>食事</td><td>下の2名分の食事予算を合算</td><td class="num">¥75,900</td><td>計画目安・店の現行価格ではない</td></tr><tr data-budget-amount="15000"><td>お土産</td><td>グラス・菓子・調味料等</td><td class="num">¥15,000</td><td>見積り</td></tr><tr data-budget-amount="15000"><td>予備費</td><td>価格上昇・追加交通・メニュー差等</td><td class="num">¥15,000</td><td>計画枠</td></tr><tr id="budget-total" data-total="231234"><td><b>合計</b></td><td>上の11項目の合計</td><td class="num"><b>¥231,234</b></td><td>2名・計画額</td></tr></tbody></table></div><details class="fold" open><summary>食事予算の内訳（全行2名合計）</summary><div class="tbl-wrap stack"><table id="meal-budget"><thead><tr><th>食事</th><th>2名の計画目安</th></tr></thead><tbody><tr data-meal-amount="4000"><td>24夜食・軽食（任意）</td><td class="num">¥4,000</td></tr><tr data-meal-amount="1500"><td>25朝軽食</td><td class="num">¥1,500</td></tr><tr data-meal-amount="6000"><td>25糸満漁民食堂</td><td class="num">¥6,000</td></tr><tr data-meal-amount="2500"><td>25ウミカジのカフェ</td><td class="num">¥2,500</td></tr><tr data-meal-amount="18000"><td>25まつもと・飲み物</td><td class="num">¥18,000</td></tr><tr data-meal-amount="2000"><td>26許田の軽食</td><td class="num">¥2,000</td></tr><tr data-meal-amount="3000"><td>26きしもと食堂</td><td class="num">¥3,000</td></tr><tr data-meal-amount="12000"><td>26まーちぬ家・飲み物</td><td class="num">¥12,000</td></tr><tr data-meal-amount="1600"><td>27ポーたま</td><td class="num">¥1,600</td></tr><tr data-meal-amount="12000"><td>27ENZO</td><td class="num">¥12,000</td></tr><tr data-meal-amount="1800"><td>27ブルーシール牧港</td><td class="num">¥1,800</td></tr><tr data-meal-amount="9000"><td>27ジャッキー</td><td class="num">¥9,000</td></tr><tr data-meal-amount="2500"><td>空港等の軽食余裕</td><td class="num">¥2,500</td></tr><tr data-meal-total="75900"><td>食事合計</td><td class="num">¥75,900</td></tr></tbody></table></div></details><div class="note">食事の金額は予約時のメニュー選択と飲み物を見込む計画枠です。ENZOの掲載¥6,380コースは昼の必須メニューとはしていません。予約時に実際の昼メニューを確認し、必要なら食事・予備費を調整。任意の夜食を食べない場合や、ジャッキーを空港食へ替える場合は差額を残せます。主案にないパーク・ツアーの費用は含まず、差替時に再計算します。</div>
 </section>
 </main>
 
 <footer>
+<div class="footer-nav" role="navigation" aria-label="ページ切替（下部）"><a href="#schedule" data-page-link="schedule" aria-current="page">✈ スケジュール</a><a href="#food" data-page-link="food">🍽 グルメ</a><a href="#spots" data-page-link="spots">🗺 スポット</a><a href="#souvenirs" data-page-link="souvenirs">🎁 お土産</a><a href="#access" data-page-link="access">🚗 移動・宿</a><a href="#prep" data-page-link="prep">📋 予約・持ち物</a><a href="#budget" data-page-link="budget">💴 予算</a></div>
   <p>Okinawa Trip 2026 · 最終更新 2026-09-14。店舗の営業情報は9/14閲覧時、航空便・運賃は9/12の参考値。臨休・予約枠・未確認事項は出発前に確認。</p>
-  <details class="credits"><summary>📷 写真クレジット（Wikimedia Commons）</summary><ul id="credit-list"></ul></details>
+  <details class="credits" id="photo-credits"><summary>📷 写真クレジット（Wikimedia Commons）</summary><p><a href="assets/img/credits.json" target="_blank" rel="noopener">写真出典の一覧ファイルを開く</a></p><ul id="credit-list"></ul></details>
 </footer>
 <button class="scroll-top" id="scrollTop" aria-label="ページ上部へ" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
@@ -325,12 +453,31 @@ function showPage(id, btn){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');b.tabIndex=-1;});
   const page=document.getElementById('page-'+id); if(page) page.classList.add('active');
+  document.querySelectorAll('.footer-nav [data-page-link]').forEach(a=>{if(a.dataset.pageLink===id)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
   const active=btn||document.querySelector('.nav-btn[aria-controls="page-'+id+'"]');
   if(active){active.classList.add('active');active.setAttribute('aria-selected','true');active.tabIndex=0;}
   const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
   if(location.hash!=='#'+id){ try{history.replaceState(null,'','#'+id);}catch(e){} }
 }
+
+function filterFood(f){
+  const sections=[...document.querySelectorAll('[data-cuisine]')];
+  if(f!=='all'&&!sections.some(s=>s.dataset.cuisine===f))f='all';
+  document.querySelectorAll('#chips .chip').forEach(c=>{const active=c.dataset.f===f;c.classList.toggle('active',active);c.setAttribute('aria-pressed',String(active));});
+  let count=2;
+  sections.forEach(section=>{const visible=f==='all'||section.dataset.cuisine===f;section.hidden=!visible;section.querySelectorAll('[data-shop]').forEach(c=>{c.hidden=!visible;if(visible)count++;});});
+  document.querySelectorAll('#food-desires [data-shop]').forEach(c=>c.hidden=false);
+  document.getElementById('food-results').textContent=count+'店を表示（冒頭の希望2店を含む）';
+}
+function filterSpots(region){
+  const cards=[...document.querySelectorAll('#spot-catalogue [data-spot]')];
+  if(region!=='all'&&!cards.some(c=>c.dataset.region===region))region='all';
+  document.querySelectorAll('#spot-chips .chip').forEach(c=>{const active=c.dataset.region===region;c.classList.toggle('active',active);c.setAttribute('aria-pressed',String(active));});
+  let count=0;cards.forEach(c=>{c.hidden=region!=='all'&&c.dataset.region!==region;if(!c.hidden)count++;});
+  document.getElementById('spot-results').textContent=count+'件を表示';
+}
+
 function toggleDay(h){const open=h.parentElement.classList.toggle('open');h.setAttribute('aria-expanded',String(open));}
 (function(){
   const tl=document.querySelector('.nav-inner[role="tablist"]'); if(!tl) return;
@@ -352,11 +499,9 @@ function toggleDay(h){const open=h.parentElement.classList.toggle('open');h.setA
     if(jump){ jump.innerHTML=days.map((d,i)=>'<a href="#" data-day="'+i+'" class="'+(i===idx?'today':'')+'">'+names[i]+'</a>').join(''); jump.addEventListener('click',e=>{const a=e.target.closest('a[data-day]'); if(!a) return; e.preventDefault(); const d=days[+a.dataset.day]; d.classList.add('open'); d.querySelector('.day-header').setAttribute('aria-expanded','true'); d.scrollIntoView({behavior:'smooth',block:'start'});}); }
     if(idx>=0 && idx<=3){ days.forEach((d,i)=>{d.classList.toggle('open',i===idx);d.querySelector('.day-header').setAttribute('aria-expanded',String(i===idx));}); const cd=document.getElementById('countdown'); if(cd) cd.textContent='今日は '+names[idx]; }
   })();
-  // 店フィルタ
-  const chips=document.getElementById('chips');
-  if(chips){ chips.addEventListener('click',e=>{const b=e.target.closest('.chip'); if(!b) return;
-    chips.querySelectorAll('.chip').forEach(c=>c.classList.remove('active')); b.classList.add('active');
-    const f=b.dataset.f; document.querySelectorAll('#shops .card').forEach(c=>{c.hidden = f!=='all' && !(c.dataset.t||'').split(' ').includes(f);}); }); }
+  // Cuisine filters keep both desire cards visible and hide whole empty sections.
+  document.getElementById('chips').addEventListener('click',e=>{const b=e.target.closest('button[data-f]');if(b)filterFood(b.dataset.f);});
+  document.getElementById('spot-chips').addEventListener('click',e=>{const b=e.target.closest('button[data-region]');if(b)filterSpots(b.dataset.region);});
   // 写真クレジット
   fetch('assets/img/credits.json').then(r=>r.json()).then(j=>{const ul=document.getElementById('credit-list'); if(!ul) return;
     Object.entries(j).forEach(([k,v])=>{const li=document.createElement('li'); const a=document.createElement('a'); a.href=v.page; a.target='_blank'; a.rel='noopener'; a.textContent=(v.title||'').replace(/^File:/,''); li.appendChild(a); li.append(' — '+(v.artist||'')+' / '+(v.license||'')); ul.appendChild(li);});
@@ -367,7 +512,7 @@ function toggleDay(h){const open=h.parentElement.classList.toggle('open');h.setA
 <div class="sheet-bg" id="sheetBg" hidden></div>
 <aside class="sheet" id="sheet" hidden aria-modal="true" role="dialog" aria-labelledby="sheetTitle">
   <button class="sheet-close" id="sheetClose" aria-label="閉じる">✕</button>
-  <div class="sheet-img"><img id="sheetImg" alt=""></div>
+  <div class="sheet-img"><img id="sheetImg" alt=""><p id="sheetPhotoCaption"></p></div>
   <div class="sheet-body">
     <div class="sheet-area" id="sheetArea"></div>
     <h2 id="sheetTitle"></h2>
@@ -403,7 +548,11 @@ const SPOTS = {
       "11/23からの新料金¥1,000とは区別。",
       "糸満11:30開店に合わせ10:15に出発。"
     ],
-    "map": "首里城公園"
+    "map": "首里城公園",
+    "region": "naha",
+    "category": "城・文化",
+    "status": "主案",
+    "switch": "25は10:15出発を守る。屋外を歩けない天候なら南部の屋内候補へ日程ごと見直す。"
   },
   "senaga": {
     "t": "瀬長島ウミカジテラス",
@@ -428,7 +577,11 @@ const SPOTS = {
       "駐車待ちも見込み15:30到着。",
       "19時頃ホテルに戻り車を置いて夕食へ。"
     ],
-    "map": "瀬長島ウミカジテラス"
+    "map": "瀬長島ウミカジテラス",
+    "region": "south",
+    "category": "テラス・海景色",
+    "status": "主案",
+    "switch": "明るい時間の滞在を優先。荒天時は営業・安全を確認し、近くの屋内で休憩。"
   },
   "kouri": {
     "t": "古宇利大橋",
@@ -453,7 +606,11 @@ const SPOTS = {
       "高速渋滞時はここを省略し美ら海を優先。",
       "砂浜への立寄りは入れない。"
     ],
-    "map": "古宇利大橋"
+    "map": "古宇利大橋",
+    "region": "north",
+    "category": "橋・海景色",
+    "status": "主案",
+    "switch": "高速渋滞ならここを先に省略。美ら海と那覇のまーちぬ家を守る。"
   },
   "churaumi": {
     "t": "沖縄美ら海水族館",
@@ -478,7 +635,11 @@ const SPOTS = {
       "ショーは実施時刻と移動時間が合う場合だけ。",
       "15:30出発、休憩込み18:15～18:30那覇ホテルが目標。"
     ],
-    "map": "沖縄美ら海水族館"
+    "map": "沖縄美ら海水族館",
+    "region": "north",
+    "category": "水族館",
+    "status": "主案",
+    "switch": "美ら海の約3時間は維持。昼食待ちが長ければ館内食へ切り替える。"
   },
   "nakagusuku": {
     "t": "中城城跡",
@@ -502,12 +663,16 @@ const SPOTS = {
       "滑りにくい靴で。",
       "10時出発後はENZOへ移動する余裕を確保。"
     ],
-    "map": "中城城跡"
+    "map": "中城城跡",
+    "region": "central",
+    "category": "城跡・文化",
+    "status": "主案",
+    "switch": "10時出発を基準に。雨で石段が危険なら屋外見学を短縮・見送り。"
   },
   "glass": {
     "t": "琉球ガラス村",
     "area": "南部・糸満市福地169",
-    "img": null,
+    "img": "glass_sample",
     "lead": "25(日)13:15～14:15。グラスを比較し、好きなら購入。",
     "info": {
       "hours": "9:30～17:30・年中無休",
@@ -527,12 +692,17 @@ const SPOTS = {
       "耐熱・食洗機対応は商品ごとの表示を確認。",
       "緩衝材と持帰り方法を相談。"
     ],
-    "map": "琉球ガラス村"
+    "map": "琉球ガラス村",
+    "region": "south",
+    "category": "グラス・買い物",
+    "status": "主案",
+    "switch": "店で見て好きなら購入。気に入る物がなければ買わず、15:30ウミカジ着を守る。",
+    "photoCaption": "琉球グラスの作品例。琉球ガラス村の売場写真ではありません。"
   },
   "souvenirs": {
     "t": "国際通りのお土産",
     "area": "那覇・松尾／久茂地",
-    "img": null,
+    "img": "kokusaidori",
     "lead": "27(火)15:00～16:00。菓子と調味料を2店でまとめ買い。",
     "info": {
       "hours": "両店9:00～22:00／わしたは年始休",
@@ -549,12 +719,16 @@ const SPOTS = {
       "酒好きなら泡盛"
     ],
     "tips": [
-      "御菓子御殿で菓子、わしたで調味料等を選び重複買いを避ける。",
-      "紅いもタルト10個¥2,160は公式通販掲載額。実店舗価格は確認。",
-      "常温の賞味期限30日は購入から30日ではない。購入時ラベルを確認。生タルトは冷凍の別商品。",
-      "割れ物・重量・持帰り条件を確認。空港は買い漏れ15～20分のみ。"
+      "御菓子御殿で菓子、わしたで自宅用を選び重複買いを避ける。",
+      "詳しい商品選び・持帰りの注意はお土産タブへ。",
+      "空港は買い漏れ15～20分のみ。"
     ],
-    "map": "御菓子御殿 国際通り松尾店 松尾1-2-5"
+    "map": "御菓子御殿 国際通り松尾店 松尾1-2-5",
+    "region": "naha",
+    "category": "菓子・買い物",
+    "status": "主案",
+    "switch": "27の15～16時にまとめて購入。空港は買い漏れ15～20分だけ。",
+    "photoCaption": "国際通りの夜景。今回の買い物は27日15～16時です。"
   },
   "nakijin": {
     "t": "今帰仁城跡",
@@ -577,7 +751,11 @@ const SPOTS = {
     "tips": [
       "美ら海と那覇夕食を削ってまで詰め込まない。"
     ],
-    "map": "今帰仁城跡"
+    "map": "今帰仁城跡",
+    "region": "north",
+    "category": "城跡・文化",
+    "status": "差替候補",
+    "switch": "26の古宇利と交換するなら。石段を歩く時間を確保し、美ら海15:30出発を守る。"
   },
   "bise": {
     "t": "備瀬のフクギ並木",
@@ -601,7 +779,11 @@ const SPOTS = {
       "主案に追加せず古宇利などと差し替え。",
       "住民の生活を尊重し砂浜滞在には広げない。"
     ],
-    "map": "備瀬のフクギ並木"
+    "map": "備瀬のフクギ並木",
+    "region": "north",
+    "category": "集落・木陰",
+    "status": "差替候補",
+    "switch": "26の古宇利を省いて静かな散策を選ぶなら。美ら海の滞在を削らない。"
   },
   "amvillage": {
     "t": "美浜アメリカンビレッジ",
@@ -625,13 +807,17 @@ const SPOTS = {
       "高江洲そばの代替日程なら入れやすい。",
       "ENZO主案へ追加しない。15時の那覇土産に遅れない範囲で。"
     ],
-    "map": "美浜アメリカンビレッジ"
+    "map": "美浜アメリカンビレッジ",
+    "region": "central",
+    "category": "街歩き・買い物",
+    "status": "差替候補",
+    "switch": "ENZOの予約が取れず、高江洲そばと浦添～北谷中心へ組み替える場合に。"
   },
   "central": {
-    "t": "海中道路・浜比嘉島・万座毛",
-    "area": "中部・別日程の候補",
+    "t": "海中道路",
+    "area": "中部・うるま市",
     "img": "kaichudoro",
-    "lead": "中部の景色を中心に組み替える場合。",
+    "lead": "両側に海が広がる道を走り、施設で休憩。",
     "info": {
       "hours": "施設ごとに公式・観光案内を確認",
       "price": "料金・駐車は施設ごとに確認",
@@ -640,17 +826,21 @@ const SPOTS = {
       "drive": "旅程の移動枠を参照"
     },
     "url": "https://uruma-ru.jp/",
-    "about": "海中道路と浜比嘉島、万座毛や御菓子御殿恩納村本店は、目的地を絞る別案として残します。",
+    "about": "海を横断するドライブを楽しむ差替候補。浜比嘉島・果報バンタは別カードから選びます。",
     "see": [
-      "海中道路・浜比嘉島の施設や集落",
-      "万座毛の眺め"
+      "海を両側に見るドライブ",
+      "海の駅あやはし館周辺の景色"
     ],
     "tips": [
-      "すべてを1日に回る計画ではない。",
-      "ENZO・牧港・那覇土産の主案に追加しない。",
-      "返却18時・空港18:30目標を守る。"
+      "27日を東海岸中心へ再計画する場合だけ。ENZO・牧港へ追加しない。",
+      "橋上・路上に停車せず、利用可能な施設の駐車場で休憩。",
+      "18時返却・18:30空港目標から逆算し、島めぐりは目的地を絞る。"
     ],
-    "map": "海中道路 うるま市"
+    "map": "海中道路 うるま市",
+    "region": "central",
+    "category": "ドライブ・海景色",
+    "status": "差替候補",
+    "switch": "27日を東海岸中心へ再計画する場合だけ。ENZO・牧港へ追加しない。"
   },
   "pineapple": {
     "t": "ナゴパイナップルパーク",
@@ -674,7 +864,11 @@ const SPOTS = {
       "公式ページ内に旧料金の表記が残るため購入前に確認。",
       "食事や美ら海を削ってまで主案に推さない。"
     ],
-    "map": "ナゴパイナップルパーク"
+    "map": "ナゴパイナップルパーク",
+    "region": "north",
+    "category": "パーク・買い物",
+    "status": "差替候補",
+    "switch": "パークを楽しみたければ古宇利などと交換。美ら海・昼食を削って無理に追加しない。"
   },
   "jungle": {
     "t": "南部ウワーガージャングル",
@@ -698,7 +892,11 @@ const SPOTS = {
       "25ウミカジの日没滞在と夕食を含め組み替える必要がある。",
       "主行程への追加はしない。"
     ],
-    "map": "おきなわワールド 南城市"
+    "map": "おきなわワールド 南城市",
+    "region": "south",
+    "category": "夜の自然ツアー",
+    "status": "今回は見送り",
+    "switch": "ウミカジ日没と那覇夕食に競合するため現行では見送り。夜の自然を優先するなら予約枠確認後に再計画。"
   },
   "stars": {
     "t": "月と明るい星を少し見る",
@@ -721,7 +919,396 @@ const SPOTS = {
       "遠い暗所や夜間の砂浜へ向かわない。",
       "翌日の運転に備え休息を優先。"
     ],
-    "map": "スマイルホテル那覇シティリゾート"
+    "map": "スマイルホテル那覇シティリゾート",
+    "region": "naha",
+    "category": "月・星／任意の過ごし方",
+    "status": "差替候補",
+    "switch": "疲れていなければ宿周辺の安全な場所で短時間。10/26は満月で暗い星は見えにくい。"
+  },
+  "sefa": {
+    "t": "斎場御嶽",
+    "area": "南部・差替候補",
+    "img": "sefa2",
+    "lead": "森と巨岩に囲まれた、琉球の祈りの場。",
+    "info": {
+      "hours": "営業・公開区域・休業日は要確認",
+      "price": "入場・施設利用・駐車料金は要確認",
+      "time": "選んだ場合に移動込みで再計画",
+      "park": "正規の駐車場・利用条件・空きを確認",
+      "drive": "主案と差し替える際に移動時間を確認"
+    },
+    "url": "https://sefa.okinawa/",
+    "about": "森と巨岩に囲まれた、琉球の祈りの場。",
+    "see": [
+      "森の参道と拝所",
+      "三庫理周辺（公開区域は要確認）"
+    ],
+    "tips": [
+      "南部東側の文化を主題に再計画する日に。25日のグラス・ウミカジへ追加せず、休息日・公開区域・足元を確認。"
+    ],
+    "map": "南城市地域物産館 斎場御嶽",
+    "region": "south",
+    "category": "文化・祈り",
+    "status": "差替候補",
+    "switch": "南部東側の文化を主題に再計画する日に。25日のグラス・ウミカジへ追加せず、休息日・公開区域・足元を確認。"
+  },
+  "chinen": {
+    "t": "知念岬公園",
+    "area": "南部・差替候補",
+    "img": "chinen",
+    "lead": "公園から太平洋と島々を望む。",
+    "info": {
+      "hours": "営業・公開区域・休業日は要確認",
+      "price": "入場・施設利用・駐車料金は要確認",
+      "time": "選んだ場合に移動込みで再計画",
+      "park": "正規の駐車場・利用条件・空きを確認",
+      "drive": "主案と差し替える際に移動時間を確認"
+    },
+    "url": "",
+    "about": "公園から太平洋と島々を望む。",
+    "see": [
+      "園路から見る海",
+      "久高島方面の景色"
+    ],
+    "tips": [
+      "斎場御嶽など南部東側へ組み替える場合の短い散策。強風・雨なら見送り、ウミカジの明るい滞在を守る。"
+    ],
+    "map": "知念岬公園",
+    "region": "south",
+    "category": "岬・景色",
+    "status": "差替候補",
+    "switch": "斎場御嶽など南部東側へ組み替える場合の短い散策。強風・雨なら見送り、ウミカジの明るい滞在を守る。"
+  },
+  "niraikanai": {
+    "t": "ニライカナイ橋",
+    "area": "南部・差替候補",
+    "img": "niraikanai",
+    "lead": "海へ向かってカーブする橋の景色。",
+    "info": {
+      "hours": "営業・公開区域・休業日は要確認",
+      "price": "入場・施設利用・駐車料金は要確認",
+      "time": "選んだ場合に移動込みで再計画",
+      "park": "正規の駐車場・利用条件・空きを確認",
+      "drive": "主案と差し替える際に移動時間を確認"
+    },
+    "url": "",
+    "about": "海へ向かってカーブする橋の景色。",
+    "see": [
+      "車窓の海景色（撮影は同乗者のみ）",
+      "安全な展望場所からの眺め"
+    ],
+    "tips": [
+      "南部東側の移動で通る場合に。橋上・路肩の停車はしない。安全に利用できる展望場所と正規駐車場を確認できなければ車窓のみ。"
+    ],
+    "map": "ニライカナイ橋",
+    "region": "south",
+    "category": "ドライブ・景色",
+    "status": "差替候補",
+    "switch": "南部東側の移動で通る場合に。橋上・路肩の停車はしない。安全に利用できる展望場所と正規駐車場を確認できなければ車窓のみ。",
+    "photoCaption": "知念岬公園から見た海岸とニライカナイ橋"
+  },
+  "ou": {
+    "t": "奥武島",
+    "area": "南部・差替候補",
+    "img": "ou_island",
+    "lead": "橋でつながる漁師の島で、港の景色と沖縄天ぷら。",
+    "info": {
+      "hours": "営業・公開区域・休業日は要確認",
+      "price": "入場・施設利用・駐車料金は要確認",
+      "time": "選んだ場合に移動込みで再計画",
+      "park": "正規の駐車場・利用条件・空きを確認",
+      "drive": "主案と差し替える際に移動時間を確認"
+    },
+    "url": "https://nakamotosengyoten.com/",
+    "about": "橋でつながる漁師の島で、港の景色と沖縄天ぷら。",
+    "see": [
+      "集落と港の風景",
+      "沖縄天ぷらの店"
+    ],
+    "tips": [
+      "南部東側の町歩きを選ぶ日なら。25のグラス・ウミカジへ上乗せしない。店の行列も見込み、海水浴は予定しない。"
+    ],
+    "map": "奥武島 南城市",
+    "region": "south",
+    "category": "集落・食べ歩き",
+    "status": "差替候補",
+    "switch": "南部東側の町歩きを選ぶ日なら。25のグラス・ウミカジへ上乗せしない。店の行列も見込み、海水浴は予定しない。",
+    "urlLabel": "中本鮮魚てんぷら店 公式"
+  },
+  "tamaudun": {
+    "t": "玉陵",
+    "area": "那覇・差替候補",
+    "img": "tamaudun",
+    "lead": "石造りの王家の墓を訪ね、首里の歴史を知る。",
+    "info": {
+      "hours": "営業・公開区域・休業日は要確認",
+      "price": "入場・施設利用・駐車料金は要確認",
+      "time": "選んだ場合に移動込みで再計画",
+      "park": "正規の駐車場・利用条件・空きを確認",
+      "drive": "主案と差し替える際に移動時間を確認"
+    },
+    "url": "",
+    "about": "石造りの王家の墓を訪ね、首里の歴史を知る。",
+    "see": [
+      "石造りの墓室と門",
+      "琉球王家の歴史"
+    ],
+    "tips": [
+      "首里の文化を深く見る日へ変更する場合に。25は10:15首里出発を守り、城と墓の両方を無理に詰め込まない。"
+    ],
+    "map": "玉陵",
+    "region": "naha",
+    "category": "文化・世界遺産",
+    "status": "差替候補",
+    "switch": "首里の文化を深く見る日へ変更する場合に。25は10:15首里出発を守り、城と墓の両方を無理に詰め込まない。"
+  },
+  "tsuboya": {
+    "t": "壺屋やちむん通り",
+    "area": "那覇・差替候補",
+    "img": "tsuboya2",
+    "lead": "焼き物の街を歩き、暮らしで使う器を探す。",
+    "info": {
+      "hours": "営業・公開区域・休業日は要確認",
+      "price": "入場・施設利用・駐車料金は要確認",
+      "time": "選んだ場合に移動込みで再計画",
+      "park": "正規の駐車場・利用条件・空きを確認",
+      "drive": "主案と差し替える際に移動時間を確認"
+    },
+    "url": "",
+    "about": "焼き物の街を歩き、暮らしで使う器を探す。",
+    "see": [
+      "焼き物の店と通り",
+      "色や絵付けの違う器"
+    ],
+    "tips": [
+      "那覇の街歩きへ組み替える場合に。27の土産60分へ追加せず、購入したい店の営業を先に確認。制作体験は不要。"
+    ],
+    "map": "壺屋やちむん通り",
+    "region": "naha",
+    "category": "街歩き・器",
+    "status": "差替候補",
+    "switch": "那覇の街歩きへ組み替える場合に。27の土産60分へ追加せず、購入したい店の営業を先に確認。制作体験は不要。",
+    "photoCaption": "やちむんの作品例：金城次郎の魚文皿。通りの店舗や販売中の商品を示す写真ではありません。"
+  },
+  "market": {
+    "t": "第一牧志公設市場",
+    "area": "那覇・差替候補",
+    "img": "market",
+    "lead": "魚や食材を見て歩く、那覇の食文化の入口。",
+    "info": {
+      "hours": "営業・公開区域・休業日は要確認",
+      "price": "入場・施設利用・駐車料金は要確認",
+      "time": "選んだ場合に移動込みで再計画",
+      "park": "正規の駐車場・利用条件・空きを確認",
+      "drive": "主案と差し替える際に移動時間を確認"
+    },
+    "url": "",
+    "about": "魚や食材を見て歩く、那覇の食文化の入口。",
+    "see": [
+      "食材の売場",
+      "食堂の料理（利用条件は確認）"
+    ],
+    "tips": [
+      "那覇中心の別案で市場を見たい場合に。旧情報では第4日曜休のため25日は頼らず、公式の営業日を再確認。27朝ポーたまからの追加はしない。"
+    ],
+    "map": "第一牧志公設市場",
+    "region": "naha",
+    "category": "市場・食文化",
+    "status": "差替候補",
+    "switch": "那覇中心の別案で市場を見たい場合に。旧情報では第4日曜休のため25日は頼らず、公式の営業日を再確認。27朝ポーたまからの追加はしない。",
+    "photoCaption": "公設市場の魚売場（過去の撮影・現在の建物や店舗配置とは異なる場合があります）"
+  },
+  "manzamo": {
+    "t": "万座毛",
+    "area": "中部・差替候補",
+    "img": "manzamo",
+    "lead": "特徴ある岩と海を、遊歩道から眺める。",
+    "info": {
+      "hours": "営業・公開区域・休業日は要確認",
+      "price": "入場・施設利用・駐車料金は要確認",
+      "time": "選んだ場合に移動込みで再計画",
+      "park": "正規の駐車場・利用条件・空きを確認",
+      "drive": "主案と差し替える際に移動時間を確認"
+    },
+    "url": "",
+    "about": "特徴ある岩と海を、遊歩道から眺める。",
+    "see": [
+      "海に張り出す岩",
+      "遊歩道からの海景色"
+    ],
+    "tips": [
+      "27を恩納の景色中心に組み替える場合に。ENZO・牧港・那覇土産へ追加しない。強風・荒天なら見送り。",
+      "御菓子御殿恩納村本店も恩納中心へ組み替えた場合の候補。主案の買い物は国際通り松尾店です。"
+    ],
+    "map": "万座毛",
+    "region": "central",
+    "category": "岬・景色",
+    "status": "差替候補",
+    "switch": "27を恩納の景色中心に組み替える場合に。ENZO・牧港・那覇土産へ追加しない。強風・荒天なら見送り。"
+  },
+  "hamahiga": {
+    "t": "浜比嘉島",
+    "area": "中部・差替候補",
+    "img": "hamahiga",
+    "lead": "赤瓦の集落や港に、島の暮らしを感じる。",
+    "info": {
+      "hours": "営業・公開区域・休業日は要確認",
+      "price": "入場・施設利用・駐車料金は要確認",
+      "time": "選んだ場合に移動込みで再計画",
+      "park": "正規の駐車場・利用条件・空きを確認",
+      "drive": "主案と差し替える際に移動時間を確認"
+    },
+    "url": "https://uruma-ru.jp/",
+    "about": "赤瓦の集落や港に、島の暮らしを感じる。",
+    "see": [
+      "赤瓦の集落と港",
+      "橋や施設からの島景色"
+    ],
+    "tips": [
+      "海中道路を選ぶ東海岸の日程なら。島は一つに絞り、集落の正規駐車場から歩く。祈りの場を尊重し、砂浜滞在はしない。"
+    ],
+    "map": "浜比嘉島",
+    "region": "central",
+    "category": "集落・島景色",
+    "status": "差替候補",
+    "switch": "海中道路を選ぶ東海岸の日程なら。島は一つに絞り、集落の正規駐車場から歩く。祈りの場を尊重し、砂浜滞在はしない。",
+    "photoCaption": "果報バンタから望む浜比嘉島。集落内部の写真ではありません。"
+  },
+  "katsuren": {
+    "t": "勝連城跡",
+    "area": "中部・差替候補",
+    "img": "katsuren",
+    "lead": "丘の上に重なる石垣と、東海岸の眺め。",
+    "info": {
+      "hours": "営業・公開区域・休業日は要確認",
+      "price": "入場・施設利用・駐車料金は要確認",
+      "time": "選んだ場合に移動込みで再計画",
+      "park": "正規の駐車場・利用条件・空きを確認",
+      "drive": "主案と差し替える際に移動時間を確認"
+    },
+    "url": "https://www.katsuren-jo.jp/",
+    "about": "丘の上に重なる石垣と、東海岸の眺め。",
+    "see": [
+      "石垣と高台からの眺め",
+      "あまわりパーク（展示・利用条件は確認）"
+    ],
+    "tips": [
+      "27を中城から東海岸の城と景色へ替える場合に。城を両方詰め込まず、石段を歩ける天候と体力で判断。"
+    ],
+    "map": "勝連城跡",
+    "region": "central",
+    "category": "城跡・文化",
+    "status": "差替候補",
+    "switch": "27を中城から東海岸の城と景色へ替える場合に。城を両方詰め込まず、石段を歩ける天候と体力で判断。"
+  },
+  "kafu": {
+    "t": "果報バンタ",
+    "area": "中部・差替候補",
+    "img": "kafubanta",
+    "lead": "宮城島の高台から、サンゴ礁の海を見渡す。",
+    "info": {
+      "hours": "営業・公開区域・休業日は要確認",
+      "price": "入場・施設利用・駐車料金は要確認",
+      "time": "選んだ場合に移動込みで再計画",
+      "park": "正規の駐車場・利用条件・空きを確認",
+      "drive": "主案と差し替える際に移動時間を確認"
+    },
+    "url": "https://nuchima-su.co.jp/tour/",
+    "about": "宮城島の高台から、サンゴ礁の海を見渡す。",
+    "see": [
+      "展望場所からの海",
+      "隣接する製塩施設（見学可否は確認）"
+    ],
+    "tips": [
+      "東海岸の島景色を主題にする別案。海中道路からさらに移動するため浜比嘉などと選択し、帰路の余裕を確保。"
+    ],
+    "map": "果報バンタ",
+    "region": "central",
+    "category": "岬・塩",
+    "status": "差替候補",
+    "switch": "東海岸の島景色を主題にする別案。海中道路からさらに移動するため浜比嘉などと選択し、帰路の余裕を確保。"
+  },
+  "zanpa": {
+    "t": "残波岬",
+    "area": "中部・差替候補",
+    "img": "zanpa",
+    "lead": "白い灯台と断崖がつくる読谷の海景色。",
+    "info": {
+      "hours": "営業・公開区域・休業日は要確認",
+      "price": "入場・施設利用・駐車料金は要確認",
+      "time": "選んだ場合に移動込みで再計画",
+      "park": "正規の駐車場・利用条件・空きを確認",
+      "drive": "主案と差し替える際に移動時間を確認"
+    },
+    "url": "",
+    "about": "白い灯台と断崖がつくる読谷の海景色。",
+    "see": [
+      "園路から見る灯台と断崖",
+      "海の眺め（灯台内部は公開確認後）"
+    ],
+    "tips": [
+      "27の昼を読谷の景色中心へ替える場合に。ENZO後の追加を約束せず、風と移動時間で判断。崖際へ出ない。"
+    ],
+    "map": "残波岬",
+    "region": "central",
+    "category": "岬・灯台",
+    "status": "差替候補",
+    "switch": "27の昼を読谷の景色中心へ替える場合に。ENZO後の追加を約束せず、風と移動時間で判断。崖際へ出ない。"
+  },
+  "okinawaworld": {
+    "t": "玉泉洞・おきなわワールド",
+    "area": "南部・差替候補",
+    "img": "gyokusendo",
+    "lead": "鍾乳洞の造形と、地上の琉球文化を楽しむ。",
+    "info": {
+      "hours": "営業・公開区域・休業日は要確認",
+      "price": "入場・施設利用・駐車料金は要確認",
+      "time": "選んだ場合に移動込みで再計画",
+      "park": "正規の駐車場・利用条件・空きを確認",
+      "drive": "主案と差し替える際に移動時間を確認"
+    },
+    "url": "https://www.gyokusendo.co.jp/okinawaworld/",
+    "about": "鍾乳洞の造形と、地上の琉球文化を楽しむ。",
+    "see": [
+      "玉泉洞の鍾乳石と青の泉",
+      "地上の街並み・文化展示"
+    ],
+    "tips": [
+      "雨で屋外の城跡を見直す場合の南部別案。洞内も足元は濡れるため営業・公開状況を確認し、グラスとウミカジの時間を再計画。"
+    ],
+    "map": "玉泉洞・おきなわワールド",
+    "region": "south",
+    "category": "鍾乳洞・文化",
+    "status": "差替候補",
+    "switch": "雨で屋外の城跡を見直す場合の南部別案。洞内も足元は濡れるため営業・公開状況を確認し、グラスとウミカジの時間を再計画。"
+  },
+  "gangala": {
+    "t": "ガンガラーの谷",
+    "area": "南部・差替候補",
+    "img": "gangala",
+    "lead": "洞窟と木々の景色を、ガイドと歩く自然体験。",
+    "info": {
+      "hours": "営業・公開区域・休業日は要確認",
+      "price": "入場・施設利用・駐車料金は要確認",
+      "time": "選んだ場合に移動込みで再計画",
+      "park": "正規の駐車場・利用条件・空きを確認",
+      "drive": "主案と差し替える際に移動時間を確認"
+    },
+    "url": "https://www.gangala.com/",
+    "about": "洞窟と木々の景色を、ガイドと歩く自然体験。",
+    "see": [
+      "洞窟とガジュマルの景色",
+      "ガイドと歩く谷"
+    ],
+    "tips": [
+      "森歩きを目的に南部を組み替える場合だけ。事前にツアー枠・集合・所要時間を確認。雨天の屋内代替とは扱わず、25主案へ追加しない。"
+    ],
+    "map": "ガンガラーの谷",
+    "region": "south",
+    "category": "森・ガイド散策",
+    "status": "差替候補",
+    "switch": "森歩きを目的に南部を組み替える場合だけ。事前にツアー枠・集合・所要時間を確認。雨天の屋内代替とは扱わず、25主案へ追加しない。",
+    "photoCaption": "ガンガラーの谷の洞窟入口付近。現在の利用条件は要確認。"
   }
 };
 
@@ -926,12 +1513,12 @@ function shopLinks(k){const s=SHOPS[k]; if(!s) return ""; let h='<div class="lin
 const sheet=document.getElementById('sheet'), sheetBg=document.getElementById('sheetBg');
 let sheetReturnFocus=null;
 function openSpot(k){const s=SPOTS[k]; if(!s) return; sheetReturnFocus=document.activeElement;
-  const img=document.getElementById('sheetImg'); img.parentElement.hidden=!s.img; if(s.img){img.src='assets/img/'+s.img+'.jpg'; img.alt=s.t;}else{img.removeAttribute('src');img.alt='';}
+  const img=document.getElementById('sheetImg'); img.parentElement.hidden=!s.img; if(s.img){img.src='assets/img/'+s.img+'.jpg'; img.alt=s.photoCaption||s.t;document.getElementById('sheetPhotoCaption').textContent=s.photoCaption||s.t+'（過去の撮影）';}else{img.removeAttribute('src');img.alt='';}
   document.getElementById('sheetArea').textContent=s.area;
   document.getElementById('sheetTitle').textContent=s.t;
   document.getElementById('sheetLead').textContent=s.lead;
   let links='<a class="btn solid" target="_blank" rel="noopener" href="'+gmap(s.map)+'">📍 Googleマップ</a>';
-  if(s.url) links+='<a class="btn" target="_blank" rel="noopener" href="'+s.url+'">公式サイト</a>';
+  if(s.url) links+='<a class="btn" target="_blank" rel="noopener" href="'+s.url+'">'+(s.urlLabel||'公式サイト')+'</a>';
   document.getElementById('sheetLinks').innerHTML=links;
   const i=s.info; document.getElementById('sheetInfo').innerHTML=
     '<div><span>営業</span>'+i.hours+'</div><div><span>料金</span>'+i.price+'</div><div><span>所要</span>'+i.time+'</div><div><span>那覇から</span>'+i.drive+'</div><div><span>駐車</span>'+i.park+'</div>';
@@ -943,14 +1530,24 @@ sheetBg.addEventListener('click',()=>closeSpot()); document.getElementById('shee
 document.addEventListener('keydown',e=>{if(sheet.hidden)return;if(e.key==='Escape'){e.preventDefault();closeSpot();}if(e.key==='Tab'){const els=[...sheet.querySelectorAll('button,a[href]')].filter(el=>!el.hidden);const first=els[0],last=els[els.length-1];if(e.shiftKey&&(document.activeElement===first||!sheet.contains(document.activeElement))){e.preventDefault();last.focus();}else if(!e.shiftKey&&(document.activeElement===last||!sheet.contains(document.activeElement))){e.preventDefault();first.focus();}}});
 document.querySelectorAll('[data-spot]').forEach(el=>{el.classList.add('clickable'); el.insertAdjacentHTML('beforeend','<button type="button" class="more" aria-label="'+SPOTS[el.dataset.spot].t+'の詳細">詳細を見る ›</button>'); el.addEventListener('click',e=>{if(e.target.closest('a')) return; const btn=el.querySelector('.more');btn.focus();openSpot(el.dataset.spot);});});
 
+
+// Preparation completion is local to this device; it does not change booking facts.
+(function(){
+  const list=document.querySelector('#page-prep .check');if(!list)return;list.classList.add('has-input');
+  list.querySelectorAll('[data-check]').forEach(li=>{const key='okinawa-2026-prep-'+li.dataset.check;const input=document.createElement('input');input.type='checkbox';input.setAttribute('aria-label',li.querySelector('b').textContent+'の準備完了');
+    input.checked=li.classList.contains('done');try{const saved=localStorage.getItem(key);if(saved!==null)input.checked=saved==='true';}catch(e){/* Storage can be unavailable; the checkbox still works for this visit. */}
+    input.addEventListener('change',()=>{try{localStorage.setItem(key,String(input.checked));}catch(e){/* Keep the in-memory state when storage is unavailable. */}});li.prepend(input);
+  });
+})();
+
 /* ☎番号を tel: リンクに */
 (function(){const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT); const nodes=[]; while(w.nextNode()){const n=w.currentNode; if(n.parentElement.closest('a,script,style')) continue; if(/☎\s?0\d{1,4}-\d{2,4}-\d{3,4}/.test(n.nodeValue)) nodes.push(n);} nodes.forEach(n=>{const span=document.createElement('span'); span.innerHTML=n.nodeValue.replace(/☎\s?(0\d{1,4}-\d{2,4}-\d{3,4})/g,(m,p)=>'<a href="tel:'+p.replace(/-/g,'')+'">☎'+p+'</a>'); n.replaceWith(span);});})();
 /* 店カード・殿堂カードにリンク行を付ける */
 document.querySelectorAll('[data-shop]').forEach(el=>{const k=el.dataset.shop; if(!SHOPS[k]) return; if(el.closest('#shops')) el.id='shop-'+k; (el.querySelector('.body')||el).insertAdjacentHTML('beforeend',shopLinks(k));});
 /* 名物カード内の店名 → 店カードへ */
-function gotoShop(k){const el=document.getElementById('shop-'+k); if(!el) return; const chips=document.getElementById('chips'); if(chips){chips.querySelectorAll('.chip').forEach(c=>c.classList.toggle('active',c.dataset.f==='all')); document.querySelectorAll('#shops .card').forEach(c=>c.hidden=false);}
-  if(!el.closest('.page').classList.contains('active')) showPage(el.closest('.page').id.replace('page-',''));
-  setTimeout(()=>{el.scrollIntoView({behavior:'smooth',block:'center'}); el.classList.add('flash'); setTimeout(()=>el.classList.remove('flash'),1600);},60);}
+function gotoShop(k){const el=document.getElementById('shop-'+k);if(!el)return;filterFood('all');
+  if(!el.closest('.page').classList.contains('active'))showPage('food');
+  setTimeout(()=>{el.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});el.querySelector('.shop-name')?.focus({preventScroll:true});el.classList.add('flash');setTimeout(()=>el.classList.remove('flash'),1600);},60);}
 document.querySelectorAll('[data-goto]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault(); gotoShop(a.dataset.goto);}));
 /* スケジュールの行にリンク（地図／スポット詳細／店） */
 document.querySelectorAll('.tl-item[data-map],.tl-item[data-spotref],.tl-item[data-shopref]').forEach(el=>{
@@ -959,7 +1556,7 @@ document.querySelectorAll('.tl-item[data-map],.tl-item[data-spotref],.tl-item[da
   if(el.dataset.spotref) h+='<a class="btn" href="#" data-openspot="'+el.dataset.spotref+'">🗺 スポット詳細</a>';
   if(el.dataset.shopref){ const s=SHOPS[el.dataset.shopref]; if(s){ h+='<a class="btn" href="#" data-gotoshop="'+el.dataset.shopref+'">🍽 店カード</a>'; h+='<a class="btn" target="_blank" rel="noopener" href="'+(s.tabelog||tlog(s.n))+'">食べログ</a>'; if(s.official) h+='<a class="btn" target="_blank" rel="noopener" href="'+s.official+'">'+(s.offLabel||"公式")+'</a>'; if(s.reserve) h+='<a class="btn solid" target="_blank" rel="noopener" href="'+s.reserve+'">'+(s.resLabel||"予約")+'</a>'; } }
   h+='</div>'; el.querySelector('.tl-desc').insertAdjacentHTML('beforeend',h);});
-document.addEventListener('click',e=>{const a=e.target.closest('[data-openspot]'); if(a){e.preventDefault(); openSpot(a.dataset.openspot); return;}
+document.addEventListener('click',e=>{const pageLink=e.target.closest('[data-page-link]');if(pageLink){e.preventDefault();showPage(pageLink.dataset.pageLink);const title=document.querySelector('#page-'+pageLink.dataset.pageLink+' .page-title');if(title){title.tabIndex=-1;title.focus({preventScroll:true});}return;}const credit=e.target.closest('a[href="#photo-credits"]');if(credit){document.getElementById('photo-credits').open=true;}const a=e.target.closest('[data-openspot]'); if(a){e.preventDefault(); openSpot(a.dataset.openspot); return;}
   const b=e.target.closest('[data-gotoshop]'); if(b){e.preventDefault(); gotoShop(b.dataset.gotoshop);}});
 </script>
 </body>
