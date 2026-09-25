@@ -679,5 +679,49 @@
    1400,
    786
   ]
+ },
+ "gift_chili": {
+  "file": "gift_chili.jpg",
+  "title": "File:Koregusu by regvn in Tokyo.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Koregusu_by_regvn_in_Tokyo.jpg",
+  "license": "CC BY-SA 2.0",
+  "artist": "regvn from Okinawan restaurant Chatan Shokudo in Soto-Kanda, Chiyoda, Tokyo",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "gift_tart": {
+  "file": "gift_tart.jpg",
+  "title": "File:Purple potato tart (7770121920).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Purple_potato_tart_(7770121920).jpg",
+  "license": "CC BY-SA 2.0",
+  "artist": "pelican from Tokyo, Japan",
+  "size": [
+   1400,
+   928
+  ]
+ },
+ "gift_sugar": {
+  "file": "gift_sugar.jpg",
+  "title": "File:Fazendo Rapadura.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Fazendo_Rapadura.jpg",
+  "license": "CC BY-SA 3.0",
+  "artist": "Jonathan Wilkins",
+  "size": [
+   1400,
+   933
+  ]
+ },
+ "gift_pineapple": {
+  "file": "gift_pineapple.jpg",
+  "title": "File:ショップ - panoramio.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:%E3%82%B7%E3%83%A7%E3%83%83%E3%83%97_-_panoramio.jpg",
+  "license": "CC BY 3.0",
+  "artist": "hasano_jp",
+  "size": [
+   1400,
+   1050
+  ]
  }
 }
