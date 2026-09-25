@@ -1032,7 +1032,7 @@ function tripCard(item){
   const body=tripNode('div',undefined,'body');const head=tripNode('div',undefined,'task-heading');
   head.append(tripNode('h3',item.name),tripPill(item));body.append(head);
   const meta=tripNode('dl',undefined,'task-meta');
-  const fields=[['期限',item.deadlineLabel||'未設定']];
+  const fields=[]; if(item.deadlineLabel)fields.push(['期限',item.deadlineLabel]);
   if(item.owner)fields.push(['担当',item.owner]);
   fields.push(['金額（2名）',tripMoney(item.amount)]);
   if(item.confirmationLocation)fields.push(['確認書',item.confirmationLocation]);
@@ -1135,7 +1135,7 @@ function toggleDay(h){const open=h.parentElement.classList.toggle('open');h.setA
   const st=document.getElementById('scrollTop');
   window.addEventListener('scroll',()=>{st.classList.toggle('show',window.scrollY>600);},{passive:true});
   const cd=document.getElementById('countdown');
-  const dep=new Date(2026,9,24,20,15); const d=Math.ceil((dep-new Date())/86400000);
+  const now=new Date(); const d=Math.round((new Date(2026,9,24)-new Date(now.getFullYear(),now.getMonth(),now.getDate()))/86400000);
   if(cd){ cd.textContent = d>0 ? ('出発まであと '+d+' 日') : (d>-4 ? '旅行中！' : '旅は終わりました'); }
   // 当日判定：旅行中はその日だけ開く。出発前は全部開く
   (function(){const days=[...document.querySelectorAll('#page-schedule .day-card')]; const start=new Date(2026,9,24); const idx=Math.floor((new Date()-start)/86400000); const names=['Day0 土 到着','Day1 日 那覇・南部','Day2 月 北部','Day3 火 中部→帰京']; const jump=document.getElementById('dayjump');
