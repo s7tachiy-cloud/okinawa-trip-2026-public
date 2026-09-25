@@ -723,5 +723,126 @@
    1400,
    1050
   ]
+ },
+ "read_agu_pig": {
+  "file": "read_agu_pig.jpg",
+  "title": "File:Bathing Agu Pig.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Bathing_Agu_Pig.jpg",
+  "license": "CC BY-SA 4.0",
+  "artist": "Miyuki Meinaka",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "read_aikata": {
+  "file": "read_aikata.jpg",
+  "title": "File:Nakagusukojo c038.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Nakagusukojo_c038.jpg",
+  "license": "CC BY-SA 4.0",
+  "artist": "Michael Gunther",
+  "size": [
+   1388,
+   921
+  ]
+ },
+ "read_awamori_kame": {
+  "file": "read_awamori_kame.jpg",
+  "title": "File:20080328ZuisenShowRoom.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:20080328ZuisenShowRoom.jpg",
+  "license": "CC BY-SA 3.0",
+  "artist": "BehBeh",
+  "size": [
+   1280,
+   960
+  ]
+ },
+ "read_shisa_pair": {
+  "file": "read_shisa_pair.jpg",
+  "title": "File:Pair of shisa decorating a building wall in Naha.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Pair_of_shisa_decorating_a_building_wall_in_Naha.jpg",
+  "license": "CC BY-SA 4.0",
+  "artist": "Yuet Man Lee",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "read_gurukun": {
+  "file": "read_gurukun.jpg",
+  "title": "File:Double-lined-fusilier-Aquarium-of-the-Pacific.png",
+  "page": "https://commons.wikimedia.org/wiki/File:Double-lined-fusilier-Aquarium-of-the-Pacific.png",
+  "license": "CC BY-SA 4.0",
+  "artist": "Coughdrop12",
+  "size": [
+   1400,
+   933
+  ]
+ },
+ "read_soki_soba": {
+  "file": "read_soki_soba.jpg",
+  "title": "File:Okinawa soba noodles with deeply cooked pork (6059482310).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Okinawa_soba_noodles_with_deeply_cooked_pork_(6059482310).jpg",
+  "license": "CC BY-SA 2.0",
+  "artist": "pelican from Tokyo, Japan",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "read_kankaimon": {
+  "file": "read_kankaimon.jpg",
+  "title": "File:Kankaimon (Amae-Ujo) Gate of Shuri Castle 2.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File:Kankaimon_(Amae-Ujo)_Gate_of_Shuri_Castle_2.JPG",
+  "license": "CC BY-SA 4.0",
+  "artist": "そらみみ",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "read_manta": {
+  "file": "read_manta.jpg",
+  "title": "File:Manta ray - Chura-umi Aquarium.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Manta_ray_-_Chura-umi_Aquarium.jpg",
+  "license": "CC BY-SA 2.0",
+  "artist": "Ken FUNAKOSHI",
+  "size": [
+   1084,
+   825
+  ]
+ },
+ "read_whale_shark": {
+  "file": "read_whale_shark.jpg",
+  "title": "File:Okinawa Churaumi Aquarium.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Okinawa_Churaumi_Aquarium.jpg",
+  "license": "CC BY-SA 2.5",
+  "artist": "Derek Mawhinney",
+  "size": [
+   1400,
+   889
+  ]
+ },
+ "read_jimami": {
+  "file": "read_jimami.jpg",
+  "title": "File:Jimami Tofu 001.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Jimami_Tofu_001.jpg",
+  "license": "CC0",
+  "artist": "Ocdp",
+  "size": [
+   1400,
+   1050
+  ]
+ },
+ "read_orion": {
+  "file": "read_orion.jpg",
+  "title": "File:Orion beer.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Orion_beer.jpg",
+  "license": "CC BY 2.0",
+  "artist": "Banzai Hiroaki",
+  "size": [
+   1400,
+   930
+  ]
  }
 }
