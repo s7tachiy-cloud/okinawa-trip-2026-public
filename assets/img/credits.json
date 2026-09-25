@@ -646,5 +646,38 @@
    646
   ],
   "changes": "Wikimedia Commons thumbnail; CSS crops may be used for layout."
+ },
+ "pineapple": {
+  "file": "pineapple.jpg",
+  "title": "File:Nago Pineapple Park (32183097142).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Nago_Pineapple_Park_(32183097142).jpg",
+  "license": "CC BY-SA 2.0",
+  "artist": "Laika ac",
+  "size": [
+   1400,
+   1051
+  ]
+ },
+ "jungle": {
+  "file": "jungle.jpg",
+  "title": "File:Indigo Dye Studio, Okinawa World 20120506.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Indigo_Dye_Studio,_Okinawa_World_20120506.jpg",
+  "license": "CC BY 3.0",
+  "artist": "Fumihiko Ueno",
+  "size": [
+   1400,
+   931
+  ]
+ },
+ "moon_okinawa": {
+  "file": "moon_okinawa.jpg",
+  "title": "File:Iss064e047039.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Iss064e047039.jpg",
+  "license": "Public domain",
+  "artist": "NASA Johnson Space Center",
+  "size": [
+   1400,
+   786
+  ]
  }
 }
