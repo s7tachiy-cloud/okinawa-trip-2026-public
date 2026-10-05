@@ -850,11 +850,11 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
 <h3 class="section-title">往復の比較｜1名・空港交通費込み</h3>
 <div class="tbl-wrap stack"><table id="mileage-comparison"><thead><tr><th>組み合わせ・時刻</th><th>現金支出</th><th>マイル価値差引後の参考</th></tr></thead><tbody>
 <tr><td><b>SKY955＋JAL922</b><br>10/24 羽田16:30 → 那覇19:15<br>10/27 那覇20:50 → 羽田23:05</td><td>約¥41,670</td><td id="mileage-jal-reference">約¥41,670（特典未計上）</td></tr>
-<tr><td>SKY955＋ANA478<br>10/24 羽田16:30 → 那覇19:15<br>10/27 那覇20:55 → 羽田23:10</td><td>約¥36,729.5</td><td>約¥36,729.5（通常マイル未計上）</td></tr>
+<tr><td>SKY955＋ANA478<br>10/24 羽田16:30 → 那覇19:15<br>10/27 那覇20:55 → 羽田23:10</td><td>約¥36,729.5</td><td><span id="mileage-ana-reference">約¥36,729.5（マイル未計上）</span></td></tr>
 </tbody></table></div>
-<p class="note"><label for="mileage-evaluation">JAL片道利用の特典5,000マイルを受け取れる場合（対象者1名分だけ）：</label><br><select id="mileage-evaluation"><option value="0">特典を計上しない</option><option value="1">1マイル＝1円で参考比較</option><option value="1.5">1マイル＝1.5円で参考比較（合算して1万マイル交換時）</option></select><br><span id="mileage-verdict" aria-live="polite">現金支出ではSKY955＋ANA478が約¥4,940.5安い参考計算です。</span></p>
-<p class="note">5,000マイルは1回分のみ。JAL往復でも10,000マイルにはせず、同行者にも同じ特典が付くとは仮定しません。1円評価ならJAL案 約¥36,670、1.5円評価なら約¥34,170。差引後は将来使う特典価値の参考で、今回の現金支払額や旅行予算は減りません。通常の搭乗マイルは確認中のため未計上。早朝帰りは現地で過ごす時間が減るため、この比較と別扱いです。</p>
-<p class="note"><a href="https://www.jal.co.jp/jp/ja/jalmile/use/ejalpoint/miles.html" target="_blank" rel="noopener">JAL公式の交換条件</a>：1,000マイル→1,000円相当、10,000マイル→15,000円相当のe JALポイント。5,000マイルだけで7,500円に交換できるという意味ではありません。現金への換金ではなく、対象の航空券・ツアー等に使うポイントです。</p>
+<p class="note"><label for="mileage-evaluation">JAL片道利用の特典5,000マイルを受け取れる場合（対象者1名分だけ）：</label><br><select id="mileage-evaluation"><option value="0">マイル未計上・現金支出で比較</option><option value="1">JAL・ANAとも1マイル＝1円</option><option value="1.5">JAL 1.5円／ANA 1円（JALは合算交換時）</option></select><br><span id="mileage-verdict" aria-live="polite">現金支出ではSKY955＋ANA478が約¥4,940.5安い参考計算です。</span></p>
+<p class="note">通常の搭乗マイル：JALセイバー片道738（区間984×75%）／ANAシンプル片道688（70%）。JALの特典5,000は対象者1名の1回分だけ、合計5,738マイルで評価。往復JALでも特典は1回、同行者にも付くとは仮定しません。カード・会員ステータスの追加分は不明のため0。ANAは1マイル＝1円、JALは選択した単価で使える場合の参考値です。両社1円ならJAL案 約¥35,932／ANA案 約¥36,041.5、差は約¥109.5で価格変動により逆転し得ます。JAL1.5円なら約¥33,063。今回の現金支出や旅行予算は減りません。早朝帰りは現地滞在が減るため別扱いです。</p>
+<p class="note"><a href="https://www.jal.co.jp/jp/ja/jmb/earn/travel/flight/jdsmt/" target="_blank" rel="noopener">JAL搭乗マイル</a>／<a href="https://www.jal.co.jp/jp/ja/dom/service/n/mile.html" target="_blank" rel="noopener">JAL区間マイル</a>／<a href="https://www.ana.co.jp/ja/jp/amc/flightmile/dom/chart/" target="_blank" rel="noopener">ANA搭乗マイル</a>／<a href="https://www.ana.co.jp/ja/jp/amc/ana-pay/usage/charge/" target="_blank" rel="noopener">ANA Pay（1マイル＝1円）</a>。販売運賃種別・積算条件は購入時に確認。<br><a href="https://www.jal.co.jp/jp/ja/jalmile/use/ejalpoint/miles.html" target="_blank" rel="noopener">JAL公式の交換条件</a>：1,000マイル→1,000円相当、10,000マイル→15,000円相当のe JALポイント。5,000マイルだけで7,500円に交換できるという意味ではありません。現金への換金ではなく、対象の航空券・ツアー等に使うポイントです。</p>
 <p class="note">車は24日23:30受取／27日19:00返却の予約を維持。SKY955の19:15着なら受取まで4時間15分待機、または受取前倒しの可否・差額をABCへ確認。新しい便の予約・車予約の変更はしていません。</p>
 <details class="fold"><summary>料金・手荷物・取消条件と公式リンク</summary><p class="note">同行2名のSKY955＋JAL922は航空券 ¥80,540／交通費込み 約¥83,340。2名とも特典対象とは仮定しません。</p><ul>
 <li>SKY：公式空席表から2名額を計算。最終2名見積り未確認。預け20kg・機内10kg／人。いま得は変更不可、出発前取消¥6,000＋払戻¥500／人区間。SKY523のたす得は出発前取消¥4,000＋払戻¥500／人区間。<a href="https://www.skymark.co.jp/ja/" target="_blank" rel="noopener">SKY公式</a></li>
@@ -2256,10 +2256,11 @@ document.addEventListener('click',e=>{const pageLink=e.target.closest('[data-pag
 // Optional mileage valuation; booking amounts remain untouched.
 const mileageEvaluation=document.getElementById('mileage-evaluation');
 if(mileageEvaluation){mileageEvaluation.addEventListener('change',()=>{
- const rate=Number(mileageEvaluation.value), benefit=5000*rate;
+ const rate=Number(mileageEvaluation.value), benefit=5738*rate;
+ document.getElementById('mileage-ana-reference').textContent='約¥'+(36729.5-(rate?688:0)).toLocaleString('ja-JP')+(rate?'（ANA 1円評価）':'（マイル未計上）');
  document.getElementById('mileage-jal-reference').textContent='約¥'+(41670-benefit).toLocaleString('ja-JP')+(rate?'（特典価値差引後）':'（特典未計上）');
  document.getElementById('mileage-verdict').textContent=rate
- ? '特典を受け取り、この単価で使える場合はJAL案が約¥'+(benefit-4940.5).toLocaleString('ja-JP')+'有利な参考計算です。現金支出は約¥41,670のまま。'
+ ? 'JALの特典を受け取り、JALをこの単価・ANAを1円で使える場合はJAL案が約¥'+(benefit-5628.5).toLocaleString('ja-JP')+'有利な参考計算です。現金支出は約¥41,670のまま。'
  : '現金支出ではSKY955＋ANA478が約¥4,940.5安い参考計算です。';
 });}
 </script>
