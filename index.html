@@ -352,9 +352,9 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
 .budget-estimate{min-width:0;font-size:.8rem;text-align:left;white-space:normal}.budget-estimate span{display:block}.budget-estimate span+span{font-size:16px;padding:10px 0;overflow-wrap:anywhere}
 .budget-inputs label{display:block;min-width:0;font-size:.8rem;text-align:left;white-space:normal}
 .budget-inputs input{display:block;width:100%;min-width:0;max-width:100%;box-sizing:border-box;font:inherit;font-size:16px;padding:10px 6px;border:1px solid #8b9ca8;border-radius:6px;background:white;color:#203640}
-#budget-table{table-layout:fixed;width:100%}#budget-table td{overflow-wrap:anywhere;white-space:normal}#budget-table th:nth-child(3){width:30%}
+#budget-table,#meal-budget{table-layout:fixed;width:100%}#budget-table td,#meal-budget td{overflow-wrap:anywhere;white-space:normal}#budget-table th:nth-child(3){width:30%}#meal-budget th:nth-child(2){width:45%}
 .day-driving{grid-column:1;min-width:0;font-size:.86rem;line-height:1.8}.day-driving ul{padding-left:20px}
-@media(max-width:600px){#budget-table,#budget-table tbody,#budget-table tr,#budget-table td{width:100%;min-width:0;box-sizing:border-box}#budget-table td.num{display:block}.budget-inputs{width:100%}}
+@media(max-width:600px){#budget-table,#budget-table tbody,#budget-table tr,#budget-table td,#meal-budget,#meal-budget tbody,#meal-budget tr,#meal-budget td{width:100%;min-width:0;box-sizing:border-box}#budget-table td.num,#meal-budget td.num{display:block}.budget-inputs{width:100%}}
 </style>
 </head>
 <body>
@@ -899,7 +899,7 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
 </section>
 
 <section class="page" id="page-budget" role="tabpanel" aria-labelledby="tab-budget"><h2 class="page-title">💴 予算</h2>
-<details class="fold"><summary>初期計画の支払内訳</summary><div class="kpi-row budget-three" id="budget-summary" aria-live="polite"></div></details><p class="page-lead">金額は支払額・計画額に基づきます（飲み物はソフトドリンク、2名で1回¥1,000目安）。24・26夜は共通の夕食予算枠として合計¥16,000。入店日・店により配分を調整。追加料金・メニュー変更時は再計算。</p><div class="budget-toolbar"><p class="note" id="budget-storage">この端末だけに保存</p><button type="button" class="btn" id="budget-reset">リセット</button></div><p class="note">支払済みの行は支払額を初期表示します。実績合計・差額は実績入力済みの行だけが対象です。差額は実績−目安です。目安は固定の計画額です。食事全体の実績は「食事」の行に入力します。リセットすると実績のみ初期状態（支払済み行は支払額、それ以外は空欄）に戻ります。</p><div id="budget-entry-summary" class="kpi-row budget-three" aria-live="polite"></div><div class="tbl-wrap stack"><table id="budget-table"><thead><tr><th>項目</th><th>内訳</th><th>目安・実績（2名）</th><th>状態</th></tr></thead><tbody><tr data-budget-key="flights" data-budget-label="航空券" data-budget-items="outbound inbound inbound-companion"><td>航空券</td><td>MM511 2名27,840円のみ。復路は各自で手配・会計外。空港交通費は別</td><td class="num"></td><td>往路 <span class="trip-status" data-trip-id="outbound"></span>／復路本人 <span class="trip-status" data-trip-id="inbound"></span>／同行者 <span class="trip-status" data-trip-id="inbound-companion"></span></td></tr><tr data-budget-key="hotel" data-budget-label="ホテル" data-budget-items="hotel"><td>ホテル</td><td>ダブル・素泊り3泊・2名</td><td class="num"></td><td><span class="trip-status" data-trip-id="hotel"></span></td></tr><tr data-budget-key="rental" data-budget-label="レンタカー" data-budget-items="rental"><td>レンタカー</td><td>ABC：3泊4日。基本13,600＋遅便3,300</td><td class="num"></td><td><span class="trip-status" data-trip-id="rental"></span></td></tr><tr data-budget-key="tolls" data-budget-label="高速" data-budget-amount="4000"><td>高速</td><td>北部往復等</td><td class="num">¥4,000</td><td>見積り</td></tr><tr data-budget-key="fuel" data-budget-label="ガソリン" data-budget-amount="5000"><td>ガソリン</td><td>3日間の走行分</td><td class="num">¥5,000</td><td>見積り</td></tr><tr data-budget-key="parking" data-budget-label="駐車" data-budget-amount="6000"><td>駐車</td><td>ホテル・観光・市内買い物</td><td class="num">¥6,000</td><td>見積り</td></tr><tr data-budget-key="transport" data-budget-label="タクシー等" data-budget-amount="6000"><td>タクシー等</td><td>追加移動の予備</td><td class="num">¥6,000</td><td>見積り</td></tr><tr data-budget-key="admission" data-budget-label="入場料" data-budget-amount="6160"><td>入場料</td><td>(美ら海2,180＋首里400＋中城500)×2</td><td class="num">¥6,160</td><td>掲載料金の計画額</td></tr><tr data-budget-key="meals" data-budget-label="食事" data-budget-meals="true"><td>食事</td><td>下の2名分の食事予算を合算</td><td class="num"></td><td>見積り</td></tr><tr data-budget-key="gifts" data-budget-label="お土産" data-budget-amount="15000"><td>お土産</td><td>グラス・菓子・調味料等</td><td class="num">¥15,000</td><td>見積り</td></tr><tr data-budget-key="reserve" data-budget-label="予備費" data-budget-amount="15000"><td>予備費</td><td>価格上昇・追加交通・メニュー差等</td><td class="num">¥15,000</td><td>計画枠</td></tr><tr id="budget-total" data-total="193824"><td><b>合計</b></td><td>上の11項目の合計（復路は会計外）</td><td class="num"></td><td>2名・計画額</td></tr></tbody></table></div><details class="fold" open><summary>食事予算の初期目安（全行2名合計）</summary><div class="tbl-wrap stack"><table id="meal-budget"><thead><tr><th>食事</th><th>2名の目安</th></tr></thead><tbody><tr data-meal-amount="4000"><td>24夕食（まーちぬ家または88Jr.・軽食、ソフトドリンク込み）</td><td class="num">¥4,000</td></tr><tr data-meal-amount="1500"><td>25朝軽食</td><td class="num">¥1,500</td></tr><tr data-meal-amount="6000"><td>25糸満漁民食堂</td><td class="num">¥6,000</td></tr><tr data-meal-amount="2500"><td>25ウミカジのカフェ</td><td class="num">¥2,500</td></tr><tr data-meal-item="matsumoto"><td>25光久本家：2名約15,000円＋ソフトドリンク1,000円（コース1人7,480円×2を丸めた計画額） <span class="trip-status" data-trip-id="matsumoto"></span></td><td class="num"></td></tr><tr data-meal-amount="2000"><td>26許田の軽食</td><td class="num">¥2,000</td></tr><tr data-meal-amount="3000"><td>26きしもと食堂</td><td class="num">¥3,000</td></tr><tr data-meal-item="marchinu"><td>26夕食（まーちぬ家再挑戦または別店）・ソフトドリンク <span class="trip-status" data-trip-id="marchinu"></span></td><td class="num"></td></tr><tr data-meal-amount="1600"><td>27ポーたま</td><td class="num">¥1,600</td></tr><tr data-meal-item="enzo"><td>27 ENZO（ソフトドリンク込み） <span class="trip-status" data-trip-id="enzo"></span></td><td class="num"></td></tr><tr data-meal-amount="1800"><td>27ブルーシール牧港</td><td class="num">¥1,800</td></tr><tr data-meal-amount="9000"><td>27ジャッキー</td><td class="num">¥9,000</td></tr><tr data-meal-amount="2500"><td>空港等の軽食余裕</td><td class="num">¥2,500</td></tr><tr data-meal-total="73900"><td>食事合計</td><td class="num"></td></tr></tbody></table></div></details>
+<details class="fold"><summary>初期計画の支払内訳</summary><div class="kpi-row budget-three" id="budget-summary" aria-live="polite"></div></details><p class="page-lead">金額は支払額・計画額に基づきます（飲み物はソフトドリンク、2名で1回¥1,000目安）。24夜は¥4,000、26夜は¥12,000を各行に計上（2夜で¥16,000、追加の共通枠なし）。追加料金・メニュー変更時は再計算。</p><div class="budget-toolbar"><p class="note" id="budget-storage">この端末だけに保存</p><button type="button" class="btn" id="budget-reset">リセット</button></div><p class="note">支払済みの行は支払額を初期表示します。実績合計・差額は実績入力済みの行だけが対象です。差額は実績−目安です。目安は固定の計画額です。食事の実績は下の内訳に入力すると「食事」行へ自動集計します。一部だけ入力した場合も、食事行の差額は食事全体の目安との差です。リセットすると実績のみ初期状態（支払済み行は支払額、それ以外は空欄）に戻ります。</p><div id="budget-entry-summary" class="kpi-row budget-three" aria-live="polite"></div><div class="tbl-wrap stack"><table id="budget-table"><thead><tr><th>項目</th><th>内訳</th><th>目安・実績（2名）</th><th>状態</th></tr></thead><tbody><tr data-budget-key="flights" data-budget-label="航空券" data-budget-items="outbound inbound inbound-companion"><td>航空券</td><td>MM511 2名27,840円のみ。復路は各自で手配・会計外。空港交通費は別</td><td class="num"></td><td>往路 <span class="trip-status" data-trip-id="outbound"></span>／復路本人 <span class="trip-status" data-trip-id="inbound"></span>／同行者 <span class="trip-status" data-trip-id="inbound-companion"></span></td></tr><tr data-budget-key="hotel" data-budget-label="ホテル" data-budget-items="hotel"><td>ホテル</td><td>ダブル・素泊り3泊・2名</td><td class="num"></td><td><span class="trip-status" data-trip-id="hotel"></span></td></tr><tr data-budget-key="rental" data-budget-label="レンタカー" data-budget-items="rental"><td>レンタカー</td><td>ABC：3泊4日。基本13,600＋遅便3,300</td><td class="num"></td><td><span class="trip-status" data-trip-id="rental"></span></td></tr><tr data-budget-key="tolls" data-budget-label="高速" data-budget-amount="4000"><td>高速</td><td>北部往復等</td><td class="num">¥4,000</td><td>見積り</td></tr><tr data-budget-key="fuel" data-budget-label="ガソリン" data-budget-amount="5000"><td>ガソリン</td><td>3日間の走行分</td><td class="num">¥5,000</td><td>見積り</td></tr><tr data-budget-key="parking" data-budget-label="駐車" data-budget-amount="6000"><td>駐車</td><td>ホテル・観光・市内買い物</td><td class="num">¥6,000</td><td>見積り</td></tr><tr data-budget-key="transport" data-budget-label="タクシー等" data-budget-amount="6000"><td>タクシー等</td><td>追加移動の予備</td><td class="num">¥6,000</td><td>見積り</td></tr><tr data-budget-key="admission" data-budget-label="入場料" data-budget-amount="6160"><td>入場料</td><td>(美ら海2,180＋首里400＋中城500)×2</td><td class="num">¥6,160</td><td>掲載料金の計画額</td></tr><tr data-budget-key="meals" data-budget-label="食事" data-budget-meals="true"><td>食事</td><td>下の2名分の食事予算を合算</td><td class="num"></td><td>見積り</td></tr><tr data-budget-key="gifts" data-budget-label="お土産" data-budget-amount="15000"><td>お土産</td><td>グラス・菓子・調味料等</td><td class="num">¥15,000</td><td>見積り</td></tr><tr data-budget-key="reserve" data-budget-label="予備費" data-budget-amount="15000"><td>予備費</td><td>価格上昇・追加交通・メニュー差等</td><td class="num">¥15,000</td><td>計画枠</td></tr><tr id="budget-total" data-total="193824"><td><b>合計</b></td><td>上の11項目の合計（復路は会計外）</td><td class="num"></td><td>2名・計画額</td></tr></tbody></table></div><details class="fold" open><summary>食事予算の内訳（全行2名合計）</summary><div class="tbl-wrap stack"><table id="meal-budget"><thead><tr><th>食事</th><th>目安・実績（2名）</th></tr></thead><tbody><tr data-meal-key="24-dinner" data-meal-label="24夜食・軽食" data-meal-amount="4000"><td>24夜食・軽食（まーちぬ家または88Jr.、ソフトドリンク込み）</td><td class="num">¥4,000</td></tr><tr data-meal-key="25-breakfast" data-meal-label="25朝軽食" data-meal-amount="1500"><td>25朝軽食</td><td class="num">¥1,500</td></tr><tr data-meal-key="25-itoman" data-meal-label="25糸満漁民食堂" data-meal-amount="6000"><td>25糸満漁民食堂</td><td class="num">¥6,000</td></tr><tr data-meal-key="25-umikaji" data-meal-label="25ウミカジのカフェ" data-meal-amount="2500"><td>25ウミカジのカフェ</td><td class="num">¥2,500</td></tr><tr data-meal-key="25-mitsuhisa" data-meal-label="25夜 光久本家" data-meal-item="matsumoto"><td>25光久本家：2名約15,000円＋ソフトドリンク1,000円（コース1人7,480円×2を丸めた計画額） <span class="trip-status" data-trip-id="matsumoto"></span></td><td class="num">¥16,000</td></tr><tr data-meal-key="26-kyoda" data-meal-label="26許田の軽食" data-meal-amount="2000"><td>26許田の軽食</td><td class="num">¥2,000</td></tr><tr data-meal-key="26-kishimoto" data-meal-label="26きしもと食堂" data-meal-amount="3000"><td>26きしもと食堂</td><td class="num">¥3,000</td></tr><tr data-meal-key="26-dinner" data-meal-label="26夜 まーちぬ家または北部" data-meal-item="marchinu"><td>26夕食（まーちぬ家再挑戦または北部の別店）・ソフトドリンク <span class="trip-status" data-trip-id="marchinu"></span></td><td class="num">¥12,000</td></tr><tr data-meal-key="27-potama" data-meal-label="27ポーたま" data-meal-amount="1600"><td>27ポーたま</td><td class="num">¥1,600</td></tr><tr data-meal-key="27-enzo" data-meal-label="27 ENZO" data-meal-item="enzo"><td>27 ENZO（ソフトドリンク込み） <span class="trip-status" data-trip-id="enzo"></span></td><td class="num">¥12,000</td></tr><tr data-meal-key="27-blueseal" data-meal-label="27ブルーシール牧港" data-meal-amount="1800"><td>27ブルーシール牧港</td><td class="num">¥1,800</td></tr><tr data-meal-key="27-jack" data-meal-label="27ジャッキー" data-meal-amount="9000"><td>27ジャッキー</td><td class="num">¥9,000</td></tr><tr data-meal-key="snacks" data-meal-label="空港等の軽食" data-meal-amount="2500"><td>空港等の軽食余裕</td><td class="num">¥2,500</td></tr><tr data-meal-total="73900"><td>食事の目安合計</td><td class="num"></td></tr></tbody></table></div></details>
 </section>
 </main>
 
@@ -1120,7 +1120,6 @@ function tripFollowupItems(items){
   });
 }
 const BUDGET_STORAGE_KEY='okinawa-budget-v1-20261016';
-const BUDGET_FIELDS=['actual'];
 function budgetValidValue(value){return value===''||(typeof value==='number'&&Number.isSafeInteger(value)&&value>=0&&value<=999999999);}
 function loadBudgetEntries(){
   try {
@@ -1138,34 +1137,52 @@ function saveBudgetEntries(){
   try{localStorage.setItem(BUDGET_STORAGE_KEY,JSON.stringify({version:1,rows:budgetEntries}));notice.textContent='この端末だけに保存';}
   catch(error){notice.textContent='この端末だけに保存（保存できないため、現在の画面内のみ反映）';}
 }
-function renderBudgetEditor(budget,rowNodes){
-  const entries=rowNodes.map((row,i)=>{
-    const key=row.dataset.budgetKey,saved=budgetEntries[key];
-    const paidItems=(row.dataset.budgetItems||'').split(' ').map(id=>TRIP_STATE.items.find(item=>item.id===id)).filter(item=>item&&item.budget!=='self'&&item.status==='paid');
-    const initialActual=paidItems.length?paidItems.reduce((sum,item)=>sum+(item.paidAmount??item.amount),0):'';
-    const entry={key,estimate:budget.rows[i],actual:saved&&budgetValidValue(saved.actual)?saved.actual:initialActual};
+function renderBudgetEditor(budget,rowNodes,mealNodes,mealAmounts){
+  function mountControls(row,entry,labelText,derived=false){
     const controls=tripNode('div',undefined,'budget-inputs');
     const planned=tripNode('div',undefined,'budget-estimate');
     const amount=tripNode('span',tripMoney(entry.estimate));amount.dataset.budgetField='estimate';
     planned.append(tripNode('span','目安（円）'),amount);controls.append(planned);
-    for(const field of BUDGET_FIELDS){
+    if(derived){
+      const actual=tripNode('div',undefined,'budget-estimate');
+      entry.caption=tripNode('span','実績（内訳の合計）');
+      entry.output=tripNode('span');entry.output.dataset.budgetField='actual';
+      actual.append(entry.caption,entry.output);controls.append(actual);
+    }else{
       const label=tripNode('label','実績（円）');
       const input=document.createElement('input');input.type='text';input.inputMode='numeric';input.pattern='[0-9]*';input.maxLength=9;
-      input.value=String(entry[field]);input.dataset.budgetField=field;input.dataset.budgetKey=key;
-      input.setAttribute('aria-label',row.dataset.budgetLabel+' 実績（2名・円）');
+      input.value=String(entry.actual);input.dataset.budgetField='actual';input.dataset.budgetKey=entry.key;
+      input.setAttribute('aria-label',labelText+' 実績（2名・円）');
       input.addEventListener('input',()=>{
         // Accept whole yen only; ignore malformed/pasted values without poisoning totals.
         const raw=input.value;
-        if(!/^[0-9]{0,9}$/.test(raw)){input.value=String(entry[field]);return;}
-        entry[field]=raw===''?'':Number(raw);
-        budgetEntries[key]={actual:entry.actual};
+        if(!/^[0-9]{0,9}$/.test(raw)){input.value=String(entry.actual);return;}
+        entry.actual=raw===''?'':Number(raw);
+        budgetEntries[entry.key]={actual:entry.actual};
         updateTotals();saveBudgetEntries();
       });
       label.append(input);controls.append(label);
     }
     row.querySelector('.num').replaceChildren(controls);return entry;
+  }
+  const mealEntries=mealNodes.map((row,i)=>{
+    const key='meal:'+row.dataset.mealKey,saved=budgetEntries[key];
+    return mountControls(row,{key,estimate:mealAmounts[i],actual:saved&&budgetValidValue(saved.actual)?saved.actual:''},row.dataset.mealLabel);
+  });
+  const entries=rowNodes.map((row,i)=>{
+    const key=row.dataset.budgetKey,saved=budgetEntries[key];
+    const paidItems=(row.dataset.budgetItems||'').split(' ').map(id=>TRIP_STATE.items.find(item=>item.id===id)).filter(item=>item&&item.budget!=='self'&&item.status==='paid');
+    const initialActual=paidItems.length?paidItems.reduce((sum,item)=>sum+(item.paidAmount??item.amount),0):'';
+    const entry={key,estimate:budget.rows[i],actual:saved&&budgetValidValue(saved.actual)?saved.actual:initialActual};
+    return mountControls(row,entry,row.dataset.budgetLabel,Boolean(row.dataset.budgetMeals));
   });
   function updateTotals(){
+    const enteredMeals=mealEntries.filter(entry=>entry.actual!=='');
+    const mealEntry=entries.find(entry=>entry.key==='meals');
+    // The aggregate is derived only; never include a legacy manually entered meal total.
+    mealEntry.actual=enteredMeals.length?enteredMeals.reduce((sum,entry)=>sum+entry.actual,0):'';
+    mealEntry.output.textContent=mealEntry.actual===''?'未入力':tripMoney(mealEntry.actual);
+    mealEntry.caption.textContent='実績（内訳 '+enteredMeals.length+'/'+mealEntries.length+'行）';
     const estimate=entries.reduce((sum,e)=>sum+Number(e.estimate),0),actual=entries.reduce((sum,e)=>sum+Number(e.actual),0);
     const entered=entries.filter(e=>e.actual!=='');
     const count=entered.length,difference=entered.reduce((sum,e)=>sum+e.actual-Number(e.estimate),0);
@@ -1175,6 +1192,10 @@ function renderBudgetEditor(budget,rowNodes){
       box.append(tripNode('div',label,'l'),tripNode('div',tripMoney(amount),'v'),tripNode('div','2名 ／ 1人あたり '+tripMoney(amount/2),'per-person'));summary.append(box);
     }
     summary.append(tripNode('p','実績入力済み '+count+'/'+entries.length+'項目（未入力行は差額の対象外）','note'));
+    const legacyMeal=budgetEntries.meals;
+    if(legacyMeal&&legacyMeal.actual!==''&&budgetValidValue(legacyMeal.actual)){
+      summary.append(tripNode('p','以前まとめて入力した食事実績：'+tripMoney(legacyMeal.actual)+'。現在の合計には含めていません。食事の内訳に入力してください。','note'));
+    }
     document.querySelector('#budget-total .num').textContent='目安 '+tripMoney(estimate)+' ／ 実績 '+tripMoney(actual);
   }
   document.getElementById('budget-reset').onclick=()=>{budgetEntries={};saveBudgetEntries();renderTripState();};
@@ -1201,7 +1222,7 @@ function renderTripState(){
   const rowNodes=[...document.querySelectorAll('#budget-table tbody tr:not([data-total])')];
   const estimates=rowNodes.map(el=>el.dataset.budgetItems?{ids:el.dataset.budgetItems.split(' ')}:el.dataset.budgetMeals?{meals:true}:{amount:Number(el.dataset.budgetAmount)});
   const budget=tripBudget(items,estimates,mealEstimates);
-  mealNodes.forEach((el,i)=>{if(mealEstimates[i].id)el.querySelector('.num').textContent=tripMoney(lookup[mealEstimates[i].id].amount);});
+  const mealAmounts=mealEstimates.map(row=>row.id?lookup[row.id].amount:row.amount);
   rowNodes.forEach((el,i)=>{el.querySelector('.num').textContent=tripMoney(budget.rows[i]);});
   document.querySelector('[data-meal-total] .num').textContent=tripMoney(budget.meals);
   document.querySelector('#budget-total .num').textContent=tripMoney(budget.total);
@@ -1210,7 +1231,7 @@ function renderTripState(){
     const box=tripNode('div',undefined,'kpi');box.dataset.budgetKpi=label;
     box.append(tripNode('div',label,'l'),tripNode('div',tripMoney(amount),'v'),tripNode('div','2名 ／ 1人あたり '+tripMoney(amount/2),'per-person'));summary.append(box);
   });
-  renderBudgetEditor(budget,rowNodes);
+  renderBudgetEditor(budget,rowNodes,mealNodes,mealAmounts);
 }
 renderTripState();
 
