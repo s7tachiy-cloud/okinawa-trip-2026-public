@@ -844,5 +844,27 @@
    1400,
    930
   ]
+ },
+ "peach_a320": {
+  "file": "peach_a320.jpg",
+  "title": "File:2017-01-25 MM231,Airbus A320 of Peach Aviation at Kansai International Airport DSCF9155.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:2017-01-25_MM231,Airbus_A320_of_Peach_Aviation_at_Kansai_International_Airport_DSCF9155.jpg",
+  "license": "CC BY-SA 4.0",
+  "artist": "松岡明芳",
+  "size": [
+   1400,
+   933
+  ]
+ },
+ "ana_787": {
+  "file": "ana_787.jpg",
+  "title": "File:All Nippon Airways, Boeing 787-8, JA805A - NRT.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:All_Nippon_Airways,_Boeing_787-8,_JA805A_-_NRT.jpg",
+  "license": "CC BY-SA 2.0",
+  "artist": "Masakatsu Ukon",
+  "size": [
+   1400,
+   933
+  ]
  }
 }
