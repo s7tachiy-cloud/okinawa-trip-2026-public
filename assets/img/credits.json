@@ -866,5 +866,115 @@
    1400,
    933
   ]
+ },
+ "kishimoto_shop": {
+  "file": "kishimoto_shop.jpg",
+  "title": "File:Okinawa soba restaurant by kikmoyoo in Okinawa.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AOkinawa_soba_restaurant_by_kikmoyoo_in_Okinawa.jpg",
+  "license": "CC BY-SA 2.0",
+  "artist": "kikmoyoo",
+  "size": [
+   1840,
+   1232
+  ]
+ },
+ "takaesu_shop": {
+  "file": "takaesu_shop.jpg",
+  "title": "File:高江洲そば店内 (37492710).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3A%E9%AB%98%E6%B1%9F%E6%B4%B2%E3%81%9D%E3%81%B0%E5%BA%97%E5%86%85_%2837492710%29.jpg",
+  "license": "CC BY-SA 2.0",
+  "artist": "ayustety",
+  "size": [
+   1920,
+   1440
+  ]
+ },
+ "takaesu_soba": {
+  "file": "takaesu_soba.jpg",
+  "title": "File:Tofu soba at Takaesu Soba by ayustety in Urasoe, Okinawa.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ATofu_soba_at_Takaesu_Soba_by_ayustety_in_Urasoe%2C_Okinawa.jpg",
+  "license": "CC BY-SA 2.0",
+  "artist": "ayustety from Takaesu Soba in Urasoe, Okinawa",
+  "size": [
+   1920,
+   1440
+  ]
+ },
+ "eibun_shop": {
+  "file": "eibun_shop.jpg",
+  "title": "File:JP 沖繩 Okinawa 那霸 Naha 壺屋 Tsuboya 1-5-14 Eibun Soba Okinawa Restaurant February 2026 N13P 02.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AJP_%E6%B2%96%E7%B9%A9_Okinawa_%E9%82%A3%E9%9C%B8_Naha_%E5%A3%BA%E5%B1%8B_Tsuboya_1-5-14_Eibun_Soba_Okinawa_Restaurant_February_2026_N13P_02.jpg",
+  "license": "CC0",
+  "artist": "NORTLAUKAU 26088 JP",
+  "size": [
+   1920,
+   1440
+  ]
+ },
+ "s88_menu": {
+  "file": "s88_menu.jpg",
+  "title": "File:ステーキハウス88 (224055006).jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3A%E3%82%B9%E3%83%86%E3%83%BC%E3%82%AD%E3%83%8F%E3%82%A6%E3%82%B988_%28224055006%29.jpg",
+  "license": "CC BY 2.0",
+  "artist": "Hajime NAKANO",
+  "size": [
+   640,
+   480
+  ]
+ },
+ "aw_makiminato": {
+  "file": "aw_makiminato.jpg",
+  "title": "File:A&W Makiminato.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AA%26W_Makiminato.jpg",
+  "license": "Public domain",
+  "artist": "Abasaa",
+  "size": [
+   1920,
+   1440
+  ]
+ },
+ "bigdip_makiminato": {
+  "file": "bigdip_makiminato.jpg",
+  "title": "File:Big Dip Makiminato.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File%3ABig_Dip_Makiminato.JPG",
+  "license": "Public domain",
+  "artist": "Abasaa",
+  "size": [
+   1920,
+   1440
+  ]
+ },
+ "kyoda_station": {
+  "file": "kyoda_station.jpg",
+  "title": "File:Roadside station Kyoda.JPG",
+  "page": "https://commons.wikimedia.org/wiki/File%3ARoadside_station_Kyoda.JPG",
+  "license": "CC BY-SA 3.0",
+  "artist": "Kugel",
+  "size": [
+   1920,
+   1440
+  ]
+ },
+ "busena_terrace": {
+  "file": "busena_terrace.jpg",
+  "title": "File:Busena Terrace11n4272.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3ABusena_Terrace11n4272.jpg",
+  "license": "CC BY 2.5",
+  "artist": "663highland",
+  "size": [
+   1920,
+   1280
+  ]
+ },
+ "jackie_tacorice": {
+  "file": "jackie_tacorice.jpg",
+  "title": "File:JP-47 Naha Tacorice.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File%3AJP-47_Naha_Tacorice.jpg",
+  "license": "CC BY-SA 2.0",
+  "artist": "Flickr user: ayustety\n\nTokyo, Japan\n\n https://www.flickr.com",
+  "size": [
+   1920,
+   1440
+  ]
  }
 }

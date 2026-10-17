@@ -276,6 +276,7 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
 .desire-grid,.cuisine-grid,.souvenir-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 .desire-grid .card{border:0}.desire-grid .badge{font-size:.85rem;margin:0}
 .food-compare.photo{padding:0}.food-compare .body{flex:1}
+.food-compare .food-photo-secondary{width:min(100%,280px);margin:12px auto 0}
 .booking-state{font-size:.84rem;font-weight:700;color:var(--sea-dark);margin:10px 0}
 .food-order{margin:24px 0 12px}.discovery-chips{position:static;gap:8px;backdrop-filter:none;background:transparent}
 .chip{min-height:44px}.chip:focus-visible,.btn:focus-visible,a:focus-visible{outline:3px solid var(--sun-dark);outline-offset:3px}
@@ -349,6 +350,16 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
 .learn-sources{font-size:.78rem;color:var(--muted);border-top:1px solid var(--border);margin-top:32px;line-height:1.8}
 .learn-sources a{padding:4px 0;display:inline-block}.learn-chapter summary:focus-visible,.learn-toc a:focus-visible{outline:3px solid var(--sea);outline-offset:3px}
 #food-other .cuisine-intro{display:block}
+.food-distance-toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:12px 0;font-size:.85rem}
+.food-distance-toolbar>*{min-width:0;max-width:100%}
+.food-distance-toolbar button,.food-distance-toolbar select{font:inherit;min-height:44px;border:1px solid var(--border);border-radius:10px;background:#fff;color:var(--text);padding:8px 10px}
+.food-distance-toolbar select{flex:0 1 240px;width:100%}
+.food-distance-toolbar button{cursor:pointer;white-space:normal}
+.food-distance-toolbar :focus-visible{outline:3px solid var(--sun-dark);outline-offset:3px}
+.food-distance-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px;font-size:.8rem;color:var(--sea-dark);margin-bottom:8px}
+#food-distance-list{grid-template-columns:minmax(0,1fr)}
+#food-distance-list .card{min-width:0;overflow-wrap:anywhere}
+
 @media(max-width:600px){.learn-toc{padding:18px}.learn-body{padding:0 18px 22px}.learn-chapter>summary{padding:18px}.learn-book>.learn-photo img{height:160px}.learn-body h4{font-size:1.15rem}.learn-callout{padding:14px}}
 
 @media(max-width:600px){#outbound-fares td[data-label]::before,#return-fares td[data-label]::before,#mileage-comparison td[data-label]::before{content:attr(data-label) "：";font-weight:600;margin-right:.35em}}
@@ -408,20 +419,29 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
 <section class="food-desires" id="food-desires" aria-labelledby="desires-title">
 <h3 id="desires-title">今回、大切にしたい2店</h3>
 <p>朝はポーたま、夜は沖縄の家庭料理。</p>
-<div class="grid desire-grid"><article class="card food-compare photo" data-shop="porktamago" data-t="主案 既存"><figure class="discovery-photo"><img src="assets/img/porktamago.jpg" alt="ポーク玉子おにぎりの料理イメージ" width="1400" height="1050" decoding="async" loading="lazy"><figcaption>料理のイメージ／店舗の提供写真ではありません</figcaption></figure><div class="body"><div class="meta"><span class="badge b-must" data-desire="must">二人の希望：必須</span></div><h4><a class="shop-name" href="https://porktamago.com/shop/001-mks/" target="_blank" rel="noopener">ポーたま 牧志市場本店</a></h4><p class="booking-state">旅程の主案：27(火) 07:20 朝食</p><p class="decision">27朝の必須。ポーク玉子おにぎりを行列込みで。</p><div class="hours">公式7:00～20:00・年中無休</div></div></article>
-<article class="card food-compare photo" data-shop="marchinu" data-t="主案 郷土料理" data-comparison="true"><figure class="discovery-photo"><img src="assets/img/ryukyu_cuisine.jpg" alt="豚肉の煮込み料理のイメージ" width="1400" height="1050" decoding="async" loading="lazy"><figcaption>料理のイメージ／店舗の提供写真ではありません（別店舗で撮影した豚肉料理）</figcaption></figure><div class="body"><div class="meta"><span class="badge b-rsv" data-desire="strong">二人の希望：強い希望</span> 郷土料理｜那覇・前島</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47003193/" target="_blank" rel="noopener">まーちぬ家</a></h4><p class="booking-state">旅程の主案：24(土) 21:00ごろ／再挑戦は26(月) 19:30ごろ｜<span class="trip-status" data-trip-id="marchinu"></span></p><p class="hook">沖縄の家庭料理</p><p class="decision">24(土)夜の第一候補。行けなかった場合は26(月)夜に再挑戦。</p><div class="hours"><b>掲載営業</b> 月～土17:00～23:00／日休<br><b>予約</b> 当日電話・☎098-863-5159</div></div></article></div></section>
+<div class="grid desire-grid"><article class="card food-compare" data-shop="porktamago" data-t="主案 既存"><div class="meta"><span class="badge b-must" data-desire="must">二人の希望：必須</span></div><h4><a class="shop-name" href="https://porktamago.com/shop/001-mks/" target="_blank" rel="noopener">ポーたま 牧志市場本店</a></h4><p class="booking-state">旅程の主案：27(火) 07:20 朝食</p><p class="decision">27朝の必須。ポーク玉子おにぎりを行列込みで。</p><div class="hours">公式7:00～20:00・年中無休</div></article>
+<article class="card food-compare" data-shop="marchinu" data-t="主案 郷土料理" data-comparison="true"><div class="meta"><span class="badge b-rsv" data-desire="strong">二人の希望：強い希望</span> 郷土料理｜那覇・前島</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47003193/" target="_blank" rel="noopener">まーちぬ家</a></h4><p class="booking-state">旅程の主案：24(土) 21:00ごろ／再挑戦は26(月) 19:30ごろ｜<span class="trip-status" data-trip-id="marchinu"></span></p><p class="hook">沖縄の家庭料理</p><p class="decision">24(土)夜の第一候補。行けなかった場合は26(月)夜に再挑戦。</p><div class="hours"><b>掲載営業</b> 月～土17:00～23:00／日休<br><b>予約</b> 当日電話・☎098-863-5159</div></article></div></section>
 <p class="page-lead food-order">おすすめ順は、二人の希望・旅程への組み込みやすさ・料理の違いを基準にしています。</p>
+<div class="food-distance-toolbar" role="group" aria-label="近い順で見る">
+<span>近い順で見る</span>
+<button type="button" id="food-current-location">📍 現在地から</button>
+<select id="food-location" aria-label="地点を選ぶ"><option value="">地点を選ぶ</option></select>
+<button type="button" id="food-distance-reset">もとの並びに戻す</button>
+</div>
+<p id="food-location-status" class="filter-result" role="status"></p>
 <div class="chips discovery-chips" id="chips" role="group" aria-label="料理ジャンルで絞り込み">
 <button type="button" class="chip active" data-f="all" aria-pressed="true" aria-controls="food-categories">全ジャンル <span></span></button><button type="button" class="chip" data-f="local" aria-pressed="false" aria-controls="food-local">沖縄料理・地魚 <span></span></button><button type="button" class="chip" data-f="soba" aria-pressed="false" aria-controls="food-soba">沖縄そば <span></span></button><button type="button" class="chip" data-f="pork" aria-pressed="false" aria-controls="food-pork">あぐー・豚料理 <span></span></button><button type="button" class="chip" data-f="creative" aria-pressed="false" aria-controls="food-creative">ピザ・創作料理 <span></span></button><button type="button" class="chip" data-f="steak" aria-pressed="false" aria-controls="food-steak">ステーキ・焼肉 <span></span></button><button type="button" class="chip" data-f="casual" aria-pressed="false" aria-controls="food-casual">バーガー・タコライス <span></span></button><button type="button" class="chip" data-f="snacks" aria-pressed="false" aria-controls="food-snacks">スイーツ・軽食 <span></span></button><button type="button" class="chip" data-f="other" aria-pressed="false" aria-controls="food-other">その他 <span></span></button></div><p id="food-results" class="filter-result" role="status"></p>
-<div id="food-categories"><section class="cuisine-section" id="food-local" data-cuisine="local" aria-labelledby="food-title-local"><div class="cuisine-intro"><figure class="discovery-photo"><img src="assets/img/kaisendon2.jpg" alt="海鮮丼の料理イメージ" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません</figcaption></figure><div><p class="eyebrow"></p><h3 id="food-title-local">沖縄料理・地魚</h3><p>島魚と郷土料理を別の食事で。24夜に挑戦し、だめなら26夜に再挑戦するまーちぬ家は上の希望カードへ。</p><a href="#shop-marchinu" data-goto="marchinu">強い希望のまーちぬ家を見る ↑</a></div></div><div class="grid cuisine-grid"><article class="card food-compare" data-shop="toukaoru" data-t="代替 沖縄料理・豚しゃぶ"><div class="meta"><span class="badge b-alt">代替候補</span> <span class="badge b-alt">👀 気になる</span> 沖縄料理・豚しゃぶ｜那覇市松尾2-6-24 B1F</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47013016/" target="_blank" rel="noopener">土香る（とうかおる）</a></h4><p class="hook">野菜と魚の沖縄料理。まーちぬ家に入れないときの那覇の第一代替。</p><p class="decision">24(土)夜・26(月)夜にまーちぬ家が満席のとき。ホテルから車5分、まーちぬ家からも近い。日曜休なので25夜は不可。</p><div class="hours"><b>掲載営業</b> 月～土17:00～23:00（料理LO21:30）／日休・不定休あり<br><b>予約</b> ネット予約可。電話は当日分のみ <a href="tel:0989439460">☎098-943-9460</a><br><b>評価・予算</b> 食べログ3.77・口コミ262件（10/17閲覧）。夜¥6,000～7,999（2名の目安は飲み物なしで¥12,000前後）<br><b>駐車</b> 店の駐車場なし。国際通り周辺のコインパーキング。</div></article><article class="card food-compare photo" data-shop="itoman" data-t="主案 魚料理" data-comparison="true"><figure class="discovery-photo"><img src="assets/img/kaisendon2.jpg" alt="海鮮丼の料理イメージ" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません</figcaption></figure><div class="body"><div class="meta"><span class="badge b-spot">旅程の主案</span> 魚料理｜糸満市西崎町4-17</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4704/A470402/47012172/" target="_blank" rel="noopener">糸満漁民食堂</a></h4><p class="hook">島魚料理・魚のバター焼き</p><p class="decision">25(日)昼。琉球ガラス村と同じ南部で、島魚料理をそばとは別の一食にできる。</p><div class="hours"><b>掲載営業</b> 11:30～15:00（LO14:30）／18:00～22:00（LO21:30）／火休・最終月曜夕休<br><b>予約</b> 予約不可</div></div></article>
+<p id="food-distance-summary" class="filter-result" hidden></p>
+<div id="food-distance-list" class="grid" hidden></div>
+<div id="food-categories"><section class="cuisine-section" id="food-local" data-cuisine="local" aria-labelledby="food-title-local"><div class="cuisine-intro"><figure class="discovery-photo"><img src="assets/img/kaisendon2.jpg" alt="海鮮丼の料理イメージ" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません</figcaption></figure><div><p class="eyebrow"></p><h3 id="food-title-local">沖縄料理・地魚</h3><p>島魚と郷土料理を別の食事で。24夜に挑戦し、だめなら26夜に再挑戦するまーちぬ家は上の希望カードへ。</p><a href="#shop-marchinu" data-goto="marchinu">強い希望のまーちぬ家を見る ↑</a></div></div><div class="grid cuisine-grid"><article class="card food-compare" data-shop="toukaoru" data-t="代替 沖縄料理・豚しゃぶ"><div class="meta"><span class="badge b-alt">代替候補</span> <span class="badge b-alt">👀 気になる</span> 沖縄料理・豚しゃぶ｜那覇市松尾2-6-24 B1F</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47013016/" target="_blank" rel="noopener">土香る（とうかおる）</a></h4><p class="hook">野菜と魚の沖縄料理。まーちぬ家に入れないときの那覇の第一代替。</p><p class="decision">24(土)夜・26(月)夜にまーちぬ家が満席のとき。ホテルから車5分、まーちぬ家からも近い。日曜休なので25夜は不可。</p><div class="hours"><b>掲載営業</b> 月～土17:00～23:00（料理LO21:30）／日休・不定休あり<br><b>予約</b> ネット予約可。電話は当日分のみ <a href="tel:0989439460">☎098-943-9460</a><br><b>評価・予算</b> 食べログ3.77・口コミ262件（10/17閲覧）。夜¥6,000～7,999（2名の目安は飲み物なしで¥12,000前後）<br><b>駐車</b> 店の駐車場なし。国際通り周辺のコインパーキング。</div></article><article class="card food-compare" data-shop="itoman" data-t="主案 魚料理" data-comparison="true"><div class="meta"><span class="badge b-spot">旅程の主案</span> 魚料理｜糸満市西崎町4-17</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4704/A470402/47012172/" target="_blank" rel="noopener">糸満漁民食堂</a></h4><p class="hook">島魚料理・魚のバター焼き</p><p class="decision">25(日)昼。琉球ガラス村と同じ南部で、島魚料理をそばとは別の一食にできる。</p><div class="hours"><b>掲載営業</b> 11:30～15:00（LO14:30）／18:00～22:00（LO21:30）／火休・最終月曜夕休<br><b>予約</b> 予約不可</div></article>
 <article class="card food-compare" data-shop="urizun" data-t="代替 既存"><div class="meta"><span class="badge b-alt">代替</span></div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47000019/" target="_blank" rel="noopener">古酒と琉球料理 うりずん</a></h4><p class="decision">25夜、しゃぶ店が取れないとき。ドゥル天など郷土料理はまーちぬ家（24夜、だめなら26夜）と重なる。</p><div class="hours">店舗関係者掲載17:30～24:00（LO23:30）・各曜日。空席・臨休は確認</div></article>
 <article class="card food-compare" data-shop="iyumachi" data-t="代替 既存"><div class="meta"><span class="badge b-alt">代替</span></div><h4><a class="shop-name" href="https://www.tomariiyumachi.com/" target="_blank" rel="noopener">泊いゆまち</a></h4><p class="decision">25朝、車を早く受け取れた場合の魚市場朝食。首里9時着が難しければ寄らない。</p><div class="hours">施設・各店の営業は訪問前に確認</div></article>
 <article class="card food-compare " data-shop="akatakaji" data-t="保留 郷土料理" data-comparison="true"><div class="meta"><span class="badge b-alt">今回は保留</span> 郷土料理｜那覇・首里</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470102/47000037/" target="_blank" rel="noopener">赤田風</a></h4><p class="hook">琉球料理</p><p class="decision">24夜にまーちぬ家へ入れなければ26夜に再挑戦、27夜は帰路を優先。琉球料理を深く楽しむ別案として残す。</p><div class="hours"><b>掲載営業</b> 月～土18:00～23:00／日休<br><b>予約</b> 予約制</div></article>
 <article class="card food-compare " data-shop="bidoro" data-t="保留 郷土料理" data-comparison="true"><div class="meta"><span class="badge b-alt">今回は保留</span> <span class="badge b-alt">👀 気になる</span> 郷土料理｜那覇・牧志</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47002122/" target="_blank" rel="noopener">旬菜処びいどろ</a></h4><p class="hook">郷土料理</p><p class="decision">唯一合う27(火)夜が帰路と重なる。今回は昼と早い夕食を優先。</p><div class="hours"><b>掲載営業</b> 火～土17:00～23:00／日月休<br><b>予約</b> 電話予約</div></article></div></section>
-<section class="cuisine-section" id="food-soba" data-cuisine="soba" aria-labelledby="food-title-soba"><div class="cuisine-intro"><figure class="discovery-photo"><img src="assets/img/okinawa_soba.jpg" alt="沖縄そばとじゅーしーの料理イメージ" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません</figcaption></figure><div><p class="eyebrow"></p><h3 id="food-title-soba">沖縄そば</h3><p>本部のきしもとを軸に、ゆし豆腐・創作・古民家の違いから選ぶ。</p></div></div><div class="grid cuisine-grid"><article class="card food-compare photo" data-shop="kishimoto" data-t="主案 そば" data-comparison="true"><figure class="discovery-photo"><img src="assets/img/okinawa_soba.jpg" alt="沖縄そばとじゅーしーの料理イメージ" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません</figcaption></figure><div class="body"><div class="meta"><span class="badge b-spot">旅程の主案</span> そば｜本部町渡久地5</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4702/A470202/47000068/" target="_blank" rel="noopener">きしもと食堂 本店</a></h4><p class="hook">沖縄そば・じゅーしー</p><p class="decision">26(月)昼を維持。本部から美ら海へ進む途中で、沖縄そばとじゅーしーを楽しめる。</p><div class="hours"><b>掲載営業</b> 11:00～17:00（LO16:45）／水休・売切あり<br><b>予約</b> 予約不可</div></div></article>
-<article class="card food-compare " data-shop="takaesu" data-t="代替 そば" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> そば｜浦添市伊祖3-36-2</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4703/A470404/47000071/" target="_blank" rel="noopener">高江洲そば</a></h4><p class="hook">ゆし豆腐そば</p><p class="decision">27(火)11時の代替。浦添～北谷中心のルートで、牧港アイスともつながる。</p><div class="hours"><b>掲載営業</b> 10:00～15:45／日休<br><b>予約</b> 予約不可</div></article>
+<section class="cuisine-section" id="food-soba" data-cuisine="soba" aria-labelledby="food-title-soba"><div class="cuisine-intro"><figure class="discovery-photo"><img src="assets/img/okinawa_soba.jpg" alt="沖縄そばとじゅーしーの料理イメージ" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません</figcaption></figure><div><p class="eyebrow"></p><h3 id="food-title-soba">沖縄そば</h3><p>本部のきしもとを軸に、ゆし豆腐・創作・古民家の違いから選ぶ。</p></div></div><div class="grid cuisine-grid"><article class="card food-compare photo" data-shop="kishimoto" data-t="主案 そば" data-comparison="true"><figure class="discovery-photo"><img src="assets/img/kishimoto_shop.jpg" alt="きしもと食堂 本店の外観（過去の撮影）" width="1840" height="1232" loading="lazy" decoding="async"><figcaption>きしもと食堂 本店の外観（過去の撮影）</figcaption></figure><div class="body"><div class="meta"><span class="badge b-spot">旅程の主案</span> そば｜本部町渡久地5</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4702/A470202/47000068/" target="_blank" rel="noopener">きしもと食堂 本店</a></h4><p class="hook">沖縄そば・じゅーしー</p><p class="decision">26(月)昼を維持。本部から美ら海へ進む途中で、沖縄そばとじゅーしーを楽しめる。</p><div class="hours"><b>掲載営業</b> 11:00～17:00（LO16:45）／水休・売切あり<br><b>予約</b> 予約不可</div></div></article>
+<article class="card food-compare photo" data-shop="takaesu" data-t="代替 そば" data-comparison="true"><figure class="discovery-photo"><img src="assets/img/takaesu_shop.jpg" alt="高江洲そばの店内（過去の撮影）" width="1920" height="1440" loading="lazy" decoding="async"><figcaption>高江洲そばの店内（過去の撮影）</figcaption></figure><div class="body"><div class="meta"><span class="badge b-alt">代替</span> そば｜浦添市伊祖3-36-2</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4703/A470404/47000071/" target="_blank" rel="noopener">高江洲そば</a></h4><p class="hook">ゆし豆腐そば</p><p class="decision">27(火)11時の代替。浦添～北谷中心のルートで、牧港アイスともつながる。</p><div class="hours"><b>掲載営業</b> 10:00～15:45／日休<br><b>予約</b> 予約不可</div></div></article>
 <article class="card food-compare " data-shop="toraya" data-t="代替 そば" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> そば｜那覇市赤嶺1-5-14</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470103/47002599/" target="_blank" rel="noopener">とらや</a></h4><p class="hook">沖縄そば</p><p class="decision">25(日)昼の代替。糸満からの戻りとガラス村への移動を確認。火曜の27日は休み。</p><div class="hours"><b>掲載営業</b> 11:00～17:00／火休<br><b>予約</b> 予約不可</div></article>
-<article class="card food-compare " data-shop="eibun" data-t="代替 そば" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> そば｜那覇市壺屋1-5-14</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47017975/" target="_blank" rel="noopener">OKINAWA SOBA EIBUN</a></h4><p class="hook">創作沖縄そば</p><p class="decision">創作そばの那覇代替。きしもとと交換するなら検討し、単純な追加にはしない。</p><div class="hours"><b>掲載営業</b> 11:00～20:00（LO19:30）／売切終了<br><b>予約</b> TableCheck予約可の掲載あり</div></article>
+<article class="card food-compare photo" data-shop="eibun" data-t="代替 そば" data-comparison="true"><figure class="discovery-photo"><img src="assets/img/eibun_shop.jpg" alt="OKINAWA SOBA EIBUN の外観（2026年2月撮影）" width="1920" height="1440" loading="lazy" decoding="async"><figcaption>OKINAWA SOBA EIBUN の外観（2026年2月撮影）</figcaption></figure><div class="body"><div class="meta"><span class="badge b-alt">代替</span> そば｜那覇市壺屋1-5-14</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47017975/" target="_blank" rel="noopener">OKINAWA SOBA EIBUN</a></h4><p class="hook">創作沖縄そば</p><p class="decision">創作そばの那覇代替。きしもとと交換するなら検討し、単純な追加にはしない。</p><div class="hours"><b>掲載営業</b> 11:00～20:00（LO19:30）／売切終了<br><b>予約</b> TableCheck予約可の掲載あり</div></div></article>
 <article class="card food-compare " data-shop="sumanume" data-t="代替 そば" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> そば｜那覇市国場40-1</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470103/47001964/" target="_blank" rel="noopener">すーまぬめぇ</a></h4><p class="hook">古民家で沖縄そば</p><p class="decision">那覇の古民家そばを楽しむ代替。主案のきしもととは別日程に替える場合に。</p><div class="hours"><b>掲載営業</b> 平日10:00～22:00／土11:00～22:00／日11:00～21:00掲載・不定休<br><b>予約</b> 予約は15時以降</div></article>
 <article class="card food-compare " data-shop="yuunami" data-t="代替 そば" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> そば｜那覇</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470103/47013540/" target="_blank" rel="noopener">ゆうなみ坂下店</a></h4><p class="hook">沖縄そば</p><p class="decision">那覇のそば予備。主案のそばはきしもとを維持し、食べ比べを詰め込まない。</p><div class="hours"><b>掲載営業</b> 11:00～21:00掲載<br><b>予約</b> 予約不可</div></article>
 <article class="card food-compare " data-shop="standeibun" data-t="代替 そば" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> そば｜那覇</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47029893/" target="_blank" rel="noopener">STAND EIBUN</a></h4><p class="hook">朝の沖縄そば</p><p class="decision">朝そばの予備。27朝の必須ポーたまを押し出さず、25朝も首里への出発を優先。</p><div class="hours"><b>掲載営業</b> 8:00～16:00掲載<br><b>予約</b> 予約不可</div></article>
@@ -429,25 +449,25 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
 <section class="cuisine-section" id="food-pork" data-cuisine="pork" aria-labelledby="food-title-pork"><div class="cuisine-intro"><figure class="discovery-photo"><img src="assets/img/ryukyu_cuisine.jpg" alt="豚肉の煮込み料理のイメージ" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません（別店舗の豚肉料理・あぐーやしゃぶしゃぶの写真ではありません）</figcaption></figure><div><p class="eyebrow"></p><h3 id="food-title-pork">あぐー・豚料理</h3><p>25夜は光久本家であぐーしゃぶ。まつもと・琉球本館は代替候補。恩納・名護は日程を替える場合に。</p></div></div><div class="grid cuisine-grid"><article class="card food-compare" data-shop="mitsuhisa" data-t="主案 しゃぶ"><div class="meta"><span class="badge b-spot">旅程の主案</span> しゃぶ｜那覇市久茂地3-8-1 1F</div><h4><a class="shop-name" href="https://mitsuhisa-honke.com/" target="_blank" rel="noopener">沖縄アグーしゃぶしゃぶ 光久本家</a></h4><p class="booking-state">25(日) 20:30・2名｜<span class="trip-status" data-trip-id="matsumoto"></span></p><p class="hook">2024年12月開店。しゃぶしゃぶ金武本店の正規2号店</p><p class="decision">25夜の主案。料理・サービスは本店と同じと公式が案内。島野菜と県産薬味でアグーを楽しむ。</p><div class="hours"><b>住所・アクセス</b> 那覇市久茂地3-8-1 1F・県庁前駅から徒歩約5分<br><b>営業時間</b> 17:00〜22:00（L.O.21:00）・54席<br><b>コース</b> 厳選アグーしゃぶしゃぶコース 1人7,480円。島野菜・県産薬味（屋我地島の塩・シークヮーサーこしょう・玉那覇味噌など）<br><b>駐車</b> 近隣コインパーキング。</div></article>
 <article class="card food-compare" data-shop="kin" data-t="参考 しゃぶ" data-comparison="true"><div class="meta"><span class="badge b-alt">系列参考</span> しゃぶ｜那覇市牧志1-9-4</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47023328/" target="_blank" rel="noopener">しゃぶしゃぶ金武本店</a></h4><p class="hook">系列本店の評価：食べログ3.76・口コミ386件（10/16閲覧）</p><p class="decision">光久本家の系列参考。本店は工事中（本人が店に確認）のため代替候補にはしません。</p><div class="hours"><b>本店の食べログ掲載（工事前の参考）</b> 毎日17:00～22:00（LO21:00）・コースのみ<br><b>本店コース</b> 特選アグーしゃぶしゃぶコース1人7,480円（前菜・アグー肉バラ/ロース/つみれ・島野菜・〆の麺・デザート）<br><b>本店の駐車場</b> なし（近隣コインパーキング）<br>いずれも本店の参考情報で、2号店の値ではありません。</div></article>
 <article class="card food-compare" data-shop="matsumoto" data-t="代替 しゃぶ" data-comparison="true"><div class="meta"><span class="badge b-alt">代替候補</span> しゃぶ｜那覇市松山1-10-8 2F</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47027108/" target="_blank" rel="noopener">まつもと</a></h4><p class="hook">あぐーしゃぶしゃぶ</p><p class="decision">光久本家から変更する場合の代替候補。魚・そばと味を変える、あぐーしゃぶ。</p><div class="hours"><b>掲載営業</b> 公式17:00～22:00<br><b>予約</b> 電話予約のみ・☎098-861-1890</div></article>
-<article class="card food-compare" data-shop="ryukyu" data-t="代替 しゃぶ"><div class="meta"><span class="badge b-alt">代替候補</span> しゃぶ｜那覇</div><h4>金武アグーと山城牛のしゃぶしゃぶ 琉球 本館</h4><p class="hook">金武アグーのしゃぶしゃぶ</p><p class="decision">光久本家から変更する場合の代替候補。</p></article>
+<article class="card food-compare" data-shop="ryukyu" data-t="代替 しゃぶ"><div class="meta"><span class="badge b-alt">代替候補</span> しゃぶ｜那覇</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47029585/" target="_blank" rel="noopener">金武アグーと山城牛のしゃぶしゃぶ 琉球 本館</a></h4><p class="hook">金武アグーのしゃぶしゃぶ</p><p class="decision">光久本家から変更する場合の代替候補。</p></article>
 <article class="card food-compare " data-shop="san" data-t="代替 しゃぶ" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> しゃぶ｜恩納村真栄田63 2F</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4703/A470303/47017259/" target="_blank" rel="noopener">島豚・琉球牛 燦 別邸</a></h4><p class="hook">島豚・琉球牛</p><p class="decision">恩納昼へ変更する別案。主案ではしゃぶ枠を那覇の夜へまとめる。</p><div class="hours"><b>掲載営業</b> 11:00～22:00（料理LO21:00）／不定休<br><b>予約</b> 予約可</div></article>
 <article class="card food-compare " data-shop="matsu" data-t="代替 肉料理" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> 肉料理｜名護市大南2-14-5</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4702/A470201/47014042/" target="_blank" rel="noopener">やんばるダイニング松の古民家</a></h4><p class="hook">古民家の肉料理</p><p class="decision">北部夕食へ変更する場合だけ。26夜まーちぬ家との両立はしない。</p><div class="hours"><b>掲載営業</b> 17:30～／日休・終了時刻要確認<br><b>予約</b> 予約可</div></article></div></section>
-<section class="cuisine-section" id="food-creative" data-cuisine="creative" aria-labelledby="food-title-creative"><div class="cuisine-intro"><figure class="discovery-photo"><img src="assets/img/pizza_sample.jpg" alt="料理のイメージ／店舗の提供写真ではありません（ピザ）" width="960" height="636" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません（ピザ）</figcaption></figure><div><p class="eyebrow"></p><h3 id="food-title-creative">ピザ・創作料理</h3><p>沖縄食材を違う食べ方で。27昼のENZOから検討。</p></div></div><div class="grid cuisine-grid"><article class="card food-compare photo" data-shop="enzo" data-t="主案 イタリアン" data-comparison="true"><figure class="discovery-photo"><img src="assets/img/pizza_sample.jpg" alt="料理のイメージ／店舗の提供写真ではありません（ピザ）" width="960" height="636" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません（ピザ）</figcaption></figure><div class="body"><div class="meta"><span class="badge b-spot">旅程の主案</span> イタリアン｜恩納村真栄田715-3</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4703/A470303/47015653/" target="_blank" rel="noopener">pizzeria da ENZO</a></h4><p class="booking-state"><span class="trip-status" data-trip-id="enzo"></span></p><p class="hook">県産小麦の生地×あぐー・島野菜</p><p><span class="badge b-alt">イタリアン WEST 百名店2025</span></p><p>2015年開業の琉球イタリアン。県産小麦「島麦かなさん」の自家製生地を使う薪窯ナポリピッツァ。アーサ（あおさ）・島らっきょう漬けなども使います。</p><p class="decision">27昼。沖縄食材のピザ・イタリアンで味に変化をつけ、施設から景色も楽しむ。</p><div class="hours"><b>掲載営業</b> 11:30～15:00（LO14:15）／17:30～22:00（LO21:00）・不定休<br><b>予約</b> 予約可</div></div></article>
+<section class="cuisine-section" id="food-creative" data-cuisine="creative" aria-labelledby="food-title-creative"><div class="cuisine-intro"><figure class="discovery-photo"><img src="assets/img/pizza_sample.jpg" alt="料理のイメージ／店舗の提供写真ではありません（ピザ）" width="960" height="636" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません（ピザ）</figcaption></figure><div><p class="eyebrow"></p><h3 id="food-title-creative">ピザ・創作料理</h3><p>沖縄食材を違う食べ方で。27昼のENZOから検討。</p></div></div><div class="grid cuisine-grid"><article class="card food-compare" data-shop="enzo" data-t="主案 イタリアン" data-comparison="true"><div class="meta"><span class="badge b-spot">旅程の主案</span> イタリアン｜恩納村真栄田715-3</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4703/A470303/47015653/" target="_blank" rel="noopener">pizzeria da ENZO</a></h4><p class="booking-state"><span class="trip-status" data-trip-id="enzo"></span></p><p class="hook">県産小麦の生地×あぐー・島野菜</p><p><span class="badge b-alt">イタリアン WEST 百名店2025</span></p><p>2015年開業の琉球イタリアン。県産小麦「島麦かなさん」の自家製生地を使う薪窯ナポリピッツァ。アーサ（あおさ）・島らっきょう漬けなども使います。</p><p class="decision">27昼。沖縄食材のピザ・イタリアンで味に変化をつけ、施設から景色も楽しむ。</p><div class="hours"><b>掲載営業</b> 11:30～15:00（LO14:15）／17:30～22:00（LO21:00）・不定休<br><b>予約</b> 予約可</div></article>
 <article class="card food-compare " data-shop="bombance" data-t="保留 創作料理" data-comparison="true"><div class="meta"><span class="badge b-alt">今回は保留</span> 創作料理｜古宇利島</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4702/A470202/47028361/" target="_blank" rel="noopener">La BOMBANCE 古宇利島</a></h4><p class="hook">創作料理（しゃぶ専門ではない）</p><p class="decision">食事そのものを目的に時間を取る店。今回は美ら海の約3時間と那覇夕食を優先。</p><div class="hours"><b>掲載営業</b> 12:00～15:30（LO14:00）／17:30～23:00（LO21:00）掲載<br><b>予約</b> 予約条件未確認</div></article>
 <article class="card food-compare " data-shop="burrata" data-t="保留 イタリアン" data-comparison="true"><div class="meta"><span class="badge b-alt">今回は保留</span> イタリアン｜沖縄市園田3-9-11</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4703/A470301/47019115/" target="_blank" rel="noopener">BURRATA</a></h4><p class="hook">イタリアン</p><p class="decision">25日曜は南部から遠回り。26・27は休業曜日のため今回の主案には入れない。</p><div class="hours"><b>掲載営業</b> 水～日11:30～20:00／月火休<br><b>予約</b> 予約条件未確認</div></article>
 <article class="card food-compare " data-shop="bacar" data-t="保留 イタリアン" data-comparison="true"><div class="meta"><span class="badge b-alt">今回は保留</span> イタリアン｜那覇市久茂地3-16-15</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47003553/" target="_blank" rel="noopener">BACAR</a></h4><p class="hook">薪窯ピザ</p><p class="decision">24は深夜着、25～27は休業曜日。店の良し悪しではなく日程が合わないため保留。</p><div class="hours"><b>掲載営業</b> 営業日17:00～19:15／19:30～22:00・日月火休掲載<br><b>予約</b> 予約条件未確認</div></article></div></section>
-<section class="cuisine-section" id="food-steak" data-cuisine="steak" aria-labelledby="food-title-steak"><div class="cuisine-intro"><figure class="discovery-photo"><img src="assets/img/yakiniku.jpg" alt="焼肉料理のイメージ" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません（もとぶ牧場の那覇店での撮影・もとぶ店の写真ではありません）</figcaption></figure><div><p class="eyebrow"></p><h3 id="food-title-steak">ステーキ・焼肉</h3><p>早い時間のジャッキーを軸に。北部の夕食は那覇の夜と交換。</p></div></div><div class="grid cuisine-grid"><article class="card food-compare photo" data-shop="jackie" data-t="主案 既存"><figure class="discovery-photo"><img src="assets/img/steak.jpg" alt="ジャッキーステーキハウスの外観" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>ジャッキーの外観（過去の撮影・店舗の提供写真ではありません）</figcaption></figure><div class="body"><div class="meta"><span class="badge b-alt">旅程の主案</span></div><h4><a class="shop-name" href="https://steak.co.jp/pages/shisetu" target="_blank" rel="noopener">ジャッキーステーキハウス</a></h4><p class="decision">27夕16:15。16:40に着席できそうになければ空港食へ。</p><div class="hours">公式11:00～22:30頃・受付22時まで／毎週水曜・元旦・お盆休／予約不可</div></div></article>
-<article class="card food-compare" data-shop="s88jr" data-t="代替 既存"><div class="meta"><span class="badge b-alt">代替</span></div><h4><a class="shop-name" href="https://s88.co.jp/shop/jr/matsuyama/" target="_blank" rel="noopener">ステーキハウス88Jr. 松山店</a></h4><p class="decision">24深夜の任意の夜食。疲れていれば休む。</p><div class="hours">営業時間・受付・現在価格は当日確認</div></article>
+<section class="cuisine-section" id="food-steak" data-cuisine="steak" aria-labelledby="food-title-steak"><div class="cuisine-intro"><figure class="discovery-photo"><img src="assets/img/yakiniku.jpg" alt="焼肉料理のイメージ" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません（もとぶ牧場の那覇店での撮影・もとぶ店の写真ではありません）</figcaption></figure><div><p class="eyebrow"></p><h3 id="food-title-steak">ステーキ・焼肉</h3><p>早い時間のジャッキーを軸に。北部の夕食は那覇の夜と交換。</p></div></div><div class="grid cuisine-grid"><article class="card food-compare photo" data-shop="jackie" data-t="主案 既存"><figure class="discovery-photo"><img src="assets/img/steak.jpg" alt="ジャッキーステーキハウスの外観" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>ジャッキーの外観（過去の撮影）</figcaption></figure><figure class="discovery-photo food-photo-secondary"><img src="assets/img/jackie_tacorice.jpg" alt="ジャッキーのタコライス（過去の撮影）" width="1920" height="1440" loading="lazy" decoding="async"><figcaption>ジャッキーのタコライス（過去の撮影）</figcaption></figure><div class="body"><div class="meta"><span class="badge b-alt">旅程の主案</span></div><h4><a class="shop-name" href="https://steak.co.jp/pages/shisetu" target="_blank" rel="noopener">ジャッキーステーキハウス</a></h4><p class="decision">27夕16:15。16:40に着席できそうになければ空港食へ。</p><div class="hours">公式11:00～22:30頃・受付22時まで／毎週水曜・元旦・お盆休／予約不可</div></div></article>
+<article class="card food-compare photo" data-shop="s88jr" data-t="代替 既存"><figure class="discovery-photo"><img src="assets/img/s88_menu.jpg" alt="系列店ステーキハウス88（那覇）のメニュー（松山店の写真ではありません）" width="640" height="480" loading="lazy" decoding="async"><figcaption>系列店ステーキハウス88（那覇）のメニュー（松山店の写真ではありません）</figcaption></figure><div class="body"><div class="meta"><span class="badge b-alt">代替</span></div><h4><a class="shop-name" href="https://s88.co.jp/shop/jr/matsuyama/" target="_blank" rel="noopener">ステーキハウス88Jr. 松山店</a></h4><p class="decision">24深夜の任意の夜食。疲れていれば休む。</p><div class="hours">営業時間・受付・現在価格は当日確認</div></div></article>
 <article class="card food-compare" data-shop="motobu" data-t="代替 既存"><div class="meta"><span class="badge b-alt">代替</span></div><h4><a class="shop-name" href="https://motobu-farm-motobu.foodre.jp/" target="_blank" rel="noopener">焼肉もとぶ牧場 もとぶ店</a></h4><p class="decision">北部で夕食する日程へ切り替えた場合だけ。26夜まーちぬ家とは両立しない。</p><div class="hours">公式11:30～15:00（LO14:00）／17:00～22:00（LO21:30）。空席・臨休は店舗へ確認</div></article>
 <article class="card food-compare " data-shop="asahi" data-t="代替 肉料理" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> 肉料理｜名護市大南2-1-42</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4702/A470201/47019810/" target="_blank" rel="noopener">鉄板焼朝日</a></h4><p class="hook">鉄板焼き</p><p class="decision">北部夕食へ変更時のみ。26夜まーちぬ家と同日に予定しない。</p><div class="hours"><b>掲載営業</b> 17:00～21:00（LO20:00）／木休<br><b>予約</b> 予約可</div></article>
 </div></section>
-<section class="cuisine-section" id="food-casual" data-cuisine="casual" aria-labelledby="food-title-casual"><div class="cuisine-intro"><figure class="discovery-photo"><img src="assets/img/tacorice.jpg" alt="タコライスの料理イメージ" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません</figcaption></figure><div><p class="eyebrow"></p><h3 id="food-title-casual">バーガー・タコライス</h3><p>本部の昼や空港食の代替。遠回りになる金武は別案に。</p></div></div><div class="grid cuisine-grid"><article class="card food-compare  photo" data-shop="kangaroo" data-t="代替 バーガー" data-comparison="true"><figure class="discovery-photo"><img src="assets/img/burger_sample.jpg" alt="バーガーの料理イメージ／店舗の提供写真ではありません" width="960" height="960" loading="lazy" decoding="async"><figcaption>バーガーの料理イメージ／店舗の提供写真ではありません</figcaption></figure><div class="body"><div class="meta"><span class="badge b-alt">代替</span> バーガー｜本部町崎本部930-1</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4702/A470202/47027004/" target="_blank" rel="noopener">キャプテンカンガルー</a></h4><p class="hook">ハンバーガー</p><p class="decision">26昼きしもとの待ちが長い場合。ここも並ぶなら水族館へ移動し館内食を検討。</p><div class="hours"><b>掲載営業</b> 11:00～17:00（LO16:30）／16時以降は持帰りのみ掲載<br><b>予約</b> 予約不可</div></div></article>
-<article class="card food-compare" data-shop="aw" data-t="代替 既存"><div class="meta"><span class="badge b-alt">代替</span></div><h4><a class="shop-name" href="https://www.awok.co.jp/" target="_blank" rel="noopener">A&amp;W 那覇空港店</a></h4><p class="decision">27ジャッキーを見送ったときなど、空港食の候補。</p><div class="hours">空港店の営業・混雑・受付を当日確認</div></article>
+<section class="cuisine-section" id="food-casual" data-cuisine="casual" aria-labelledby="food-title-casual"><div class="cuisine-intro"><figure class="discovery-photo"><img src="assets/img/tacorice.jpg" alt="タコライスの料理イメージ" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません</figcaption></figure><div><p class="eyebrow"></p><h3 id="food-title-casual">バーガー・タコライス</h3><p>本部の昼や空港食の代替。遠回りになる金武は別案に。</p></div></div><div class="grid cuisine-grid"><article class="card food-compare" data-shop="kangaroo" data-t="代替 バーガー" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> バーガー｜本部町崎本部930-1</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4702/A470202/47027004/" target="_blank" rel="noopener">キャプテンカンガルー</a></h4><p class="hook">ハンバーガー</p><p class="decision">26昼きしもとの待ちが長い場合。ここも並ぶなら水族館へ移動し館内食を検討。</p><div class="hours"><b>掲載営業</b> 11:00～17:00（LO16:30）／16時以降は持帰りのみ掲載<br><b>予約</b> 予約不可</div></article>
+<article class="card food-compare photo" data-shop="aw" data-t="代替 既存"><figure class="discovery-photo"><img src="assets/img/aw_makiminato.jpg" alt="系列の牧港店（那覇空港店の写真ではありません）" width="1920" height="1440" loading="lazy" decoding="async"><figcaption>系列の牧港店（那覇空港店の写真ではありません）</figcaption></figure><div class="body"><div class="meta"><span class="badge b-alt">代替</span></div><h4><a class="shop-name" href="https://www.awok.co.jp/" target="_blank" rel="noopener">A&amp;W 那覇空港店</a></h4><p class="decision">27ジャッキーを見送ったときなど、空港食の候補。</p><div class="hours">空港店の営業・混雑・受付を当日確認</div></div></article>
 <article class="card food-compare " data-shop="ralph" data-t="代替 バーガー" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> バーガー｜沖縄市園田1-2-28</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4703/A470301/47021518/" target="_blank" rel="noopener">ラルフズバーガーレストラン</a></h4><p class="hook">ハンバーガー</p><p class="decision">27昼を中城～コザ中心へ変更する場合。ENZO主案への追加はしない。</p><div class="hours"><b>掲載営業</b> 月火土日11:00～15:30／水木金休<br><b>予約</b> 予約不可</div></article>
-<article class="card food-compare photo" data-shop="kingtacos" data-t="代替 既存"><figure class="discovery-photo"><img src="assets/img/tacorice.jpg" alt="タコライスの料理イメージ" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません</figcaption></figure><div class="body"><div class="meta"><span class="badge b-alt">代替</span></div><h4><a class="shop-name" href="https://love-kin-life.com/2025/02/04/キングタコス金武本店/" target="_blank" rel="noopener">キングタコス 金武本店</a></h4><p class="decision">金武中心へ変更する別案。今回はENZOと帰路の余裕を優先。</p><div class="hours">営業時間は店舗・観光案内で確認</div></div></article></div></section>
-<section class="cuisine-section" id="food-snacks" data-cuisine="snacks" aria-labelledby="food-title-snacks"><div class="cuisine-intro"><figure class="discovery-photo"><img src="assets/img/sataandagi.jpg" alt="サーターアンダギーの料理イメージ" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません</figcaption></figure><div><p class="eyebrow"></p><h3 id="food-title-snacks">スイーツ・軽食</h3><p>牧港のアイス、許田の小休憩。奥武島は南部を組み替える日に。</p></div></div><div class="grid cuisine-grid"><article class="card food-compare" data-shop="blueseal" data-t="主案 既存"><div class="meta"><span class="badge b-alt">旅程の主案</span></div><h4><a class="shop-name" href="https://map.blueseal.co.jp/shop-info/?id=makiminato" target="_blank" rel="noopener">BLUE SEAL ブルーシール 牧港本店</a></h4><p class="booking-state">希望の立寄り｜27(火) 13:45に立寄る予定</p><p class="decision">27の13:45～14:15。2024年に建て替えリニューアルした本店を選び、那覇へ戻る動線でアイスを楽しむ。<a href="https://www.blueseal.co.jp/company/news_release/news_release_20240606.html" target="_blank" rel="noopener">本店の公式紹介</a></p><div class="hours">営業時間は公式店舗案内で訪問前に確認</div></article>
-<article class="card food-compare photo" data-shop="mitsuya" data-t="主案 既存"><figure class="discovery-photo"><img src="assets/img/sataandagi.jpg" alt="サーターアンダギーの料理イメージ" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません</figcaption></figure><div class="body"><div class="meta"><span class="badge b-alt">旅程の主案</span></div><h4><a class="shop-name" href="https://www.yanbaru-b.co.jp/" target="_blank" rel="noopener">三矢本舗（道の駅許田）</a></h4><p class="decision">26朝の短い許田休憩で軽食。営業していなければ飲み物等だけに。</p><div class="hours">個店の営業・販売状況は当日確認</div></div></article>
-<article class="card food-compare" data-shop="nakamoto" data-t="代替 既存"><div class="meta"><span class="badge b-alt">代替</span></div><h4><a class="shop-name" href="https://nakamotosengyoten.com/" target="_blank" rel="noopener">中本鮮魚てんぷら店</a></h4><p class="decision">奥武島を回る南部の別日程なら沖縄天ぷら。25のグラス・ウミカジに追加しない。</p><div class="hours">営業日・価格は訪問前に確認</div></article></div></section><section class="cuisine-section" id="food-other" data-cuisine="other" aria-labelledby="food-title-other"><div class="cuisine-intro"><p class="eyebrow"></p><h3 id="food-title-other">その他：沖縄料理以外の名店</h3><p>沖縄料理ではないが、評価が高く旅程の差し替え枠に入る店。</p><p class="hours">営業時間・定休日は旅行前に再確認してください。</p></div><div class="grid cuisine-grid"><article class="card food-compare" data-shop="latida" data-t="代替 ビュッフェ・ヨーロッパ料理"><div class="meta"><span class="badge b-alt">代替候補</span> <span class="badge b-alt">👀 気になる</span> ビュッフェ・ヨーロッパ料理｜名護市喜瀬1808 ザ・ブセナテラス ノースタワー2F</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4702/A470201/47000059/" target="_blank" rel="noopener">ラ・ティーダ（La Tida）</a></h4><p class="hook">海を見ながらのホテルビュッフェ。26(月)夜を北部で食べる場合の候補。</p><p class="decision">24日にまーちぬ家へ行けた場合の26夜。美ら海を17:00に出て喜瀬へ約45分。18:00～19:30の食事なら那覇着21:00ごろ。宿泊者優先のため事前に電話で空席を確認。</p><div class="hours"><b>掲載営業</b> ランチビュッフェ12:00～15:00／ディナービュッフェ17:00～21:00／アラカルト17:00～22:00（LO21:00）<br><b>予約</b> 予約可（宿泊者優先）<a href="tel:0980511333">☎0980-51-1333</a>（ホテル代表）<br><b>評価・予算</b> 食べログ3.68・口コミ288件（10/17閲覧）。夜¥8,000～9,999・昼¥4,000～4,999。サービス料15%込み<br><b>駐車</b> ホテル駐車場あり</div></article><article class="card food-compare " data-shop="oshouse" data-t="代替 ステーキ" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> ステーキ｜那覇市久米2-8-2（宿の近く）</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47001572/" target="_blank" rel="noopener">O's House</a></h4><p class="hook"><span class="badge b-alt">ステーキ</span> 食べログ ステーキ・鉄板焼き百名店2022／WEST百名店2024</p><p class="decision">26(月)夜のまーちぬ家の代わり、または27の夕食をジャッキーから替える場合。</p><div class="hours"><b>掲載営業</b> 12:00～14:00・17:30～21:00／日・祝休<br><b>予約</b> 予約条件未確認</div></article>
+<article class="card food-compare" data-shop="kingtacos" data-t="代替 既存"><div class="meta"><span class="badge b-alt">代替</span></div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4703/A470302/47011602/" target="_blank" rel="noopener">キングタコス 金武本店</a></h4><p class="decision">金武中心へ変更する別案。今回はENZOと帰路の余裕を優先。</p><div class="hours">営業時間は店舗・観光案内で確認</div></article></div></section>
+<section class="cuisine-section" id="food-snacks" data-cuisine="snacks" aria-labelledby="food-title-snacks"><div class="cuisine-intro"><figure class="discovery-photo"><img src="assets/img/sataandagi.jpg" alt="サーターアンダギーの料理イメージ" width="1400" height="1050" loading="lazy" decoding="async"><figcaption>料理のイメージ／店舗の提供写真ではありません</figcaption></figure><div><p class="eyebrow"></p><h3 id="food-title-snacks">スイーツ・軽食</h3><p>牧港のアイス、許田の小休憩。奥武島は南部を組み替える日に。</p></div></div><div class="grid cuisine-grid"><article class="card food-compare photo" data-shop="blueseal" data-t="主案 既存"><figure class="discovery-photo"><img src="assets/img/bigdip_makiminato.jpg" alt="牧港本店・建て替え前の姿（2024年のリニューアル前）" width="1920" height="1440" loading="lazy" decoding="async"><figcaption>牧港本店・建て替え前の姿（2024年のリニューアル前）</figcaption></figure><div class="body"><div class="meta"><span class="badge b-alt">旅程の主案</span></div><h4><a class="shop-name" href="https://map.blueseal.co.jp/shop-info/?id=makiminato" target="_blank" rel="noopener">BLUE SEAL ブルーシール 牧港本店</a></h4><p class="booking-state">希望の立寄り｜27(火) 13:45に立寄る予定</p><p class="decision">27の13:45～14:15。2024年に建て替えリニューアルした本店を選び、那覇へ戻る動線でアイスを楽しむ。<a href="https://www.blueseal.co.jp/company/news_release/news_release_20240606.html" target="_blank" rel="noopener">本店の公式紹介</a></p><div class="hours">営業時間は公式店舗案内で訪問前に確認</div></div></article>
+<article class="card food-compare photo" data-shop="mitsuya" data-t="主案 既存"><figure class="discovery-photo"><img src="assets/img/kyoda_station.jpg" alt="道の駅許田（店舗は施設内）" width="1920" height="1440" loading="lazy" decoding="async"><figcaption>道の駅許田（店舗は施設内）</figcaption></figure><div class="body"><div class="meta"><span class="badge b-alt">旅程の主案</span></div><h4><a class="shop-name" href="https://www.yanbaru-b.co.jp/" target="_blank" rel="noopener">三矢本舗（道の駅許田）</a></h4><p class="decision">26朝の短い許田休憩で軽食。営業していなければ飲み物等だけに。</p><div class="hours">個店の営業・販売状況は当日確認</div></div></article>
+<article class="card food-compare" data-shop="nakamoto" data-t="代替 既存"><div class="meta"><span class="badge b-alt">代替</span></div><h4><a class="shop-name" href="https://nakamotosengyoten.com/" target="_blank" rel="noopener">中本鮮魚てんぷら店</a></h4><p class="decision">奥武島を回る南部の別日程なら沖縄天ぷら。25のグラス・ウミカジに追加しない。</p><div class="hours">営業日・価格は訪問前に確認</div></article></div></section><section class="cuisine-section" id="food-other" data-cuisine="other" aria-labelledby="food-title-other"><div class="cuisine-intro"><p class="eyebrow"></p><h3 id="food-title-other">その他：沖縄料理以外の名店</h3><p>沖縄料理ではないが、評価が高く旅程の差し替え枠に入る店。</p><p class="hours">営業時間・定休日は旅行前に再確認してください。</p></div><div class="grid cuisine-grid"><article class="card food-compare photo" data-shop="latida" data-t="代替 ビュッフェ・ヨーロッパ料理"><figure class="discovery-photo"><img src="assets/img/busena_terrace.jpg" alt="ザ・ブセナテラス（ラ・ティーダは館内）" width="1920" height="1280" loading="lazy" decoding="async"><figcaption>ザ・ブセナテラス（ラ・ティーダは館内）</figcaption></figure><div class="body"><div class="meta"><span class="badge b-alt">代替候補</span> <span class="badge b-alt">👀 気になる</span> ビュッフェ・ヨーロッパ料理｜名護市喜瀬1808 ザ・ブセナテラス ノースタワー2F</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4702/A470201/47000059/" target="_blank" rel="noopener">ラ・ティーダ（La Tida）</a></h4><p class="hook">海を見ながらのホテルビュッフェ。26(月)夜を北部で食べる場合の候補。</p><p class="decision">24日にまーちぬ家へ行けた場合の26夜。美ら海を17:00に出て喜瀬へ約45分。18:00～19:30の食事なら那覇着21:00ごろ。宿泊者優先のため事前に電話で空席を確認。</p><div class="hours"><b>掲載営業</b> ランチビュッフェ12:00～15:00／ディナービュッフェ17:00～21:00／アラカルト17:00～22:00（LO21:00）<br><b>予約</b> 予約可（宿泊者優先）<a href="tel:0980511333">☎0980-51-1333</a>（ホテル代表）<br><b>評価・予算</b> 食べログ3.68・口コミ288件（10/17閲覧）。夜¥8,000～9,999・昼¥4,000～4,999。サービス料15%込み<br><b>駐車</b> ホテル駐車場あり</div></div></article><article class="card food-compare " data-shop="oshouse" data-t="代替 ステーキ" data-comparison="true"><div class="meta"><span class="badge b-alt">代替</span> ステーキ｜那覇市久米2-8-2（宿の近く）</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470101/47001572/" target="_blank" rel="noopener">O's House</a></h4><p class="hook"><span class="badge b-alt">ステーキ</span> 食べログ ステーキ・鉄板焼き百名店2022／WEST百名店2024</p><p class="decision">26(月)夜のまーちぬ家の代わり、または27の夕食をジャッキーから替える場合。</p><div class="hours"><b>掲載営業</b> 12:00～14:00・17:30～21:00／日・祝休<br><b>予約</b> 予約条件未確認</div></article>
 <article class="card food-compare" data-shop="totto" data-t="代替 イタリアン"><div class="meta"><span class="badge b-alt">代替</span> イタリアン｜宜野湾市嘉数4-6-7</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4703/A470404/47029901/" target="_blank" rel="noopener">Totto</a></h4><p class="hook"><span class="badge b-alt">イタリアン</span> ゴ・エ・ミヨ2025 3トック・食べログ3.77</p><p class="decision">26(月)夜、北部から那覇へ戻る途中</p><div class="hours"><b>掲載営業</b> 19:00～22:00／土曜休<br><b>予約・価格</b> 完全予約制・¥20,000〜29,999/人</div></article>
 <article class="card food-compare" data-shop="asun" data-t="代替 島食材のフレンチ"><div class="meta"><span class="badge b-alt">代替</span> <span class="badge b-alt">👀 気になる</span> 島食材のフレンチ｜那覇市金城5-13-5（小禄）</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4701/A470103/47027297/" target="_blank" rel="noopener">島キュイジーヌ あーすん</a></h4><p class="hook"><span class="badge b-alt">島食材のフレンチ</span> ゴ・エ・ミヨ掲載・食べログ3.78</p><p class="decision">27(火)昼をENZOから替える場合（空港に近い）</p><div class="hours"><b>掲載営業</b> 日・月休<br><b>予約・価格</b> 前日までに予約・昼¥3,000〜3,999／夜¥10,000〜14,999</div></article>
 <article class="card food-compare" data-shop="munakatado" data-t="代替 天然酵母パン"><div class="meta"><span class="badge b-alt">代替</span> 天然酵母パン｜浦添市前田</div><h4><a class="shop-name" href="https://tabelog.com/okinawa/A4703/A470404/47000097/" target="_blank" rel="noopener">宗像堂</a></h4><p class="hook"><span class="badge b-alt">天然酵母パン</span> 地元で評価の高い老舗（食べログ口コミ200件超）</p><p class="decision">27(火)中城の前後に寄ってパンを買う</p><div class="hours"><b>掲載営業</b> 10:00～18:00／水曜休<br><b>予約・価格</b> 前日メール予約推奨</div></article>
@@ -1538,25 +1558,187 @@ document.querySelectorAll('[data-learn-link]').forEach(link=>link.addEventListen
 window.addEventListener('hashchange',openLearnHash);
 openLearnHash();
 
+// Food distance mode is session-only; card nodes keep their original homes.
+const FOOD_PRESETS = [
+  {
+    "id": "hotel",
+    "lat": 26.217775,
+    "lng": 127.674273,
+    "label": "ホテル（久米）"
+  },
+  {
+    "id": "airport",
+    "lat": 26.1967,
+    "lng": 127.648952,
+    "label": "那覇空港"
+  },
+  {
+    "id": "kokusai",
+    "lat": 26.217753,
+    "lng": 127.693923,
+    "label": "国際通り"
+  },
+  {
+    "id": "shuri",
+    "lat": 26.217434,
+    "lng": 127.719103,
+    "label": "首里城公園"
+  },
+  {
+    "id": "itoman",
+    "lat": 26.139307,
+    "lng": 127.659923,
+    "label": "糸満漁民食堂"
+  },
+  {
+    "id": "glass",
+    "lat": 26.098687,
+    "lng": 127.676752,
+    "label": "琉球ガラス村"
+  },
+  {
+    "id": "senaga",
+    "lat": 26.176388,
+    "lng": 127.640405,
+    "label": "瀬長島ウミカジテラス"
+  },
+  {
+    "id": "nakagusuku",
+    "lat": 26.283934,
+    "lng": 127.801159,
+    "label": "中城城跡"
+  },
+  {
+    "id": "enzo",
+    "lat": 26.440345,
+    "lng": 127.768645,
+    "label": "pizzeria da ENZO"
+  },
+  {
+    "id": "makiminato",
+    "lat": 26.26736,
+    "lng": 127.721403,
+    "label": "ブルーシール牧港本店"
+  },
+  {
+    "id": "kyoda",
+    "lat": 26.552133,
+    "lng": 127.969515,
+    "label": "道の駅許田"
+  },
+  {
+    "id": "kouri",
+    "lat": 26.685982,
+    "lng": 128.016945,
+    "label": "古宇利大橋"
+  },
+  {
+    "id": "churaumi",
+    "lat": 26.694369,
+    "lng": 127.878038,
+    "label": "美ら海水族館"
+  }
+];
+const foodSections=[...document.querySelectorAll('[data-cuisine]')];
+const foodEntries=[...document.querySelectorAll('#shops [data-shop]')].map(card=>{
+  const section=card.closest('[data-cuisine]');
+  const genre=section?section.dataset.cuisine:(card.dataset.shop==='marchinu'?'local':'snacks');
+  return {card,genre,desire:!section,parent:card.parentNode,next:card.nextSibling};
+});
+let foodFilter='all',foodOrigin=null,foodLocationRequest=0;
+function foodDistance(origin,shop){
+  if(!shop||!Number.isFinite(shop.lat)||!Number.isFinite(shop.lng))return Infinity;
+  const rad=n=>n*Math.PI/180;
+  const a=Math.sin(rad(shop.lat-origin.lat)/2)**2+Math.cos(rad(origin.lat))*Math.cos(rad(shop.lat))*Math.sin(rad(shop.lng-origin.lng)/2)**2;
+  return 6371*2*Math.asin(Math.sqrt(Math.min(1,Math.max(0,a))));
+}
+function foodDistanceLabel(km){
+  if(!Number.isFinite(km))return '距離不明';
+  return '📍 約'+(km<1?Math.round(km*1000)+'m':km<10?km.toFixed(1)+'km':Math.round(km)+'km')+'（直線）';
+}
 function filterFood(f){
-  const sections=[...document.querySelectorAll('[data-cuisine]')];
-  const desires=[...document.querySelectorAll('#food-desires [data-shop]')];
-  const counts=Object.fromEntries(sections.map(section=>[section.dataset.cuisine,section.querySelectorAll('[data-shop]').length]));
-  const total=Object.values(counts).reduce((sum,n)=>sum+n,0);
-  if(f!=='all'&&!sections.some(s=>s.dataset.cuisine===f))f='all';
+  if(f!=='all'&&!foodSections.some(s=>s.dataset.cuisine===f))f='all';
+  foodFilter=f;
+  const distanceMode=foodOrigin!==null;
+  const counted=foodEntries.filter(entry=>distanceMode||!entry.desire);
+  const counts=Object.fromEntries(foodSections.map(section=>[section.dataset.cuisine,counted.filter(entry=>entry.genre===section.dataset.cuisine).length]));
   document.querySelectorAll('#chips .chip').forEach(c=>{
     const active=c.dataset.f===f;c.classList.toggle('active',active);c.setAttribute('aria-pressed',String(active));
-    c.querySelector('span').textContent=(c.dataset.f==='all'?total:counts[c.dataset.f])+'店';
+    c.setAttribute('aria-controls',distanceMode?'food-distance-list':c.dataset.f==='all'?'food-categories':'food-'+c.dataset.f);
+    c.querySelector('span').textContent=(c.dataset.f==='all'?counted.length:counts[c.dataset.f])+'店';
   });
-  sections.forEach(section=>{
-    const visible=f==='all'||section.dataset.cuisine===f;section.hidden=!visible;
+  foodSections.forEach(section=>{
+    section.hidden=distanceMode||(f!=='all'&&section.dataset.cuisine!==f);
     section.querySelector('.eyebrow').textContent=counts[section.dataset.cuisine]+'店';
-    section.querySelectorAll('[data-shop]').forEach(c=>c.hidden=!visible);
   });
-  desires.forEach(c=>c.hidden=false);
-  const count=f==='all'?total:counts[f];
-  document.getElementById('food-results').textContent=count+'店を表示（冒頭の希望'+desires.length+'店は件数に含みません）';
+  document.getElementById('food-desires').hidden=distanceMode;
+  document.querySelector('.food-order').hidden=distanceMode;
+  document.getElementById('food-categories').hidden=distanceMode;
+  const list=document.getElementById('food-distance-list');list.hidden=!distanceMode;
+  const summary=document.getElementById('food-distance-summary');summary.hidden=!distanceMode;
+  if(distanceMode){
+    summary.textContent=foodOrigin.label+'から近い順（直線距離・車の所要時間とは異なります）';
+    const sorted=foodEntries.map(entry=>({...entry,distance:foodDistance(foodOrigin,SHOPS[entry.card.dataset.shop])}));
+    sorted.sort((a,b)=>a.distance-b.distance);
+    sorted.forEach(({card,genre,distance})=>{
+      let meta=card.querySelector('.food-distance-meta');
+      if(!meta){meta=document.createElement('div');meta.className='food-distance-meta';(card.querySelector('.body')||card).prepend(meta);}
+      const tag=document.createElement('span');tag.className='badge b-alt';
+      tag.textContent=foodSections.find(section=>section.dataset.cuisine===genre).querySelector('h3').textContent;
+      const label=document.createElement('span');label.textContent=foodDistanceLabel(distance);
+      meta.replaceChildren(tag,label);
+      card.hidden=f!=='all'&&genre!==f;
+      list.appendChild(card);
+    });
+  }else{
+    // Reverse order restores next-sibling references even after arbitrary sorting.
+    [...foodEntries].reverse().forEach(({card,parent,next,genre,desire})=>{
+      if(card.parentNode===list)parent.insertBefore(card,next);
+      card.querySelector('.food-distance-meta')?.remove();
+      card.hidden=!desire&&f!=='all'&&genre!==f;
+    });
+    summary.textContent='';
+  }
+  const count=f==='all'?counted.length:counts[f];
+  document.getElementById('food-results').textContent=count+'店を表示'+(distanceMode?'':'（冒頭の希望'+foodEntries.filter(entry=>entry.desire).length+'店は件数に含みません）');
 }
+function setFoodOrigin(origin){
+  foodLocationRequest++;
+  foodOrigin=origin;
+  document.getElementById('food-location-status').textContent='';
+  filterFood(foodFilter);
+}
+function resetFoodDistance(){
+  document.getElementById('food-location').value='';
+  setFoodOrigin(null);
+}
+function locateFood(){
+  const request=++foodLocationRequest;
+  const status=document.getElementById('food-location-status');
+  status.textContent='現在地を取得中…';
+  const fail=()=>{if(request===foodLocationRequest)status.textContent='位置情報が使えません。地点を選んでください。';};
+  if(!navigator.geolocation){fail();return;}
+  try{
+    navigator.geolocation.getCurrentPosition(position=>{
+      if(request!==foodLocationRequest)return;
+      const {latitude:lat,longitude:lng}=position.coords;
+      if(!Number.isFinite(lat)||!Number.isFinite(lng)||Math.abs(lat)>90||Math.abs(lng)>180){fail();return;}
+      document.getElementById('food-location').value='';
+      setFoodOrigin({lat,lng,label:'現在地'});
+    },fail,{enableHighAccuracy:false,timeout:10000});
+  }catch{fail();}
+}
+const foodLocationSelect=document.getElementById('food-location');
+FOOD_PRESETS.forEach(preset=>{
+  const option=document.createElement('option');option.value=preset.id;option.textContent=preset.label;
+  foodLocationSelect.appendChild(option);
+});
+foodLocationSelect.addEventListener('change',()=>{
+  const preset=FOOD_PRESETS.find(p=>p.id===foodLocationSelect.value);
+  if(preset)setFoodOrigin(preset);else resetFoodDistance();
+});
+document.getElementById('food-current-location').addEventListener('click',locateFood);
+document.getElementById('food-distance-reset').addEventListener('click',resetFoodDistance);
 filterFood('all');
 function filterSpots(region){
   const cards=[...document.querySelectorAll('#spot-catalogue [data-spot]')];
@@ -1587,7 +1769,7 @@ function toggleDay(h){const open=h.parentElement.classList.toggle('open');h.setA
     if(jump){ jump.innerHTML=days.map((d,i)=>'<a href="#" data-day="'+i+'" class="'+(i===idx?'today':'')+'">'+names[i]+'</a>').join(''); jump.addEventListener('click',e=>{const a=e.target.closest('a[data-day]'); if(!a) return; e.preventDefault(); const d=days[+a.dataset.day]; d.classList.add('open'); d.querySelector('.day-header').setAttribute('aria-expanded','true'); d.scrollIntoView({behavior:'smooth',block:'start'});}); }
     if(idx>=0 && idx<=3){ days.forEach((d,i)=>{d.classList.toggle('open',i===idx);d.querySelector('.day-header').setAttribute('aria-expanded',String(i===idx));}); const cd=document.getElementById('countdown'); if(cd) cd.textContent='今日は '+names[idx]; }
   })();
-  // Cuisine filters keep both desire cards visible and hide whole empty sections.
+  // Cuisine filters respect the current ordering mode.
   document.getElementById('chips').addEventListener('click',e=>{const b=e.target.closest('button[data-f]');if(b)filterFood(b.dataset.f);});
   document.getElementById('spot-chips').addEventListener('click',e=>{const b=e.target.closest('button[data-region]');if(b)filterSpots(b.dataset.region);});
   // 写真クレジット
@@ -2413,79 +2595,111 @@ const SHOPS = {
   "toukaoru": {
     "n": "土香る（とうかおる）",
     "map": "土香る 那覇市松尾2-6-24",
-    "tabelog": "https://tabelog.com/okinawa/A4701/A470101/47013016/"
+    "tabelog": "https://tabelog.com/okinawa/A4701/A470101/47013016/",
+    "lat": 26.215136,
+    "lng": 127.686117
   },
   "latida": {
     "n": "ラ・ティーダ（La Tida）",
     "map": "ザ・ブセナテラス ラ・ティーダ",
-    "tabelog": "https://tabelog.com/okinawa/A4702/A470201/47000059/"
+    "tabelog": "https://tabelog.com/okinawa/A4702/A470201/47000059/",
+    "lat": 26.540837,
+    "lng": 127.935097
   },
   "marchinu": {
     "n": "まーちぬ家",
     "map": "まーちぬ家 那覇・前島",
     "tabelog": "https://tabelog.com/okinawa/A4701/A470101/47003193/",
     "reserve": "tel:0988635159",
-    "resLabel": "当日電話 098-863-5159"
+    "resLabel": "当日電話 098-863-5159",
+    "lat": 26.22062,
+    "lng": 127.684787
   },
   "akatakaji": {
     "n": "赤田風",
     "map": "赤田風 那覇・首里",
-    "tabelog": "https://tabelog.com/okinawa/A4701/A470102/47000037/"
+    "tabelog": "https://tabelog.com/okinawa/A4701/A470102/47000037/",
+    "lat": 26.216579,
+    "lng": 127.721833
   },
   "bidoro": {
     "n": "旬菜処びいどろ",
     "map": "旬菜処びいどろ 那覇・牧志",
-    "tabelog": "https://tabelog.com/okinawa/A4701/A470101/47002122/"
+    "tabelog": "https://tabelog.com/okinawa/A4701/A470101/47002122/",
+    "lat": 26.217148,
+    "lng": 127.683289
   },
   "itoman": {
     "n": "糸満漁民食堂",
     "map": "糸満漁民食堂 糸満市西崎町4-17",
-    "tabelog": "https://tabelog.com/okinawa/A4704/A470402/47012172/"
+    "tabelog": "https://tabelog.com/okinawa/A4704/A470402/47012172/",
+    "lat": 26.139307,
+    "lng": 127.659923
   },
   "takaesu": {
     "n": "高江洲そば",
     "map": "高江洲そば 浦添市伊祖3-36-2",
-    "tabelog": "https://tabelog.com/okinawa/A4703/A470404/47000071/"
+    "tabelog": "https://tabelog.com/okinawa/A4703/A470404/47000071/",
+    "lat": 26.256097,
+    "lng": 127.722182
   },
   "toraya": {
     "n": "とらや",
     "map": "とらや 那覇市赤嶺1-5-14",
-    "tabelog": "https://tabelog.com/okinawa/A4701/A470103/47002599/"
+    "tabelog": "https://tabelog.com/okinawa/A4701/A470103/47002599/",
+    "lat": 26.194972,
+    "lng": 127.664484
   },
   "yuunami": {
     "n": "ゆうなみ坂下店",
     "map": "ゆうなみ坂下店 那覇",
-    "tabelog": "https://tabelog.com/okinawa/A4701/A470103/47013540/"
+    "tabelog": "https://tabelog.com/okinawa/A4701/A470103/47013540/",
+    "lat": 26.218171,
+    "lng": 127.702144
   },
   "eibun": {
     "n": "OKINAWA SOBA EIBUN",
     "map": "OKINAWA SOBA EIBUN 那覇市壺屋1-5-14",
-    "tabelog": "https://tabelog.com/okinawa/A4701/A470101/47017975/"
+    "tabelog": "https://tabelog.com/okinawa/A4701/A470101/47017975/",
+    "lat": 26.212714,
+    "lng": 127.690087
   },
   "kishimoto": {
     "n": "きしもと食堂 本店",
     "map": "きしもと食堂 本店 本部町渡久地5",
-    "tabelog": "https://tabelog.com/okinawa/A4702/A470202/47000068/"
+    "tabelog": "https://tabelog.com/okinawa/A4702/A470202/47000068/",
+    "lat": 26.660334,
+    "lng": 127.895905
   },
   "sumanume": {
     "n": "すーまぬめぇ",
     "map": "すーまぬめぇ 那覇市国場40-1",
-    "tabelog": "https://tabelog.com/okinawa/A4701/A470103/47001964/"
+    "tabelog": "https://tabelog.com/okinawa/A4701/A470103/47001964/",
+    "lat": 26.196272,
+    "lng": 127.702707
   },
   "standeibun": {
     "n": "STAND EIBUN",
     "map": "STAND EIBUN 那覇",
-    "tabelog": "https://tabelog.com/okinawa/A4701/A470101/47029893/"
+    "tabelog": "https://tabelog.com/okinawa/A4701/A470101/47029893/",
+    "lat": 26.211987,
+    "lng": 127.689646
   },
   "mitsuhisa": {
     "n": "沖縄アグーしゃぶしゃぶ 光久本家",
     "map": "那覇市久茂地3-8-1 1F",
     "official": "https://mitsuhisa-honke.com/",
-    "offLabel": "光久本家公式"
+    "offLabel": "光久本家公式",
+    "tabelog": "https://tabelog.com/okinawa/A4701/A470101/47032504/",
+    "lat": 26.214694,
+    "lng": 127.681789
   },
   "ryukyu": {
     "n": "金武アグーと山城牛のしゃぶしゃぶ 琉球 本館",
-    "map": "金武アグーと山城牛のしゃぶしゃぶ 琉球 本館 那覇"
+    "map": "金武アグーと山城牛のしゃぶしゃぶ 琉球 本館 那覇",
+    "tabelog": "https://tabelog.com/okinawa/A4701/A470101/47029585/",
+    "lat": 26.216808,
+    "lng": 127.690358
   },
   "kin": {
     "n": "しゃぶしゃぶ金武本店",
@@ -2493,7 +2707,9 @@ const SHOPS = {
     "tabelog": "https://tabelog.com/okinawa/A4701/A470101/47023328/",
     "official": "https://kinaguu.jp/",
     "reserve": "tel:09019448830",
-    "resLabel": "電話予約 090-1944-8830"
+    "resLabel": "電話予約 090-1944-8830",
+    "lat": 26.216651,
+    "lng": 127.683498
   },
   "matsumoto": {
     "n": "まつもと",
@@ -2501,27 +2717,37 @@ const SHOPS = {
     "tabelog": "https://tabelog.com/okinawa/A4701/A470101/47027108/",
     "official": "https://agu-matsumoto.com/",
     "reserve": "tel:0988611890",
-    "resLabel": "電話予約 098-861-1890"
+    "resLabel": "電話予約 098-861-1890",
+    "lat": 26.21696,
+    "lng": 127.67834
   },
   "san": {
     "n": "島豚・琉球牛 燦 別邸",
     "map": "島豚・琉球牛 燦 別邸 恩納村真栄田63 2F",
-    "tabelog": "https://tabelog.com/okinawa/A4703/A470303/47017259/"
+    "tabelog": "https://tabelog.com/okinawa/A4703/A470303/47017259/",
+    "lat": 26.438647,
+    "lng": 127.768939
   },
   "matsu": {
     "n": "やんばるダイニング松の古民家",
     "map": "やんばるダイニング松の古民家 名護市大南2-14-5",
-    "tabelog": "https://tabelog.com/okinawa/A4702/A470201/47014042/"
+    "tabelog": "https://tabelog.com/okinawa/A4702/A470201/47014042/",
+    "lat": 26.593919,
+    "lng": 127.977298
   },
   "bombance": {
     "n": "La BOMBANCE 古宇利島",
     "map": "La BOMBANCE 古宇利島 古宇利島",
-    "tabelog": "https://tabelog.com/okinawa/A4702/A470202/47028361/"
+    "tabelog": "https://tabelog.com/okinawa/A4702/A470202/47028361/",
+    "lat": 26.707091,
+    "lng": 128.016568
   },
   "bacar": {
     "n": "BACAR",
     "map": "BACAR 那覇市久茂地3-16-15",
-    "tabelog": "https://tabelog.com/okinawa/A4701/A470101/47003553/"
+    "tabelog": "https://tabelog.com/okinawa/A4701/A470101/47003553/",
+    "lat": 26.215993,
+    "lng": 127.681694
   },
   "enzo": {
     "n": "pizzeria da ENZO",
@@ -2529,130 +2755,186 @@ const SHOPS = {
     "tabelog": "https://tabelog.com/okinawa/A4703/A470303/47015653/",
     "official": "https://annulus.ryukyu/",
     "reserve": "https://www.tablecheck.com/ja/pizzeriadaenzo",
-    "resLabel": "メニュー・予約枠"
+    "resLabel": "メニュー・予約枠",
+    "lat": 26.440232,
+    "lng": 127.768696
   },
   "burrata": {
     "n": "BURRATA",
     "map": "BURRATA 沖縄市園田3-9-11",
-    "tabelog": "https://tabelog.com/okinawa/A4703/A470301/47019115/"
+    "tabelog": "https://tabelog.com/okinawa/A4703/A470301/47019115/",
+    "lat": 26.326477,
+    "lng": 127.793579
   },
   "oshouse": {
     "n": "O's House",
     "map": "O's House 那覇市久米2-8-2",
-    "tabelog": "https://tabelog.com/okinawa/A4701/A470101/47001572/"
+    "tabelog": "https://tabelog.com/okinawa/A4701/A470101/47001572/",
+    "lat": 26.214729,
+    "lng": 127.676008
   },
   "asahi": {
     "n": "鉄板焼朝日",
     "map": "鉄板焼朝日 名護市大南2-1-42",
-    "tabelog": "https://tabelog.com/okinawa/A4702/A470201/47019810/"
+    "tabelog": "https://tabelog.com/okinawa/A4702/A470201/47019810/",
+    "lat": 26.592791,
+    "lng": 127.975715
   },
   "kangaroo": {
     "n": "キャプテンカンガルー",
     "map": "キャプテンカンガルー 本部町崎本部930-1",
-    "tabelog": "https://tabelog.com/okinawa/A4702/A470202/47027004/"
+    "tabelog": "https://tabelog.com/okinawa/A4702/A470202/47027004/",
+    "lat": 26.622824,
+    "lng": 127.890248
   },
   "ralph": {
     "n": "ラルフズバーガーレストラン",
     "map": "ラルフズバーガーレストラン 沖縄市園田1-2-28",
-    "tabelog": "https://tabelog.com/okinawa/A4703/A470301/47021518/"
+    "tabelog": "https://tabelog.com/okinawa/A4703/A470301/47021518/",
+    "lat": 26.331778,
+    "lng": 127.797731
   },
   "porktamago": {
     "n": "ポーたま 牧志市場本店",
     "map": "ポーたま 牧志市場本店",
-    "official": "https://porktamago.com/shop/001-mks/"
+    "official": "https://porktamago.com/shop/001-mks/",
+    "tabelog": "https://tabelog.com/okinawa/A4701/A470101/47015021/",
+    "lat": 26.215191,
+    "lng": 127.68798
   },
   "jackie": {
     "n": "ジャッキーステーキハウス",
     "map": "ジャッキーステーキハウス",
-    "official": "https://steak.co.jp/pages/shisetu"
+    "official": "https://steak.co.jp/pages/shisetu",
+    "tabelog": "https://tabelog.com/okinawa/A4701/A470101/47000054/",
+    "lat": 26.212904,
+    "lng": 127.672504
   },
   "blueseal": {
     "n": "ブルーシール 牧港店",
     "map": "ブルーシール 牧港店",
-    "official": "https://map.blueseal.co.jp/shop-info/?id=makiminato"
+    "official": "https://map.blueseal.co.jp/shop-info/?id=makiminato",
+    "tabelog": "https://tabelog.com/okinawa/A4703/A470404/47000176/",
+    "lat": 26.267343,
+    "lng": 127.721437
   },
   "mitsuya": {
     "n": "三矢本舗（道の駅許田）",
     "map": "三矢本舗（道の駅許田）",
-    "official": "https://www.yanbaru-b.co.jp/"
+    "official": "https://www.yanbaru-b.co.jp/",
+    "tabelog": "https://tabelog.com/okinawa/A4702/A470201/47000741/",
+    "lat": 26.552017,
+    "lng": 127.969995
   },
   "udunyama": {
     "n": "御殿山",
     "map": "御殿山",
-    "tabelog": "https://tabelog.com/okinawa/A4701/A470102/47000051/"
+    "tabelog": "https://tabelog.com/okinawa/A4701/A470102/47000051/",
+    "lat": 26.226785,
+    "lng": 127.726576
   },
   "urizun": {
     "n": "古酒と琉球料理 うりずん",
     "map": "古酒と琉球料理 うりずん",
-    "tabelog": "https://tabelog.com/okinawa/A4701/A470101/47000019/"
+    "tabelog": "https://tabelog.com/okinawa/A4701/A470101/47000019/",
+    "lat": 26.217343,
+    "lng": 127.696496
   },
   "motobu": {
     "n": "焼肉もとぶ牧場 もとぶ店",
     "map": "焼肉もとぶ牧場 もとぶ店",
-    "official": "https://motobu-farm-motobu.foodre.jp/"
+    "official": "https://motobu-farm-motobu.foodre.jp/",
+    "tabelog": "https://tabelog.com/okinawa/A4702/A470202/47004571/",
+    "lat": 26.657847,
+    "lng": 127.88543
   },
   "iyumachi": {
     "n": "泊いゆまち",
     "map": "泊いゆまち",
-    "official": "https://www.tomariiyumachi.com/"
+    "official": "https://www.tomariiyumachi.com/",
+    "tabelog": "https://tabelog.com/okinawa/A4701/A470101/47010966/",
+    "lat": 26.230075,
+    "lng": 127.680264
   },
   "s88jr": {
     "n": "ステーキハウス88Jr. 松山店",
     "map": "ステーキハウス88Jr. 松山店",
-    "official": "https://s88.co.jp/shop/jr/matsuyama/"
+    "official": "https://s88.co.jp/shop/jr/matsuyama/",
+    "tabelog": "https://tabelog.com/okinawa/A4701/A470101/47019140/",
+    "lat": 26.219483,
+    "lng": 127.68062
   },
   "nakamoto": {
     "n": "中本鮮魚てんぷら店",
     "map": "中本鮮魚てんぷら店",
-    "official": "https://nakamotosengyoten.com/"
+    "official": "https://nakamotosengyoten.com/",
+    "tabelog": "https://tabelog.com/okinawa/A4704/A470403/47000227/",
+    "lat": 26.131558,
+    "lng": 127.772136
   },
   "kingtacos": {
     "n": "キングタコス 金武本店",
     "map": "キングタコス 金武本店",
     "official": "https://love-kin-life.com/2025/02/04/キングタコス金武本店/",
-    "offLabel": "観光協会の紹介"
+    "offLabel": "観光協会の紹介",
+    "tabelog": "https://tabelog.com/okinawa/A4703/A470302/47011602/",
+    "lat": 26.453292,
+    "lng": 127.917287
   },
   "aw": {
     "n": "A&W 那覇空港店",
     "map": "A&W 那覇空港店",
-    "official": "https://www.awok.co.jp/"
+    "official": "https://www.awok.co.jp/",
+    "tabelog": "https://tabelog.com/okinawa/A4701/A470103/47000177/",
+    "lat": 26.206216,
+    "lng": 127.650876
   },
   "totto": {
     "n": "Totto",
     "map": "Totto 宜野湾市嘉数4-6-7",
     "tabelog": "https://tabelog.com/okinawa/A4703/A470404/47029901/",
     "official": "https://www.instagram.com/totto_okinawa/",
-    "offLabel": "公式Instagram"
+    "offLabel": "公式Instagram",
+    "lat": 26.259937,
+    "lng": 127.731697
   },
   "asun": {
     "n": "島キュイジーヌ あーすん",
     "map": "島キュイジーヌ あーすん 那覇市金城5-13-5（小禄）",
     "tabelog": "https://tabelog.com/okinawa/A4701/A470103/47027297/",
-    "official": "https://earthen-okinawa.com/"
+    "official": "https://earthen-okinawa.com/",
+    "lat": 26.195695,
+    "lng": 127.664411
   },
   "munakatado": {
     "n": "宗像堂",
     "map": "宗像堂 浦添市前田",
     "tabelog": "https://tabelog.com/okinawa/A4703/A470404/47000097/",
-    "official": "https://munakatado.com/shop/"
+    "official": "https://munakatado.com/shop/",
+    "lat": 26.260298,
+    "lng": 127.73746
   },
   "six": {
     "n": "6（シス）",
     "map": "6（シス） 今帰仁村古宇利499-1（古宇利島）",
     "tabelog": "https://tabelog.com/okinawa/A4702/A470202/47022252/",
-    "official": "https://six-kouri.com/"
+    "official": "https://six-kouri.com/",
+    "lat": 26.699331,
+    "lng": 128.021215
   },
   "paul": {
     "n": "PAUL",
     "map": "PAUL 本部町備瀬372",
     "tabelog": "https://tabelog.com/okinawa/A4702/A470202/47031254/",
-    "official": "https://8131paul.com/"
+    "official": "https://8131paul.com/",
+    "lat": 26.699678,
+    "lng": 127.88001
   }
 };
 const gmap=q=>"https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);
-const tlog=q=>"https://tabelog.com/okinawa/rstLst/?sw="+encodeURIComponent(q);
-function shopLinks(k){const s=SHOPS[k]; if(!s) return ""; let h='<div class="links">';
-  h+='<a class="btn" target="_blank" rel="noopener" href="'+(s.tabelog||tlog(s.n))+'">食べログ</a>';
+function shopLinks(k,showPhotos=false){const s=SHOPS[k]; if(!s) return ""; let h='<div class="links">';
+  h+='<a class="btn" target="_blank" rel="noopener" href="'+s.tabelog+'">食べログ</a>';
+  if(showPhotos) h+='<a class="btn" target="_blank" rel="noopener" href="'+s.tabelog+'dtlphotolst/">📷 写真（食べログ）</a>';
   if(s.official) h+='<a class="btn" target="_blank" rel="noopener" href="'+s.official+'">'+(s.offLabel||"公式HP")+'</a>';
   if(s.reserve) h+='<a class="btn solid" target="_blank" rel="noopener" href="'+s.reserve+'">'+(s.resLabel||"予約")+'</a>';
   h+='<a class="btn" target="_blank" rel="noopener" href="'+gmap(s.map)+'">📍 地図</a></div>'; return h;}
@@ -2691,7 +2973,7 @@ document.querySelectorAll('[data-spot]').forEach(el=>{el.classList.add('clickabl
 /* ☎番号を tel: リンクに */
 (function(){const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT); const nodes=[]; while(w.nextNode()){const n=w.currentNode; if(n.parentElement.closest('a,script,style')) continue; if(/☎\s?0\d{1,4}-\d{2,4}-\d{3,4}/.test(n.nodeValue)) nodes.push(n);} nodes.forEach(n=>{const span=document.createElement('span'); span.innerHTML=n.nodeValue.replace(/☎\s?(0\d{1,4}-\d{2,4}-\d{3,4})/g,(m,p)=>'<a href="tel:'+p.replace(/-/g,'')+'">☎'+p+'</a>'); n.replaceWith(span);});})();
 /* 店カード・殿堂カードにリンク行を付ける */
-document.querySelectorAll('[data-shop]').forEach(el=>{const k=el.dataset.shop; if(!SHOPS[k]) return; if(el.closest('#shops')) el.id='shop-'+k; (el.querySelector('.body')||el).insertAdjacentHTML('beforeend',shopLinks(k));});
+document.querySelectorAll('[data-shop]').forEach(el=>{const k=el.dataset.shop; if(!SHOPS[k]) return; if(el.closest('#shops')) el.id='shop-'+k; (el.querySelector('.body')||el).insertAdjacentHTML('beforeend',shopLinks(k,!el.querySelector('img')));});
 /* 名物カード内の店名 → 店カードへ */
 function gotoShop(k){const el=document.getElementById('shop-'+k);if(!el)return;filterFood('all');
   if(!el.closest('.page').classList.contains('active'))showPage('food');
@@ -2702,7 +2984,7 @@ document.querySelectorAll('.tl-item[data-map],.tl-item[data-spotref],.tl-item[da
   let h='<div class="tl-links">';
   if(el.dataset.map) h+='<a class="btn" target="_blank" rel="noopener" href="'+gmap(el.dataset.map)+'">📍 地図</a>';
   if(el.dataset.spotref) h+='<a class="btn" href="#" data-openspot="'+el.dataset.spotref+'">🗺 スポット詳細</a>';
-  if(el.dataset.shopref){ const s=SHOPS[el.dataset.shopref]; if(s){ h+='<a class="btn" href="#" data-gotoshop="'+el.dataset.shopref+'">🍽 店カード</a>'; h+='<a class="btn" target="_blank" rel="noopener" href="'+(s.tabelog||tlog(s.n))+'">食べログ</a>'; if(s.official) h+='<a class="btn" target="_blank" rel="noopener" href="'+s.official+'">'+(s.offLabel||"公式")+'</a>'; if(s.reserve) h+='<a class="btn solid" target="_blank" rel="noopener" href="'+s.reserve+'">'+(s.resLabel||"予約")+'</a>'; } }
+  if(el.dataset.shopref){ const s=SHOPS[el.dataset.shopref]; if(s){ h+='<a class="btn" href="#" data-gotoshop="'+el.dataset.shopref+'">🍽 店カード</a>'; h+='<a class="btn" target="_blank" rel="noopener" href="'+s.tabelog+'">食べログ</a>'; if(s.official) h+='<a class="btn" target="_blank" rel="noopener" href="'+s.official+'">'+(s.offLabel||"公式")+'</a>'; if(s.reserve) h+='<a class="btn solid" target="_blank" rel="noopener" href="'+s.reserve+'">'+(s.resLabel||"予約")+'</a>'; } }
   h+='</div>'; el.querySelector('.tl-desc').insertAdjacentHTML('beforeend',h);});
 document.addEventListener('click',e=>{const pageLink=e.target.closest('[data-page-link]');if(pageLink){e.preventDefault();showPage(pageLink.dataset.pageLink);const title=document.querySelector('#page-'+pageLink.dataset.pageLink+' .page-title');if(title){title.tabIndex=-1;title.focus({preventScroll:true});}return;}const credit=e.target.closest('a[href="#photo-credits"]');if(credit){document.getElementById('photo-credits').open=true;}const a=e.target.closest('[data-openspot]'); if(a){e.preventDefault(); openSpot(a.dataset.openspot); return;}
   const b=e.target.closest('[data-gotoshop]'); if(b){e.preventDefault(); gotoShop(b.dataset.gotoshop);}});
