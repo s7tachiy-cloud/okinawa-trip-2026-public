@@ -911,7 +911,7 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
 </section>
 
 <section class="page" id="page-budget" role="tabpanel" aria-labelledby="tab-budget"><h2 class="page-title">💴 予算</h2>
-<details class="fold"><summary>初期計画の支払内訳</summary><div class="kpi-row budget-three" id="budget-summary" aria-live="polite"></div></details><p class="page-lead">金額は支払額・計画額に基づきます（飲み物はソフトドリンク、2名で1回¥1,000目安）。24夜は¥4,000、26夜は¥12,000を各行に計上（2夜で¥16,000、追加の共通枠なし）。追加料金・メニュー変更時は再計算。</p><div class="budget-toolbar"><p class="note" id="budget-storage">この端末だけに保存</p><button type="button" class="btn" id="budget-reset">リセット</button></div><p class="note">支払済みの行は支払額を初期表示します。実績合計・差額は実績入力済みの行だけが対象です。差額は実績−目安です。目安は固定の計画額です。食事の実績は下の内訳に入力すると「食事」行へ自動集計します。一部だけ入力した場合も、食事行の差額は食事全体の目安との差です。リセットすると実績は初期状態（支払済み行は支払額、それ以外は空欄）、支払者は本人に戻り、追加費目は削除されます。</p><div id="budget-entry-summary" class="kpi-row budget-three" aria-live="polite"></div><div class="tbl-wrap stack"><table id="budget-table"><thead><tr><th>項目</th><th>内訳</th><th>目安・実績（2名）</th><th>状態</th></tr></thead><tbody><tr data-budget-key="flights" data-budget-label="航空券" data-budget-items="outbound inbound inbound-companion"><td>航空券</td><td>MM511 2名27,840円のみ。復路は各自で手配・会計外。空港交通費は別</td><td class="num"></td><td>往路 <span class="trip-status" data-trip-id="outbound"></span>／復路本人 <span class="trip-status" data-trip-id="inbound"></span>／同行者 <span class="trip-status" data-trip-id="inbound-companion"></span></td></tr><tr data-budget-key="hotel" data-budget-label="ホテル" data-budget-items="hotel"><td>ホテル</td><td>ダブル・素泊り3泊・2名</td><td class="num"></td><td><span class="trip-status" data-trip-id="hotel"></span></td></tr><tr data-budget-key="rental" data-budget-label="レンタカー" data-budget-items="rental"><td>レンタカー</td><td>ABC：3泊4日。基本13,600＋遅便3,300</td><td class="num"></td><td><span class="trip-status" data-trip-id="rental"></span></td></tr><tr data-budget-key="tolls" data-budget-label="高速" data-budget-amount="4000"><td>高速</td><td>北部往復等</td><td class="num">¥4,000</td><td>見積り</td></tr><tr data-budget-key="fuel" data-budget-label="ガソリン" data-budget-amount="5000"><td>ガソリン</td><td>3日間の走行分</td><td class="num">¥5,000</td><td>見積り</td></tr><tr data-budget-key="parking" data-budget-label="駐車" data-budget-amount="6000"><td>駐車</td><td>ホテル3泊3,000＋観光・市内買い物3,000</td><td class="num">¥6,000</td><td>見積り</td></tr><tr data-budget-key="transport" data-budget-label="タクシー等" data-budget-amount="6000"><td>タクシー等</td><td>追加移動の予備</td><td class="num">¥6,000</td><td>見積り</td></tr><tr data-budget-key="admission" data-budget-label="入場料" data-budget-amount="6160"><td>入場料</td><td>(美ら海2,180＋首里400＋中城500)×2</td><td class="num">¥6,160</td><td>掲載料金の計画額</td></tr><tr data-budget-key="meals" data-budget-label="食事" data-budget-meals="true"><td>食事</td><td>下の2名分の食事予算を合算</td><td class="num"></td><td>見積り</td></tr><tr data-budget-key="gifts" data-budget-label="お土産" data-budget-amount="15000"><td>お土産</td><td>グラス・菓子・調味料等</td><td class="num">¥15,000</td><td>見積り</td></tr><tr data-budget-key="reserve" data-budget-label="予備費" data-budget-amount="15000"><td>予備費</td><td>価格上昇・追加交通・メニュー差等</td><td class="num">¥15,000</td><td>計画枠</td></tr><tr id="budget-total" data-total="193824"><td><b>合計</b></td><td>目安は上の11項目、実績は追加費目を含む（復路は会計外）</td><td class="num"></td><td>2名・計画額</td></tr></tbody></table></div><details class="fold" open><summary>食事予算の内訳（全行2名合計）</summary><div class="tbl-wrap stack"><table id="meal-budget"><thead><tr><th>食事</th><th>目安・実績（2名）</th></tr></thead><tbody><tr data-meal-key="24-dinner" data-meal-label="24夜食・軽食" data-meal-amount="4000"><td>24夜食・軽食（まーちぬ家または88Jr.、ソフトドリンク込み）</td><td class="num">¥4,000</td></tr><tr data-meal-key="25-breakfast" data-meal-label="25朝軽食" data-meal-amount="1500"><td>25朝軽食</td><td class="num">¥1,500</td></tr><tr data-meal-key="25-itoman" data-meal-label="25糸満漁民食堂" data-meal-amount="6000"><td>25糸満漁民食堂</td><td class="num">¥6,000</td></tr><tr data-meal-key="25-umikaji" data-meal-label="25ウミカジのカフェ" data-meal-amount="2500"><td>25ウミカジのカフェ</td><td class="num">¥2,500</td></tr><tr data-meal-key="25-mitsuhisa" data-meal-label="25夜 光久本家" data-meal-item="matsumoto"><td>25光久本家：2名約15,000円＋ソフトドリンク1,000円（コース1人7,480円×2を丸めた計画額） <span class="trip-status" data-trip-id="matsumoto"></span></td><td class="num">¥16,000</td></tr><tr data-meal-key="26-kyoda" data-meal-label="26許田の軽食" data-meal-amount="2000"><td>26許田の軽食</td><td class="num">¥2,000</td></tr><tr data-meal-key="26-kishimoto" data-meal-label="26きしもと食堂" data-meal-amount="3000"><td>26きしもと食堂</td><td class="num">¥3,000</td></tr><tr data-meal-key="26-dinner" data-meal-label="26夜 まーちぬ家または北部" data-meal-item="marchinu"><td>26夕食（まーちぬ家再挑戦または北部の別店）・ソフトドリンク <span class="trip-status" data-trip-id="marchinu"></span></td><td class="num">¥12,000</td></tr><tr data-meal-key="27-potama" data-meal-label="27ポーたま" data-meal-amount="1600"><td>27ポーたま</td><td class="num">¥1,600</td></tr><tr data-meal-key="27-enzo" data-meal-label="27 ENZO" data-meal-item="enzo"><td>27 ENZO（ソフトドリンク込み） <span class="trip-status" data-trip-id="enzo"></span></td><td class="num">¥12,000</td></tr><tr data-meal-key="27-blueseal" data-meal-label="27ブルーシール牧港" data-meal-amount="1800"><td>27ブルーシール牧港</td><td class="num">¥1,800</td></tr><tr data-meal-key="27-jack" data-meal-label="27ジャッキー" data-meal-amount="9000"><td>27ジャッキー</td><td class="num">¥9,000</td></tr><tr data-meal-key="snacks" data-meal-label="空港等の軽食" data-meal-amount="2500"><td>空港等の軽食余裕</td><td class="num">¥2,500</td></tr><tr data-meal-total="73900"><td>食事の目安合計</td><td class="num"></td></tr></tbody></table></div></details>
+<details class="fold"><summary>初期計画の支払内訳</summary><div class="kpi-row budget-three" id="budget-summary" aria-live="polite"></div></details><p class="page-lead">金額は支払額・計画額に基づきます（飲み物はソフトドリンク、2名で1回¥1,000目安）。24夜は¥4,000、26夜は¥12,000を各行に計上（2夜で¥16,000、追加の共通枠なし）。追加料金・メニュー変更時は再計算。</p><div class="budget-toolbar"><p class="note" id="budget-storage" aria-live="polite">保存中…</p><button type="button" class="btn" id="budget-reset">リセット</button></div><p class="note">入力は2人のスマホで共有されます。同じ行を同時に直した場合は後に直した方が残ります。支払済みの行は支払額を初期表示します。実績合計・差額は実績入力済みの行だけが対象です。差額は実績−目安です。目安は固定の計画額です。食事の実績は下の内訳に入力すると「食事」行へ自動集計します。一部だけ入力した場合も、食事行の差額は食事全体の目安との差です。リセットすると実績は初期状態（支払済み行は支払額、それ以外は空欄）、支払者は本人に戻り、追加費目は削除されます。</p><div id="budget-entry-summary" class="kpi-row budget-three" aria-live="polite"></div><div class="tbl-wrap stack"><table id="budget-table"><thead><tr><th>項目</th><th>内訳</th><th>目安・実績（2名）</th><th>状態</th></tr></thead><tbody><tr data-budget-key="flights" data-budget-label="航空券" data-budget-items="outbound inbound inbound-companion"><td>航空券</td><td>MM511 2名27,840円のみ。復路は各自で手配・会計外。空港交通費は別</td><td class="num"></td><td>往路 <span class="trip-status" data-trip-id="outbound"></span>／復路本人 <span class="trip-status" data-trip-id="inbound"></span>／同行者 <span class="trip-status" data-trip-id="inbound-companion"></span></td></tr><tr data-budget-key="hotel" data-budget-label="ホテル" data-budget-items="hotel"><td>ホテル</td><td>ダブル・素泊り3泊・2名</td><td class="num"></td><td><span class="trip-status" data-trip-id="hotel"></span></td></tr><tr data-budget-key="rental" data-budget-label="レンタカー" data-budget-items="rental"><td>レンタカー</td><td>ABC：3泊4日。基本13,600＋遅便3,300</td><td class="num"></td><td><span class="trip-status" data-trip-id="rental"></span></td></tr><tr data-budget-key="tolls" data-budget-label="高速" data-budget-amount="4000"><td>高速</td><td>北部往復等</td><td class="num">¥4,000</td><td>見積り</td></tr><tr data-budget-key="fuel" data-budget-label="ガソリン" data-budget-amount="5000"><td>ガソリン</td><td>3日間の走行分</td><td class="num">¥5,000</td><td>見積り</td></tr><tr data-budget-key="parking" data-budget-label="駐車" data-budget-amount="6000"><td>駐車</td><td>ホテル3泊3,000＋観光・市内買い物3,000</td><td class="num">¥6,000</td><td>見積り</td></tr><tr data-budget-key="transport" data-budget-label="タクシー等" data-budget-amount="6000"><td>タクシー等</td><td>追加移動の予備</td><td class="num">¥6,000</td><td>見積り</td></tr><tr data-budget-key="admission" data-budget-label="入場料" data-budget-amount="6160"><td>入場料</td><td>(美ら海2,180＋首里400＋中城500)×2</td><td class="num">¥6,160</td><td>掲載料金の計画額</td></tr><tr data-budget-key="meals" data-budget-label="食事" data-budget-meals="true"><td>食事</td><td>下の2名分の食事予算を合算</td><td class="num"></td><td>見積り</td></tr><tr data-budget-key="gifts" data-budget-label="お土産" data-budget-amount="15000"><td>お土産</td><td>グラス・菓子・調味料等</td><td class="num">¥15,000</td><td>見積り</td></tr><tr data-budget-key="reserve" data-budget-label="予備費" data-budget-amount="15000"><td>予備費</td><td>価格上昇・追加交通・メニュー差等</td><td class="num">¥15,000</td><td>計画枠</td></tr><tr id="budget-total" data-total="193824"><td><b>合計</b></td><td>目安は上の11項目、実績は追加費目を含む（復路は会計外）</td><td class="num"></td><td>2名・計画額</td></tr></tbody></table></div><details class="fold" open><summary>食事予算の内訳（全行2名合計）</summary><div class="tbl-wrap stack"><table id="meal-budget"><thead><tr><th>食事</th><th>目安・実績（2名）</th></tr></thead><tbody><tr data-meal-key="24-dinner" data-meal-label="24夜食・軽食" data-meal-amount="4000"><td>24夜食・軽食（まーちぬ家または88Jr.、ソフトドリンク込み）</td><td class="num">¥4,000</td></tr><tr data-meal-key="25-breakfast" data-meal-label="25朝軽食" data-meal-amount="1500"><td>25朝軽食</td><td class="num">¥1,500</td></tr><tr data-meal-key="25-itoman" data-meal-label="25糸満漁民食堂" data-meal-amount="6000"><td>25糸満漁民食堂</td><td class="num">¥6,000</td></tr><tr data-meal-key="25-umikaji" data-meal-label="25ウミカジのカフェ" data-meal-amount="2500"><td>25ウミカジのカフェ</td><td class="num">¥2,500</td></tr><tr data-meal-key="25-mitsuhisa" data-meal-label="25夜 光久本家" data-meal-item="matsumoto"><td>25光久本家：2名約15,000円＋ソフトドリンク1,000円（コース1人7,480円×2を丸めた計画額） <span class="trip-status" data-trip-id="matsumoto"></span></td><td class="num">¥16,000</td></tr><tr data-meal-key="26-kyoda" data-meal-label="26許田の軽食" data-meal-amount="2000"><td>26許田の軽食</td><td class="num">¥2,000</td></tr><tr data-meal-key="26-kishimoto" data-meal-label="26きしもと食堂" data-meal-amount="3000"><td>26きしもと食堂</td><td class="num">¥3,000</td></tr><tr data-meal-key="26-dinner" data-meal-label="26夜 まーちぬ家または北部" data-meal-item="marchinu"><td>26夕食（まーちぬ家再挑戦または北部の別店）・ソフトドリンク <span class="trip-status" data-trip-id="marchinu"></span></td><td class="num">¥12,000</td></tr><tr data-meal-key="27-potama" data-meal-label="27ポーたま" data-meal-amount="1600"><td>27ポーたま</td><td class="num">¥1,600</td></tr><tr data-meal-key="27-enzo" data-meal-label="27 ENZO" data-meal-item="enzo"><td>27 ENZO（ソフトドリンク込み） <span class="trip-status" data-trip-id="enzo"></span></td><td class="num">¥12,000</td></tr><tr data-meal-key="27-blueseal" data-meal-label="27ブルーシール牧港" data-meal-amount="1800"><td>27ブルーシール牧港</td><td class="num">¥1,800</td></tr><tr data-meal-key="27-jack" data-meal-label="27ジャッキー" data-meal-amount="9000"><td>27ジャッキー</td><td class="num">¥9,000</td></tr><tr data-meal-key="snacks" data-meal-label="空港等の軽食" data-meal-amount="2500"><td>空港等の軽食余裕</td><td class="num">¥2,500</td></tr><tr data-meal-total="73900"><td>食事の目安合計</td><td class="num"></td></tr></tbody></table></div></details>
 <section class="budget-extras" aria-labelledby="budget-extras-title"><h3 id="budget-extras-title">追加の費目</h3><p id="budget-extras-empty" class="note">ボタンで行を足せます。追加した分は実績と精算に入ります。</p><div id="budget-extras-rows"></div><button type="button" class="btn" id="budget-extra-add">＋ 費目を追加</button><p id="budget-extras-total" aria-live="polite" hidden></p></section>
 <section class="settlement-card" aria-labelledby="budget-settlement-title"><h3 id="budget-settlement-title">精算（2名）</h3><div id="budget-settlement" aria-live="polite"></div></section>
 </section>
@@ -1187,26 +1187,147 @@ function tripFollowupItems(items){
     return {id:task.id,name:task.name,action:true,status:'todo',deadline:source.deadline||null,deadlineLabel:source.deadlineLabel||'出発前',owner:'',amount:0,contact:task.contact||source.contact,confirmationLocation:'',note:task.useSourceNote?source.note:task.note};
   });
 }
+// Keep the storage key so existing version 1 data can be migrated in place.
 const BUDGET_STORAGE_KEY='okinawa-budget-v1-20261016';
+const BUDGET_SYNC_URL='https://script.google.com/macros/s/AKfycbyuO05GIpzt_ihEoZ61qpF_VTU0WH6XJfTM0pNwXUmyIG5MKQnmNrT_VvQoiYh6woERjQ/exec';
+const budgetRowNodes=[...document.querySelectorAll('#budget-table tbody tr:not([data-total])')];
+const budgetMealNodes=[...document.querySelectorAll('#meal-budget tbody tr:not([data-meal-total])')];
+const budgetKeys=new Set([...budgetRowNodes.map(row=>'row:'+row.dataset.budgetKey),...budgetMealNodes.map(row=>'meal:'+row.dataset.mealKey)]);
 function budgetValidValue(value){return value===''||(typeof value==='number'&&Number.isSafeInteger(value)&&value>=0&&value<=999999999);}
+function budgetInitialActual(key){
+  const row=budgetRowNodes.find(row=>'row:'+row.dataset.budgetKey===key);
+  const paid=(row?.dataset.budgetItems||'').split(' ').map(id=>TRIP_STATE.items.find(item=>item.id===id)).filter(item=>item&&item.budget!=='self'&&item.status==='paid');
+  return paid.length?paid.reduce((sum,item)=>sum+(item.paidAmount??item.amount),0):null;
+}
+function budgetRecord(key,record){
+  if(!budgetKeys.has(key)&&!/^extra:[a-z0-9]{5,40}$/.test(key))return null;
+  if(!record||!Number.isSafeInteger(record.updatedAt)||record.updatedAt<=0)return null;
+  const value=record.value;
+  if(!value||!(value.actual===null||(value.actual!==''&&budgetValidValue(value.actual)))||!['本人','同行者'].includes(value.payer))return null;
+  if(key.startsWith('extra:')&&(typeof value.name!=='string'||typeof value.deleted!=='boolean'))return null;
+  return {value:{actual:value.actual,payer:value.payer,...(key.startsWith('extra:')?{name:value.name,deleted:value.deleted}:{})},updatedAt:record.updatedAt};
+}
+function budgetExtraId(){return Date.now().toString(36)+Math.floor(Math.random()*1679616).toString(36).padStart(4,'0');}
 function loadBudgetEntries(){
-  try {
+  const result={version:2,items:{},pending:[]};
+  try{
     const saved=JSON.parse(localStorage.getItem(BUDGET_STORAGE_KEY));
-    if(saved&&saved.version===1&&saved.rows&&typeof saved.rows==='object'&&!Array.isArray(saved.rows)){
-      // Keep legacy actuals, but never load user-edited estimates.
-      const rows=Object.fromEntries(Object.entries(saved.rows).filter(([,row])=>row&&typeof row==='object'&&!Array.isArray(row)).map(([key,row])=>[key,{...(budgetValidValue(row.actual)?{actual:row.actual}:{}),payer:row.payer==='companion'?'companion':'self'}]));
-      const extras=Array.isArray(saved.extras)?saved.extras.filter(row=>row&&typeof row==='object'&&!Array.isArray(row)).map(row=>({name:typeof row.name==='string'?row.name:'',actual:budgetValidValue(row.actual)?row.actual:'',payer:row.payer==='companion'?'companion':'self'})):[];
-      return {rows,extras};
+    if(saved?.version===2&&saved.items&&typeof saved.items==='object'&&!Array.isArray(saved.items)){
+      for(const [key,record] of Object.entries(saved.items)){
+        const valid=budgetRecord(key,record);if(valid)result.items[key]=valid;
+      }
+      result.pending=[...new Set(Array.isArray(saved.pending)?saved.pending.filter(key=>Object.hasOwn(result.items,key)):[])];
+    }else if(saved?.version===1&&saved.rows&&typeof saved.rows==='object'&&!Array.isArray(saved.rows)){
+      const updatedAt=Date.now();
+      for(const [oldKey,row] of Object.entries(saved.rows)){
+        const key=oldKey.startsWith('meal:')?oldKey:'row:'+oldKey;
+        if(!budgetKeys.has(key)||!row||typeof row!=='object'||Array.isArray(row))continue;
+        const actual=budgetValidValue(row.actual)?(row.actual===''?null:row.actual):budgetInitialActual(key);
+        const payer=row.payer==='companion'?'同行者':'本人';
+        if(actual!==budgetInitialActual(key)||payer!=='本人')result.items[key]={value:{actual,payer},updatedAt};
+      }
+      if(Array.isArray(saved.extras))for(const row of saved.extras){
+        if(!row||typeof row!=='object'||Array.isArray(row))continue;
+        let key;do{key='extra:'+budgetExtraId();}while(Object.hasOwn(result.items,key));
+        result.items[key]={value:{name:typeof row.name==='string'?row.name:'',actual:budgetValidValue(row.actual)&&row.actual!==''?row.actual:null,payer:row.payer==='companion'?'同行者':'本人',deleted:false},updatedAt};
+      }
+      result.pending=Object.keys(result.items);
     }
-  } catch(error) { /* Unavailable or corrupt storage must not prevent rendering. */ }
-  return {rows:{},extras:[]};
+  }catch(error){ /* Invalid/unavailable storage must not prevent local use. */ }
+  return result;
 }
-let {rows:budgetEntries,extras:budgetExtras}=loadBudgetEntries();
-function saveBudgetEntries(){
+let budgetStore=loadBudgetEntries(),budgetEntries={},budgetExtras=[];
+let budgetGetRunning=false,budgetGetAgain=false,budgetPostRunning=false,budgetPostAgain=false;
+let budgetSaveTimer,budgetConfirmTimer,budgetLastSync=null,budgetLoadFailed=false,budgetStorageFailed=false,budgetResetUntil=0,budgetResetTimer;
+function projectBudgetItems(){
+  budgetEntries={};budgetExtras=[];
+  for(const [key,{value}] of Object.entries(budgetStore.items)){
+    const entry={actual:value.actual===null?'':value.actual,payer:value.payer==='同行者'?'companion':'self'};
+    if(key.startsWith('extra:')){if(!value.deleted)budgetExtras.push({...entry,id:key.slice(6),name:value.name});}
+    else budgetEntries[key.startsWith('row:')?key.slice(4):key]=entry;
+  }
+}
+function budgetNotice(){
   const notice=document.getElementById('budget-storage');
-  try{localStorage.setItem(BUDGET_STORAGE_KEY,JSON.stringify({version:1,rows:budgetEntries,extras:budgetExtras}));notice.textContent='この端末だけに保存';}
-  catch(error){notice.textContent='この端末だけに保存（保存できないため、現在の画面内のみ反映）';}
+  if(budgetPostRunning)notice.textContent='保存中…';
+  else if(budgetStore.pending.length)notice.textContent='未送信の変更あり・通信できたら送ります';
+  else if(budgetLoadFailed||budgetStorageFailed)notice.textContent='読み込めませんでした・この端末の保存で動作中';
+  else if(budgetLastSync)notice.textContent='2人で共有（Googleシート）・最終同期 '+budgetLastSync.toLocaleTimeString('ja-JP',{hour:'2-digit',minute:'2-digit'});
+  else notice.textContent='保存中…';
 }
+function persistBudgetItems(){
+  try{localStorage.setItem(BUDGET_STORAGE_KEY,JSON.stringify(budgetStore));budgetStorageFailed=false;}
+  catch(error){budgetStorageFailed=true;}
+  budgetNotice();
+}
+function touchBudgetItem(key,value){
+  // A second edit in the same millisecond must still supersede an in-flight snapshot.
+  budgetStore.items[key]={value,updatedAt:Math.max(Date.now(),(budgetStore.items[key]?.updatedAt||0)+1)};
+  if(!budgetStore.pending.includes(key))budgetStore.pending.push(key);
+  persistBudgetItems();clearTimeout(budgetSaveTimer);budgetSaveTimer=setTimeout(postBudgetItems,1500);
+}
+function saveBudgetEntry(entry){
+  const key=entry.key.startsWith('meal:')?entry.key:'row:'+entry.key;
+  const actual=entry.key==='meals'?(budgetEntries.meals?.actual??''):entry.actual;
+  touchBudgetItem(key,{actual:actual===''?null:actual,payer:entry.payer==='companion'?'同行者':'本人'});
+}
+function saveBudgetExtra(entry,deleted=false){
+  touchBudgetItem('extra:'+entry.id,{name:entry.name,actual:entry.actual===''?null:entry.actual,payer:entry.payer==='companion'?'同行者':'本人',deleted});
+}
+async function getBudgetItems(){
+  if(budgetGetRunning){budgetGetAgain=true;return;}
+  budgetGetRunning=true;
+  try{
+    const response=await fetch(BUDGET_SYNC_URL+'?t='+Date.now(),{cache:'no-store'});
+    if(!response.ok)throw Error('Budget GET failed');
+    const data=await response.json();
+    if(data?.ok!==true||!data.items||typeof data.items!=='object'||Array.isArray(data.items))throw Error('Invalid budget response');
+    let changed=false;
+    for(const [key,raw] of Object.entries(data.items)){
+      const record=budgetRecord(key,raw);if(!record)continue;
+      const local=budgetStore.items[key];
+      if(!local||record.updatedAt>local.updatedAt){budgetStore.items[key]=record;changed=true;}
+      if(!local||record.updatedAt>=local.updatedAt)budgetStore.pending=budgetStore.pending.filter(pending=>pending!==key);
+    }
+    budgetLoadFailed=false;budgetLastSync=new Date();persistBudgetItems();
+    if(changed){projectBudgetItems();renderTripState();}
+  }catch(error){budgetLoadFailed=true;budgetNotice();}
+  finally{
+    budgetGetRunning=false;
+    if(budgetGetAgain){budgetGetAgain=false;void getBudgetItems();}
+  }
+}
+async function postBudgetItems(){
+  if(budgetPostRunning){budgetPostAgain=true;return;}
+  if(!budgetStore.pending.length)return;
+  budgetPostRunning=true;budgetNotice();
+  // Records are replaced on edit, so this body remains a stable snapshot.
+  const body=JSON.stringify({items:Object.fromEntries(budgetStore.pending.map(key=>[key,budgetStore.items[key]]))});
+  const options={method:'POST',body,headers:{'Content-Type':'text/plain'},redirect:'follow'};
+  try{
+    try{await fetch(BUDGET_SYNC_URL,options);}
+    catch(error){await fetch(BUDGET_SYNC_URL,{...options,mode:'no-cors'});}
+    // A redirect/opaque response is not an acknowledgement. Only GET clears pending.
+    clearTimeout(budgetConfirmTimer);budgetConfirmTimer=setTimeout(getBudgetItems,1000);
+  }catch(error){ /* Keep the durable pending queue for online/next display retry. */ }
+  finally{
+    budgetPostRunning=false;budgetNotice();
+    if(budgetPostAgain){budgetPostAgain=false;void postBudgetItems();}
+  }
+}
+function resumeBudgetSync(){void getBudgetItems();if(budgetStore.pending.length)void postBudgetItems();}
+function resetBudgetEntries(){
+  const button=document.getElementById('budget-reset');
+  if(Date.now()>=budgetResetUntil){
+    budgetResetUntil=Date.now()+3000;button.textContent='本当にリセット';
+    clearTimeout(budgetResetTimer);budgetResetTimer=setTimeout(()=>{budgetResetUntil=0;button.textContent='リセット';},3000);return;
+  }
+  clearTimeout(budgetResetTimer);budgetResetUntil=0;button.textContent='リセット';
+  for(const key of budgetKeys)touchBudgetItem(key,{actual:budgetInitialActual(key),payer:'本人'});
+  for(const [key,{value}] of Object.entries(budgetStore.items))if(key.startsWith('extra:'))touchBudgetItem(key,{...value,deleted:true});
+  projectBudgetItems();renderTripState();
+}
+projectBudgetItems();persistBudgetItems();
 function renderBudgetEditor(budget,rowNodes,mealNodes,mealAmounts){
   function mountControls(row,entry,labelText,derived=false){
     entry.payer=budgetEntries[entry.key]?.payer==='companion'?'companion':'self';
@@ -1230,7 +1351,7 @@ function renderBudgetEditor(budget,rowNodes,mealNodes,mealAmounts){
         if(!/^[0-9]{0,9}$/.test(raw)){input.value=String(entry.actual);return;}
         entry.actual=raw===''?'':Number(raw);
         budgetEntries[entry.key]={actual:entry.actual,payer:entry.payer};
-        updateTotals();saveBudgetEntries();
+        updateTotals();saveBudgetEntry(entry);
       });
       label.append(input);controls.append(label);
     }
@@ -1247,7 +1368,7 @@ function renderBudgetEditor(budget,rowNodes,mealNodes,mealAmounts){
         // Keep payer-only records and legacy meal actuals separate from the derived total.
         budgetEntries[entry.key]={...budgetEntries[entry.key],payer:value};
         buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.payer===value)));
-        updateTotals();saveBudgetEntries();
+        updateTotals();saveBudgetEntry(entry);
       });
       buttons.push(button);options.append(button);
     }
@@ -1276,14 +1397,14 @@ function renderBudgetEditor(budget,rowNodes,mealNodes,mealAmounts){
       const nameLabel=tripNode('label','費目名','budget-extra-name');
       const name=document.createElement('input');name.type='text';name.placeholder='例：給油2回目';name.value=entry.name;name.dataset.extraField='name';
       name.setAttribute('aria-label','追加費目 '+(index+1)+' 費目名');
-      name.addEventListener('input',()=>{entry.name=name.value;saveBudgetEntries();});
+      name.addEventListener('input',()=>{entry.name=name.value;saveBudgetExtra(entry);});
       nameLabel.append(name);
       const actualLabel=tripNode('label','実績（円）');
       const actual=document.createElement('input');actual.type='text';actual.inputMode='numeric';actual.pattern='[0-9]*';actual.maxLength=9;actual.value=String(entry.actual);actual.dataset.extraField='actual';
       actual.setAttribute('aria-label','追加費目 '+(index+1)+' 実績（2名・円）');
       actual.addEventListener('input',()=>{
         if(!/^[0-9]{0,9}$/.test(actual.value)){actual.value=String(entry.actual);return;}
-        entry.actual=actual.value===''?'':Number(actual.value);updateTotals();saveBudgetEntries();
+        entry.actual=actual.value===''?'':Number(actual.value);updateTotals();saveBudgetExtra(entry);
       });
       actualLabel.append(actual);
       const payerLabel=tripNode('label','支払者');
@@ -1292,15 +1413,16 @@ function renderBudgetEditor(budget,rowNodes,mealNodes,mealAmounts){
         const option=tripNode('option',label);option.value=value;payer.append(option);
       }
       payer.value=entry.payer;
-      payer.addEventListener('change',()=>{entry.payer=payer.value==='companion'?'companion':'self';updateTotals();saveBudgetEntries();});
+      payer.addEventListener('change',()=>{entry.payer=payer.value==='companion'?'companion':'self';updateTotals();saveBudgetExtra(entry);});
       payerLabel.append(payer);
       const remove=tripNode('button','×');remove.type='button';remove.dataset.extraField='remove';remove.setAttribute('aria-label','追加費目 '+(index+1)+' を削除');
-      remove.addEventListener('click',()=>{budgetExtras.splice(index,1);renderExtras();updateTotals();saveBudgetEntries();document.getElementById('budget-extra-add').focus();});
+      remove.addEventListener('click',()=>{saveBudgetExtra(entry,true);budgetExtras.splice(index,1);renderExtras();updateTotals();document.getElementById('budget-extra-add').focus();});
       row.append(nameLabel,actualLabel,payerLabel,remove);host.append(row);
     });
   }
   document.getElementById('budget-extra-add').onclick=()=>{
-    budgetExtras.push({name:'',actual:'',payer:'self'});renderExtras();updateTotals();saveBudgetEntries();
+    let id;do{id=budgetExtraId();}while(Object.hasOwn(budgetStore.items,'extra:'+id));
+    const entry={id,name:'',actual:'',payer:'self'};budgetExtras.push(entry);saveBudgetExtra(entry);renderExtras();updateTotals();
     document.getElementById('budget-extras-rows').lastElementChild.querySelector('input').focus();
   };
   renderExtras();
@@ -1346,7 +1468,8 @@ function renderBudgetEditor(budget,rowNodes,mealNodes,mealAmounts){
     }
     document.querySelector('#budget-total .num').textContent='目安 '+tripMoney(estimate)+' ／ 実績 '+tripMoney(actual);
   }
-  document.getElementById('budget-reset').onclick=()=>{budgetEntries={};budgetExtras=[];saveBudgetEntries();renderTripState();};
+  document.getElementById('budget-reset').onclick=resetBudgetEntries;
+  budgetNotice();
   updateTotals();
 }
 
@@ -1382,8 +1505,12 @@ function renderTripState(){
   renderBudgetEditor(budget,rowNodes,mealNodes,mealAmounts);
 }
 renderTripState();
+window.addEventListener('online',resumeBudgetSync);
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')resumeBudgetSync();});
+resumeBudgetSync();
 
 function showPage(id, btn){
+  if(id==='budget')resumeBudgetSync();
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-selected','false');b.tabIndex=-1;});
   const page=document.getElementById('page-'+id); if(page) page.classList.add('active');
