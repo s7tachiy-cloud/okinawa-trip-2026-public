@@ -378,8 +378,8 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
 .budget-inputs label,.budget-extra-row label{display:block;min-width:0;font-size:.8rem;text-align:left;white-space:normal}
 .budget-inputs input,.budget-extra-row input,.budget-extra-row select{display:block;width:100%;min-width:0;max-width:100%;box-sizing:border-box;font:inherit;font-size:16px;padding:10px 6px;border:1px solid #8b9ca8;border-radius:6px;background:white;color:#203640}
 #budget-table,#meal-budget{table-layout:fixed;width:100%}#budget-table td,#meal-budget td{overflow-wrap:anywhere;white-space:normal}#budget-table th:nth-child(3){width:45%}#budget-table .trip-status{white-space:normal;max-width:100%}#meal-budget th:nth-child(2){width:55%}
-.budget-extras{margin-top:22px}.budget-extra-row{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1fr) minmax(0,1.4fr) 40px;gap:8px;align-items:end;padding:12px 0;border-bottom:1px solid var(--border);min-width:0}.budget-extra-row button{width:40px;min-height:44px;font:inherit;border:1px solid var(--border);border-radius:6px;background:#fff;color:var(--sea);cursor:pointer}#budget-extra-add{margin-top:12px;font:inherit}#budget-extras-total{font-weight:700;overflow-wrap:anywhere}.budget-extra-scope .payer-options button{min-height:44px}#budget-extras-personal{margin-top:12px;padding:12px 14px;border:1px solid var(--border);border-radius:6px;background:#fff;overflow-wrap:anywhere}#budget-extras-personal p{margin:0}#budget-extras-personal p+p{font-size:.85rem;margin-top:4px}
-@media(max-width:600px){.budget-extra-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 40px}.budget-extra-name,.budget-extra-row .budget-extra-scope{grid-column:1/-1}.budget-extra-row .budget-extra-scope{order:1}}
+.budget-extras{margin-top:22px}.budget-extra-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) 40px;grid-template-areas:"date category name name remove" "actual payer scope owner .";gap:8px;align-items:end;padding:12px 0;border-bottom:1px solid var(--border);min-width:0}.budget-extra-row .budget-extra-date{grid-area:date}.budget-extra-row .budget-extra-category{grid-area:category}.budget-extra-row .budget-extra-name{grid-area:name}.budget-extra-row .budget-extra-actual{grid-area:actual}.budget-extra-row .budget-extra-payer{grid-area:payer}.budget-extra-row .budget-extra-scope{grid-area:scope}.budget-extra-row .budget-extra-owner{grid-area:owner}.budget-extra-row .budget-extra-remove{grid-area:remove}.budget-extra-row[data-target="true"]{background:#eef7f9;box-shadow:inset 3px 0 0 var(--sea)}.budget-extra-day{margin:16px 0 0;font-size:.9rem;color:var(--sea)}.budget-lines{grid-column:1/-1;margin:0;text-align:left}.budget-lines button{min-height:44px;padding:4px 12px;font:inherit;font-size:.8rem;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--sea);cursor:pointer;white-space:normal;text-align:left}.budget-extra-row button{width:40px;min-height:44px;font:inherit;border:1px solid var(--border);border-radius:6px;background:#fff;color:var(--sea);cursor:pointer}#budget-extra-add{margin-top:12px;font:inherit}#budget-extras-total{font-weight:700;overflow-wrap:anywhere}.budget-extra-scope .payer-options button,.budget-extra-owner .payer-options button{min-height:44px}#budget-extras-personal{margin-top:12px;padding:12px 14px;border:1px solid var(--border);border-radius:6px;background:#fff;overflow-wrap:anywhere}#budget-extras-personal p{margin:0}#budget-extras-personal p+p{font-size:.85rem;margin-top:4px}.settlement-advances{margin:12px 0 0;padding-left:1.2em;overflow-wrap:anywhere}
+@media(max-width:600px){.budget-extra-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 40px;grid-template-areas:"date category remove" "name name name" "actual payer payer" "scope scope scope" "owner owner owner"}}
 @media(max-width:600px){#budget-table,#budget-table tbody,#budget-table tr,#budget-table td,#meal-budget,#meal-budget tbody,#meal-budget tr,#meal-budget td{width:100%;min-width:0;box-sizing:border-box}#budget-table td.num,#meal-budget td.num{display:block}.budget-inputs{width:100%;grid-template-columns:repeat(2,minmax(0,1fr))}.budget-payer{grid-column:2}}
 </style>
 </head>
@@ -976,7 +976,7 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
 
 <section class="page" id="page-budget" role="tabpanel" aria-labelledby="tab-budget"><h2 class="page-title">💴 予算</h2>
 <details class="fold"><summary>初期計画の支払内訳</summary><div class="kpi-row budget-three" id="budget-summary" aria-live="polite"></div></details><p class="page-lead">金額は支払額・計画額に基づきます（飲み物はソフトドリンク、2名で1回¥1,000目安）。24夜は¥4,000、26夜は¥12,000を各行に計上（2夜で¥16,000、追加の共通枠なし）。追加料金・メニュー変更時は再計算。</p><div class="budget-toolbar"><p class="note" id="budget-storage" aria-live="polite">保存中…</p><button type="button" class="btn" id="budget-reset">リセット</button></div><p class="note">入力は2人のスマホで共有されます。同じ行を同時に直した場合は後に直した方が残ります。支払済みの行は支払額を初期表示します。実績合計・差額は実績入力済みの行だけが対象です。差額は実績−目安です。目安は固定の計画額です。食事の実績は下の内訳に入力すると「食事」行へ自動集計します。一部だけ入力した場合も、食事行の差額は食事全体の目安との差です。リセットすると実績は初期状態（支払済み行は支払額、それ以外は空欄）、支払者は本人に戻り、追加費目は削除されます。</p><div id="budget-entry-summary" class="kpi-row budget-three" aria-live="polite"></div><div class="tbl-wrap stack"><table id="budget-table"><thead><tr><th>項目</th><th>内訳</th><th>目安・実績（2名）</th><th>状態</th></tr></thead><tbody><tr data-budget-key="flights" data-budget-label="航空券" data-budget-items="outbound inbound inbound-companion"><td>航空券</td><td>MM511 2名27,840円のみ。復路は各自で手配・会計外。成田までの電車代は各自</td><td class="num"></td><td>往路 <span class="trip-status" data-trip-id="outbound"></span>／復路本人 <span class="trip-status" data-trip-id="inbound"></span>／同行者 <span class="trip-status" data-trip-id="inbound-companion"></span></td></tr><tr data-budget-key="hotel" data-budget-label="ホテル" data-budget-items="hotel"><td>ホテル</td><td>ダブル・素泊り3泊・2名</td><td class="num"></td><td><span class="trip-status" data-trip-id="hotel"></span></td></tr><tr data-budget-key="rental" data-budget-label="レンタカー" data-budget-items="rental"><td>レンタカー</td><td>バジェット：基本8,000＋補償6,600－クーポン1,460</td><td class="num"></td><td><span class="trip-status" data-trip-id="rental"></span></td></tr><tr data-budget-key="tolls" data-budget-label="高速" data-budget-amount="4000"><td>高速</td><td>北部往復等</td><td class="num">¥4,000</td><td>見積り</td></tr><tr data-budget-key="fuel" data-budget-label="ガソリン" data-budget-amount="5000"><td>ガソリン</td><td>3日間の走行分</td><td class="num">¥5,000</td><td>見積り</td></tr><tr data-budget-key="parking" data-budget-label="駐車" data-budget-amount="6000"><td>駐車</td><td>ホテル3泊3,000＋観光・市内買い物3,000</td><td class="num">¥6,000</td><td>見積り</td></tr><tr data-budget-key="transport" data-budget-label="タクシー等" data-budget-amount="6000"><td>タクシー等</td><td>追加移動の予備</td><td class="num">¥6,000</td><td>見積り</td></tr><tr data-budget-key="admission" data-budget-label="入場料" data-budget-amount="5360"><td>入場料</td><td>(美ら海2,180＋首里城400＋万座毛100〔任意〕)×2</td><td class="num">¥5,360</td><td>掲載料金の計画額</td></tr><tr data-budget-key="snorkel" data-budget-label="シュノーケル" data-budget-items="snorkel"><td>シュノーケル</td><td>ブルーオーシャン沖縄 4,500円×2名</td><td class="num"></td><td><span class="trip-status" data-trip-id="snorkel"></span></td></tr><tr data-budget-key="meals" data-budget-label="食事" data-budget-meals="true"><td>食事</td><td>下の2名分の食事予算を合算</td><td class="num"></td><td>見積り</td></tr><tr data-budget-key="gifts" data-budget-label="お土産" data-budget-amount="15000"><td>お土産</td><td>グラス・菓子・調味料等</td><td class="num">¥15,000</td><td>見積り</td></tr><tr data-budget-key="reserve" data-budget-label="予備費" data-budget-amount="15000"><td>予備費</td><td>価格上昇・追加交通・メニュー差等</td><td class="num">¥15,000</td><td>計画枠</td></tr><tr id="budget-total" data-total="190264"><td><b>合計</b></td><td>目安は上の項目、実績は追加費目を含む（復路は会計外）</td><td class="num"></td><td>2名・計画額</td></tr></tbody></table></div><details class="fold" open><summary>食事予算の内訳（全行2名合計）</summary><div class="tbl-wrap stack"><table id="meal-budget"><thead><tr><th>食事</th><th>目安・実績（2名）</th></tr></thead><tbody><tr data-meal-key="24-dinner" data-meal-label="24夜食・軽食" data-meal-amount="4000"><td>24夜食・軽食（まーちぬ家、ソフトドリンク込み）</td><td class="num">¥4,000</td></tr><tr data-meal-key="25-breakfast" data-meal-label="25福助朝食" data-meal-amount="1500"><td>25福助朝食</td><td class="num">¥1,500</td></tr><tr data-meal-key="25-fishmarket" data-meal-label="25道の駅いとまん昼食" data-meal-amount="6000"><td>25道の駅いとまん昼食</td><td class="num">¥6,000</td></tr><tr data-meal-key="25-cafes" data-meal-label="25天ぷら・カフェ（任意分含む）" data-meal-amount="2500"><td>25天ぷら・カフェ（任意分含む）</td><td class="num">¥2,500</td></tr><tr data-meal-key="25-mitsuhisa" data-meal-label="25夜 光久本家" data-meal-item="matsumoto"><td>25光久本家：2名約15,000円＋ソフトドリンク1,000円（コース1人7,480円×2を丸めた計画額） <span class="trip-status" data-trip-id="matsumoto"></span></td><td class="num">¥16,000</td></tr><tr data-meal-key="26-kouri" data-meal-label="26許田の軽食・古宇利のカフェ" data-meal-amount="3000"><td>26許田の軽食・古宇利のカフェ</td><td class="num">¥3,000</td></tr><tr data-meal-key="26-kishimoto" data-meal-label="26きしもと食堂" data-meal-amount="3000"><td>26きしもと食堂</td><td class="num">¥3,000</td></tr><tr data-meal-key="26-dinner" data-meal-label="26夜 キングタコス" data-meal-item="marchinu"><td>26夕食（キングタコス 金武本店、代替は北部の別店）・ソフトドリンク</td><td class="num">¥12,000</td></tr><tr data-meal-key="27-potama" data-meal-label="27ポーたま" data-meal-amount="1600"><td>27ポーたま</td><td class="num">¥1,600</td></tr><tr data-meal-key="27-kijimuna" data-meal-label="27きじむなぁ昼食" data-meal-amount="3000"><td>27きじむなぁ昼食（タコライス・飲み物の目安）</td><td class="num">¥3,000</td></tr><tr data-meal-key="27-blueseal" data-meal-label="27ブルーシール牧港" data-meal-amount="1800"><td>27ブルーシール牧港</td><td class="num">¥1,800</td></tr><tr data-meal-key="27-jack" data-meal-label="27ジャッキー" data-meal-amount="9000"><td>27ジャッキー</td><td class="num">¥9,000</td></tr><tr data-meal-key="snacks" data-meal-label="空港等の軽食" data-meal-amount="2500"><td>空港等の軽食余裕</td><td class="num">¥2,500</td></tr><tr data-meal-total="65900"><td>食事の目安合計</td><td class="num"></td></tr></tbody></table></div></details>
-<section class="budget-extras" aria-labelledby="budget-extras-title"><h3 id="budget-extras-title">追加の費目</h3><p id="budget-extras-empty" class="note">ボタンで行を足せます。追加した分は実績に入ります。『個人』にした行は精算に入りません。</p><div id="budget-extras-rows"></div><button type="button" class="btn" id="budget-extra-add">＋ 費目を追加</button><p id="budget-extras-total" aria-live="polite" hidden></p><div id="budget-extras-personal" aria-live="polite" hidden></div></section>
+<section class="budget-extras" aria-labelledby="budget-extras-title"><h3 id="budget-extras-title">追加の費目</h3><p id="budget-extras-empty" class="note">ボタンで行を足せます。レシート1枚を1行に。追加した分は実績に入ります。『個人』にした行は、相手の分を立て替えたときだけ精算に入ります。</p><div id="budget-extras-rows"></div><button type="button" class="btn" id="budget-extra-add">＋ 費目を追加</button><p id="budget-extras-total" aria-live="polite" hidden></p><div id="budget-extras-personal" aria-live="polite" hidden></div></section>
 <section class="settlement-card" aria-labelledby="budget-settlement-title"><h3 id="budget-settlement-title">精算（2名）</h3><div id="budget-settlement" aria-live="polite"></div></section>
 </section>
 </main>
@@ -1263,9 +1263,17 @@ function budgetRecord(key,record){
   if(!value||!(value.actual===null||(value.actual!==''&&budgetValidValue(value.actual)))||!['本人','同行者'].includes(value.payer))return null;
   if(key.startsWith('extra:')&&(typeof value.name!=='string'||typeof value.deleted!=='boolean'))return null;
   // Rows saved before scope existed (or with an unknown scope) stay in the settlement.
-  return {value:{actual:value.actual,payer:value.payer,...(key.startsWith('extra:')?{name:value.name,deleted:value.deleted,scope:budgetScope(value.scope)}:{})},updatedAt:record.updatedAt};
+  return {value:{actual:value.actual,payer:value.payer,...(key.startsWith('extra:')?{name:value.name,deleted:value.deleted,scope:budgetScope(value.scope),...budgetLineFields(value)}:{})},updatedAt:record.updatedAt};
 }
 function budgetScope(value){return value==='personal'?'personal':'shared';}
+const BUDGET_DATES=['10/24','10/25','10/26','10/27'];
+function budgetOwner(value){return value==='本人'||value==='同行者'?value:'';}
+function budgetCategory(value){return budgetRowNodes.some(row=>row.dataset.budgetKey===value)?value:'other';}
+function budgetDate(value){return typeof value==='string'&&/^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])$/.test(value)?value:'';}
+// Line-item fields: an unset owner follows the payer, unknown categories are "other", bad dates are blank.
+function budgetLineFields(value){const owner=budgetOwner(value.owner);return {...(owner?{owner}:{}),category:budgetCategory(value.category),date:budgetDate(value.date)};}
+function budgetToday(){const today=new Date().toLocaleDateString('ja-JP',{timeZone:'Asia/Tokyo',month:'2-digit',day:'2-digit'});return BUDGET_DATES.includes(today)?today:'';}
+function budgetDayLabel(date){const [month,day]=date.split('/').map(Number);return date+'（'+'日月火水木金土'[new Date(2026,month-1,day).getDay()]+'）';}
 function budgetExtraId(){return Date.now().toString(36)+Math.floor(Math.random()*1679616).toString(36).padStart(4,'0');}
 function loadBudgetEntries(){
   const result={version:2,items:{},pending:[]};
@@ -1288,7 +1296,7 @@ function loadBudgetEntries(){
       if(Array.isArray(saved.extras))for(const row of saved.extras){
         if(!row||typeof row!=='object'||Array.isArray(row))continue;
         let key;do{key='extra:'+budgetExtraId();}while(Object.hasOwn(result.items,key));
-        result.items[key]={value:{name:typeof row.name==='string'?row.name:'',actual:budgetValidValue(row.actual)&&row.actual!==''?row.actual:null,payer:row.payer==='companion'?'同行者':'本人',deleted:false,scope:'shared'},updatedAt};
+        result.items[key]={value:{name:typeof row.name==='string'?row.name:'',actual:budgetValidValue(row.actual)&&row.actual!==''?row.actual:null,payer:row.payer==='companion'?'同行者':'本人',deleted:false,scope:'shared',category:'other',date:''},updatedAt};
       }
       result.pending=Object.keys(result.items);
     }
@@ -1302,7 +1310,7 @@ function projectBudgetItems(){
   budgetEntries={};budgetExtras=[];
   for(const [key,{value}] of Object.entries(budgetStore.items)){
     const entry={actual:value.actual===null?'':value.actual,payer:value.payer==='同行者'?'companion':'self'};
-    if(key.startsWith('extra:')){if(!value.deleted)budgetExtras.push({...entry,id:key.slice(6),name:value.name,scope:budgetScope(value.scope)});}
+    if(key.startsWith('extra:')){if(!value.deleted)budgetExtras.push({...entry,id:key.slice(6),name:value.name,scope:budgetScope(value.scope),owner:{本人:'self',同行者:'companion'}[budgetOwner(value.owner)]||'',category:budgetCategory(value.category),date:budgetDate(value.date)});}
     else budgetEntries[key.startsWith('row:')?key.slice(4):key]=entry;
   }
 }
@@ -1331,7 +1339,7 @@ function saveBudgetEntry(entry){
   touchBudgetItem(key,{actual:actual===''?null:actual,payer:entry.payer==='companion'?'同行者':'本人'});
 }
 function saveBudgetExtra(entry,deleted=false){
-  touchBudgetItem('extra:'+entry.id,{name:entry.name,actual:entry.actual===''?null:entry.actual,payer:entry.payer==='companion'?'同行者':'本人',deleted,scope:budgetScope(entry.scope)});
+  touchBudgetItem('extra:'+entry.id,{name:entry.name,actual:entry.actual===''?null:entry.actual,payer:entry.payer==='companion'?'同行者':'本人',deleted,scope:budgetScope(entry.scope),...(entry.owner?{owner:entry.owner==='companion'?'同行者':'本人'}:{}),category:budgetCategory(entry.category),date:budgetDate(entry.date)});
 }
 async function getBudgetItems(){
   if(budgetGetRunning){budgetGetAgain=true;return;}
@@ -1434,6 +1442,7 @@ function renderBudgetEditor(budget,rowNodes,mealNodes,mealAmounts){
     payer.append(options);
     if(derived)payer.append(tripNode('p','精算は内訳の支払者で計算','note'));
     controls.append(payer);
+    entry.linesBox=tripNode('p',undefined,'budget-lines');entry.linesBox.hidden=true;controls.append(entry.linesBox);
     row.querySelector('.num').replaceChildren(controls);return entry;
   }
   const mealEntries=mealNodes.map((row,i)=>{
@@ -1451,54 +1460,87 @@ function renderBudgetEditor(budget,rowNodes,mealNodes,mealAmounts){
     const host=document.getElementById('budget-extras-rows');host.replaceChildren();
     document.getElementById('budget-extras-empty').hidden=budgetExtras.length>0;
     document.getElementById('budget-extras-total').hidden=budgetExtras.length===0;
-    budgetExtras.forEach((entry,index)=>{
-      const row=tripNode('div',undefined,'budget-extra-row');
+    // One receipt per row, grouped by date; undated rows last, each group in entry order.
+    const ordered=[...budgetExtras].sort((a,b)=>(a.date||'99/99').localeCompare(b.date||'99/99'));
+    let day;
+    ordered.forEach((entry,index)=>{
+      if(index===0||entry.date!==day){day=entry.date;host.append(tripNode('h4',day?budgetDayLabel(day):'日付なし','budget-extra-day'));}
+      const label='追加費目 '+(index+1)+' ';
+      const row=tripNode('div',undefined,'budget-extra-row');entry.row=row;row.tabIndex=-1;
+      const dateLabel=tripNode('label','日付','budget-extra-date');
+      const date=document.createElement('select');date.dataset.extraField='date';date.setAttribute('aria-label',label+'日付');
+      const dates=BUDGET_DATES.includes(entry.date)||!entry.date?BUDGET_DATES:[...BUDGET_DATES,entry.date];
+      for(const [value,text] of [['','日付なし'],...dates.map(d=>[d,budgetDayLabel(d)])]){
+        const option=tripNode('option',text);option.value=value;date.append(option);
+      }
+      date.value=entry.date;
+      date.addEventListener('change',()=>{
+        entry.date=budgetDate(date.value);saveBudgetExtra(entry);renderExtras();updateTotals();
+        entry.row.querySelector('select').focus();
+      });
+      dateLabel.append(date);
+      const categoryLabel=tripNode('label','費目','budget-extra-category');
+      const category=document.createElement('select');category.dataset.extraField='category';category.setAttribute('aria-label',label+'費目');
+      for(const [value,text] of [...budgetRowNodes.map(r=>[r.dataset.budgetKey,r.dataset.budgetLabel]),['other','その他']]){
+        const option=tripNode('option',text);option.value=value;category.append(option);
+      }
+      category.value=entry.category;
+      category.addEventListener('change',()=>{entry.category=budgetCategory(category.value);updateTotals();saveBudgetExtra(entry);});
+      categoryLabel.append(category);
       const nameLabel=tripNode('label','費目名','budget-extra-name');
       const name=document.createElement('input');name.type='text';name.placeholder='例：給油2回目';name.value=entry.name;name.dataset.extraField='name';
-      name.setAttribute('aria-label','追加費目 '+(index+1)+' 費目名');
-      name.addEventListener('input',()=>{entry.name=name.value;saveBudgetExtra(entry);});
+      name.setAttribute('aria-label',label+'費目名');
+      name.addEventListener('input',()=>{entry.name=name.value;saveBudgetExtra(entry);updateTotals();});
       nameLabel.append(name);
-      const actualLabel=tripNode('label','実績（円）');
+      const actualLabel=tripNode('label','実績（円）','budget-extra-actual');
       const actual=document.createElement('input');actual.type='text';actual.inputMode='numeric';actual.pattern='[0-9]*';actual.maxLength=9;actual.value=String(entry.actual);actual.dataset.extraField='actual';
-      actual.setAttribute('aria-label','追加費目 '+(index+1)+' 実績（2名・円）');
+      actual.setAttribute('aria-label',label+'実績（2名・円）');
       actual.addEventListener('input',()=>{
         if(!/^[0-9]{0,9}$/.test(actual.value)){actual.value=String(entry.actual);return;}
         entry.actual=actual.value===''?'':Number(actual.value);updateTotals();saveBudgetExtra(entry);
       });
       actualLabel.append(actual);
-      const payerLabel=tripNode('label','支払者');
-      const payer=document.createElement('select');payer.dataset.extraField='payer';payer.setAttribute('aria-label','追加費目 '+(index+1)+' 支払者');
-      for(const [value,label] of [['self','本人'],['companion','同行者']]){
-        const option=tripNode('option',label);option.value=value;payer.append(option);
+      const payerLabel=tripNode('label','支払者','budget-extra-payer');
+      const payer=document.createElement('select');payer.dataset.extraField='payer';payer.setAttribute('aria-label',label+'支払者');
+      for(const [value,text] of [['self','本人'],['companion','同行者']]){
+        const option=tripNode('option',text);option.value=value;payer.append(option);
       }
       payer.value=entry.payer;
-      payer.addEventListener('change',()=>{entry.payer=payer.value==='companion'?'companion':'self';updateTotals();saveBudgetExtra(entry);});
+      payer.addEventListener('change',()=>{entry.payer=payer.value==='companion'?'companion':'self';syncOwner();updateTotals();saveBudgetExtra(entry);});
       payerLabel.append(payer);
-      const scope=tripNode('div',undefined,'budget-payer budget-extra-scope');
-      scope.append(tripNode('span','区分'));
-      const scopeOptions=tripNode('div',undefined,'payer-options');
-      scopeOptions.setAttribute('role','group');scopeOptions.setAttribute('aria-label','追加費目 '+(index+1)+' 区分');
-      const scopeButtons=[];
-      for(const [value,label] of [['shared','精算対象'],['personal','個人']]){
-        const button=tripNode('button',label);button.type='button';button.dataset.extraScope=value;
-        button.setAttribute('aria-pressed',String(entry.scope===value));
-        button.addEventListener('click',()=>{
-          entry.scope=value;
-          scopeButtons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.extraScope===value)));
-          updateTotals();saveBudgetExtra(entry);
+      function toggle(cls,caption,choices,field,current,onChoose){
+        const box=tripNode('div',undefined,'budget-payer '+cls);box.append(tripNode('span',caption));
+        const options=tripNode('div',undefined,'payer-options');
+        options.setAttribute('role','group');options.setAttribute('aria-label',label+caption);
+        const buttons=choices.map(([value,text])=>{
+          const button=tripNode('button',text);button.type='button';button.dataset[field]=value;
+          button.setAttribute('aria-pressed',String(current===value));
+          button.addEventListener('click',()=>{onChoose(value);buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset[field]===value)));updateTotals();saveBudgetExtra(entry);});
+          options.append(button);return button;
         });
-        scopeButtons.push(button);scopeOptions.append(button);
+        box.append(options);return {box,buttons};
       }
-      scope.append(scopeOptions);
-      const remove=tripNode('button','×');remove.type='button';remove.dataset.extraField='remove';remove.setAttribute('aria-label','追加費目 '+(index+1)+' を削除');
-      remove.addEventListener('click',()=>{saveBudgetExtra(entry,true);budgetExtras.splice(index,1);renderExtras();updateTotals();document.getElementById('budget-extra-add').focus();});
-      row.append(nameLabel,actualLabel,payerLabel,scope,remove);host.append(row);
+      const scope=toggle('budget-extra-scope','区分',[['shared','精算対象'],['personal','個人']],'extraScope',entry.scope,value=>{entry.scope=value;owner.box.hidden=value!=='personal';});
+      // An unset owner follows the payer; choosing one makes the row an advance when it differs.
+      const owner=toggle('budget-extra-owner','誰の分',[['self','本人'],['companion','同行者']],'extraOwner',entry.owner||entry.payer,value=>{entry.owner=value;});
+      owner.box.hidden=entry.scope!=='personal';
+      function syncOwner(){owner.buttons.forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.extraOwner===(entry.owner||entry.payer))));}
+      const remove=tripNode('button','×','budget-extra-remove');remove.type='button';remove.dataset.extraField='remove';remove.setAttribute('aria-label',label+'を削除');
+      remove.addEventListener('click',()=>{saveBudgetExtra(entry,true);budgetExtras.splice(budgetExtras.indexOf(entry),1);renderExtras();updateTotals();document.getElementById('budget-extra-add').focus();});
+      row.append(dateLabel,categoryLabel,nameLabel,actualLabel,payerLabel,scope.box,owner.box,remove);host.append(row);
     });
+  }
+  function showLines(key){
+    const matches=budgetExtras.filter(e=>e.scope!=='personal'&&e.category===key);
+    budgetExtras.forEach(e=>{e.row.dataset.target=String(matches.includes(e));});
+    // Jump to the first matching row in display (date) order.
+    const target=[...document.getElementById('budget-extras-rows').children].find(node=>matches.some(e=>e.row===node));
+    if(target){target.scrollIntoView({block:'center'});target.focus({preventScroll:true});}
   }
   document.getElementById('budget-extra-add').onclick=()=>{
     let id;do{id=budgetExtraId();}while(Object.hasOwn(budgetStore.items,'extra:'+id));
-    const entry={id,name:'',actual:'',payer:'self',scope:'shared'};budgetExtras.push(entry);saveBudgetExtra(entry);renderExtras();updateTotals();
-    document.getElementById('budget-extras-rows').lastElementChild.querySelector('input').focus();
+    const entry={id,name:'',actual:'',payer:'self',scope:'shared',owner:'',category:'other',date:budgetToday()};budgetExtras.push(entry);saveBudgetExtra(entry);renderExtras();updateTotals();
+    entry.row.querySelector('input').focus();
   };
   renderExtras();
   function updateTotals(){
@@ -1506,50 +1548,79 @@ function renderBudgetEditor(budget,rowNodes,mealNodes,mealAmounts){
     const mealEntry=entries.find(entry=>entry.key==='meals');
     // The aggregate is derived only; never include a legacy manually entered meal total.
     mealEntry.actual=enteredMeals.length?enteredMeals.reduce((sum,entry)=>sum+entry.actual,0):'';
-    mealEntry.output.textContent=mealEntry.actual===''?'未入力':tripMoney(mealEntry.actual);
-    mealEntry.caption.textContent='実績（内訳 '+enteredMeals.length+'/'+mealEntries.length+'行）';
-    // Personal purchases are recorded but never enter the trip totals or the settlement.
+    // Personal purchases are recorded but never enter the trip totals or the shared split.
     const sharedExtras=budgetExtras.filter(e=>e.scope!=='personal'),personalExtras=budgetExtras.filter(e=>e.scope==='personal');
     const enteredExtras=sharedExtras.filter(e=>e.actual!=='');
     const extrasTotal=enteredExtras.reduce((sum,e)=>sum+e.actual,0);
-    document.getElementById('budget-extras-total').textContent=(personalExtras.length?'追加の費目（精算対象）合計 ':'追加の費目 合計 ')+tripMoney(extrasTotal);
+    // Shared line items with a budget category add to that row; "other" rows stay separate items.
+    for(const entry of entries){
+      const lines=sharedExtras.filter(e=>e.category===entry.key),enteredLines=lines.filter(e=>e.actual!=='');
+      entry.lineTotal=enteredLines.reduce((sum,e)=>sum+e.actual,0);
+      entry.total=entry.actual===''&&!enteredLines.length?'':Number(entry.actual)+entry.lineTotal;
+      entry.linesBox.hidden=!lines.length;entry.linesBox.replaceChildren();
+      if(lines.length){
+        const link=tripNode('button','明細 '+lines.length+'件 '+tripMoney(entry.lineTotal)+(entry.actual===''?'':'（合計 '+tripMoney(entry.total)+'）'));
+        link.type='button';link.dataset.budgetLines=entry.key;link.addEventListener('click',()=>showLines(entry.key));entry.linesBox.append(link);
+      }
+    }
+    mealEntry.output.textContent=mealEntry.total===''?'未入力':tripMoney(mealEntry.total);
+    mealEntry.caption.textContent='実績（内訳 '+enteredMeals.length+'/'+mealEntries.length+'行）';
+    const otherExtras=sharedExtras.filter(e=>e.category==='other'),enteredOther=otherExtras.filter(e=>e.actual!=='');
+    const categorized=extrasTotal-enteredOther.reduce((sum,e)=>sum+e.actual,0);
+    document.getElementById('budget-extras-total').textContent=(personalExtras.length?'追加の費目（精算対象）合計 ':'追加の費目 合計 ')+tripMoney(extrasTotal)+(categorized?'（うち '+tripMoney(categorized)+' は上の表の費目に計上）':'');
+    const ownerOf=e=>e.owner||e.payer;
     const personal=document.getElementById('budget-extras-personal');personal.replaceChildren();personal.hidden=!personalExtras.length;
     if(personalExtras.length){
-      const personalPaid=payer=>personalExtras.filter(e=>e.actual!==''&&e.payer===payer).reduce((sum,e)=>sum+e.actual,0);
-      const selfPersonal=personalPaid('self'),companionPersonal=personalPaid('companion');
+      const personalFor=owner=>personalExtras.filter(e=>e.actual!==''&&ownerOf(e)===owner).reduce((sum,e)=>sum+e.actual,0);
+      const selfPersonal=personalFor('self'),companionPersonal=personalFor('companion');
       const total=tripNode('p');total.append(tripNode('b','個人の買い物 '+tripMoney(selfPersonal+companionPersonal)));total.dataset.personalField='合計';
-      const split=tripNode('p','本人分 '+tripMoney(selfPersonal)+' ／ 同行者分 '+tripMoney(companionPersonal)+'（精算・予算には入りません）');split.dataset.personalField='内訳';
+      const split=tripNode('p','本人の分 '+tripMoney(selfPersonal)+' ／ 同行者の分 '+tripMoney(companionPersonal)+'（予算には入りません。相手の分を立て替えた額は精算に入ります）');split.dataset.personalField='内訳';
       personal.append(total,split);
     }
-    const estimate=entries.reduce((sum,e)=>sum+Number(e.estimate),0),actual=entries.reduce((sum,e)=>sum+Number(e.actual),0)+extrasTotal;
-    const entered=[...entries.filter(e=>e.actual!==''),...enteredExtras.map(e=>({...e,estimate:0}))];
-    const count=entered.length,difference=entered.reduce((sum,e)=>sum+e.actual-Number(e.estimate),0);
+    const estimate=entries.reduce((sum,e)=>sum+Number(e.estimate),0),actual=entries.reduce((sum,e)=>sum+Number(e.total),0)+enteredOther.reduce((sum,e)=>sum+e.actual,0);
+    const entered=[...entries.filter(e=>e.total!==''),...enteredOther.map(e=>({...e,total:e.actual,estimate:0}))];
+    const count=entered.length,difference=entered.reduce((sum,e)=>sum+e.total-Number(e.estimate),0);
     const summary=document.getElementById('budget-entry-summary');summary.replaceChildren();
     for(const [label,amount] of [['目安',estimate],['実績',actual],['入力済みの行の差額',difference]]){
       const box=tripNode('div',undefined,'kpi');box.dataset.entryKpi=label;
       box.append(tripNode('div',label,'l'),tripNode('div',tripMoney(amount),'v'),tripNode('div','2名 ／ 1人あたり '+tripMoney(amount/2),'per-person'));summary.append(box);
     }
-    summary.append(tripNode('p','実績入力済み '+count+'/'+(entries.length+sharedExtras.length)+'項目（未入力行は差額の対象外）','note'));
+    summary.append(tripNode('p','実績入力済み '+count+'/'+(entries.length+otherExtras.length)+'項目（未入力行は差額の対象外）','note'));
     const legacyMeal=budgetEntries.meals;
     if(legacyMeal&&legacyMeal.actual!==''&&budgetValidValue(legacyMeal.actual)){
       summary.append(tripNode('p','以前まとめて入力した食事実績：'+tripMoney(legacyMeal.actual)+'。現在の合計には含めていません。食事の内訳に入力してください。','note'));
     }
+    // A personal row bought for the other person (owner ≠ payer) is paid back in full.
+    const advances=personalExtras.filter(e=>e.actual!==''&&e.actual>0&&ownerOf(e)!==e.payer);
     const settlement=document.getElementById('budget-settlement');settlement.replaceChildren();
-    if(!count){
+    if(!count&&!advances.length){
       settlement.append(tripNode('p','実績を入力すると精算額が出ます。'));
     }else{
-      const eligible=[...entered.filter(e=>e.key!=='meals'),...enteredMeals];
+      const eligible=[...entries.filter(e=>e.key!=='meals'&&e.actual!==''),...enteredMeals,...enteredExtras];
       const selfPaid=eligible.filter(e=>e.payer==='self').reduce((sum,e)=>sum+e.actual,0);
       const companionPaid=eligible.filter(e=>e.payer==='companion').reduce((sum,e)=>sum+e.actual,0);
-      const total=selfPaid+companionPaid,half=total/2,transfer=Math.abs(selfPaid-half);
-      const details=tripNode('dl');
-      for(const [label,value] of [['実績合計',total],['1人あたり',half],['本人が払った額',selfPaid],['同行者が払った額',companionPaid]]){
-        const amount=tripNode('dd',tripMoney(Math.round(value)));amount.dataset.settlementField=label;
-        details.append(tripNode('dt',label),amount);
+      const total=selfPaid+companionPaid,half=total/2;
+      const owed=payer=>advances.filter(e=>e.payer===payer).reduce((sum,e)=>sum+e.actual,0);
+      const net=selfPaid-half+owed('self')-owed('companion'),transfer=Math.abs(net);
+      if(count){
+        const details=tripNode('dl');
+        for(const [label,value] of [['実績合計',total],['1人あたり',half],['本人が払った額',selfPaid],['同行者が払った額',companionPaid]]){
+          const amount=tripNode('dd',tripMoney(Math.round(value)));amount.dataset.settlementField=label;
+          details.append(tripNode('dt',label),amount);
+        }
+        settlement.append(details);
       }
-      const result=tripNode('p',transfer===0?'精算なし':(selfPaid>half?'同行者 → 本人 ':'本人 → 同行者 ')+tripMoney(Math.round(transfer)),'settlement-result');
+      if(advances.length){
+        const list=tripNode('ul',undefined,'settlement-advances');list.dataset.settlementField='立て替え';
+        for(const e of advances){
+          const item=tripNode('li','立て替え：'+(e.name.trim()||'名称未入力')+'・'+(ownerOf(e)==='self'?'本人':'同行者')+'の分（'+tripMoney(e.actual)+'）');
+          item.dataset.settlementAdvance=e.id;list.append(item);
+        }
+        settlement.append(list);
+      }
+      const result=tripNode('p',transfer===0?'精算なし':(net>0?'同行者 → 本人 ':'本人 → 同行者 ')+tripMoney(Math.round(transfer)),'settlement-result');
       result.dataset.settlementField='結果';
-      settlement.append(details,result,tripNode('p','実績を入力した行だけが対象。支払者が本人のままの行は確認してください。','note'));
+      settlement.append(result,tripNode('p','実績を入力した行だけが対象。支払者が本人のままの行は確認してください。','note'));
     }
     document.querySelector('#budget-total .num').textContent='目安 '+tripMoney(estimate)+' ／ 実績 '+tripMoney(actual);
   }
