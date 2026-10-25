@@ -1257,7 +1257,7 @@ function budgetInitialActual(key){
   return paid.length?paid.reduce((sum,item)=>sum+(item.paidAmount??item.amount),0):null;
 }
 function budgetRecord(key,record){
-  if(!budgetKeys.has(key)&&!/^extra:[a-z0-9]{5,40}$/.test(key))return null;
+  if(!budgetKeys.has(key)&&!/^extra:[A-Za-z0-9_-]{1,40}$/.test(key))return null;
   if(!record||!Number.isSafeInteger(record.updatedAt)||record.updatedAt<=0)return null;
   const value=record.value;
   if(!value||!(value.actual===null||(value.actual!==''&&budgetValidValue(value.actual)))||!['本人','同行者'].includes(value.payer))return null;
