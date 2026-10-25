@@ -365,6 +365,39 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
 #food-distance-list .card{min-width:0;overflow-wrap:anywhere}
 
 @media(max-width:600px){.learn-toc{padding:18px}.learn-body{padding:0 18px 22px}.learn-chapter>summary{padding:18px}.learn-book>.learn-photo img{height:160px}.learn-body h4{font-size:1.15rem}.learn-callout{padding:14px}}
+/* 2026-10-25: the reading list is not the tab bar; it must not inherit nav's sticky top. Above 600px it is the same open list. */
+.learn-toc{position:static;z-index:auto;backdrop-filter:none;-webkit-backdrop-filter:none}
+.learn-toc-bar,.learn-toc-bg,.learn-toc-close{display:none}
+.learn-toc-bar{list-style:none}.learn-toc-bar::-webkit-details-marker{display:none}
+@media(max-width:600px){
+  .learn-toc{padding:0;margin:12px auto;background:none;border:0;border-radius:0}
+  .learn-books,.learn-book:first-child{margin-top:12px}
+  .learn-book{scroll-margin-top:calc(var(--learn-top,0px) + 56px)}
+  /* the first chapter title fits the first phone screen: the marker shares the eyebrow line, a lower cover */
+  .learn-chapter>summary{padding:14px 18px 18px}
+  .learn-chapter>summary .eyebrow{display:inline-block;width:calc(100% - 1.6em)}
+  .learn-book>.learn-photo img{height:120px}
+  .learn-toc-bar{display:flex;align-items:center;gap:6px;min-height:44px;padding:0 14px;background:var(--bg-alt);border:1px solid var(--border);border-radius:10px;cursor:pointer;font-weight:700;font-size:.92rem;color:var(--sea-dark);box-shadow:var(--shadow)}
+  .learn-toc-bar:focus-visible{outline:3px solid var(--sea);outline-offset:2px}
+  .learn-toc-icon{font-size:1.1rem;line-height:1}
+  .learn-toc-label{flex:0 0 auto}
+  .learn-toc-now{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:400;color:var(--text)}
+  .learn-toc-bar::after{content:"";flex:0 0 auto;width:8px;height:8px;margin:0 2px 4px 6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);transition:transform .2s}
+  .learn-toc-fold[open]>.learn-toc-bar::after{transform:rotate(-135deg);margin-bottom:-4px}
+  .learn-toc-panel{padding:12px 18px 4px}
+  .learn-toc a{padding:10px 0}
+  .learn-toc.js-sheet{position:sticky;top:var(--learn-top,0px);z-index:45;transition:transform .2s ease}
+  .learn-toc.js-sheet.is-hidden{transform:translateY(calc(-100% - 16px));visibility:hidden;transition:transform .2s ease,visibility 0s linear .2s}
+  .learn-toc.js-sheet.is-open{z-index:101}
+  .js-sheet .learn-toc-bg{display:block;position:fixed;inset:0;background:rgba(6,43,71,.55)}
+  .js-sheet .learn-toc-panel{position:fixed;left:0;right:0;bottom:0;max-height:70vh;overflow-y:auto;overscroll-behavior:contain;background:var(--bg);border-radius:16px 16px 0 0;padding:0 18px calc(12px + env(safe-area-inset-bottom));box-shadow:0 -8px 30px rgba(0,0,0,.25);animation:learnSheetUp .2s ease}
+  .js-sheet .learn-toc-head{position:sticky;top:0;display:flex;align-items:center;gap:8px;background:var(--bg);padding:8px 0;border-bottom:1px solid var(--border)}
+  .js-sheet .learn-toc-head h3{flex:1;margin:0;font-size:1rem}
+  .js-sheet .learn-toc-close{display:inline-flex;align-items:center;justify-content:center;flex:0 0 44px;height:44px;border:0;border-radius:50%;background:var(--bg-alt);color:var(--text);font-size:1.4rem;cursor:pointer}
+  .js-sheet .learn-toc-close:focus-visible{outline:3px solid var(--sea);outline-offset:2px}
+  .js-sheet .learn-toc a[aria-current]{font-weight:700;color:var(--sea-dark)}
+}
+@keyframes learnSheetUp{from{transform:translateY(100%)}to{transform:none}}
 
 @media(max-width:600px){#outbound-fares td[data-label]::before,#return-fares td[data-label]::before,#mileage-comparison td[data-label]::before,#page-typhoon td[data-label]::before{content:attr(data-label) "：";font-weight:600;margin-right:.35em}}
 .typhoon-steps{padding-left:1.2em;font-size:.92rem;overflow-wrap:anywhere}.typhoon-steps li{margin:4px 0}
@@ -581,7 +614,7 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
 
 <section class="page" id="page-learn" role="tabpanel" aria-labelledby="tab-learn">
 <!-- learn:start -->
-<h2 class="page-title">📖 予習</h2><nav class="learn-toc" aria-label="読む順番"><h3>読む順番と合計時間（合計52分）</h3><ol>
+<h2 class="page-title">📖 予習</h2><nav class="learn-toc" aria-label="読む順番"><details class="learn-toc-fold" open><summary class="learn-toc-bar"><span class="learn-toc-icon" aria-hidden="true">≡</span><span class="learn-toc-label">目次（9章）</span><span aria-hidden="true">｜</span><span class="learn-toc-now">沖縄ごはんの読み方</span></summary><div class="learn-toc-bg"></div><div class="learn-toc-panel" id="learn-toc-panel"><div class="learn-toc-head"><h3>読む順番と合計時間（合計52分）</h3><button type="button" class="learn-toc-close" aria-label="目次を閉じる">×</button></div><ol>
 <li><a href="#learn-okinawa-food" data-learn-link="learn-okinawa-food">沖縄ごはんの読み方　食べる前に知ると2倍おいしい <span>· 7分</span></a></li>
 <li><a href="#learn-okinawa-drinks" data-learn-link="learn-okinawa-drinks">泡盛とオリオン　グラスの中の600年 <span>· 5分</span></a></li>
 <li><a href="#learn-ryukyu-history" data-learn-link="learn-ryukyu-history">琉球王国の物語　海の国の450年とそのあと <span>· 5分</span></a></li>
@@ -591,7 +624,7 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
 <li><a href="#learn-crafts-and-gifts" data-learn-link="learn-crafts-and-gifts">手仕事とお土産の目利き　泡の入ったグラスが「当たり」の理由 <span>· 5分</span></a></li>
 <li><a href="#learn-okinawa-words" data-learn-link="learn-okinawa-words">3分でわかる沖縄の言葉　「いただきます」を島の言葉で <span>· 3分</span></a></li>
 <li><a href="#learn-awamori" data-learn-link="learn-awamori">泡盛の読み方　蔵とラベルで選ぶ一本 <span>· 12分</span></a></li>
-</ol></nav><div class="learn-books">
+</ol></div></details></nav><script>(function(){const toc=document.currentScript.previousElementSibling;toc.classList.add('js-sheet');if(matchMedia('(max-width:600px)').matches)toc.querySelector('.learn-toc-fold').open=false;})();</script><div class="learn-books">
 <article class="learn-book" id="learn-okinawa-food" data-reading-minutes="7">
 <figure class="learn-photo"><img src="assets/img/okinawa_soba.jpg" alt="沖縄そばと、じゅーしー（炊き込みご飯）" width="1200" height="900" loading="lazy" decoding="async"><figcaption>沖縄そばと、じゅーしー（炊き込みご飯）</figcaption></figure>
 <details class="learn-chapter" open><summary><h3><span class="eyebrow">01 / 7分</span>沖縄ごはんの読み方　食べる前に知ると2倍おいしい</h3></summary><div class="learn-body">
@@ -1734,6 +1767,86 @@ function openLearnHash(){
   chapter.querySelector('summary').focus({preventScroll:true});
   target.scrollIntoView({block:'start',behavior:'instant'});
 }
+// At 600px and below the reading list is one bar under the tab bar: it names the chapter being read,
+// hides while reading down, returns on any scroll up, and opens the list as a bottom sheet.
+(function(){
+  const toc=document.querySelector('.learn-toc.js-sheet');if(!toc)return;
+  const fold=toc.querySelector('.learn-toc-fold'),bar=fold.querySelector('.learn-toc-bar'),panel=toc.querySelector('.learn-toc-panel');
+  const now=bar.querySelector('.learn-toc-now'),title=document.querySelector('#page-learn .page-title'),learn=document.getElementById('page-learn');
+  const tabBar=document.querySelector('nav:not(.learn-toc)'),books=[...document.querySelectorAll('.learn-book')],links=[...panel.querySelectorAll('[data-learn-link]')];
+  const names=Object.fromEntries(links.map(a=>[a.dataset.learnLink,a.firstChild.textContent.trim().split('　')[0]]));
+  const phone=window.matchMedia('(max-width:600px)');
+  // restoreFocus starts false: the first-paint close must not move focus to the bar.
+  let navH=0,lastY=window.scrollY,quietUntil=0,ticking=false,restoreFocus=false,observer=null;
+  const sheetOpen=()=>phone.matches&&fold.open;
+  const setHidden=hidden=>toc.classList.toggle('is-hidden',hidden&&!fold.open);
+  function current(){
+    if(!learn.classList.contains('active'))return;
+    const line=navH+44+16;let id=books[0].id;
+    books.forEach(book=>{if(book.getBoundingClientRect().top<=line)id=book.id;});
+    if(now.textContent!==names[id])now.textContent=names[id];
+    links.forEach(a=>{if(a.dataset.learnLink===id)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});
+  }
+  function observe(){
+    // A band from the tab bar to just under the reading bar (taller than the gap between chapters):
+    // the last chapter whose top has crossed its lower edge is the current one.
+    if(observer)observer.disconnect();
+    const line=Math.round(navH+44+16);
+    observer=new IntersectionObserver(current,{rootMargin:'-'+Math.round(navH)+'px 0px -'+Math.max(0,window.innerHeight-line)+'px 0px'});
+    books.forEach(book=>observer.observe(book));
+  }
+  function measure(){
+    navH=tabBar.getBoundingClientRect().height;
+    document.documentElement.style.setProperty('--learn-top',navH+'px');
+    observe();
+  }
+  function sync(){
+    const open=sheetOpen();
+    bar.setAttribute('aria-expanded',String(fold.open));
+    toc.classList.toggle('is-open',open);
+    document.body.style.overflow=open?'hidden':'';
+    if(open){panel.setAttribute('role','dialog');panel.setAttribute('aria-modal','true');panel.setAttribute('aria-label','目次');}
+    else{panel.removeAttribute('role');panel.removeAttribute('aria-modal');panel.removeAttribute('aria-label');}
+  }
+  function close(focusBar){restoreFocus=focusBar;fold.open=false;sync();}
+  fold.addEventListener('toggle',()=>{
+    sync();
+    if(!phone.matches)return;
+    if(fold.open){setHidden(false);current();(links.find(a=>a.hasAttribute('aria-current'))||links[0]).focus();}
+    else if(restoreFocus)bar.focus({preventScroll:true});
+    restoreFocus=true;
+  });
+  toc.querySelector('.learn-toc-bg').addEventListener('click',()=>close(true));
+  toc.querySelector('.learn-toc-close').addEventListener('click',()=>close(true));
+  // Capture runs before the link's own jump, so the page is unlocked before it scrolls.
+  panel.addEventListener('click',event=>{
+    if(!event.target.closest('[data-learn-link]')||!sheetOpen())return;
+    close(false);quietUntil=performance.now()+400;setHidden(false);
+  },true);
+  document.addEventListener('keydown',event=>{
+    if(!sheetOpen())return;
+    if(event.key==='Escape'){event.preventDefault();close(true);return;}
+    if(event.key!=='Tab')return;
+    const items=[toc.querySelector('.learn-toc-close'),...links],first=items[0],last=items[items.length-1];
+    if(event.shiftKey&&(document.activeElement===first||!panel.contains(document.activeElement))){event.preventDefault();last.focus();}
+    else if(!event.shiftKey&&(document.activeElement===last||!panel.contains(document.activeElement))){event.preventDefault();first.focus();}
+  });
+  function onScroll(){
+    ticking=false;
+    const y=window.scrollY,dy=y-lastY;lastY=y;
+    if(!phone.matches||!learn.classList.contains('active')||fold.open)return;
+    if(performance.now()<quietUntil){setHidden(false);return;}
+    // Until the bar reaches the tab bar it is in place at the top of the page: always shown.
+    if(title.getBoundingClientRect().bottom+12>navH||dy<0)setHidden(false);
+    else if(dy>2)setHidden(true);
+  }
+  window.addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(onScroll);}},{passive:true});
+  window.addEventListener('resize',observe);
+  if(window.ResizeObserver)new ResizeObserver(measure).observe(tabBar);
+  phone.addEventListener('change',()=>{restoreFocus=false;fold.open=!phone.matches;setHidden(false);measure();sync();});
+  new MutationObserver(()=>{if(learn.classList.contains('active')){setHidden(false);current();}}).observe(learn,{attributes:true,attributeFilter:['class']});
+  measure();sync();current();
+})();
 document.querySelectorAll('[data-learn-link]').forEach(link=>link.addEventListener('click',event=>{
   event.preventDefault();history.replaceState(null,'',link.getAttribute('href'));openLearnHash();
 }));
