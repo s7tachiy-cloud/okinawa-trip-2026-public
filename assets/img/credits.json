@@ -976,5 +976,16 @@
    1920,
    1440
   ]
+ },
+ "read_helios": {
+  "file": "read_helios.jpg",
+  "title": "File:Head office of Helios Distillery 202510.jpg",
+  "page": "https://commons.wikimedia.org/wiki/File:Head_office_of_Helios_Distillery_202510.jpg",
+  "license": "CC BY-SA 4.0",
+  "artist": "Kugel~commonswiki",
+  "size": [
+   1400,
+   933
+  ]
  }
 }
