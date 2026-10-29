@@ -436,10 +436,10 @@ html:has(.photo-view[open]){overflow:hidden}
 .budget-estimate{min-width:0;font-size:.8rem;text-align:left;white-space:normal}.budget-estimate span{display:block}.budget-estimate span+span{font-size:16px;padding:10px 0;overflow-wrap:anywhere}
 .budget-inputs label,.budget-extra-row label{display:block;min-width:0;font-size:.8rem;text-align:left;white-space:normal}
 .budget-inputs input,.budget-extra-row input,.budget-extra-row select{display:block;width:100%;min-width:0;max-width:100%;box-sizing:border-box;font:inherit;font-size:16px;padding:10px 6px;border:1px solid #8b9ca8;border-radius:6px;background:white;color:#203640}
-#budget-table,#meal-budget{table-layout:fixed;width:100%}#budget-table td,#meal-budget td{overflow-wrap:anywhere;white-space:normal}#budget-table th:nth-child(3){width:45%}#budget-table .trip-status{white-space:normal;max-width:100%}#meal-budget th:nth-child(2){width:55%}
+.budget-categories{margin:18px 0 22px}#budget-categories{width:100%;min-width:0;max-width:520px;border-collapse:collapse}#budget-categories th,#budget-categories td{padding:8px 10px;border-bottom:1px solid var(--border);text-align:left;font-weight:400}#budget-categories thead th{font-size:.8rem;color:#526575}#budget-categories td.num{text-align:right}#budget-categories .budget-category-total th,#budget-categories .budget-category-total td{font-weight:700;border-bottom:none}#budget-table tr.budget-group th,#meal-budget tr.meal-day th{padding:12px 10px 6px;text-align:left;font-size:.9rem;color:var(--sea);background:#f3f8f9}.meal-line-source{display:block;font-size:.75rem;font-weight:400;color:#526575}.meal-line td.num span{display:block;font-size:16px;padding:4px 0}.meal-line button{min-height:44px;margin-top:4px;padding:4px 12px;font:inherit;font-size:.8rem;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--sea);cursor:pointer}#budget-table,#meal-budget{table-layout:fixed;width:100%}#budget-table td,#meal-budget td{overflow-wrap:anywhere;white-space:normal}#budget-table th:nth-child(3){width:45%}#budget-table .trip-status{white-space:normal;max-width:100%}#meal-budget th:nth-child(2){width:55%}
 .budget-extras{margin-top:22px}.budget-extra-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) 40px;grid-template-areas:"date category name name remove" "actual payer scope owner .";gap:8px;align-items:end;padding:12px 0;border-bottom:1px solid var(--border);min-width:0}.budget-extra-row .budget-extra-date{grid-area:date}.budget-extra-row .budget-extra-category{grid-area:category}.budget-extra-row .budget-extra-name{grid-area:name}.budget-extra-row .budget-extra-actual{grid-area:actual}.budget-extra-row .budget-extra-payer{grid-area:payer}.budget-extra-row .budget-extra-scope{grid-area:scope}.budget-extra-row .budget-extra-owner{grid-area:owner}.budget-extra-row .budget-extra-remove{grid-area:remove}.budget-extra-row[data-target="true"]{background:#eef7f9;box-shadow:inset 3px 0 0 var(--sea)}.budget-extra-day{margin:16px 0 0;font-size:.9rem;color:var(--sea)}.budget-lines{grid-column:1/-1;margin:0;text-align:left}.budget-lines button{min-height:44px;padding:4px 12px;font:inherit;font-size:.8rem;border:1px solid var(--border);border-radius:999px;background:#fff;color:var(--sea);cursor:pointer;white-space:normal;text-align:left}.budget-extra-row button{width:40px;min-height:44px;font:inherit;border:1px solid var(--border);border-radius:6px;background:#fff;color:var(--sea);cursor:pointer}#budget-extra-add{margin-top:12px;font:inherit}#budget-extras-total{font-weight:700;overflow-wrap:anywhere}.budget-extra-scope .payer-options button,.budget-extra-owner .payer-options button{min-height:44px}#budget-extras-personal{margin-top:12px;padding:12px 14px;border:1px solid var(--border);border-radius:6px;background:#fff;overflow-wrap:anywhere}#budget-extras-personal p{margin:0}#budget-extras-personal p+p{font-size:.85rem;margin-top:4px}.settlement-advances{margin:12px 0 0;padding-left:1.2em;overflow-wrap:anywhere}
 @media(max-width:600px){.budget-extra-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 40px;grid-template-areas:"date category remove" "name name name" "actual payer payer" "scope scope scope" "owner owner owner"}}
-@media(max-width:600px){#budget-table,#budget-table tbody,#budget-table tr,#budget-table td,#meal-budget,#meal-budget tbody,#meal-budget tr,#meal-budget td{width:100%;min-width:0;box-sizing:border-box}#budget-table td.num,#meal-budget td.num{display:block}.budget-inputs{width:100%;grid-template-columns:repeat(2,minmax(0,1fr))}.budget-payer{grid-column:2}}
+@media(max-width:600px){#budget-table,#budget-table tbody,#budget-table tr,#budget-table td,#budget-table tbody th,#meal-budget,#meal-budget tbody,#meal-budget tfoot,#meal-budget tr,#meal-budget td,#meal-budget tbody th{width:100%;min-width:0;box-sizing:border-box}#budget-table tbody th,#meal-budget tbody th,#meal-budget tfoot td{display:block}#budget-table td.num,#meal-budget td.num{display:block}.budget-inputs{width:100%;grid-template-columns:repeat(2,minmax(0,1fr))}.budget-payer{grid-column:2}}
 </style>
 </head>
 <body>
@@ -1091,7 +1091,7 @@ html:has(.photo-view[open]){overflow:hidden}
 </section>
 
 <section class="page" id="page-budget" role="tabpanel" aria-labelledby="tab-budget"><h2 class="page-title">💴 予算</h2>
-<details class="fold"><summary>初期計画の支払内訳</summary><div class="kpi-row budget-three" id="budget-summary" aria-live="polite"></div></details><p class="page-lead">金額は支払額・計画額に基づきます（飲み物はソフトドリンク、2名で1回¥1,000目安）。24夜は¥4,000、26夜は¥12,000を各行に計上（2夜で¥16,000、追加の共通枠なし）。追加料金・メニュー変更時は再計算。</p><div class="budget-toolbar"><p class="note" id="budget-storage" aria-live="polite">保存中…</p><button type="button" class="btn" id="budget-reset">リセット</button></div><p class="note">入力は2人のスマホで共有されます。同じ行を同時に直した場合は後に直した方が残ります。支払済みの行は支払額を初期表示します。実績合計・差額は実績入力済みの行だけが対象です。差額は実績−目安です。目安は固定の計画額です。食事の実績は下の内訳に入力すると「食事」行へ自動集計します。一部だけ入力した場合も、食事行の差額は食事全体の目安との差です。リセットすると実績は初期状態（支払済み行は支払額、それ以外は空欄）、支払者は本人に戻り、追加費目は削除されます。</p><div id="budget-entry-summary" class="kpi-row budget-three" aria-live="polite"></div><div class="tbl-wrap stack"><table id="budget-table"><thead><tr><th>項目</th><th>内訳</th><th>目安・実績（2名）</th><th>状態</th></tr></thead><tbody><tr data-budget-key="flights" data-budget-label="航空券" data-budget-items="outbound inbound inbound-companion"><td>航空券</td><td>MM511 2名27,840円のみ。復路は各自で手配・会計外。成田までの電車代は各自</td><td class="num"></td><td>往路 <span class="trip-status" data-trip-id="outbound"></span>／復路本人 <span class="trip-status" data-trip-id="inbound"></span>／同行者 <span class="trip-status" data-trip-id="inbound-companion"></span></td></tr><tr data-budget-key="hotel" data-budget-label="ホテル" data-budget-items="hotel"><td>ホテル</td><td>ダブル・素泊り3泊・2名</td><td class="num"></td><td><span class="trip-status" data-trip-id="hotel"></span></td></tr><tr data-budget-key="rental" data-budget-label="レンタカー" data-budget-items="rental"><td>レンタカー</td><td>バジェット：基本8,000＋補償6,600－クーポン1,460</td><td class="num"></td><td><span class="trip-status" data-trip-id="rental"></span></td></tr><tr data-budget-key="tolls" data-budget-label="高速" data-budget-amount="4000"><td>高速</td><td>北部往復等</td><td class="num">¥4,000</td><td>見積り</td></tr><tr data-budget-key="fuel" data-budget-label="ガソリン" data-budget-amount="5000"><td>ガソリン</td><td>3日間の走行分</td><td class="num">¥5,000</td><td>見積り</td></tr><tr data-budget-key="parking" data-budget-label="駐車" data-budget-amount="6000"><td>駐車</td><td>ホテル3泊3,000＋観光・市内買い物3,000</td><td class="num">¥6,000</td><td>見積り</td></tr><tr data-budget-key="transport" data-budget-label="タクシー等" data-budget-amount="6000"><td>タクシー等</td><td>追加移動の予備</td><td class="num">¥6,000</td><td>見積り</td></tr><tr data-budget-key="admission" data-budget-label="入場料" data-budget-amount="5360"><td>入場料</td><td>(美ら海2,180＋首里城400＋万座毛100〔任意〕)×2</td><td class="num">¥5,360</td><td>掲載料金の計画額</td></tr><tr data-budget-key="snorkel" data-budget-label="シュノーケル" data-budget-items="snorkel"><td>シュノーケル</td><td>ブルーオーシャン沖縄 4,500円×2名</td><td class="num"></td><td><span class="trip-status" data-trip-id="snorkel"></span></td></tr><tr data-budget-key="meals" data-budget-label="食事" data-budget-meals="true"><td>食事</td><td>下の2名分の食事予算を合算</td><td class="num"></td><td>見積り</td></tr><tr data-budget-key="gifts" data-budget-label="お土産" data-budget-amount="15000"><td>お土産</td><td>グラス・菓子・調味料等</td><td class="num">¥15,000</td><td>見積り</td></tr><tr data-budget-key="reserve" data-budget-label="予備費" data-budget-amount="15000"><td>予備費</td><td>価格上昇・追加交通・メニュー差等</td><td class="num">¥15,000</td><td>計画枠</td></tr><tr id="budget-total" data-total="190264"><td><b>合計</b></td><td>目安は上の項目、実績は追加費目を含む（復路は会計外）</td><td class="num"></td><td>2名・計画額</td></tr></tbody></table></div><details class="fold" open><summary>食事予算の内訳（全行2名合計）</summary><div class="tbl-wrap stack"><table id="meal-budget"><thead><tr><th>食事</th><th>目安・実績（2名）</th></tr></thead><tbody><tr data-meal-key="24-dinner" data-meal-label="24夜食・軽食" data-meal-amount="4000"><td>24夜食・軽食（まーちぬ家、ソフトドリンク込み）</td><td class="num">¥4,000</td></tr><tr data-meal-key="25-breakfast" data-meal-label="25福助朝食" data-meal-amount="1500"><td>25福助朝食</td><td class="num">¥1,500</td></tr><tr data-meal-key="25-fishmarket" data-meal-label="25道の駅いとまん昼食" data-meal-amount="6000"><td>25道の駅いとまん昼食</td><td class="num">¥6,000</td></tr><tr data-meal-key="25-cafes" data-meal-label="25天ぷら・カフェ（任意分含む）" data-meal-amount="2500"><td>25天ぷら・カフェ（任意分含む）</td><td class="num">¥2,500</td></tr><tr data-meal-key="25-mitsuhisa" data-meal-label="25夜 光久本家" data-meal-item="matsumoto"><td>25光久本家：2名約15,000円＋ソフトドリンク1,000円（コース1人7,480円×2を丸めた計画額） <span class="trip-status" data-trip-id="matsumoto"></span></td><td class="num">¥16,000</td></tr><tr data-meal-key="26-kouri" data-meal-label="26許田の軽食・とうらく" data-meal-amount="3000"><td>26許田の軽食・とうらく</td><td class="num">¥3,000</td></tr><tr data-meal-key="26-kishimoto" data-meal-label="26きしもと食堂" data-meal-amount="3000"><td>26きしもと食堂</td><td class="num">¥3,000</td></tr><tr data-meal-key="26-dinner" data-meal-label="26夜 ステーキハウス473" data-meal-item="marchinu"><td>26夜 ステーキハウス473</td><td class="num">¥12,000</td></tr><tr data-meal-key="27-potama" data-meal-label="27 A&amp;W 朝食" data-meal-amount="1600"><td>27 A&amp;W 朝食</td><td class="num">¥1,600</td></tr><tr data-meal-key="27-kijimuna" data-meal-label="27 浜屋（沖縄そば）昼食" data-meal-amount="3000"><td>27 浜屋（沖縄そば）昼食</td><td class="num">¥3,000</td></tr><tr data-meal-key="27-blueseal" data-meal-label="27 ブルーシール 牧港本店" data-meal-amount="1800"><td>27 ブルーシール 牧港本店</td><td class="num">¥1,800</td></tr><tr data-meal-key="27-jack" data-meal-label="27 キングタコス" data-meal-amount="9000"><td>27 キングタコス</td><td class="num">¥9,000</td></tr><tr data-meal-key="snacks" data-meal-label="空港等の軽食" data-meal-amount="2500"><td>空港等の軽食余裕</td><td class="num">¥2,500</td></tr><tr data-meal-total="65900"><td>食事の目安合計</td><td class="num"></td></tr></tbody></table></div></details>
+<details class="fold"><summary>初期計画の支払内訳</summary><div class="kpi-row budget-three" id="budget-summary" aria-live="polite"></div></details><p class="page-lead">実績は支払った額、目安は旅行前の計画額です（飲み物はソフトドリンク、2名で1回¥1,000）。</p><div class="budget-toolbar"><p class="note" id="budget-storage" aria-live="polite">保存中…</p><button type="button" class="btn" id="budget-reset">リセット</button></div><p class="note">入力は2人のスマホで共有されます。同じ行を同時に直した場合は後に直した方が残ります。支払済みの行は支払額を初期表示します。実績合計・差額は実績入力済みの行だけが対象です。差額は実績−目安です。目安は固定の計画額です。食事の実績は下の内訳に入力すると「食事」行へ自動集計します。一部だけ入力した場合も、食事行の差額は食事全体の目安との差です。リセットすると実績は初期状態（支払済み行は支払額、それ以外は空欄）、支払者は本人に戻り、追加費目は削除されます。</p><div id="budget-entry-summary" class="kpi-row budget-three" aria-live="polite"></div><section class="budget-categories" aria-labelledby="budget-categories-title"><h3 id="budget-categories-title">費目ごとの合計（2名・精算対象）</h3><table id="budget-categories"><thead><tr><th scope="col">費目</th><th scope="col">実績</th></tr></thead><tbody id="budget-category-rows"></tbody></table></section><div class="tbl-wrap stack"><table id="budget-table"><thead><tr><th>項目</th><th>内訳</th><th>目安・実績（2名）</th><th>状態</th></tr></thead><tbody><tr class="budget-group"><th colspan="4" scope="rowgroup">交通</th></tr><tr data-budget-key="flights" data-budget-group="交通" data-budget-label="航空券" data-budget-items="outbound inbound inbound-companion"><td>航空券</td><td>MM511 2名27,840円のみ。復路は各自で手配・会計外。成田までの電車代は各自</td><td class="num"></td><td>往路 <span class="trip-status" data-trip-id="outbound"></span>／復路本人 <span class="trip-status" data-trip-id="inbound"></span>／同行者 <span class="trip-status" data-trip-id="inbound-companion"></span></td></tr><tr data-budget-key="rental" data-budget-group="交通" data-budget-label="レンタカー" data-budget-items="rental"><td>レンタカー</td><td>バジェット：基本8,000＋補償6,600－クーポン1,460</td><td class="num"></td><td><span class="trip-status" data-trip-id="rental"></span></td></tr><tr data-budget-key="fuel" data-budget-group="交通" data-budget-label="ガソリン" data-budget-amount="5000"><td>ガソリン</td><td>返却前の給油</td><td class="num">¥5,000</td><td>見積り</td></tr><tr data-budget-key="tolls" data-budget-group="交通" data-budget-label="高速" data-budget-amount="4000"><td>高速</td><td>26日の北部往復</td><td class="num">¥4,000</td><td>見積り</td></tr><tr data-budget-key="transport" data-budget-group="交通" data-budget-label="タクシー・バス" data-budget-amount="6000"><td>タクシー・バス</td><td>25日の路線バス・タクシー</td><td class="num">¥6,000</td><td>見積り</td></tr><tr class="budget-group"><th colspan="4" scope="rowgroup">宿泊</th></tr><tr data-budget-key="hotel" data-budget-group="宿泊" data-budget-label="ホテル" data-budget-items="hotel"><td>ホテル</td><td>ダブル・素泊り3泊・2名</td><td class="num"></td><td><span class="trip-status" data-trip-id="hotel"></span></td></tr><tr class="budget-group"><th colspan="4" scope="rowgroup">駐車</th></tr><tr data-budget-key="parking" data-budget-group="駐車" data-budget-label="駐車" data-budget-amount="6000"><td>駐車</td><td>ホテル近くの夜間3泊と、観光・食事先</td><td class="num">¥6,000</td><td>見積り</td></tr><tr class="budget-group"><th colspan="4" scope="rowgroup">食事</th></tr><tr data-budget-key="meals" data-budget-group="食事" data-budget-label="食事" data-budget-meals="true"><td>食事</td><td>下の2名分の食事予算を合算</td><td class="num"></td><td>見積り</td></tr><tr class="budget-group"><th colspan="4" scope="rowgroup">入場・体験</th></tr><tr data-budget-key="admission" data-budget-group="入場・体験" data-budget-label="入場料" data-budget-amount="5360"><td>入場料</td><td>首里城・美ら海・ナゴパイナップルパーク・ジャングリアSPA</td><td class="num">¥5,360</td><td>掲載料金の計画額</td></tr><tr data-budget-key="snorkel" data-budget-group="入場・体験" data-budget-label="シュノーケル" data-budget-items="snorkel"><td>シュノーケル</td><td>ブルーオーシャン沖縄 4,500円×2名</td><td class="num"></td><td><span class="trip-status" data-trip-id="snorkel"></span></td></tr><tr class="budget-group"><th colspan="4" scope="rowgroup">お土産</th></tr><tr data-budget-key="gifts" data-budget-group="お土産" data-budget-label="お土産" data-budget-amount="15000"><td>お土産</td><td>菓子・泡盛など、人に配る物・持ち帰る物</td><td class="num">¥15,000</td><td>見積り</td></tr><tr class="budget-group"><th colspan="4" scope="rowgroup">買い物</th></tr><tr data-budget-key="shopping" data-budget-group="買い物" data-budget-label="買い物" data-budget-amount="0"><td>買い物</td><td>服・器・雑貨・コスメ</td><td class="num">¥0</td><td>目安なし</td></tr><tr id="budget-total" data-total="172264"><td><b>合計</b></td><td>目安は上の項目、実績は追加費目を含む（復路は会計外）</td><td class="num"></td><td>2名・計画額</td></tr></tbody></table></div><details class="fold" open><summary>食事の内訳（日付順・全行2名合計）</summary><div class="tbl-wrap stack"><table id="meal-budget"><thead><tr><th>食事</th><th>目安・実績（2名）</th></tr></thead><tbody data-meal-day="10/24"><tr class="meal-day"><th colspan="2" scope="rowgroup">10/24（土）</th></tr><tr data-meal-key="24-dinner" data-meal-label="24夜 まーちぬ家" data-meal-amount="4000"><td>24夜 まーちぬ家</td><td class="num">¥4,000</td></tr></tbody><tbody data-meal-day="10/25"><tr class="meal-day"><th colspan="2" scope="rowgroup">10/25（日）</th></tr><tr data-meal-key="25-breakfast" data-meal-label="25朝 福助の玉子焼き" data-meal-amount="1500"><td>25朝 福助の玉子焼き</td><td class="num">¥1,500</td></tr><tr data-meal-key="25-fishmarket" data-meal-label="25 道の駅いとまん" data-meal-amount="6000"><td>25 道の駅いとまん</td><td class="num">¥6,000</td></tr><tr data-meal-key="25-cafes" data-meal-label="25 カフェ龍樋・フィリーなど" data-meal-amount="2500"><td>25 カフェ龍樋・フィリーなど</td><td class="num">¥2,500</td></tr><tr data-meal-key="25-mitsuhisa" data-meal-label="25夜 光久本家" data-meal-item="matsumoto"><td>25夜 光久本家</td><td class="num">¥16,000</td></tr></tbody><tbody data-meal-day="10/26"><tr class="meal-day"><th colspan="2" scope="rowgroup">10/26（月）</th></tr><tr data-meal-key="26-kouri" data-meal-label="26 許田のサーターアンダギー・とうらく" data-meal-amount="3000"><td>26 許田のサーターアンダギー・とうらく</td><td class="num">¥3,000</td></tr><tr data-meal-key="26-kishimoto" data-meal-label="26昼 きしもと食堂" data-meal-amount="3000"><td>26昼 きしもと食堂</td><td class="num">¥3,000</td></tr><tr data-meal-key="26-dinner" data-meal-label="26夜 ステーキハウス473" data-meal-item="marchinu"><td>26夜 ステーキハウス473</td><td class="num">¥12,000</td></tr></tbody><tbody data-meal-day="10/27"><tr class="meal-day"><th colspan="2" scope="rowgroup">10/27（火）</th></tr><tr data-meal-key="27-potama" data-meal-label="27朝 A&amp;W 牧港店" data-meal-amount="1600"><td>27朝 A&amp;W 牧港店</td><td class="num">¥1,600</td></tr><tr data-meal-key="27-jack" data-meal-label="27 キングタコス 喜友名店" data-meal-amount="9000"><td>27 キングタコス 喜友名店</td><td class="num">¥9,000</td></tr><tr data-meal-key="27-blueseal" data-meal-label="27 ブルーシール 牧港本店" data-meal-amount="1800"><td>27 ブルーシール 牧港本店</td><td class="num">¥1,800</td></tr></tbody><tbody data-meal-day=""><tr class="meal-day"><th colspan="2" scope="rowgroup">日付なし</th></tr><tr data-meal-key="snacks" data-meal-label="空港などの軽食" data-meal-amount="2500"><td>空港などの軽食</td><td class="num">¥2,500</td></tr></tbody><tfoot><tr data-meal-total="62900"><td>食事の合計</td><td class="num"></td></tr></tfoot></table></div></details>
 <section class="budget-extras" aria-labelledby="budget-extras-title"><h3 id="budget-extras-title">追加の費目</h3><p id="budget-extras-empty" class="note">ボタンで行を足せます。レシート1枚を1行に。追加した分は実績に入ります。『個人』にした行は、相手の分を立て替えたときだけ精算に入ります。</p><div id="budget-extras-rows"></div><button type="button" class="btn" id="budget-extra-add">＋ 費目を追加</button><p id="budget-extras-total" aria-live="polite" hidden></p><div id="budget-extras-personal" aria-live="polite" hidden></div></section>
 <section class="settlement-card" aria-labelledby="budget-settlement-title"><h3 id="budget-settlement-title">精算（2名）</h3><div id="budget-settlement" aria-live="polite"></div></section>
 </section>
@@ -1363,8 +1363,8 @@ function tripFollowupItems(items){
 // Keep the storage key so existing version 1 data can be migrated in place.
 const BUDGET_STORAGE_KEY='okinawa-budget-v1-20261016';
 const BUDGET_SYNC_URL='https://script.google.com/macros/s/AKfycbyuO05GIpzt_ihEoZ61qpF_VTU0WH6XJfTM0pNwXUmyIG5MKQnmNrT_VvQoiYh6woERjQ/exec';
-const budgetRowNodes=[...document.querySelectorAll('#budget-table tbody tr:not([data-total])')];
-const budgetMealNodes=[...document.querySelectorAll('#meal-budget tbody tr:not([data-meal-total])')];
+const budgetRowNodes=[...document.querySelectorAll('#budget-table tr[data-budget-key]')];
+const budgetMealNodes=[...document.querySelectorAll('#meal-budget tr[data-meal-key]')];
 const budgetKeys=new Set([...budgetRowNodes.map(row=>'row:'+row.dataset.budgetKey),...budgetMealNodes.map(row=>'meal:'+row.dataset.mealKey)]);
 function budgetValidValue(value){return value===''||(typeof value==='number'&&Number.isSafeInteger(value)&&value>=0&&value<=999999999);}
 function budgetInitialActual(key){
@@ -1385,6 +1385,10 @@ function budgetScope(value){return value==='personal'?'personal':'shared';}
 const BUDGET_DATES=['10/24','10/25','10/26','10/27'];
 function budgetOwner(value){return value==='本人'||value==='同行者'?value:'';}
 function budgetCategory(value){return budgetRowNodes.some(row=>row.dataset.budgetKey===value)?value:'other';}
+// Each budget row belongs to one 費目 group; a line item's 費目 is the group of its row, unknown ones are その他.
+function budgetGroupOf(category){return budgetRowNodes.find(row=>row.dataset.budgetKey===category)?.dataset.budgetGroup||'その他';}
+function budgetCategoryText(row){return row.dataset.budgetGroup===row.dataset.budgetLabel?row.dataset.budgetLabel:row.dataset.budgetGroup+'：'+row.dataset.budgetLabel;}
+function budgetCategoryOrder(category){const index=budgetRowNodes.findIndex(row=>row.dataset.budgetKey===category);return index<0?budgetRowNodes.length:index;}
 function budgetDate(value){return typeof value==='string'&&/^(0[1-9]|1[0-2])\/(0[1-9]|[12][0-9]|3[01])$/.test(value)?value:'';}
 // Line-item fields: an unset owner follows the payer, unknown categories are "other", bad dates are blank.
 function budgetLineFields(value){const owner=budgetOwner(value.owner);return {...(owner?{owner}:{}),category:budgetCategory(value.category),date:budgetDate(value.date)};}
@@ -1420,6 +1424,8 @@ function loadBudgetEntries(){
   return result;
 }
 let budgetStore=loadBudgetEntries(),budgetEntries={},budgetExtras=[];
+// Meal line rows shown in the meal breakdown; a re-render removes the previous ones first.
+let budgetMealLineRows=[];
 let budgetGetRunning=false,budgetGetAgain=false,budgetPostRunning=false,budgetPostAgain=false;
 let budgetSaveTimer,budgetConfirmTimer,budgetLastSync=null,budgetLoadFailed=false,budgetStorageFailed=false,budgetResetUntil=0,budgetResetTimer;
 function projectBudgetItems(){
@@ -1576,8 +1582,8 @@ function renderBudgetEditor(budget,rowNodes,mealNodes,mealAmounts){
     const host=document.getElementById('budget-extras-rows');host.replaceChildren();
     document.getElementById('budget-extras-empty').hidden=budgetExtras.length>0;
     document.getElementById('budget-extras-total').hidden=budgetExtras.length===0;
-    // One receipt per row, grouped by date; undated rows last, each group in entry order.
-    const ordered=[...budgetExtras].sort((a,b)=>(a.date||'99/99').localeCompare(b.date||'99/99'));
+    // One receipt per row, grouped by date; undated rows last, each day in 費目 order, then entry order.
+    const ordered=[...budgetExtras].sort((a,b)=>(a.date||'99/99').localeCompare(b.date||'99/99')||budgetCategoryOrder(a.category)-budgetCategoryOrder(b.category));
     let day;
     ordered.forEach((entry,index)=>{
       if(index===0||entry.date!==day){day=entry.date;host.append(tripNode('h4',day?budgetDayLabel(day):'日付なし','budget-extra-day'));}
@@ -1597,11 +1603,14 @@ function renderBudgetEditor(budget,rowNodes,mealNodes,mealAmounts){
       dateLabel.append(date);
       const categoryLabel=tripNode('label','費目','budget-extra-category');
       const category=document.createElement('select');category.dataset.extraField='category';category.setAttribute('aria-label',label+'費目');
-      for(const [value,text] of [...budgetRowNodes.map(r=>[r.dataset.budgetKey,r.dataset.budgetLabel]),['other','その他']]){
+      for(const [value,text] of [...budgetRowNodes.map(r=>[r.dataset.budgetKey,budgetCategoryText(r)]),['other','その他']]){
         const option=tripNode('option',text);option.value=value;category.append(option);
       }
       category.value=entry.category;
-      category.addEventListener('change',()=>{entry.category=budgetCategory(category.value);updateTotals();saveBudgetExtra(entry);});
+      category.addEventListener('change',()=>{
+        entry.category=budgetCategory(category.value);saveBudgetExtra(entry);renderExtras();updateTotals();
+        entry.row.querySelector('[data-extra-field="category"]').focus();
+      });
       categoryLabel.append(category);
       const nameLabel=tripNode('label','費目名','budget-extra-name');
       const name=document.createElement('input');name.type='text';name.placeholder='例：給油2回目';name.value=entry.name;name.dataset.extraField='name';
@@ -1659,6 +1668,21 @@ function renderBudgetEditor(budget,rowNodes,mealNodes,mealAmounts){
     entry.row.querySelector('input').focus();
   };
   renderExtras();
+  const mealDays=[...document.querySelectorAll('#meal-budget tbody[data-meal-day]')];
+  function renderMealLines(lines){
+    budgetMealLineRows.forEach(row=>row.remove());
+    const known=new Set(mealDays.map(body=>body.dataset.mealDay));
+    budgetMealLineRows=[...lines].sort((a,b)=>(a.date||'99/99').localeCompare(b.date||'99/99')).map(line=>{
+      const row=tripNode('tr',undefined,'meal-line');row.dataset.mealLine=line.id;
+      const name=tripNode('td',line.name.trim()||'名称未入力');name.append(tripNode('span','追加の費目','meal-line-source'));
+      const amount=tripNode('td',undefined,'num');
+      amount.append(tripNode('span',(line.actual===''?'未入力':tripMoney(line.actual))+'・'+(line.payer==='companion'?'同行者':'本人')+'が支払い'));
+      const jump=tripNode('button','追加の費目で見る');jump.type='button';jump.dataset.mealLineJump=line.id;
+      jump.addEventListener('click',()=>{budgetExtras.forEach(e=>{e.row.dataset.target=String(e===line);});line.row.scrollIntoView({block:'center'});line.row.focus({preventScroll:true});});
+      amount.append(jump);row.append(name,amount);
+      mealDays.find(body=>body.dataset.mealDay===(known.has(line.date)?line.date:'')).append(row);return row;
+    });
+  }
   function updateTotals(){
     const enteredMeals=mealEntries.filter(entry=>entry.actual!=='');
     const mealEntry=entries.find(entry=>entry.key==='meals');
@@ -1680,6 +1704,8 @@ function renderBudgetEditor(budget,rowNodes,mealNodes,mealAmounts){
       }
     }
     mealEntry.output.textContent=mealEntry.total===''?'未入力':tripMoney(mealEntry.total);
+    renderMealLines(sharedExtras.filter(e=>e.category==='meals'));
+    document.querySelector('[data-meal-total] .num').textContent='目安 '+tripMoney(budget.meals)+' ／ 実績 '+(mealEntry.total===''?'未入力':tripMoney(mealEntry.total));
     mealEntry.caption.textContent='実績（内訳 '+enteredMeals.length+'/'+mealEntries.length+'行）';
     const otherExtras=sharedExtras.filter(e=>e.category==='other'),enteredOther=otherExtras.filter(e=>e.actual!=='');
     const categorized=extrasTotal-enteredOther.reduce((sum,e)=>sum+e.actual,0);
@@ -1739,6 +1765,16 @@ function renderBudgetEditor(budget,rowNodes,mealNodes,mealAmounts){
       settlement.append(result,tripNode('p','実績を入力した行だけが対象。支払者が本人のままの行は確認してください。','note'));
     }
     document.querySelector('#budget-total .num').textContent='目安 '+tripMoney(estimate)+' ／ 実績 '+tripMoney(actual);
+    const groups=new Map();
+    const addGroup=(group,amount)=>{const sum=groups.get(group)??'';groups.set(group,amount===''?sum:Number(sum)+amount);};
+    entries.forEach(e=>addGroup(budgetGroupOf(e.key),e.total));
+    if(otherExtras.length)enteredOther.length?enteredOther.forEach(e=>addGroup('その他',e.actual)):addGroup('その他','');
+    const categoryRows=document.getElementById('budget-category-rows');categoryRows.replaceChildren();
+    for(const [group,amount] of [...groups,['合計',actual]]){
+      const row=tripNode('tr',undefined,group==='合計'?'budget-category-total':undefined);row.dataset.categoryTotal=group;
+      const head=tripNode('th',group);head.setAttribute('scope','row');
+      row.append(head,tripNode('td',amount===''?'未入力':tripMoney(amount),'num'));categoryRows.append(row);
+    }
   }
   document.getElementById('budget-reset').onclick=resetBudgetEntries;
   budgetNotice();
@@ -1760,9 +1796,9 @@ function renderTripState(){
   const actions=tripTaskOrder(tripFollowupItems(items));
   actions.forEach(item=>followups.append(tripCard(item)));
   if(!ordered.length&&!actions.length)pending.append(tripNode('p','手配と連絡はすべて完了しました。'));
-  const mealNodes=[...document.querySelectorAll('#meal-budget tbody tr:not([data-meal-total])')];
+  const mealNodes=[...document.querySelectorAll('#meal-budget tr[data-meal-key]')];
   const mealEstimates=mealNodes.map(el=>el.dataset.mealItem?{id:el.dataset.mealItem}:{amount:Number(el.dataset.mealAmount)});
-  const rowNodes=[...document.querySelectorAll('#budget-table tbody tr:not([data-total])')];
+  const rowNodes=[...document.querySelectorAll('#budget-table tr[data-budget-key]')];
   const estimates=rowNodes.map(el=>el.dataset.budgetItems?{ids:el.dataset.budgetItems.split(' ')}:el.dataset.budgetMeals?{meals:true}:{amount:Number(el.dataset.budgetAmount)});
   const budget=tripBudget(items,estimates,mealEstimates);
   const mealAmounts=mealEstimates.map(row=>row.id?lookup[row.id].amount:row.amount);
