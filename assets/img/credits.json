@@ -76,28 +76,6 @@
    1050
   ]
  },
- "yakiniku": {
-  "file": "yakiniku.jpg",
-  "title": "File:JP 日本 Japan 沖繩 OKINAWA 那霸 Naha 久茂地 Kumoji MK Building shop 和牛燒肉店 BBQ Motobu WAGYU Yakiniku Beef Restaurant lunch meal January 2025 R12S 25.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:JP_%E6%97%A5%E6%9C%AC_Japan_%E6%B2%96%E7%B9%A9_OKINAWA_%E9%82%A3%E9%9C%B8_Naha_%E4%B9%85%E8%8C%82%E5%9C%B0_Kumoji_MK_Building_shop_%E5%92%8C%E7%89%9B%E7%87%92%E8%82%89%E5%BA%97_BBQ_Motobu_WAGYU_Yakiniku_Beef_Restaurant_lunch_meal_January_2025_R12S_25.jpg",
-  "license": "CC0",
-  "artist": "Naha Mama Pavilionz",
-  "size": [
-   1400,
-   1050
-  ]
- },
- "kaisendon2": {
-  "file": "kaisendon2.jpg",
-  "title": "File:Kaisendon - sashimi fish bowl - July 2014.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:Kaisendon_-_sashimi_fish_bowl_-_July_2014.jpg",
-  "license": "CC BY 3.0",
-  "artist": "nesnad",
-  "size": [
-   1400,
-   1046
-  ]
- },
  "shuri_ext": {
   "file": "shuri_ext.jpg",
   "title": "File:Naha Shuri Castle32bs5s4592.jpg",
@@ -230,34 +208,12 @@
    933
   ]
  },
- "tacorice": {
-  "file": "tacorice.jpg",
-  "title": "File:Taco Rice.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:Taco_Rice.jpg",
-  "license": "CC BY 2.0",
-  "artist": "Nelo Hotsuma",
-  "size": [
-   1400,
-   1050
-  ]
- },
  "amvillage": {
   "file": "amvillage.jpg",
   "title": "File:Mihama Town Resort American Village 1.JPG",
   "page": "https://commons.wikimedia.org/wiki/File:Mihama_Town_Resort_American_Village_1.JPG",
   "license": "Public domain",
   "artist": "Abasaa",
-  "size": [
-   1400,
-   1050
-  ]
- },
- "steak": {
-  "file": "steak.jpg",
-  "title": "File:JP-47 Naha Jacks-Steak-House.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:JP-47_Naha_Jacks-Steak-House.jpg",
-  "license": "CC BY-SA 2.0",
-  "artist": "Flickr user: ayustety\n\nTokyo, Japan\n\n https://www.flickr.com/people/ayustety/",
   "size": [
    1400,
    1050
@@ -351,17 +307,6 @@
    1050
   ]
  },
- "naha_airport": {
-  "file": "naha_airport.jpg",
-  "title": "File:Naha Airport12s3s4350.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:Naha_Airport12s3s4350.jpg",
-  "license": "CC BY 2.5",
-  "artist": "663highland",
-  "size": [
-   1400,
-   933
-  ]
- },
  "goya": {
   "file": "goya.jpg",
   "title": "File:Goya Champuru at Yumenoya.jpg",
@@ -415,17 +360,6 @@
   "size": [
    1400,
    946
-  ]
- },
- "ana_plane": {
-  "file": "ana_plane.jpg",
-  "title": "File:All Nippon Airways, B787-8, JA819A (24080939481).jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:All_Nippon_Airways,_B787-8,_JA819A_(24080939481).jpg",
-  "license": "CC BY 2.0",
-  "artist": "lasta29",
-  "size": [
-   1400,
-   933
   ]
  },
  "tempura_ok": {
@@ -608,19 +542,6 @@
   ],
   "changes": "Wikimedia Commons thumbnail; CSS crops may be used for layout."
  },
- "pizza_sample": {
-  "file": "pizza_sample.jpg",
-  "title": "File:Pizza Margherita (14565452088).jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:Pizza_Margherita_(14565452088).jpg",
-  "license": "CC BY 2.0",
-  "license_url": "https://creativecommons.org/licenses/by/2.0",
-  "artist": "jeffreyw",
-  "size": [
-   960,
-   636
-  ],
-  "changes": "Wikimedia Commons thumbnail; CSS crops may be used for layout."
- },
  "burger_sample": {
   "file": "burger_sample.jpg",
   "title": "File:Cheeseburger with onions at Hatfield Heath Festival 2017.jpg",
@@ -669,28 +590,6 @@
    931
   ]
  },
- "moon_okinawa": {
-  "file": "moon_okinawa.jpg",
-  "title": "File:Iss064e047039.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:Iss064e047039.jpg",
-  "license": "Public domain",
-  "artist": "NASA Johnson Space Center",
-  "size": [
-   1400,
-   786
-  ]
- },
- "gift_chili": {
-  "file": "gift_chili.jpg",
-  "title": "File:Koregusu by regvn in Tokyo.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:Koregusu_by_regvn_in_Tokyo.jpg",
-  "license": "CC BY-SA 2.0",
-  "artist": "regvn from Okinawan restaurant Chatan Shokudo in Soto-Kanda, Chiyoda, Tokyo",
-  "size": [
-   1400,
-   1050
-  ]
- },
  "gift_tart": {
   "file": "gift_tart.jpg",
   "title": "File:Purple potato tart (7770121920).jpg",
@@ -700,17 +599,6 @@
   "size": [
    1400,
    928
-  ]
- },
- "gift_sugar": {
-  "file": "gift_sugar.jpg",
-  "title": "File:Fazendo Rapadura.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File:Fazendo_Rapadura.jpg",
-  "license": "CC BY-SA 3.0",
-  "artist": "Jonathan Wilkins",
-  "size": [
-   1400,
-   933
   ]
  },
  "gift_pineapple": {
@@ -878,17 +766,6 @@
    1232
   ]
  },
- "takaesu_shop": {
-  "file": "takaesu_shop.jpg",
-  "title": "File:高江洲そば店内 (37492710).jpg",
-  "page": "https://commons.wikimedia.org/wiki/File%3A%E9%AB%98%E6%B1%9F%E6%B4%B2%E3%81%9D%E3%81%B0%E5%BA%97%E5%86%85_%2837492710%29.jpg",
-  "license": "CC BY-SA 2.0",
-  "artist": "ayustety",
-  "size": [
-   1920,
-   1440
-  ]
- },
  "takaesu_soba": {
   "file": "takaesu_soba.jpg",
   "title": "File:Tofu soba at Takaesu Soba by ayustety in Urasoe, Okinawa.jpg",
@@ -898,28 +775,6 @@
   "size": [
    1920,
    1440
-  ]
- },
- "eibun_shop": {
-  "file": "eibun_shop.jpg",
-  "title": "File:JP 沖繩 Okinawa 那霸 Naha 壺屋 Tsuboya 1-5-14 Eibun Soba Okinawa Restaurant February 2026 N13P 02.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File%3AJP_%E6%B2%96%E7%B9%A9_Okinawa_%E9%82%A3%E9%9C%B8_Naha_%E5%A3%BA%E5%B1%8B_Tsuboya_1-5-14_Eibun_Soba_Okinawa_Restaurant_February_2026_N13P_02.jpg",
-  "license": "CC0",
-  "artist": "NORTLAUKAU 26088 JP",
-  "size": [
-   1920,
-   1440
-  ]
- },
- "s88_menu": {
-  "file": "s88_menu.jpg",
-  "title": "File:ステーキハウス88 (224055006).jpg",
-  "page": "https://commons.wikimedia.org/wiki/File%3A%E3%82%B9%E3%83%86%E3%83%BC%E3%82%AD%E3%83%8F%E3%82%A6%E3%82%B988_%28224055006%29.jpg",
-  "license": "CC BY 2.0",
-  "artist": "Hajime NAKANO",
-  "size": [
-   640,
-   480
   ]
  },
  "aw_makiminato": {
@@ -950,28 +805,6 @@
   "page": "https://commons.wikimedia.org/wiki/File%3ARoadside_station_Kyoda.JPG",
   "license": "CC BY-SA 3.0",
   "artist": "Kugel",
-  "size": [
-   1920,
-   1440
-  ]
- },
- "busena_terrace": {
-  "file": "busena_terrace.jpg",
-  "title": "File:Busena Terrace11n4272.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File%3ABusena_Terrace11n4272.jpg",
-  "license": "CC BY 2.5",
-  "artist": "663highland",
-  "size": [
-   1920,
-   1280
-  ]
- },
- "jackie_tacorice": {
-  "file": "jackie_tacorice.jpg",
-  "title": "File:JP-47 Naha Tacorice.jpg",
-  "page": "https://commons.wikimedia.org/wiki/File%3AJP-47_Naha_Tacorice.jpg",
-  "license": "CC BY-SA 2.0",
-  "artist": "Flickr user: ayustety\n\nTokyo, Japan\n\n https://www.flickr.com",
   "size": [
    1920,
    1440
