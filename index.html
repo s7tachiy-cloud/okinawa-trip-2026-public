@@ -157,6 +157,7 @@ td.num,th.num{text-align:right;white-space:nowrap}
 /* footer */
 footer{background:var(--bg-dark);color:var(--on-dark);padding:36px 16px;text-align:center;font-size:.85rem}
 footer p{opacity:.8}
+.plan-link{margin-top:10px}.plan-link a{color:var(--on-dark);text-decoration:underline}
 .scroll-top{position:fixed;right:16px;bottom:16px;width:44px;height:44px;border-radius:50%;background:var(--sea);color:#fff;border:none;font-size:1.2rem;cursor:pointer;box-shadow:var(--shadow-hover);opacity:0;pointer-events:none;transition:.3s;z-index:40}
 .scroll-top.show{opacity:1;pointer-events:auto}
 /* photos */
@@ -953,6 +954,7 @@ html:has(.photo-view[open]){overflow:hidden}
 <footer>
 <div class="footer-nav" role="navigation" aria-label="ページ切替（下部）"><a href="#schedule" data-page-link="schedule" aria-current="page">✈ スケジュール</a><a href="#food" data-page-link="food">🍽 グルメ</a><a href="#spots" data-page-link="spots">🗺 スポット</a><a href="#souvenirs" data-page-link="souvenirs">🎁 お土産</a><a href="#learn" data-page-link="learn">📖 予習</a><a href="#budget" data-page-link="budget">💴 予算</a></div>
   <p>Okinawa Trip 2026 · 2026年10月24日〜27日の記録。店舗・スポットの営業時間などは旅行前（2026年9〜10月）に調べた掲載情報です。</p>
+  <p class="plan-link"><a href="plan/">旅行前の計画を見る</a></p>
   <details class="credits" id="photo-credits"><summary>📷 写真クレジット（Wikimedia Commons）</summary><p><a href="assets/img/credits.json" target="_blank" rel="noopener">写真出典の一覧ファイルを開く</a></p><ul id="credit-list"></ul></details>
 </footer>
 <button class="scroll-top" id="scrollTop" aria-label="ページ上部へ" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
