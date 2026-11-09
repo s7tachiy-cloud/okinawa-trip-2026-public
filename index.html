@@ -285,7 +285,7 @@ header.has-photo{background:linear-gradient(180deg,rgba(6,43,71,.55) 0%,rgba(8,7
 .reading-photo{margin:0}.reading-photo img{display:block;width:100%;height:240px;object-fit:cover}.reading-photo figcaption{font-size:.76rem;color:#526575;padding:8px 18px;line-height:1.6}
 .day-card.open .day-body.day-layout{display:grid;grid-template-columns:minmax(0,1fr);gap:14px}
 .day-layout>*{min-width:0}
-.day-vlog{margin:0;grid-column:1;min-width:0}.tl-video{margin:8px 0 2px}.tl-credit{font-size:.72rem;color:var(--muted);margin-top:4px}.tl-video video{display:block;width:100%;max-width:480px;height:auto;aspect-ratio:16/9;border-radius:10px;background:#000}
+.day-vlog{margin:0;grid-column:1;min-width:0}.tl-video{margin:8px 0 2px}.tl-credit{font-size:.72rem;color:var(--muted);margin-top:4px}.draft-videos{display:grid;gap:22px;max-width:720px}.draft-video{margin:0}.draft-video video{display:block;width:100%;height:auto;aspect-ratio:16/9;border-radius:12px;background:#000}.draft-video.portrait video{max-width:300px;aspect-ratio:9/16}.draft-video figcaption{margin-top:6px;font-size:.92rem;line-height:1.5}.tl-video video{display:block;width:100%;max-width:480px;height:auto;aspect-ratio:16/9;border-radius:10px;background:#000}
 .day-vlog video{display:block;width:100%;max-width:100%;height:auto;aspect-ratio:720/460;border-radius:12px;background:#000;max-width:720px;margin-top:14px}
 .day-timeline{grid-column:1}
 /* Photos sit beside their own timeline row: square thumbnail on phones, wider on tablet/desktop. */
@@ -410,6 +410,7 @@ html:has(.photo-view[open]){overflow:hidden}
     <button class="nav-btn" role="tab" aria-selected="false" id="tab-souvenirs" aria-controls="page-souvenirs" tabindex="-1" onclick="showPage('souvenirs', this)">🎁 お土産</button>
     <button class="nav-btn" role="tab" aria-selected="false" id="tab-learn" aria-controls="page-learn" tabindex="-1" onclick="showPage('learn', this)">📖 読みもの</button>
     <button class="nav-btn" role="tab" aria-selected="false" id="tab-budget" aria-controls="page-budget" tabindex="-1" onclick="showPage('budget', this)">💴 実績・精算</button>
+    <button class="nav-btn" role="tab" aria-selected="false" id="tab-video" aria-controls="page-video" tabindex="-1" onclick="showPage('video', this)">🎬 動画</button>
   </div>
 </nav>
 
@@ -1078,10 +1079,20 @@ html:has(.photo-view[open]){overflow:hidden}
 <p class="note">2026年11月3日時点の記録。閲覧専用です。</p>
 <!-- actual-record:end -->
 </section>
+<section class="page" id="page-video" role="tabpanel" aria-labelledby="tab-video">
+<h2 class="page-title" tabindex="-1">🎬 動画</h2>
+<p class="page-lead">旅のまとめ動画を作っています。まずは10月27日分を3本。テンポと曲の方向を見比べるための版で、曲はいまは仮です。</p>
+<div class="draft-videos">
+<figure class="draft-video"><video controls playsinline preload="none" poster="assets/video/draft/d27_main_56s.jpg" width="1280" height="720" aria-label="10月27日 本編 テンポ速め"><source src="assets/video/draft/d27_main_56s.mp4" type="video/mp4"></video><figcaption><b>本編A　テンポ速め（1分）</b><br>地図の移動4秒・写真1枚 約0.75秒</figcaption></figure>
+<figure class="draft-video"><video controls playsinline preload="none" poster="assets/video/draft/d27_main_84s.jpg" width="1280" height="720" aria-label="10月27日 本編 ゆっくり"><source src="assets/video/draft/d27_main_84s.mp4" type="video/mp4"></video><figcaption><b>本編B　ゆっくり（1分28秒）</b><br>地図の移動4秒・写真1枚 約2.2秒</figcaption></figure>
+<figure class="draft-video portrait"><video controls playsinline preload="none" poster="assets/video/draft/d27_vertical_15s.jpg" width="1080" height="1920" aria-label="10月27日 縦型"><source src="assets/video/draft/d27_vertical_15s.mp4" type="video/mp4"></video><figcaption><b>縦型　スマホ向け（15秒）</b><br>右下に小さな地図</figcaption></figure>
+</div>
+<p class="tl-credit">仮の音楽：Island Meet and Greet - Kevin MacLeod（incompetech.com）CC BY 4.0　／　地図：国土地理院 地理院タイル（淡色地図）</p>
+</section>
 </main>
 
 <footer>
-<div class="footer-nav" role="navigation" aria-label="ページ切替（下部）"><a href="#schedule" data-page-link="schedule" aria-current="page">✈ スケジュール</a><a href="#food" data-page-link="food">🍽 グルメ</a><a href="#spots" data-page-link="spots">🗺 スポット</a><a href="#souvenirs" data-page-link="souvenirs">🎁 お土産</a><a href="#learn" data-page-link="learn">📖 読みもの</a><a href="#budget" data-page-link="budget">💴 実績・精算</a></div>
+<div class="footer-nav" role="navigation" aria-label="ページ切替（下部）"><a href="#schedule" data-page-link="schedule" aria-current="page">✈ スケジュール</a><a href="#food" data-page-link="food">🍽 グルメ</a><a href="#spots" data-page-link="spots">🗺 スポット</a><a href="#souvenirs" data-page-link="souvenirs">🎁 お土産</a><a href="#learn" data-page-link="learn">📖 読みもの</a><a href="#budget" data-page-link="budget">💴 実績・精算</a><a href="#video" data-page-link="video">🎬 動画</a></div>
   <p>Okinawa Trip 2026 · 2026年10月24日〜27日の記録。店舗・スポットの営業時間などは旅行前（2026年9〜10月）に調べた掲載情報です。</p>
   <p class="plan-link"><a href="plan/">旅行前の計画を見る</a></p>
   <details class="credits" id="photo-credits"><summary>📷 写真クレジット（Wikimedia Commons）</summary><p><a href="assets/img/credits.json" target="_blank" rel="noopener">写真出典の一覧ファイルを開く</a></p><ul id="credit-list"></ul></details>
